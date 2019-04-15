@@ -1,0 +1,8 @@
+- Best team sorted for picklist
+	- Team Num
+	- Smart Score
+	- Marked for DNP
+- Team data
+	- Average cycle time
+	- Starting locations
+	- Defense ability (will be added to picklist)
