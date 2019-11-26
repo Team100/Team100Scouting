@@ -6,6 +6,7 @@ import {
     View,
     Text
 } from 'react-native';
+import {PageLayout} from '../../shared/PageLayout';
 
 var globalStyles = require('../../styles/GlobalStyles');
 
@@ -30,13 +31,24 @@ export class Menu extends Component{
     render(){
     
         // Return JSX that React Native will display
-        return(
-            <View style={globalStyles.menu}>
-                {this.props.children}
-                
-            </View>
-
-        );
+        if(PageLayout.isTabletLayout()){
+            return(
+                <View style={[globalStyles.menu, globalStyles.menuLandscape]}>
+                    {this.props.children}
+                    
+                </View>
+    
+            );
+        } else{
+            return(
+                <View style={[globalStyles.menu, globalStyles.menuPortrait]}>
+                    {this.props.children}
+                    
+                </View>
+    
+            );
+        }
+        
     }
 
 }

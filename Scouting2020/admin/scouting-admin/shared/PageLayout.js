@@ -13,7 +13,7 @@ export class PageLayout{
         return Dimensions.get("window").height;
     }
     static isTabletLayout(){
-        return this.getDeviceWidth() > this.getDeviceHeight || this.getDeviceWidth() > 900 || this.FORCE_TABLET; 
+        return this.getDeviceWidth() > this.getDeviceHeight() || this.getDeviceWidth() > 900 || this.FORCE_TABLET; 
     }
 
 

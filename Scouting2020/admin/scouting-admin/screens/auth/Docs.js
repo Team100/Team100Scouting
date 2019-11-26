@@ -7,21 +7,18 @@ import { InnerPage } from "../../components/global/InnerPage";
 import { OuterPage } from "../../components/global/OuterPage";
 import {Header} from "../../components/global/Header";
 
-import {Text} from 'react-native';
 
-export class SignIn extends Component{
+export class Docs extends Component{
     constructor(props){
         super (props);
     }
     render(){
         return(
         <Page>
-      <Header title="Sign In"/>
+      <Header title="Docs"/>
 
       <OuterPage>
         <InnerPage>
-          <Text>SignIn</Text>
-
         </InnerPage>
         <Menu />
 

@@ -6,6 +6,8 @@ var {
     StyleSheet,
 } = React;
 
+var bkgColor = "#0539B7"
+
 
 module.exports = StyleSheet.create({
 
@@ -13,7 +15,7 @@ module.exports = StyleSheet.create({
         
         width: "100%",
         height: "100%",
-        backgroundColor: "#0539B7",
+        backgroundColor: bkgColor,
     },
 
     pagePortrait:{
@@ -26,7 +28,7 @@ module.exports = StyleSheet.create({
     headerWrapper: {
         width: "100%",
         height: "100%",
-        flex: 7,
+        flex: 5,
         marginTop: 25,
     },
     headerText:{
@@ -51,16 +53,25 @@ module.exports = StyleSheet.create({
         width: "100%",
         height: "100%",
         flex: 7,
-        backgroundColor: "#0539B7",
-        color: "#FFFFFF"
+        backgroundColor: bkgColor,
+        color: "#FFFFFF",
+        display: "flex"
 
+    },
+    menuPortrait:{
+        flexDirection:"row"
+    },
+    menuLandscape:{
+        flexDirection:"column"
     },
 
 
     innerPage:{
         flex: 93,
         backgroundColor:"#FFFFFF",
-        overflow: "scroll"
+        overflow: "scroll",
+        borderColor: bkgColor,
+        borderWidth: 5
         
     },
     innerPagePortrait:{
@@ -73,9 +84,9 @@ module.exports = StyleSheet.create({
     },
     innerPageLandscape:{
         borderTopLeftRadius: 30,
-        borderTopRightRadius: 0,
+        borderTopRightRadius: 30,//here
         borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 0,
+        borderBottomRightRadius: 30,//here
 
     }
 
