@@ -6,6 +6,7 @@ import { Menu } from "../../components/global/Menu";
 import { InnerPage } from "../../components/global/InnerPage";
 import { OuterPage } from "../../components/global/OuterPage";
 import {Header} from "../../components/global/Header";
+import {WebView} from "react-native-webview";
 
 
 export class Docs extends Component{
@@ -19,6 +20,7 @@ export class Docs extends Component{
 
       <OuterPage>
         <InnerPage>
+          <WebView source={{uri: 'https://scouting.docs.bz'}} />
         </InnerPage>
         <Menu />
 

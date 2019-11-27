@@ -5,6 +5,7 @@ import {PageLayout} from '../../shared/PageLayout';
 
 import {
     View,
+    KeyboardAvoidingView
     
 } from 'react-native';
 
@@ -31,18 +32,20 @@ export class Page extends Component{
     render(){
         if(PageLayout.isTabletLayout()){
             return(
-            <View style={[globalStyles.page, globalStyles.pageLandscape]}>
+                <KeyboardAvoidingView style={[globalStyles.page, globalStyles.pagePortrait]} behavior="padding">
                     {this.props.children}
                     
-                </View>
+                </KeyboardAvoidingView>
             );
 
         }else{
             return(
-                <View style={[globalStyles.page, globalStyles.pagePortrait]}>
+                
+                
+                <KeyboardAvoidingView style={[globalStyles.page, globalStyles.pagePortrait]} behavior="padding">
                     {this.props.children}
                     
-                </View>
+                </KeyboardAvoidingView>
     
             );
 

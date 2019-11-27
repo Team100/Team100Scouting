@@ -31,7 +31,9 @@ export class InnerPage extends Component{
     render(){
         if(PageLayout.isTabletLayout()){
             return(
+                
             <View style={[globalStyles.innerPage, globalStyles.innerPageLandscape]}>
+                
                     {this.props.children}
                     
                 </View>

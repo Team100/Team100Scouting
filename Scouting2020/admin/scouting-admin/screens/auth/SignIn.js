@@ -1,33 +1,49 @@
-import React from 'react';
-import {Component} from 'react';
+import React from "react";
+import { Component } from "react";
 
 import { Page } from "../../components/global/Page";
 import { Menu } from "../../components/global/Menu";
 import { InnerPage } from "../../components/global/InnerPage";
 import { OuterPage } from "../../components/global/OuterPage";
-import {Header} from "../../components/global/Header";
+import { Header } from "../../components/global/Header";
 
-import {Text} from 'react-native';
+import { Text, TextInput, Keyboard } from "react-native";
+import { GhostButton } from "../../components/reusable/GhostButton";
+import { DismissKeyboard } from "../../components/global/DismissKeyboard";
 
-export class SignIn extends Component{
-    constructor(props){
-        super (props);
-    }
-    render(){
-        return(
-        <Page>
-      <Header title="Sign In"/>
+var globalStyles = require("../../styles/GlobalStyles");
 
-      <OuterPage>
-        <InnerPage>
-          <Text>SignIn</Text>
+export class SignIn extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+     
+      <Page>
+        <Header title="Sign In" />
 
-        </InnerPage>
-        <Menu />
-
-      </OuterPage>
-
-    </Page>
-        );
-    }
+        
+          <OuterPage>
+            <InnerPage>
+              <TextInput
+                style={globalStyles.largeTextBox}
+                placeholder="User ID"
+                keyboardType="number-pad"
+              ></TextInput>
+              <GhostButton
+                style="primary"
+                content="Sign In"
+                callback={() => {
+                  console.warn("tapped");
+                }}
+              />
+            </InnerPage>
+            <Menu />
+          </OuterPage>
+        
+      </Page>
+      
+    );
+  }
 }
