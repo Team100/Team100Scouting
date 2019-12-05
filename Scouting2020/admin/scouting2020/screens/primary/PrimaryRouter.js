@@ -9,6 +9,7 @@ import {View} from "react-native";
 import Colors from "../../assets/styles/Colors";
 import { EventInfo } from "./EventInfo";
 import { Picklist } from "./Picklist";
+import { More } from "./More";
 
 
 
@@ -57,19 +58,32 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
       navigationOptions:{
         tabBarIcon: ({tintColor}) => (
           <View>
-            <Ionicons name = "ios-calendar" size={24} color={tintColor}/>
+            <Ionicons name = "md-information-circle-outline" size={24} color={tintColor}/>
           </View>
         ),
         tabBarColor: Colors.EventInfoColor.color,
         tabBarLabel: "Event Info"
 
       }
+    },
+    More:{
+      screen: More,
+      navigationOptions:{
+        tabBarIcon: ({tintColor}) => (
+          <View>
+            <Ionicons name = "md-more" size={24} color={tintColor}/>
+          </View>
+        ),
+        tabBarColor: Colors.MoreColor.color,
+        tabBarLabel: "More"
+
+      }
     }
     
   },{
     initialRouteName: 'Home',
-    activeColor: '#f0edf6',
-    inactiveColor: '#3e2465',
+    activeColor: Colors.MenuTextColor.color,
+    inactiveColor: Colors.MenuTextColor.secondary,
     barStyle: { backgroundColor: '#694fad' },
     shifting: true
 

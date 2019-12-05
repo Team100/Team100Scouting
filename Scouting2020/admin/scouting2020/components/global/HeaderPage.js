@@ -25,7 +25,7 @@ export class HeaderPage extends Component{
         return(
             <View style={[globalStyles.superPage]}>
                 <View style={[globalStyles.header,{backgroundColor: `${this.props.bkg}`}]}>
-                    <Text>{this.props.title}</Text>
+                    <Text style={[globalStyles.headerText]}>{this.props.title}</Text>
                 </View>
                 <View style={[globalStyles.subPage]}>
                     {this.props.children}

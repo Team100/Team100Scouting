@@ -35,7 +35,7 @@ export class Home extends Component{
         // Return JSX that React Native will display
         return(
             <View> 
-                <HeaderPage title="hi" bkg={Colors.HomeColor.color}>
+                <HeaderPage title="Team 100 Scouting" bkg={Colors.HomeColor.color}>
                     <Text>Hello</Text>
                 </HeaderPage>
                 

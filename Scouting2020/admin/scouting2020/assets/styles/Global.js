@@ -15,16 +15,35 @@ module.exports = styles = StyleSheet.create({
     },
     header:{
         display: "flex",
-        flex: 7,
+        flex: 5,
         height: "100%",
         backgroundColor: "#78e3b6",
-        paddingTop: 20
+        paddingTop: 20,
+                
+    },
+    headerText:{
+        fontSize: 28,
+        color: "#FFFFFF",
+        textAlign: "center"
     },
     
     subPage:{
         display: "flex",
-        flex: 93,
+        flex: 95,
         height: "100%"
+    },
+
+    h1: {
+        fontSize: 48
+    },
+    h2:{
+        fontSize: 40
+    },
+    h3:{
+        fontSize: 36
+    },
+    h4: {
+        fontSize: 24
     }
   });
 

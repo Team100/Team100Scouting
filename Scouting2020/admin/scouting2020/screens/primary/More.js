@@ -10,10 +10,11 @@ import {
 import { HeaderPage } from '../../components/global/HeaderPage';
 import Colors from '../../assets/styles/Colors';
 
-//var globalStyles = require('../../assets/styles'); //We don't have styles
+var globalStyles = require('../../assets/styles/Global');
 
-
-export class TeamSelect extends Component{
+// Create a new class called ComponentTemplate
+// ComponentTemplate should be renamed to your class name
+export class More extends Component{
 
     // Allow the object to be created with properties
     constructor(props){
@@ -34,8 +35,10 @@ export class TeamSelect extends Component{
         // Return JSX that React Native will display
         return(
             <View> 
-                <HeaderPage title="Teams" bkg={Colors.TeamSelectColor.color}>
-                    <Text>Hello 1</Text>
+                <HeaderPage title="More Options" bkg={Colors.MoreColor.color}>
+                    <Text style={[globalStyles.h1]}>Hello Dean K.</Text>
+                    <Text style={{fontSize: 28}}>1990 Region Regional</Text>
+                    <Text style={{fontSize: 24}}>(1990test)</Text>
                 </HeaderPage>
                 
                 

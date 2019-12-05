@@ -34,7 +34,7 @@ export class EventInfo extends Component{
         // Return JSX that React Native will display
         return(
             <View> 
-                <HeaderPage title="hi" bkg={Colors.EventInfoColor.color}>
+                <HeaderPage title="Event Info" bkg={Colors.EventInfoColor.color}>
                     <Text>Hello 2</Text>
                 </HeaderPage>
                 

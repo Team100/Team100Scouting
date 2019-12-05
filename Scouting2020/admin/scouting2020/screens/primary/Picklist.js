@@ -35,7 +35,7 @@ export class Picklist extends Component{
         // Return JSX that React Native will display
         return(
             <View> 
-                <HeaderPage title="hi" bkg={Colors.PicklistColor.color}>
+                <HeaderPage title="Picklist" bkg={Colors.PicklistColor.color}>
                     <Text>Hello</Text>
                 </HeaderPage>
                 
