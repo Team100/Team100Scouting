@@ -10,7 +10,7 @@ import {
 import { HeaderPage } from '../../components/global/HeaderPage';
 import Colors from '../../assets/styles/Colors';
 
-//var globalStyles = require('../../assets/styles'); //We don't have styles
+var globalStyles = require('../../assets/styles/Global');
 
 
 export class EventInfo extends Component{
@@ -35,7 +35,8 @@ export class EventInfo extends Component{
         return(
             <View> 
                 <HeaderPage title="Event Info" bkg={Colors.EventInfoColor.color}>
-                    <Text>Hello 2</Text>
+                    <Text style={[globalStyles.h3]}>1990 Region Regional</Text>
+                    <Text style={[globalStyles.h4]}>(1990test)</Text>
                 </HeaderPage>
                 
                 

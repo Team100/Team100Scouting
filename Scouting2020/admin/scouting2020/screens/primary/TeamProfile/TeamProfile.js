@@ -7,14 +7,13 @@ import {
     Text
     
 } from 'react-native';
-import { HeaderPage } from '../../components/global/HeaderPage';
-import Colors from '../../assets/styles/Colors';
+import { HeaderPage } from '../../../components/global/HeaderPage';
+import Colors from '../../../assets/styles/Colors';
 
-var globalStyles = require('../../assets/styles/Global');
+var globalStyles = require('../../assets/styles/Global'); 
 
-// Create a new class called ComponentTemplate
-// ComponentTemplate should be renamed to your class name
-export class More extends Component{
+
+export class TeamProfile extends Component{
 
     // Allow the object to be created with properties
     constructor(props){
@@ -35,8 +34,15 @@ export class More extends Component{
         // Return JSX that React Native will display
         return(
             <View> 
-                <HeaderPage title="More Options" bkg={Colors.MoreColor.color}>
-                    <Text style={[globalStyles.h1]}>Your Account</Text>
+                <HeaderPage title="Team 100" bkg={Colors.TeamSelectColor.color}>
+                    <View>
+                        <Text style={[globalStyles.h1]}>Hello Dean K.</Text>
+                        <Text style={[globalStyles.h3]}>1990 Region Regional</Text>
+                        <Text style={[globalStyles.h4]}>(1990test)</Text>
+                    </View>
+                    
+                
+
                 </HeaderPage>
                 
                 

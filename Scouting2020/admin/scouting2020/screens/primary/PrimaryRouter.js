@@ -76,6 +76,7 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
         ),
         tabBarColor: Colors.MoreColor.color,
         tabBarLabel: "More"
+        
 
       }
     }

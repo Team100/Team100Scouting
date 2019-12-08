@@ -26,7 +26,11 @@ module.exports = styles = StyleSheet.create({
         color: "#FFFFFF",
         textAlign: "center"
     },
-    
+
+    innerPage:{
+        width: "100%",
+        height: "100%"
+    },
     subPage:{
         display: "flex",
         flex: 95,

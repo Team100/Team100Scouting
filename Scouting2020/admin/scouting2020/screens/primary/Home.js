@@ -10,10 +10,9 @@ import {
 import { HeaderPage } from '../../components/global/HeaderPage';
 import Colors from '../../assets/styles/Colors';
 
-//var globalStyles = require('../../assets/styles'); //We don't have styles
+var globalStyles = require('../../assets/styles/Global'); 
 
-// Create a new class called ComponentTemplate
-// ComponentTemplate should be renamed to your class name
+
 export class Home extends Component{
 
     // Allow the object to be created with properties
@@ -36,7 +35,14 @@ export class Home extends Component{
         return(
             <View> 
                 <HeaderPage title="Team 100 Scouting" bkg={Colors.HomeColor.color}>
-                    <Text>Hello</Text>
+                    <View>
+                        <Text style={[globalStyles.h1]}>Hello Dean K.</Text>
+                        <Text style={[globalStyles.h3]}>1990 Region Regional</Text>
+                        <Text style={[globalStyles.h4]}>(1990test)</Text>
+                    </View>
+                    
+                
+
                 </HeaderPage>
                 
                 
