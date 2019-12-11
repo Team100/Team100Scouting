@@ -37,11 +37,19 @@ module.exports = styles = StyleSheet.create({
         height: "100%"
     },
 
+    pageCenter:{
+        alignContent: "center"
+    },
+    full:{
+        width: "100%",
+        height: "100%"
+    },
+
     h1: {
-        fontSize: 48
+        fontSize: 56
     },
     h2:{
-        fontSize: 40
+        fontSize: 48
     },
     h3:{
         fontSize: 36
@@ -53,6 +61,16 @@ module.exports = styles = StyleSheet.create({
     br:{
         marginTop: 18,
         marginBottom: 0
+    },
+
+    bigStat:{
+        width: "100%",
+        height: "auto",
+        alignContent: "center"
+    },
+    bigStatText:{
+        color: "#3F79E8",
+        textAlign: "center"
     }
   });
 

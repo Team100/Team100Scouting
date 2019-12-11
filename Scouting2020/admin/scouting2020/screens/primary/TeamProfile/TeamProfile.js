@@ -4,13 +4,16 @@ import {Component} from 'react';
 
 import {
     View,
-    Text
+    Text,
+    ScrollView
     
 } from 'react-native';
 import { HeaderPage } from '../../../components/global/HeaderPage';
 import Colors from '../../../assets/styles/Colors';
 import { TeamAttributesProgress } from '../../../components/charts/TeamAttributesProgress';
 import { Br } from '../../../components/Br';
+import { TeamScoringProgress } from '../../../components/charts/TeamScoringProgress';
+import { BigStat } from '../../../components/cards/BigStat';
 var globalStyles = require('../../../assets/styles/Global'); 
 
 
@@ -36,13 +39,25 @@ export class TeamProfile extends Component{
         return(
             <View> 
                 <HeaderPage title="Team 100" bkg={Colors.TeamSelectColor.color}>
+                    <ScrollView style={[globalStyles.full]}>
+
                     <View>
                         <Text style={[globalStyles.h1]}>Team 100</Text>
                         <Text style={[globalStyles.h2]}>The Wildhats</Text>
                         
                     </View>
                     <Br />
+                    <View>
+                    <BigStat stat="#3" comment="Current TBA Rank" />
                     <Br />
+                    <BigStat stat="66%" comment="Pick Fit" />
+                
+
+                    </View>
+                    
+
+                    <Br />
+                    
                                         
                     <View>
                         <Text style={[globalStyles.h2]}>Team Strengths</Text>
@@ -50,7 +65,37 @@ export class TeamProfile extends Component{
                         <TeamAttributesProgress />
                         <Br />
                         <Text style={[globalStyles.h3]}>Scoring</Text>
+                        <TeamScoringProgress />
+
                     </View>
+                    <Br />
+                    <Br />
+                    <View style={[globalStyles.pageCenter]}>
+                        <Text style={[globalStyles.h2]}>Cycle Insights</Text>
+                        <BigStat stat="6" comment="avg. cycles/match" />
+                        <Br />
+                        <BigStat stat="75%" comment="acquisition likelihood" />
+                    </View>
+
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <Br />
+                    <View><Text>End of File</Text></View>
+                    </ScrollView>
+                  
                     
                 
 
