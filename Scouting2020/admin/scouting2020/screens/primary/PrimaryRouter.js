@@ -4,12 +4,12 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import {Ionicons, MaterialCommunityIcons, SimpleLineIcons} from '@expo/vector-icons';
-import { TeamSelect } from "./TeamSelect";
 import {View} from "react-native";
 import Colors from "../../assets/styles/Colors";
 import { EventInfo } from "./EventInfo";
 import { Picklist } from "./Picklist";
 import { More } from "./More";
+import TeamRouter from "./TeamProfile/TeamRouter";
 
 
 
@@ -28,7 +28,7 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
       
     },
     TeamSelect:{
-      screen: TeamSelect,
+      screen: TeamRouter,
       navigationOptions:{
         tabBarIcon: ({tintColor}) => (
           <View>

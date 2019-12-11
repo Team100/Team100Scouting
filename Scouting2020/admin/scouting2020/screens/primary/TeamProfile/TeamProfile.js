@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import { HeaderPage } from '../../../components/global/HeaderPage';
 import Colors from '../../../assets/styles/Colors';
-
-var globalStyles = require('../../assets/styles/Global'); 
+import { TeamAttributesProgress } from '../../../components/charts/TeamAttributesProgress';
+import { Br } from '../../../components/Br';
+var globalStyles = require('../../../assets/styles/Global'); 
 
 
 export class TeamProfile extends Component{
@@ -36,9 +37,19 @@ export class TeamProfile extends Component{
             <View> 
                 <HeaderPage title="Team 100" bkg={Colors.TeamSelectColor.color}>
                     <View>
-                        <Text style={[globalStyles.h1]}>Hello Dean K.</Text>
-                        <Text style={[globalStyles.h3]}>1990 Region Regional</Text>
-                        <Text style={[globalStyles.h4]}>(1990test)</Text>
+                        <Text style={[globalStyles.h1]}>Team 100</Text>
+                        <Text style={[globalStyles.h2]}>The Wildhats</Text>
+                        
+                    </View>
+                    <Br />
+                    <Br />
+                                        
+                    <View>
+                        <Text style={[globalStyles.h2]}>Team Strengths</Text>
+                        <Text style={[globalStyles.h3]}>Competition</Text>
+                        <TeamAttributesProgress />
+                        <Br />
+                        <Text style={[globalStyles.h3]}>Scoring</Text>
                     </View>
                     
                 

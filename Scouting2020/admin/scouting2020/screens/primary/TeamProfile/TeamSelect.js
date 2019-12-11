@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {View, Text, FlatList, ActivityIndicator, AsyncStorage} from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
-import { HeaderPage } from '../../components/global/HeaderPage';
-import Colors from '../../assets/styles/Colors';
-import { TeamSelectRow } from '../../components/cards/TeamSelectRow';
+import { HeaderPage } from '../../../components/global/HeaderPage';
+import Colors from '../../../assets/styles/Colors';
+import { TeamSelectRow } from '../../../components/cards/TeamSelectRow';
 //https://www.freecodecamp.org/news/how-to-build-a-react-native-flatlist-with-realtime-searching-ability-81ad100f6699/
 export class TeamSelect extends Component {
   static navigationOptions = {
@@ -146,7 +146,7 @@ export class TeamSelect extends Component {
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
-            <TeamSelectRow teamInfo ={item} />
+            <TeamSelectRow teamInfo ={item} navigation={this.props.navigation}/>
           )}
           keyExtractor={item => item.team}
           ItemSeparatorComponent={this.renderSeparator}

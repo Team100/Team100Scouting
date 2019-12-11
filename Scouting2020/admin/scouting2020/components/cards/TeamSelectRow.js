@@ -29,8 +29,7 @@ export class TeamSelectRow extends Component{
               title={`${this.props.teamInfo.team}`}
               subtitle={`${this.props.teamInfo.name} \nRANK: ${this.props.teamInfo.rank}`}
               onPress = {()=>{
-                this.props.navigation.getParam('callback')(item);
-                this.props.navigation.goBack();
+                this.props.navigation.navigate("TeamProfile");
               }
 
               }

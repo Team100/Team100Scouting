@@ -48,6 +48,11 @@ module.exports = styles = StyleSheet.create({
     },
     h4: {
         fontSize: 24
+    },
+
+    br:{
+        marginTop: 18,
+        marginBottom: 0
     }
   });
 
