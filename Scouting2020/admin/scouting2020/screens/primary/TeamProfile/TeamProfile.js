@@ -14,6 +14,7 @@ import { TeamAttributesProgress } from '../../../components/charts/TeamAttribute
 import { Br } from '../../../components/Br';
 import { TeamScoringProgress } from '../../../components/charts/TeamScoringProgress';
 import { BigStat } from '../../../components/cards/BigStat';
+import { LocationsPie } from '../../../components/charts/LocationsPie';
 var globalStyles = require('../../../assets/styles/Global'); 
 
 
@@ -75,6 +76,12 @@ export class TeamProfile extends Component{
                         <BigStat stat="6" comment="avg. cycles/match" />
                         <Br />
                         <BigStat stat="75%" comment="acquisition likelihood" />
+                    </View>
+                    <Br />
+                    <Br />
+                    <View>
+                        <Text style={[globalStyles.h2]}>Field Locations</Text>
+                        <LocationsPie />
                     </View>
 
                     <Br />

@@ -36,7 +36,7 @@ export class TeamScoringProgress extends Component{
     // Render any visual aspects of the component
     render(){
         const data = {
-            labels: ["HATCH","CARGO","LOW","HIGH"], // optional
+            labels: ["LOW","HIGH","HATCH","CARGO"], // optional
             data: [0.2, .4, 0.6, 0.8],
           };
           const chartConfig = {
