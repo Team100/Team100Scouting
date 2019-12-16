@@ -39,47 +39,41 @@ export class LocationsPie extends Component{
     render(){
         const data = [
             {
-              name: "L Rocket 1",
+              name: "Rocket 1",
               amnt: 5,
-              color: "rgba(131, 167, 234, 1)",
-              legendFontColor: "#7F7F7F",
+              color: Colors.ChartColor.colorA,
+              legendFontColor: Colors.ChartColor.colorA,
               legendFontSize: 15
             },
             {
-              name: "L Rocket 2",
+              name: "Rocket 2",
               amnt: 2,
-              color: "#F00",
-              legendFontColor: "#7F7F7F",
+              color: Colors.ChartColor.colorB,
+              legendFontColor: Colors.ChartColor.colorB,
               legendFontSize: 15
             },
             {
-              name: "L Rocket 3",
+              name: "Rocket 3",
               amnt: 3,
-              color: "#FF0",
-              legendFontColor: "#7F7F7F",
+              color: Colors.ChartColor.colorC,
+              legendFontColor: Colors.ChartColor.colorC,
               legendFontSize: 15
             },
             {
-              name: "R Rocket 1",
+              name: "Ship Front",
               amnt: 3,
-              color: "#000",
-              legendFontColor: "#7F7F7F",
+              color: Colors.ChartColor.colorD,
+              legendFontColor: Colors.ChartColor.colorD,
               legendFontSize: 15
             },
             {
-              name: "R Rocket 2",
-              amnt: 1,
-              color: "rgb(0, 0, 255)",
-              legendFontColor: "#7F7F7F",
+              name: "Ship Side",
+              amnt: 3,
+              color: Colors.ChartColor.colorE,
+              legendFontColor: Colors.ChartColor.colorE,
               legendFontSize: 15
             },
-            {
-              name: "R Rocket 3",
-              amnt: 2,
-              color: "rgb(0, 255, 255)",
-              legendFontColor: "#7F7F7F",
-              legendFontSize: 15
-            }
+            
           ];
           const chartConfig = {
             

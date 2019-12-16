@@ -69,7 +69,7 @@ module.exports = styles = StyleSheet.create({
         alignContent: "center"
     },
     bigStatText:{
-        color: "#3F79E8",
+        color: "#46CEAD",
         textAlign: "center"
     }
   });
