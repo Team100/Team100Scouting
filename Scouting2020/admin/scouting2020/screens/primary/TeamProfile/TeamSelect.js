@@ -146,7 +146,7 @@ export class TeamSelect extends Component {
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
-            <TeamSelectRow teamInfo ={item} navigation={this.props.navigation}/>
+            <TeamSelectRow teamInfo ={item} navigation={this.props.navigation} rankTitle="RANK"/>
           )}
           keyExtractor={item => item.team}
           ItemSeparatorComponent={this.renderSeparator}

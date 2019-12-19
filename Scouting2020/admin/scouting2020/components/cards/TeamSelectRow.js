@@ -27,7 +27,7 @@ export class TeamSelectRow extends Component{
         <ListItem
               leftAvatar={{ source: { uri: "https://beaver-app-assets.oss-us-west-1.aliyuncs.com/assets/eggchat/ui/Artboard%201.png?x-oss-process=style/thumbnail-tiny" } }}
               title={`${this.props.teamInfo.team}`}
-              subtitle={`${this.props.teamInfo.name} \nRANK: ${this.props.teamInfo.rank}`}
+              subtitle={`${this.props.teamInfo.name} \n${this.props.rankTitle}: ${this.props.teamInfo.rank}`}
               onPress = {()=>{
                 this.props.navigation.navigate("TeamProfile");
               }
