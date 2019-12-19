@@ -6,7 +6,14 @@ var {
     StyleSheet,
 } = React;
 
-var bkgColor = "#0539B7"
+var bkgColor = "#0539B7";
+
+var primaryColor = "#0539B7";
+var secondaryColor = "#3F79E8";
+var infoColor = "#B056E8";
+var okColor = "#4AFF9D";
+var warnColor = "#E8DC56";
+var errColor = "#FF956B";
 
 
 module.exports = StyleSheet.create({
@@ -29,7 +36,8 @@ module.exports = StyleSheet.create({
         width: "100%",
         height: "100%",
         flex: 5,
-        marginTop: 25,
+        marginTop: 10,
+        
     },
     headerText:{
         fontSize: 36,
@@ -74,6 +82,7 @@ module.exports = StyleSheet.create({
         borderWidth: 5
         
     },
+    
     innerPagePortrait:{
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
@@ -88,8 +97,48 @@ module.exports = StyleSheet.create({
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,//here
 
-    }
+    },
 
+    colorPrimary:{
+        color: primaryColor
+    },
+    colorSecondary:{
+        color: secondaryColor
+    },
+    colorInfo:{
+        color: infoColor
+    },
+    colorOk:{
+        color: okColor
+    },
+    colorWarn:{
+        color: warnColor
+    },
+    colorError:{
+        color: errColor
+    },
+
+
+
+    /// Elements
+
+    largeTextBox:{
+        margin: 30,
+        color: primaryColor,
+        fontSize: 36
+    },
+
+    ghostButtonWrapper:{
+        width: "100%",
+    },
+    ghostButton:{
+        width: "100%",
+        height: "100%",
+        textAlign: "center",
+        textAlignVertical: "center",
+        fontSize: 28
+    },
+   
 
 
 
