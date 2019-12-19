@@ -15,6 +15,7 @@ import { Br } from '../../../components/Br';
 import { TeamScoringProgress } from '../../../components/charts/TeamScoringProgress';
 import { BigStat } from '../../../components/cards/BigStat';
 import { LocationsPie } from '../../../components/charts/LocationsPie';
+import { StartingLocationsPie } from '../../../components/charts/StartingLocationsPie';
 var globalStyles = require('../../../assets/styles/Global'); 
 
 
@@ -82,6 +83,7 @@ export class TeamProfile extends Component{
                     <View>
                         <Text style={[globalStyles.h2]}>Field Locations</Text>
                         <LocationsPie />
+                        <StartingLocationsPie />
                     </View>
 
                     <Br />
