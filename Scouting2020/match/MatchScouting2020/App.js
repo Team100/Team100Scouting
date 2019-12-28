@@ -9,12 +9,16 @@
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { Home } from './Screens/Home';
+import { LogIn } from './Screens/Auth/LogIn';
+import { TeamSelect } from './Screens/Scout/TeamSelect';
 const AppRouter = createSwitchNavigator(
   {
+    LogIn: {screen: LogIn},
     Home: { screen: Home },
+    Testing: {screen: TeamSelect}
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Testing',
   }
 );
 const AppContainer = createAppContainer(AppRouter);
