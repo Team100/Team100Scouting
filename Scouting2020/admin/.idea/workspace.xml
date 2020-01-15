@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71fe82c8-44ba-48fd-a04d-b3c7b27d4744" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scouting-admin/components/global/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scouting-admin/styles/GlobalStyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scouting-admin/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/scouting-admin/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scouting-admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/scouting-admin/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Screens/Scout/TeamSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/../match/MatchScouting2020/Screens/Scout/TeamSelect.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,19 +21,25 @@
   </component>
   <component name="ProjectId" id="1U7fANgOlka3o6D9n8vPysX3nHz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/scouting-admin" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scouting2020" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -52,6 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574712409580</updated>
       <workItem from="1574712410750" duration="1383000" />
+      <workItem from="1578939398127" duration="14000" />
     </task>
     <servers />
   </component>
@@ -63,10 +66,18 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="467" y="141" key="FileChooserDialogImpl" timestamp="1578939410088">
+      <screen x="0" y="18" width="1366" height="732" />
+    </state>
+    <state x="467" y="141" key="FileChooserDialogImpl/0.18.1366.732@0.18.1366.732" timestamp="1578939410088" />
   </component>
 </project>

@@ -3,7 +3,7 @@ import {Component} from 'react';
 
 import {View, Text, TextInput, Button} from 'react-native';
 
-export class TeamSelect extends Component {
+export class MatchScout extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -12,9 +12,7 @@ export class TeamSelect extends Component {
   render() {
     return (
       <View>
-        <TextInput placeholder="Match" />
-        <TextInput placeholder="Team" />
-        <Button title="Prepare for Game Start" />
+        
       </View>
     );
   }
