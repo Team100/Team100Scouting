@@ -13,13 +13,13 @@ module.exports = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
   },
-  smallFlex: {
+  flex1: {
     flex: 1,
   },
-  bigFlex: {
+  flex2: {
     flex: 2,
   },
-  hugeFlex: {
+  flex3: {
     flex: 3,
   },
 });

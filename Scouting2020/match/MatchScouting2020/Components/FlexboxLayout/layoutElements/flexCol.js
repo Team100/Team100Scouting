@@ -5,7 +5,7 @@ import {View, Text, TextInput, Button} from 'react-native';
 
 
 var flexStyles = require('../../../Assets/styles/flex');
-export class HugeFlex extends Component {
+export class flexCol extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -13,7 +13,7 @@ export class HugeFlex extends Component {
 
     render() {
         return (
-            <View style={[flexStyles.hugeFlex]}>
+            <View style={[flexStyles.flexCol]}>
                 {this.props.children}
             </View>
         );

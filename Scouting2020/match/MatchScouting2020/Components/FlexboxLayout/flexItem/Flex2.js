@@ -5,7 +5,7 @@ import {View, Text, TextInput, Button} from 'react-native';
 
 
 var flexStyles = require('../../../Assets/styles/flex');
-export class SmallFlex extends Component {
+export class Flex2 extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -13,7 +13,7 @@ export class SmallFlex extends Component {
 
     render() {
         return (
-            <View style={[flexStyles.bigFlex]}>
+            <View style={[flexStyles.flex2]}>
                 {this.props.children}
             </View>
         );
