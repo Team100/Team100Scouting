@@ -29,6 +29,7 @@ export class HeaderPage extends Component {
             </View>
 
         );*/
+    /*
     return (
       <View>
        <ImageBackground source={require("../../assets/images/adrien-converse-kCrrUx7US04-unsplash.jpg")}
@@ -39,9 +40,15 @@ export class HeaderPage extends Component {
     centerComponent={<Title>{this.props.title}</Title>}
   />
 </ImageBackground>
-        
+
         <View style={[globalStyles.innerPage]}>{this.props.children}</View>
       </View>
+
+     */
+    return(
+        <View style={[globalStyles.innerPage]}>
+            {this.props.children}
+        </View>
     );
   }
 }

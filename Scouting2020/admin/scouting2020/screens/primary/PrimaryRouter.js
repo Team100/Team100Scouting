@@ -1,4 +1,3 @@
-import { Home } from "./Home";
 import React from 'react';
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -6,16 +5,17 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import {Ionicons, MaterialCommunityIcons, SimpleLineIcons} from '@expo/vector-icons';
 import {View} from "react-native";
 import Colors from "../../assets/styles/Colors";
-import { EventInfo } from "./EventInfo";
-import { Picklist } from "./Picklist";
-import { More } from "./More";
 import TeamRouter from "./TeamProfile/TeamRouter";
+import HomeRouter from "./Home/HomeRouter";
+import PicklistRouter from "./Picklist/PicklistRouter";
+import MatchUpRouter from "./MatchUp/MatchUpRouter";
+import MoreRouter from "./More/MoreRouter";
 
 
 
 const PrimaryRouter = createMaterialBottomTabNavigator({
     Home: {
-      screen: Home,
+      screen: HomeRouter,
       navigationOptions:{
         tabBarIcon: ({tintColor}) => (
           <View>
@@ -23,9 +23,9 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
           </View>
         ),
         tabBarColor: Colors.HomeColor.color
-        
+
       }
-      
+
     },
     TeamSelect:{
       screen: TeamRouter,
@@ -41,7 +41,7 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
       }
     },
     Picklist:{
-      screen: Picklist,
+      screen: PicklistRouter,
       navigationOptions:{
         tabBarIcon: ({tintColor}) => (
           <View>
@@ -53,21 +53,21 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
 
       }
     },
-    EventInfo:{
-      screen: EventInfo,
+    MatchUp:{
+      screen: MatchUpRouter,
       navigationOptions:{
         tabBarIcon: ({tintColor}) => (
           <View>
-            <Ionicons name = "md-information-circle-outline" size={24} color={tintColor}/>
+            <Ionicons name = "md-contrast" size={24} color={tintColor}/>
           </View>
         ),
         tabBarColor: Colors.EventInfoColor.color,
-        tabBarLabel: "Event Info"
+        tabBarLabel: "Match Up"
 
       }
     },
     More:{
-      screen: More,
+      screen: MoreRouter,
       navigationOptions:{
         tabBarIcon: ({tintColor}) => (
           <View>
@@ -76,11 +76,11 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
         ),
         tabBarColor: Colors.MoreColor.color,
         tabBarLabel: "More"
-        
+
 
       }
     }
-    
+
   },{
     initialRouteName: 'Home',
     activeColor: Colors.MenuTextColor.color,
@@ -88,7 +88,9 @@ const PrimaryRouter = createMaterialBottomTabNavigator({
     barStyle: { backgroundColor: '#694fad' },
     shifting: true
 
-  
+
 
   });
+
+
   export default PrimaryRouter;

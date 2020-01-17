@@ -7,7 +7,7 @@ import { TeamSelectRow } from '../../../components/cards/TeamSelectRow';
 //https://www.freecodecamp.org/news/how-to-build-a-react-native-flatlist-with-realtime-searching-ability-81ad100f6699/
 export class TeamSelect extends Component {
   static navigationOptions = {
-    title: 'Pick a User',
+    title: 'Select a Team',
 }
   constructor(props) {
       console.log("Running Constructor for userPicker.js");
@@ -18,7 +18,7 @@ export class TeamSelect extends Component {
       data: [],
       error: null,
     };
-    
+
 
     this.arrayholder = [];
   }
@@ -57,7 +57,7 @@ export class TeamSelect extends Component {
 
   makeRemoteRequest = async() => {
       var testData = [
-        
+
         {
             team: 100,
             rank: 3,
@@ -77,7 +77,7 @@ export class TeamSelect extends Component {
       this.setState({
           data:testData,
       loading: false
-    
+
     });
     this.arrayholder = testData;
   }
@@ -148,14 +148,14 @@ export class TeamSelect extends Component {
           renderItem={({ item }) => (
             <TeamSelectRow teamInfo ={item} navigation={this.props.navigation} rankTitle="RANK"/>
           )}
-          keyExtractor={item => item.team}
+          keyExtractor={item => item.team.toString()}
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
-          
+
         />
       </View>
         </HeaderPage>
-      
+
     );
   }
 }

@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71fe82c8-44ba-48fd-a04d-b3c7b27d4744" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Screens/Scout/TeamSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/../match/MatchScouting2020/Screens/Scout/TeamSelect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexItem/BigFlex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexItem/HugeFlex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexItem/SmallFlex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexCol/BigFlexCol.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexCol/HugeFlexCol.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexCol/SmallFlexCol.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexRow/BigFlexRow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexRow/HugeFlexRow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../match/MatchScouting2020/Components/FlexboxLayout/flexRow/SmallFlexRow.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +63,7 @@
       <updated>1574712409580</updated>
       <workItem from="1574712410750" duration="1383000" />
       <workItem from="1578939398127" duration="14000" />
+      <workItem from="1579220438666" duration="14000" />
     </task>
     <servers />
   </component>
@@ -75,9 +84,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="467" y="141" key="FileChooserDialogImpl" timestamp="1578939410088">
-      <screen x="0" y="18" width="1366" height="732" />
+    <state x="489" y="124" width="426" height="479" key="FileChooserDialogImpl" timestamp="1579220451510">
+      <screen x="33" y="0" width="1333" height="735" />
     </state>
     <state x="467" y="141" key="FileChooserDialogImpl/0.18.1366.732@0.18.1366.732" timestamp="1578939410088" />
+    <state x="489" y="124" width="426" height="479" key="FileChooserDialogImpl/33.0.1333.735@33.0.1333.735" timestamp="1579220451510" />
   </component>
 </project>
