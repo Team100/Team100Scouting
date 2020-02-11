@@ -18,7 +18,7 @@ import { ScreenInfo } from '../../shared/ScreenInfo';
 var globalStyles = require('../../assets/styles/Global');
 
 
-export class LocationsPie extends Component{
+export class AcquireLocationsPie extends Component{
 
     // Allow the object to be created with properties
     constructor(props){
@@ -39,38 +39,45 @@ export class LocationsPie extends Component{
     render(){
         const data = [
             {
-              name: "PP - Lower",
+              name: "HP - Low",
               amnt: 5,
               color: Colors.ChartColor.colorA,
               legendFontColor: Colors.ChartColor.colorA,
               legendFontSize: 15
             },
             {
-              name: "PP - Outer",
+              name: "HP - High",
               amnt: 2,
               color: Colors.ChartColor.colorB,
               legendFontColor: Colors.ChartColor.colorB,
               legendFontSize: 15
             },
             {
-              name: "PP - Inner",
+              name: "HP - Ground",
               amnt: 3,
               color: Colors.ChartColor.colorC,
               legendFontColor: Colors.ChartColor.colorC,
               legendFontSize: 15
             },
             {
-              name: "CP - Rotation",
+              name: "Trench",
               amnt: 3,
               color: Colors.ChartColor.colorD,
               legendFontColor: Colors.ChartColor.colorD,
               legendFontSize: 15
             },
             {
-              name: "CP - Position",
+              name: "Rendezvous",
               amnt: 3,
               color: Colors.ChartColor.colorE,
               legendFontColor: Colors.ChartColor.colorE,
+              legendFontSize: 15
+            },
+            {
+              name: "Misc Field",
+              amnt: 3,
+              color: Colors.ChartColor.colorF,
+              legendFontColor: Colors.ChartColor.colorF,
               legendFontSize: 15
             },
 
