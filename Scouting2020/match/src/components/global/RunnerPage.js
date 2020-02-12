@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import "material-design-lite/material.min";
 import "material-design-lite/material.min.css";
 import "../../assets/css/materialIcons.css";
-export default class Page extends Component{
+export default class RunnerPage extends Component{
     render(){
         return(
             <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer

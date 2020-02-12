@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Page from "./components/global/Page";
+import RunnerPage from "./components/global/RunnerPage";
 
 function App() {
   return (
     <div className="App">
-      <Page>
-      </Page>
+      <RunnerPage>
+      </RunnerPage>
     </div>
   );
 }
