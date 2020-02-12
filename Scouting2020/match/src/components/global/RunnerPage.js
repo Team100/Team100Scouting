@@ -8,16 +8,18 @@ import EventListener, {withOptions} from 'react-event-listener';
 export default class RunnerPage extends Component{
     configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
 
-
     componentDidMount() {
        this.updateConfig()
     }
 
     updateConfig(){
+
         fetch(this.configURL)
             .then(response => response.json())
-            .then(data => this.setState({ config:data }))
-            .then(console.log(this.state));
+            .then(data => {console.info(data); return data;})
+            .then(data => this.setState({ config : data }))
+            .then(() => console.info("Logged"))
+            .then(() => console.log(this.state));
 
     }
     handleKeyPress = (event) => {
