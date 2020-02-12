@@ -3,15 +3,23 @@ import React, {Component} from "react";
 import "material-design-lite/material.min";
 import "material-design-lite/material.min.css";
 import "../../assets/css/materialIcons.css";
+import "../../assets/css/matchScoutGlobal.css";
 import EventListener, {withOptions} from 'react-event-listener';
 
 export default class RunnerPage extends Component{
     configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
 
-    componentDidMount() {
+    state={};
+
+    componentWillMount() {
        this.updateConfig()
     }
 
+    navigateToPage(page){
+        this.setState({page:page});
+        console.info("PAGE "+page);
+
+    }
     updateConfig(){
 
         fetch(this.configURL)
@@ -27,34 +35,39 @@ export default class RunnerPage extends Component{
     }
 
     render(){
-        return(
-            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-            mdl-layout--fixed-header">
-                <EventListener target={"window"} onKeyPress={this.handleKeyPress}/>
+        if(this.state.page == null){
+            this.navigateToPage(0)
+        }
+        if(this.state.config == null) {
+            return (<p>Loading</p>);
+        }
 
-                <header class="mdl-layout__header">
-                    <div class="mdl-layout__header-row">
-                        <div class="mdl-layout-spacer"></div>
+        else{
+                var menuItems = this.state.config.ui.pages;
+
+                var menu = menuItems.map((item)=>
+                    <div className={"sidebarItem"} onClick={()=>this.navigateToPage(item.btn)}><a key={item.btn} className={"sidebarButton"}>{item.name} ({item.btn})</a></div>
+                );
+                return(
+
+                    <div className={"page"}>
+                        <EventListener onKeyDown={this.handleKeyPress} target="window"/>
+                        <div className={"sidebar"}>
+
+                            {menu}
+                        </div>
+                        <div className={"pageContent"}>
+                            <p>{this.state.page}</p>
+                        </div>
 
                     </div>
-                </header>
-                <div class="mdl-layout__drawer">
-                    <span class="mdl-layout-title">Match Analysis</span>
-                    <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Start/Stop Match</a>
-                        <a class="mdl-navigation__link" href="">Power Cell</a>
-                        <a class="mdl-navigation__link" href="">Color Wheel</a>
-                        <a class="mdl-navigation__link" href="">End Game</a>
-                        <a class="mdl-navigation__link" href="">Pushing Match</a>
 
-                    </nav>
-                </div>
-                <main class="mdl-layout__content">
-                    <div class="page-content"></div>
-                </main>
-            </div>
 
-        );
+                );
+
+        }
+
+
     }
 
 
