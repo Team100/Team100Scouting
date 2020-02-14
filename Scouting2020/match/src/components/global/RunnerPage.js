@@ -12,7 +12,9 @@ export default class RunnerPage extends Component{
 
 
     componentWillMount() {
-       this.updateConfig()
+        document.title = "Field Scouting";
+
+        this.updateConfig();
     }
 
     navigateToPage(page){
@@ -73,7 +75,7 @@ export default class RunnerPage extends Component{
         console.log(elementConfig.id);
         return(
             <div className={"mapRow"} key={Math.random()*9999+9999}>
-                <div className={"mapEl"}>
+                <div className={"mapEl"} onClick={()=>this.processAction(btnVal)}>
                     <p>{elementConfig.name} ({btnVal})</p>
                 </div>
             </div>
@@ -117,7 +119,7 @@ export default class RunnerPage extends Component{
         }
         else if(this.state.page == null){
             this.navigateToPage(1);
-             return (<p>Loading</p>);
+             return (<p>Warning: Page Index Out of Bounds. Autocorrecting</p>);
 
          }
         else if(this.state.page > (this.state.config.ui.pages.length)+1){
