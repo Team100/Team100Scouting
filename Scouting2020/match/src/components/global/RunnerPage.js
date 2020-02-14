@@ -7,7 +7,7 @@ import "../../assets/css/matchScoutGlobal.css";
 import EventListener, {withOptions} from 'react-event-listener';
 
 export default class RunnerPage extends Component{
-    configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
+    configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/testjson.json";
     state={actions:[]};
 
 
@@ -24,6 +24,7 @@ export default class RunnerPage extends Component{
 
     }
     updateConfig(){
+
 
         fetch(this.configURL)
             .then((response)=>{console.log(response); return response;})
