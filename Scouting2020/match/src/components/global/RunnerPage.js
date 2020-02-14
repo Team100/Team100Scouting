@@ -8,8 +8,8 @@ import EventListener, {withOptions} from 'react-event-listener';
 
 export default class RunnerPage extends Component{
     configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
+    state={actions:[]};
 
-    state={};
 
     componentWillMount() {
        this.updateConfig()
@@ -26,8 +26,9 @@ export default class RunnerPage extends Component{
     updateConfig(){
 
         fetch(this.configURL)
+            .then((response)=>{console.log(response); return response;})
             .then(response => response.json())
-            .then(data => {console.info(data); return data;})
+            .then(data => {console.log(data); return data;})
             .then(data => this.setState({ config : data }))
             .then(() => console.info("Logged"))
             .then(() => console.log(this.state));
@@ -36,8 +37,11 @@ export default class RunnerPage extends Component{
     handleKeyPress = (event) => {
         console.log(event.key);
 
-        var isNumber = !isNaN(event.key);
-        if(isNumber){
+
+        if(event.key == "Left WinKey" || event.key == "Meta" || event.key == "Command" || event.key == "Alt" || event.key == "Control"){ //HANDLE Improper Key Presses
+            //DO NOTHING
+        }
+        else if(!isNaN(event.key)){
             this.navigateToPage(event.key);
         }
         else{
@@ -50,7 +54,13 @@ export default class RunnerPage extends Component{
         var page = this.state.config.ui.pages[pageID];
         var actions = page.actions;
         var currentAction = actions[key];
-        alert(currentAction.id);
+
+        if(currentAction != undefined){
+            this.state.actions.push({time:new Date().toISOString(), type: currentAction.id});
+
+        }
+        console.log(this.state.actions);
+
 
     }
 
@@ -83,6 +93,7 @@ export default class RunnerPage extends Component{
 
     }
     generateButtonMap(){
+        console.log(this.actions);
         var pageconfig = this.state.config.ui.pages[this.state.page];
         if(pageconfig == undefined){
             this.setState({page:this.state.page-1});
@@ -121,7 +132,7 @@ export default class RunnerPage extends Component{
                 var menu = menuItems.map((item)=>
                     <div className={"sidebarItem"} onClick={()=>this.navigateToPage(item.btn)}><a key={item.btn} className={"sidebarButton"}>{item.name} ({item.btn})</a></div>
                 );
-
+https://storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json
                 var buttonMap = this.generateButtonMap();
                 return(
 
