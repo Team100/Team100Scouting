@@ -29,12 +29,15 @@ export default class DataLayoutPage extends Component {
     }
     updateMatchNum(matchNum){
         if(matchNum != undefined){
+
             this.setState({matchNum:matchNum.target.value});
 
 
         }
     }
     updatePos(pos){
+        message.info(`Updated Position: ${pos}`, 1);
+
         this.setState({pos:pos});
 
     }
