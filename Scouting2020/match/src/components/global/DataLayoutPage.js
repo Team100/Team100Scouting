@@ -3,40 +3,50 @@ import React, {Component} from "react";
 
 import "../../assets/css/materialIcons.css";
 import "../../assets/css/matchScoutGlobal.css";
-import {Form, Icon, Input, Button, Select, Row, Col, AutoComplete} from 'antd';
+import {Form, Icon, Input, Button, Select, Row, Col, AutoComplete, message, Card} from 'antd';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 
 
 const {Option} = Select;
+const { Meta } = Card;
 const InputGroup = Input.Group;
 
 export default class DataLayoutPage extends Component {
 
     componentWillMount() {
-        this.setState({matchType: "QUAL", matchNum:0, pos:"B1"});
+        this.setState({matchType: "QUAL", matchNum:-1, pos:"B1"});
+        this.updateType = this.updateType.bind(this);
+        this.updateMatchNum = this.updateMatchNum.bind(this);
+        this.updatePos = this.updatePos.bind(this);
+        this.submit = this.submit.bind(this);
+
     }
 
-    handleSubmit(){
-
-    }
 
     updateType(type){
         this.setState({matchType: type});
-        console.log("Updated Type");
     }
     updateMatchNum(matchNum){
         if(matchNum != undefined){
-            this.setState({matchNum:matchNum});
-            console.log("Updated Match Number");
+            this.setState({matchNum:matchNum.target.value});
 
 
         }
     }
     updatePos(pos){
         this.setState({pos:pos});
-        console.log("Updated Position");
 
+    }
+
+    submit(){
+        if(!isNaN(this.state.matchNum)&&this.state.matchNum != -1){
+            message.success(`${this.state.matchType} ${this.state.matchNum} begun`, 1, null);
+            this.props.callback(this.state);
+
+        }else{
+            message.error('Please enter a match number');
+        }
     }
 
     render(){
@@ -54,9 +64,12 @@ export default class DataLayoutPage extends Component {
         return(
             <div>
                 <h1>Match Config</h1>
+                <br />
+
 
                 <Form>
                     <div>
+
 
                         <Select defaultValue={"B1"} style={{width: 90}} size={"large"} onChange={this.updatePos}>
                             <Option value={"B1"}>Blue 1</Option>
@@ -74,10 +87,22 @@ export default class DataLayoutPage extends Component {
                         <Input addonBefore={selectBefore} style={{width:256}} size={"large"} placeholder={"Match #"} onChange={this.updateMatchNum}/>
                     </InputGroup>
                     <br />
-                    <Button type="primary" shape="round" icon="right-circle" size={'large'}>
-                        Begin Match
-                    </Button>
-                    <p>Beginning the match will automatically start the timing system.</p>
+                    <div className={"dlRow"}>
+                        <div className={"dlItem"}><Card
+                            hoverable
+                            style={{ width: 240 }}
+                            cover={<img alt="example" src="https://i.imgur.com/e0Ji3dOh.jpg" />}
+                        >
+                            <Meta title="Team 199" description="Deep Blue: Rank 1" />
+                        </Card></div>
+                        <div className={"dlItem"}><br /><br /><Button type="primary" shape="round" icon="right-circle" size={'large'} onClick={this.submit}>
+                            Begin Match
+                        </Button>
+                            <p>Beginning the match will automatically start the timing system.</p></div>
+
+                    </div>
+                    <br />
+
                 </Form>
 
             </div>

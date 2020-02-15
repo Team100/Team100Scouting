@@ -84,3 +84,19 @@
     flex: 1;
     justify-content: center;
 }
+
+
+.dlRow{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.alignItemsCenter{
+    align-items: center;
+}
+
+.dlItem{
+    width: 100%;
+    align-items: center;
+    -webkit-align-items: center;
+}

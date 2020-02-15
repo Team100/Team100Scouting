@@ -1,17 +1,36 @@
 import React, {Component} from "react";
 
-import "material-design-lite/material.min";
-import "material-design-lite/material.min.css";
+
 import "../../assets/css/materialIcons.css";
 import "../../assets/css/matchScoutGlobal.css";
+
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+
 import EventListener, {withOptions} from 'react-event-listener';
 
 export default class RunnerPage extends Component{
     configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/testjson.json";
-    state={actions:[]};
+    state={actions:[], timer:10}; //TODO set to 150
+    interval;
+    tick(){
+        var time = this.state.timer;
+        if(time > 0){
+            this.setState({timer: time-1});
+            console.log(time);
+        }else{
+            clearInterval(this.interval);
+            alert("DONE");
+
+
+        }
+
+    }
 
 
     componentWillMount() {
+        this.tick = this.tick.bind(this);
+
+        this.interval = setInterval(this.tick, 1000);
         document.title = "Field Scouting";
 
         this.updateConfig();
@@ -29,7 +48,6 @@ export default class RunnerPage extends Component{
 
 
         fetch(this.configURL)
-            .then((response)=>{console.log(response); return response;})
             .then(response => response.json())
             .then(data => {console.log(data); return data;})
             .then(data => this.setState({ config : data }))
@@ -38,7 +56,6 @@ export default class RunnerPage extends Component{
 
     }
     handleKeyPress = (event) => {
-        console.log(event.key);
 
 
         if(event.key == "Left WinKey" || event.key == "Meta" || event.key == "Command" || event.key == "Alt" || event.key == "Control"){ //HANDLE Improper Key Presses
@@ -59,10 +76,9 @@ export default class RunnerPage extends Component{
         var currentAction = actions[key];
 
         if(currentAction != undefined){
-            this.state.actions.push({time:new Date().toISOString(), type: currentAction.id});
-
+            this.state.actions.push({time:this.state.timer, type: currentAction.id});
+            console.log(this.state.actions);
         }
-        console.log(this.state.actions);
 
 
     }
@@ -70,9 +86,7 @@ export default class RunnerPage extends Component{
     generateButtonRow(el){
         var btnVal = el.btn;
         var elementConfig = this.state.config.ui.pages[this.state.page].actions[btnVal];
-        console.log("EL CONFIG");
-        console.log(elementConfig);
-        console.log(elementConfig.id);
+
         return(
             <div className={"mapRow"} key={Math.random()*9999+9999}>
                 <div className={"mapEl"} onClick={()=>this.processAction(btnVal)}>
@@ -96,14 +110,12 @@ export default class RunnerPage extends Component{
 
     }
     generateButtonMap(){
-        console.log(this.actions);
         var pageconfig = this.state.config.ui.pages[this.state.page];
         if(pageconfig == undefined){
             this.setState({page:this.state.page-1});
         }
         var buttonconfig = pageconfig.layout;
         var map = buttonconfig.map((item)=>this.generateButtonColumn(item));
-        console.log("Generating Map");
         return(
             <div className={"map"}>
                 {map}
@@ -142,6 +154,9 @@ https://storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json
                     <div className={"page"}>
                         <EventListener onKeyDown={this.handleKeyPress} target="window"/>
                         <div className={"sidebar"}>
+                            <div className={"sidebarItem"}>
+                                <h3>{this.state.timer}</h3>
+                            </div>
 
                             {menu}
                         </div>
