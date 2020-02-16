@@ -7,10 +7,11 @@ import "../../assets/css/matchScoutGlobal.css";
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import EventListener, {withOptions} from 'react-event-listener';
+import {message} from "antd";
 
 export default class RunnerPage extends Component{
     configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/testjson.json";
-    state={actions:[], timer:10}; //TODO set to 150
+    state={actions:[], timer:1}; //TODO set to 150
     interval;
     tick(){
         var time = this.state.timer;
@@ -19,11 +20,14 @@ export default class RunnerPage extends Component{
             console.log(time);
         }else{
             clearInterval(this.interval);
-            alert("DONE");
-
+            this.onComplete();
 
         }
 
+    }
+
+    onComplete(){
+        this.props.callback({"actions":this.state.actions,"config":this.state.config.config});
     }
 
 
@@ -76,6 +80,8 @@ export default class RunnerPage extends Component{
         var currentAction = actions[key];
 
         if(currentAction != undefined){
+            message.info(`Added: ${currentAction.name}`, 1);
+
             this.state.actions.push({time:this.state.timer, type: currentAction.id});
             console.log(this.state.actions);
         }
