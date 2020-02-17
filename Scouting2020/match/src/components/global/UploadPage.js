@@ -56,7 +56,9 @@ export default class UploadPage extends Component {
                              eventListeners={[
                     {
                     eventName: "complete",
-                    callback: {console.log("the animation completed:")},
+                    callback: ()=>{
+                        console.info("the animation completed:");
+                    },
                              }
                     ]}
                 />
