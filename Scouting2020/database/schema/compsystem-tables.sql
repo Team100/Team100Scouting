@@ -207,7 +207,7 @@ create table teambot
   pos1_analysis varchar(1000),		# position 1 analysis (text)
   pos2_analysis varchar(1000),		# position 2 analysis (text)
   pos3_analysis varchar(1000),		# position 3 analysis (text)
-  robot_analysis varchar(1000),		# overall robot analysis
+  robot_analysis varchar(1000),		# overall robot analysis /* candidate to DEPRICATE */
   driver_analysis varchar(1000),	# driver analysis
   with_recommendation varchar(1000),	# recommendation if partnered with
   against_recommendation varchar(1000),	# recommendation if partnered against
@@ -220,9 +220,9 @@ create table teambot
 #
 # Alliance
 #
-# Only used in scouting for finals.  As alliances will play as a group, we will start
-#  scouting and evaluating only competitively, but as an alliance as well as individual 
-#  teams
+# Only used in scouting for finals.  As alliances will play as a group, we start
+#  scouting and ,atch evaluating only competitively (playing against not with).  We
+#  evaluatoin as an alliance as well as individual teams
 
 create table alliance
  (
@@ -582,7 +582,7 @@ create table documentation
 #
 create table topic
  (
-   topic varchar(12),		# title of this category of documentation, the world will see this
+   topic varchar(20),		# title of this category of documentation, the world will see this
    priority int,		# priority of this topic in relation to other topics
    description varchar(200),	# description of the topic, not needed
    primary key (topic)
