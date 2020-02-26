@@ -11,7 +11,7 @@ import {message} from "antd";
 
 export default class RunnerPage extends Component{
     configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/testjson.json";
-    state={actions:[], timer:15}; //TODO set to 150
+    state={actions:[], timer:5}; //TODO set to 150
     interval;
     tick(){
         var time = this.state.timer;

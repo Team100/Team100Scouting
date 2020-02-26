@@ -15,7 +15,7 @@ const InputGroup = Input.Group;
 export default class DataLayoutPage extends Component {
 
     componentWillMount() {
-        this.setState({matchType: "QUAL", matchNum:-1, pos:"B1"});
+        this.setState({matchType: "QUAL", matchNum:-1, pos:this.props.pos});
         this.updateType = this.updateType.bind(this);
         this.updateMatchNum = this.updateMatchNum.bind(this);
         this.updatePos = this.updatePos.bind(this);
@@ -35,8 +35,10 @@ export default class DataLayoutPage extends Component {
 
         }
     }
+
     updatePos(pos){
         message.info(`Updated Position: ${pos}`, 1);
+        this.props.positionCallback(pos);
 
         this.setState({pos:pos});
 
@@ -74,7 +76,7 @@ export default class DataLayoutPage extends Component {
                     <div>
 
 
-                        <Select defaultValue={"B1"} style={{width: 90}} size={"large"} onChange={this.updatePos}>
+                        <Select defaultValue={this.props.pos} style={{width: 90}} size={"large"} onChange={this.updatePos}>
                             <Option value={"B1"}>Blue 1</Option>
                             <Option value={"B2"}>Blue 2</Option>
                             <Option value={"B3"}>Blue 3</Option>
