@@ -586,9 +586,18 @@ function pheader($title, $titleonly = NULL, $options = NULL)
   print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
                       \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n";
   print "\n<HTML>\n<HEAD><TITLE>{$title}</TITLE>\n";
-  
+  print "<style type=\"text/css\">
+<!--
+.style1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: medium;
+}
+-->
+</style>
+";
+
   // if not "openhead"
-  if (! (isset ($options["openhead"]))) print "</HEAD>\n<BODY>\n";
+  if (! (isset ($options["openhead"]))) print "</HEAD>\n<BODY class=\"style1\">\n";
   
   // add global font if set
   if ((isset($font_sys_default)) && ($font_sys_default != NULL)) print "<font face=\"arial\">\n";
