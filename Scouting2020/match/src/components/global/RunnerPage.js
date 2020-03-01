@@ -10,8 +10,8 @@ import EventListener, {withOptions} from 'react-event-listener';
 import {message} from "antd";
 
 export default class RunnerPage extends Component{
-    configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/testjson.json";
-    state={actions:[], timer:5}; //TODO set to 150
+    configURL = "https://storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
+    state={actions:[], timer:150}; //TODO set to 150
     interval;
     tick(){
         var time = this.state.timer;
@@ -83,6 +83,8 @@ export default class RunnerPage extends Component{
             message.info(`Added: ${currentAction.name}`, 1);
 
             this.state.actions.push({time:this.state.timer, type: currentAction.id});
+            var msg = new SpeechSynthesisUtterance(currentAction.name);
+            window.speechSynthesis.speak(msg);
             console.log(this.state.actions);
         }
 

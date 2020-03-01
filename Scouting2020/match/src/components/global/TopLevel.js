@@ -8,7 +8,8 @@ import 'antd/dist/antd.css';
 import DataLayoutPage from "./DataLayoutPage";
 import RunnerPage from "./RunnerPage";
 import CommentPage from "./CommentPage";
-import UploadPage from "./UploadPage"; // or 'antd/dist/antd.less'
+import UploadPage from "./UploadPage";
+import Auth from "./Auth"; // or 'antd/dist/antd.less'
 
 const initialState= {
     mode: "dataEntry",
@@ -48,6 +49,9 @@ export default class TopLevel extends Component {
 
     }
     render() {
+        if(this.state.mode == "auth"){
+            return <Auth />
+        }
         if(this.state.mode == "dataEntry"){
             return <DataLayoutPage pos={this.state.pos} callback={(params)=>this.configCallback(params)} positionCallback={(params)=>this.updatePositionCallback(params)}/>
         }

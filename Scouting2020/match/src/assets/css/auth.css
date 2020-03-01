@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Josefin+Sans&display=swap');
+
+.brazil{
+    background-image: url('../img/agustin-diaz-7F65HDP0-E0-unsplash.jpg');
+}
+.stars{
+    background-image: url('../img/denis-degioanni-9wH624ALFQA-unsplash.jpg');
+}
+.singapore{
+    background-image: url('../img/joshua-ang-Gf_KqXHU-PY-unsplash.jpg');
+}
+.hk{
+    background-image: url('../img/simon-zhu-4hluhoRJokI-unsplash.jpg');
+
+}
+.background{
+    top: 0;
+    left: 0;
+    padding: 0px;
+    position: absolute;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: row;
+    color: #ffffff;
+}
+
+.pageLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background: rgba(0,0,0,0.4);
+
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    font-size: 48px;
+    /*border-radius: 0px 50px 50px 0px;*/
+    flex-direction: column;
+}
+.logInButton{
+    width: 100%;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+.pageLeft h4{
+    color: #ffffff;
+    text-align: left;
+    opacity: 9;
+}
+.pageRight{
+    align-content: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authBox{
+    color: #ffffff;
+    /*background-color: rgba(0, 0, 0, 0) !important;*/
+    background-color: transparent;
+    border: none;
+    /*-webkit-backdrop-filter: blur(15px) !important;
+    backdrop-filter: blur(15px) !important;*/
+    font-size: 64px;
+
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    width: 30vw;
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff;
+    opacity: .6; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ffffff;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 1024px){
+    .noMobile{
+        visibility: hidden;
+        flex: 0;
+    }
+    .pageLeft{
+        position: absolute;
+        /*border-radius: 50px 50px 0px 0px;*/
+        font-size: 42px;
+        height: 50vh;
+        bottom: 0px;
+
+    }
+
+    .pageWrapper{
+        flex-direction: column-reverse;
+    }
+
+
+    .authBox{
+        width: 100vw;
+        font-size: 72px;
+    }
+}
