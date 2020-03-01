@@ -1,7 +1,6 @@
 #
 # $Revision: 3.0 $
 # $Date: 2016/03/14 23:00:02 $
-# $Id$
 #
 # Red Rock Robotics, WildHats, Verkler
 # Competition System Table Schema
@@ -18,7 +17,6 @@
 #
 #  - a "drop table" script is maintained in compsystem-tables-drop.sql
 #
-#
 
 #
 # General schema notes
@@ -31,12 +29,17 @@
 #      - The schema must work for multiple regional competitions and for nationals,
 #         which looks like a collection of regional competitions.
 #
-
+#  Future development:
+# 
+#  - if we ever decide to support multi-instance, each table/index will need modification
+#    to as a host_team.  Or event_id could be co-opted.  If adding a multi-instance id
+#    just follow every event_id in the system.
+#
 
 #
 # Event
 # 
-# Event ID, used to qualify data entry and use for a specific regional
+# Event ID, used to qualify data entry and use for a specific regional competition
 #
 # For nationals, we may have scouting for each of four fields.  Building in ability to clone
 #  this app and use it in multiple places, then export and import those data into a master, or 
@@ -47,7 +50,7 @@ create table event
  (
   event_id varchar(10),		# tBA key (event key), format yyyy[Event_Code]
   name varchar(20),             # tBA short_name
-  long_name varchar(100),        # tBA name, official name
+  long_name varchar(100),       # tBA name, official name
   event_code varchar(4),        # tBA event_code
   event_type varchar(20),       # tBA event_type_string, human-readable event, i.e. 'Regional'
   event_type_id int,            # tBA event_type, with a number code
@@ -79,7 +82,7 @@ create table team
   website varchar(80),		# tBA website, team web site
   sponsors varchar(1000),	# tBA name, team sponsors
   rookie_year int, 		# tBA rookie_year
-  notes varchar(5000),		# notes on our interaction with the team
+  notes text(5000),		# notes on our interaction with the team
   primary key (teamnum)
  );
 
@@ -162,57 +165,57 @@ create table teambot
   rank_pos3 real,		# overall rank in position 3
   rating_pos3 int,		# 0-9 rating in position 3
   rating_driver int,            # 0-9 rating for driver
-  PlayField_0 varchar(50),	# Play Field 0 (meaning/assignment defined in params)
-  PlayField_1 varchar(50),	# Play Field 1 (meaning/assignment defined in params)	
-  PlayField_2 varchar(50),	# Play Field 2 (meaning/assignment defined in params)
-  PlayField_3 varchar(50),	# Play Field 3 (meaning/assignment defined in params)
-  PlayField_4 varchar(50),	# Play Field 4 (meaning/assignment defined in params)
-  PlayField_5 varchar(50),	# Play Field 5 (meaning/assignment defined in params)
-  PlayField_6 varchar(50),	# Play Field 6 (meaning/assignment defined in params)
-  PlayField_7 varchar(50),	# Play Field 7 (meaning/assignment defined in params)
-  PlayField_8 varchar(50),	# Play Field 8 (meaning/assignment defined in params)
-  PlayField_9 varchar(50),	# Play Field 9 (meaning/assignment defined in params)
-  PlayField_10 varchar(50),	# Play Field 10 (meaning/assignment defined in params)
-  PlayField_11 varchar(50),	# Play Field 11 (meaning/assignment defined in params)
-  PlayField_12 varchar(50),	# Play Field 12 (meaning/assignment defined in params)
-  PlayField_13 varchar(50),	# Play Field 13 (meaning/assignment defined in params)
-  PlayField_14 varchar(50),	# Play Field 14 (meaning/assignment defined in params)
-  PlayField_15 varchar(50),	# Play Field 15 (meaning/assignment defined in params)
-  PlayField_16 varchar(50),	# Play Field 16 (meaning/assignment defined in params)
-  PlayField_17 varchar(50),	# Play Field 17 (meaning/assignment defined in params)
-  PlayField_18 varchar(50),	# Play Field 18 (meaning/assignment defined in params)
-  PlayField_19 varchar(50),	# Play Field 19 (meaning/assignment defined in params)
-  PlayField_20 varchar(50),	# Play Field 20 (meaning/assignment defined in params)
-  PlayField_21 varchar(50),	# Play Field 21 (meaning/assignment defined in params)
-  PlayField_22 varchar(50),	# Play Field 22 (meaning/assignment defined in params)
-  PlayField_23 varchar(50),	# Play Field 23 (meaning/assignment defined in params)
-  PlayField_24 varchar(50),	# Play Field 24 (meaning/assignment defined in params)
-  PlayField_25 varchar(50),	# Play Field 25 (meaning/assignment defined in params)
-  PlayField_26 varchar(50),	# Play Field 26 (meaning/assignment defined in params)
-  PlayField_27 varchar(50),	# Play Field 27 (meaning/assignment defined in params)
-  PlayField_28 varchar(50),	# Play Field 28 (meaning/assignment defined in params)
-  PlayField_29 varchar(50),	# Play Field 29 (meaning/assignment defined in params)
-  PlayField_30 varchar(50),	# Play Field 30 (meaning/assignment defined in params)
-  PlayField_31 varchar(50),	# Play Field 31 (meaning/assignment defined in params)
-  PlayField_32 varchar(50),	# Play Field 32 (meaning/assignment defined in params)
-  PlayField_33 varchar(50),	# Play Field 33 (meaning/assignment defined in params)
-  PlayField_34 varchar(50),	# Play Field 34 (meaning/assignment defined in params)
-  PlayField_35 varchar(50),	# Play Field 35 (meaning/assignment defined in params)
-  PlayField_36 varchar(50),	# Play Field 36 (meaning/assignment defined in params)
-  PlayField_37 varchar(50),	# Play Field 37 (meaning/assignment defined in params)
-  PlayField_38 varchar(50),	# Play Field 38 (meaning/assignment defined in params)
-  PlayField_39 varchar(50),	# Play Field 39 (meaning/assignment defined in params)
-  offense_analysis varchar(1000),	# offense analysis (text)
-  defense_analysis varchar(1000), 	# defense analysis (text)
-  pos1_analysis varchar(1000),		# position 1 analysis (text)
-  pos2_analysis varchar(1000),		# position 2 analysis (text)
-  pos3_analysis varchar(1000),		# position 3 analysis (text)
-  robot_analysis varchar(1000),		# overall robot analysis
-  driver_analysis varchar(1000),	# driver analysis
-  with_recommendation varchar(1000),	# recommendation if partnered with
-  against_recommendation varchar(1000),	# recommendation if partnered against
-  notes varchar(1000),                  # general notes
-  pit_notes varchar(1000),              # notes from pit
+  PlayField_0 varchar(25),	# Play Field 0 (meaning/assignment defined in params)
+  PlayField_1 varchar(25),	# Play Field 1 (meaning/assignment defined in params)	
+  PlayField_2 varchar(25),	# Play Field 2 (meaning/assignment defined in params)
+  PlayField_3 varchar(25),	# Play Field 3 (meaning/assignment defined in params)
+  PlayField_4 varchar(25),	# Play Field 4 (meaning/assignment defined in params)
+  PlayField_5 varchar(25),	# Play Field 5 (meaning/assignment defined in params)
+  PlayField_6 varchar(25),	# Play Field 6 (meaning/assignment defined in params)
+  PlayField_7 varchar(25),	# Play Field 7 (meaning/assignment defined in params)
+  PlayField_8 varchar(25),	# Play Field 8 (meaning/assignment defined in params)
+  PlayField_9 varchar(25),	# Play Field 9 (meaning/assignment defined in params)
+  PlayField_10 varchar(25),	# Play Field 10 (meaning/assignment defined in params)
+  PlayField_11 varchar(25),	# Play Field 11 (meaning/assignment defined in params)
+  PlayField_12 varchar(25),	# Play Field 12 (meaning/assignment defined in params)
+  PlayField_13 varchar(25),	# Play Field 13 (meaning/assignment defined in params)
+  PlayField_14 varchar(25),	# Play Field 14 (meaning/assignment defined in params)
+  PlayField_15 varchar(25),	# Play Field 15 (meaning/assignment defined in params)
+  PlayField_16 varchar(25),	# Play Field 16 (meaning/assignment defined in params)
+  PlayField_17 varchar(25),	# Play Field 17 (meaning/assignment defined in params)
+  PlayField_18 varchar(25),	# Play Field 18 (meaning/assignment defined in params)
+  PlayField_19 varchar(25),	# Play Field 19 (meaning/assignment defined in params)
+  PlayField_20 varchar(25),	# Play Field 20 (meaning/assignment defined in params)
+  PlayField_21 varchar(25),	# Play Field 21 (meaning/assignment defined in params)
+  PlayField_22 varchar(25),	# Play Field 22 (meaning/assignment defined in params)
+  PlayField_23 varchar(25),	# Play Field 23 (meaning/assignment defined in params)
+  PlayField_24 varchar(25),	# Play Field 24 (meaning/assignment defined in params)
+  PlayField_25 varchar(25),	# Play Field 25 (meaning/assignment defined in params)
+  PlayField_26 varchar(25),	# Play Field 26 (meaning/assignment defined in params)
+  PlayField_27 varchar(25),	# Play Field 27 (meaning/assignment defined in params)
+  PlayField_28 varchar(25),	# Play Field 28 (meaning/assignment defined in params)
+  PlayField_29 varchar(25),	# Play Field 29 (meaning/assignment defined in params)
+  PlayField_30 varchar(25),	# Play Field 30 (meaning/assignment defined in params)
+  PlayField_31 varchar(25),	# Play Field 31 (meaning/assignment defined in params)
+  PlayField_32 varchar(25),	# Play Field 32 (meaning/assignment defined in params)
+  PlayField_33 varchar(25),	# Play Field 33 (meaning/assignment defined in params)
+  PlayField_34 varchar(25),	# Play Field 34 (meaning/assignment defined in params)
+  PlayField_35 varchar(25),	# Play Field 35 (meaning/assignment defined in params)
+  PlayField_36 varchar(25),	# Play Field 36 (meaning/assignment defined in params)
+  PlayField_37 varchar(25),	# Play Field 37 (meaning/assignment defined in params)
+  PlayField_38 varchar(25),	# Play Field 38 (meaning/assignment defined in params)
+  PlayField_39 varchar(25),	# Play Field 39 (meaning/assignment defined in params)
+  offense_analysis text(1000),	# offense analysis (text)
+  defense_analysis text(1000), 	# defense analysis (text)
+  pos1_analysis text(1000),		# position 1 analysis (text)
+  pos2_analysis text(1000),		# position 2 analysis (text)
+  pos3_analysis text(1000),		# position 3 analysis (text)
+  robot_analysis text(1000),		# overall robot analysis /* candidate to DEPRICATE */
+  driver_analysis text(1000),	# driver analysis
+  with_recommendation text(1000),	# recommendation if partnered with
+  against_recommendation text(1000),	# recommendation if partnered against
+  notes text(1000),                  # general notes
+  pit_notes text(1000),              # notes from pit
   primary key(event_id,teamnum)
  );
 
@@ -220,21 +223,21 @@ create table teambot
 #
 # Alliance
 #
-# Only used in scouting for finals.  As alliances will play as a group, we will start
-#  scouting and evaluating only competitively, but as an alliance as well as individual 
-#  teams
+# Only used in scouting for finals.  As alliances will play as a group, we start
+#  scouting and ,atch evaluating only competitively (playing against not with).  We
+#  evaluatoin as an alliance as well as individual teams
 
 create table alliance
  (
   event_id varchar(8),                  # FK to event table 
   alliancenum int,			# Alliance - #1 through #8
   locked varchar(12), 			# row locked for editing by user.  Can clear in application.
-  offense_analysis varchar(1000),	# offense analysis (text)
-  defense_analysis varchar(1000), 	# defense analysis (text)
-  pos1_analysis varchar(1000),		# position 1 analysis (text)
-  pos2_analysis varchar(1000),		# position 2 analysis (text)
-  pos3_analysis varchar(1000),		# position 3 analysis (text)
-  against_recommendation varchar(2000),	# recommendation if partnered against
+  offense_analysis text(1000),	# offense analysis (text)
+  defense_analysis text(1000), 	# defense analysis (text)
+  pos1_analysis text(1000),		# position 1 analysis (text)
+  pos2_analysis text(1000),		# position 2 analysis (text)
+  pos3_analysis text(1000),		# position 3 analysis (text)
+  against_recommendation text(2000),	# recommendation if partnered against
   primary key (event_id, alliancenum)
  );
 
@@ -297,7 +300,7 @@ create table match_instance
   tba_match_num int,            # tBA match_number
   scheduled_utime int,          # schedule time - unix time
   actual_utime int,             # actual time - unix time
-  game_plan varchar(2000), 	# our game plan for the match.  Note: this is the only field 
+  game_plan text(2000), 	# our game plan for the match.  Note: this is the only field 
 				#   that is not match statistics but instead our analysis
   primary key (event_id, type, matchnum)
  );
@@ -397,52 +400,52 @@ create table match_team
   raw_points int,		# raw points scored
   human_points int,		# human points scored
   penalties int,		# penalty points
-  MatchField_0 varchar(50),	# Match Field 0 (configured by params)
-  MatchField_1 varchar(50),	# Match Field 1 (configured by params)
-  MatchField_2 varchar(50),	# Match Field 2 (configured by params)
-  MatchField_3 varchar(50),	# Match Field 3 (configured by params)
-  MatchField_4 varchar(50),	# Match Field 4 (configured by params)
-  MatchField_5 varchar(50),	# Match Field 5 (configured by params)
-  MatchField_6 varchar(50),	# Match Field 6 (configured by params)
-  MatchField_7 varchar(50),	# Match Field 7 (configured by params)
-  MatchField_8 varchar(50),	# Match Field 8 (configured by params)
-  MatchField_9 varchar(50),	# Match Field 9 (configured by params)
-  MatchField_10 varchar(50),	# Match Field 10 (configured by params)
-  MatchField_11 varchar(50),	# Match Field 11 (configured by params)
-  MatchField_12 varchar(50),	# Match Field 12 (configured by params)
-  MatchField_13 varchar(50),	# Match Field 13 (configured by params)
-  MatchField_14 varchar(50),	# Match Field 14 (configured by params)
-  MatchField_15 varchar(50),	# Match Field 15 (configured by params)
-  MatchField_16 varchar(50),	# Match Field 16 (configured by params)
-  MatchField_17 varchar(50),	# Match Field 17 (configured by params)
-  MatchField_18 varchar(50),	# Match Field 18 (configured by params)
-  MatchField_19 varchar(50),	# Match Field 19 (configured by params)
-  MatchField_20 varchar(50),	# Match Field 20 (configured by params)
-  MatchField_21 varchar(50),	# Match Field 21 (configured by params)
-  MatchField_22 varchar(50),	# Match Field 22 (configured by params)
-  MatchField_23 varchar(50),	# Match Field 23 (configured by params)
-  MatchField_24 varchar(50),	# Match Field 24 (configured by params)
-  MatchField_25 varchar(50),	# Match Field 25 (configured by params)
-  MatchField_26 varchar(50),	# Match Field 26 (configured by params)
-  MatchField_27 varchar(50),	# Match Field 27 (configured by params)
-  MatchField_28 varchar(50),	# Match Field 28 (configured by params)
-  MatchField_29 varchar(50),	# Match Field 29 (configured by params)
-  MatchField_30 varchar(50),	# Match Field 30 (configured by params)
-  MatchField_31 varchar(50),	# Match Field 31 (configured by params)
-  MatchField_32 varchar(50),	# Match Field 32 (configured by params)
-  MatchField_33 varchar(50),	# Match Field 33 (configured by params)
-  MatchField_34 varchar(50),	# Match Field 34 (configured by params)
-  MatchField_35 varchar(50),	# Match Field 35 (configured by params)
-  MatchField_36 varchar(50),	# Match Field 36 (configured by params)
-  MatchField_37 varchar(50),	# Match Field 37 (configured by params)
-  MatchField_38 varchar(50),	# Match Field 38 (configured by params)
-  MatchField_39 varchar(50),	# Match Field 39 (configured by params)
-  match_notes varchar(1000),	# Match notes
-  match_offense_analysis varchar(1000),		# offense analysis (text)
-  match_defense_analysis varchar(1000), 	# defense analysis (text)
-  match_pos_analysis varchar(1000),		# position analysis (text)
-  match_with_recommendation varchar(1000),	# recommendation if partnered with
-  match_against_recommendation varchar(1000),	# recommendation if partnered against
+  MatchField_0 varchar(25),	# Match Field 0 (configured by params)
+  MatchField_1 varchar(25),	# Match Field 1 (configured by params)
+  MatchField_2 varchar(25),	# Match Field 2 (configured by params)
+  MatchField_3 varchar(25),	# Match Field 3 (configured by params)
+  MatchField_4 varchar(25),	# Match Field 4 (configured by params)
+  MatchField_5 varchar(25),	# Match Field 5 (configured by params)
+  MatchField_6 varchar(25),	# Match Field 6 (configured by params)
+  MatchField_7 varchar(25),	# Match Field 7 (configured by params)
+  MatchField_8 varchar(25),	# Match Field 8 (configured by params)
+  MatchField_9 varchar(25),	# Match Field 9 (configured by params)
+  MatchField_10 varchar(25),	# Match Field 10 (configured by params)
+  MatchField_11 varchar(25),	# Match Field 11 (configured by params)
+  MatchField_12 varchar(25),	# Match Field 12 (configured by params)
+  MatchField_13 varchar(25),	# Match Field 13 (configured by params)
+  MatchField_14 varchar(25),	# Match Field 14 (configured by params)
+  MatchField_15 varchar(25),	# Match Field 15 (configured by params)
+  MatchField_16 varchar(25),	# Match Field 16 (configured by params)
+  MatchField_17 varchar(25),	# Match Field 17 (configured by params)
+  MatchField_18 varchar(25),	# Match Field 18 (configured by params)
+  MatchField_19 varchar(25),	# Match Field 19 (configured by params)
+  MatchField_20 varchar(25),	# Match Field 20 (configured by params)
+  MatchField_21 varchar(25),	# Match Field 21 (configured by params)
+  MatchField_22 varchar(25),	# Match Field 22 (configured by params)
+  MatchField_23 varchar(25),	# Match Field 23 (configured by params)
+  MatchField_24 varchar(25),	# Match Field 24 (configured by params)
+  MatchField_25 varchar(25),	# Match Field 25 (configured by params)
+  MatchField_26 varchar(25),	# Match Field 26 (configured by params)
+  MatchField_27 varchar(25),	# Match Field 27 (configured by params)
+  MatchField_28 varchar(25),	# Match Field 28 (configured by params)
+  MatchField_29 varchar(25),	# Match Field 29 (configured by params)
+  MatchField_30 varchar(25),	# Match Field 30 (configured by params)
+  MatchField_31 varchar(25),	# Match Field 31 (configured by params)
+  MatchField_32 varchar(25),	# Match Field 32 (configured by params)
+  MatchField_33 varchar(25),	# Match Field 33 (configured by params)
+  MatchField_34 varchar(25),	# Match Field 34 (configured by params)
+  MatchField_35 varchar(25),	# Match Field 35 (configured by params)
+  MatchField_36 varchar(25),	# Match Field 36 (configured by params)
+  MatchField_37 varchar(25),	# Match Field 37 (configured by params)
+  MatchField_38 varchar(25),	# Match Field 38 (configured by params)
+  MatchField_39 varchar(25),	# Match Field 39 (configured by params)
+  match_notes text(1000),	# Match notes
+  match_offense_analysis text(1000),		# offense analysis (text)
+  match_defense_analysis text(1000), 	# defense analysis (text)
+  match_pos_analysis text(1000),		# position analysis (text)
+  match_with_recommendation text(1000),	# recommendation if partnered with
+  match_against_recommendation text(1000),	# recommendation if partnered against
   primary key (event_id, type, matchnum, teamnum)
  );
 
@@ -512,7 +515,8 @@ create table schedule
 #
 # Lock table to lock various processes
 #  These locks differ from data locks in that they lock processes, such
-#  as finals selection from other users.
+#  as finals selection from other users. Essentially a process lock 
+#  is a database-controlled semphore for use in system and user processes.
 #
 
 create table process_lock
@@ -536,10 +540,12 @@ insert into process_lock (lock_id) values ('doc_topics');	# topics for docproces
 #
 # Message table to communicate with field
 #
+# Multiple facilities can use the message table so as not to clobber each other
+#
 
 create table message
  (
-   facility varchar(20), 	# unique facility
+   facility varchar(20), 	# unique facility using the message table.
    message varchar(200),	# message
    locked varchar(12), 		# row locked for editing by user.  Can clear in application.
    primary key (facility)
@@ -556,7 +562,8 @@ insert into message (facility) values ('finals_selection');	# finals selection
 #
 create table user_profile
  (
-  user varchar(30),		# userd (matches that used for system authentication)
+  user varchar(30),		# userid (matches that used for system authentication)
+  admin bool,			# admin privilege bit (set/unset)
   matchview varchar(5),		# user preference: match type view preference on matchlist view
   needeval bool,                # user preference: show teams that still need evaluation
   showevaluators bool,          # user preference: show other evaluators in matcheval and matchteameval screens
@@ -582,7 +589,7 @@ create table documentation
 #
 create table topic
  (
-   topic varchar(12),		# title of this category of documentation, the world will see this
+   topic varchar(20),		# title of this category of documentation, the world will see this
    priority int,		# priority of this topic in relation to other topics
    description varchar(200),	# description of the topic, not needed
    primary key (topic)

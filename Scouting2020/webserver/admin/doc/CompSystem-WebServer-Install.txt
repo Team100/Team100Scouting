@@ -1,0 +1,117 @@
+Robotics Competition System V4.0
+Web server install and configuration
+------------------------------------
+
+Installation can be done on Windows or Linux.  
+
+Brief instructions on setting up a MySQL, PHP, apache web server for the competition system.
+
+
+1. Planning.  Decide where you want the webserver root to be.  It contains
+   a "docroot" directory which will be the directory that houses the files that
+   run the site, as well as an admin and database directory.
+   
+2. Get the Competition System distribution.  This may come in the form of an archive file
+   or can be retrieved via github.  You should receive the tree under the webserver directory
+   containing docroot, admin, and database directories.  If on Unix, run admin/START_HERE.bash.
+   You may need to change it to executabe with chmod +x START_HERE.bash.
+   
+   For a refresh of code, run admin/utils/refresh-install.bash
+
+3. Install needed infrastructure software:
+   The system requires Maria DB (a mysql database), apache web server, and PHP.
+    - Linux:  Install the packages mentioned below using apt-get
+    - Windows: the easiest way is to install the Bitomi XAMPP stack which bundles
+      the three packages.  You only need the three mentioned above, and not 
+      Perl, etc.
+
+4. Set up internaltables and database root account: determine the root password for your database,
+   which should not be the same as the compeition database password below.
+   
+   - Linux:
+       	- run mysql_install_db to install the tables Maria DB needs
+       	- set root password per instructions below
+   - Windows:
+        - In the XAMPP control panel, click on the Shell button to enter 
+       	- set root password with both of these commands:
+       	      mysqladmin -u root password new-password
+       	      mysqladmin -u root -h localhost password new-password
+         
+4. Set up competition database:  On linux, a script can do this step for you.  On Windows,
+   you must perform the steps yourself.  Determine your database name, database username,
+   and password before you install
+   
+   - Linux:
+        - if you want the default database name, username and password, just leave 
+          the 
+	- run database/utils/create-db.bash
+   - Windows:
+        - mysqladmin -u root -p create competition
+             - enter the database root password when prompted
+        - mysql -D competition -
+           mysql> grant usage on *.* to 'compuser'@localhost identified by 'password';
+           mysql> grant all on competition.* to 'compuser'@localhost;
+           
+5.  Create or load the database.  A fresh database with no values can be created or a 
+    previous system can be restored.
+        - Fresh database: run database/utils/fresh-db.bash
+        - import from existing dataset:  
+             mysql -Ddbname -u Username -p < dataset.dmp
+        
+6.  Configure apache
+    - set up web site in apache config file.  /etc/apache2/apache2.conf in linux or 
+        use the XAMPP Config button to get to httpd.conf on windows.  Example
+        files are contained in admin/config 
+        
+      For windows, you'll need something like this in httpd.conf:
+        In <Directory> in main config (current) or setting up for a file-based .htaccess:
+      
+         AuthUserFile "C:/github/Scouting2020/Server/WebServer/admin/instance-general/htpasswd.master"
+         AuthName "Wildhats Competition System"
+         AuthType Basic
+         require valid-user
+       
+      
+      --> Also, comment out Require all granted
+      # Require all granted
+      
+      
+    - alter .htaccess and htpasswd.master to taste. These files start in admin/instance-general
+        
+
+7. Run tests:
+	- Web server test: http://{server_name}/Test/webtest.htm
+		Example: http://localhost/Test/webtest.htm
+	- PHP test: http://{server_name}/Test/phpinfo.php
+	- Database test: http://{server_name}/Test/dbtest.php
+
+   If tests don't pass, diagnose the problem depending on failure. Note that if 
+   security and authoization aren't set up correctly, none of the tests will pass.
+   
+   May need to enable firewall for port 80 access on Windows.  
+     Go to control panel, firewall.  In advanced, add port 80 access.
+
+
+8. Test system. Browse to home and try it out.  Try editing, then run freshdb or reload data
+   when done.
+
+
+
+
+Linux Packages:
+Debian 10:
+php7.3-mysql
+php7.3
+mariadb-server-10.3 - MariaDB database server binaries
+mariadb-server-core-10.3 - MariaDB database core server files (pulled automatically)
+
+Debian 9:
+php7.0-mysql
+php7
+mysql-server
+mysql-utilities
+
+Maria DB alternative:
+default-mysql-server - MySQL database server binaries and system database setup (metapackage)
+default-mysql-server-core - MySQL database server binaries (metapackage)
+
