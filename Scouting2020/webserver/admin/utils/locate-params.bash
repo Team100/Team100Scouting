@@ -5,7 +5,7 @@
 #
 # Locates $filename or site-instance-specific.def file in the following priority:
 
-
+#
 # if $sitefilename is not null, locates that file as a first option with the sites.def
 # file being used if $filename does not exist in each diretory.
 #  Otherwise determines site instance from filesystem name above the
@@ -22,39 +22,42 @@
 #     then the $sitedefname file, then in the general and specific instance
 #     directories, the sitespec.def file.
 #
+# Returns:
+#  location vars such at WEBSRVROOT, roboticsroot, sitedir
+#  database vars, such as dbname, etc.
+#  other vars as neede
 
 # find directory of script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-#echo "Script directory: $DIR"
 
 # look for sitedefs directory name two above the directory of this script, 
 sitedir=`echo $DIR | sed -e 's;/[^/]*/[^/]*$;;' -e 's;^.*/;;'`
-roboticsroot=`echo $DIR | sed -e 's;/[^/]*/[^/]*/[^/]*$;;'`
+ROBOTICSROOT=`echo $DIR | sed -e 's;/[^/]*/[^/]*/[^/]*$;;'`
 #
 # set automatically here, but can be an override for local instance
-WEBSRVROOT=$roboticsroot/$sitedir
-
-#echo "Site dir: $sitedir"
-#echo "Robotics home: $roboticsroot"
+WEBSRVROOT=$ROBOTICSROOT/$sitedir
 
 #
 sitedefname=$sitedir.def
 # determine file target to search for
 if [ "$sitefilename" = "" ]; then searchname=$sitedefname;
   else searchname=$sitefilename; fi
+#echo "Script directory: $DIR"
+#echo "Site dir: $sitedir"
+#echo "Robotics home: $ROBOTICSROOT"
 #echo "Filename: $searchname"
 
 #
 # search for file in series of directories.  Source if found
 
 # if general sitesdef filename
-if [ -e $roboticsroot/sitedefs/$searchname ]
+if [ -e $ROBOTICSROOT/sitedefs/$searchname ]
 then
-  . $roboticsroot/sitedefs/$searchname
+  . $ROBOTICSROOT/sitedefs/$searchname
 # if general sitesdef sitedir    
-elif [ -e $roboticsroot/sitedefs/$sitedefname ]
+elif [ -e $ROBOTICSROOT/sitedefs/$sitedefname ]
 then
-  . $roboticsroot/sitedefs/$sitedefname
+  . $ROBOTICSROOT/sitedefs/$sitedefname
 # instance-specific searchname
 elif [ -e $WEBSRVROOT/admin/instance-specific/$searchname ]
 then

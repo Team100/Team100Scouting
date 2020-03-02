@@ -8,13 +8,6 @@
   // Runs in background periodically and updates data needed at tournament
   //
 
-  print date('Y-m-d-H:i:s') . ": checking to run autoupdate\n";
-
-  require "page.inc";
-  require "bluealliance.inc";
-
-  $connection = dbsetup();
-
   // check for server variable and abort if being run from a web server
   if (isset($_SERVER['SERVER_NAME']))
   {
@@ -22,6 +15,14 @@
     print "Aborting.";
     exit;
   }
+
+  print date('Y-m-d-H:i:s') . ": checking to run autoupdate\n";
+
+  require "page.inc";
+  require "bluealliance.inc";
+
+  $connection = dbsetup();
+
 
 
   // check if state is on to run
