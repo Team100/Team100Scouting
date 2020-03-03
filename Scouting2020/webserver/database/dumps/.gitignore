@@ -1,0 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+#
+# instance-oriented files -- not to be added to github
+#    exception: README
+
+# all files and directories from this point down
+*
+
+# keep these files in github (exceptions)
+!\.gitignore
+!README\.txt
+
+# end of .gitignore

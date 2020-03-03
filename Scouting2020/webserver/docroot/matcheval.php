@@ -25,6 +25,7 @@
 
     // initialize
     $editor = NULL;
+    $teams_need_eval = array();
 
 	$matchidentifiers = fields_load("GET", array("type", "matchnum"));
 

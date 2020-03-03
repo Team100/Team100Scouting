@@ -12,13 +12,12 @@
 paramsfilename=params.php
 tmpfile=/tmp/robotics-repl-params.$$
 
-#
-# find directory of script to call locate-params.bash
+## find and set home vars
+## using directory of script to call locate-params.bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 . $DIR/locate-params.bash
-
-# should have set up: "dbname dbuser dbpass dbhost and sitevars list as
-#  well as WEBSRVROOT
+## should be set up: WEBSRVROOT, ROBOTICSROOT, sitedir, other vars
+##   DB: dbname dbuser dbpass dbhost
 
 ##
 ## set up replacement list
