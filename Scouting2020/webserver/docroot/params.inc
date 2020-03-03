@@ -198,7 +198,7 @@ $ScoreFields[4] = array("tBAtag"=>"teleopPoints", "display"=>"TeleOp Points");
 $ScoreFields[5] = array("tBAtag"=>"autoPoints", "display"=>"Auto Points");
 $ScoreFields[6] = array("tBAtag"=>"breachPoints", "display"=>"Breach Points");
 $ScoreFields[7] = array("tBAtag"=>"foulCount", "display"=>"Fouls");
-$ScoreFieldss[8] = array("tBAtag"=>"foulPoints", "display"=>"Fouls Points");
+$ScoreFields[8] = array("tBAtag"=>"foulPoints", "display"=>"Fouls Points");
 $ScoreFields[9] = array("tBAtag"=>"towerFaceA", "display"=>"Tower Face A");
 $ScoreFields[10] = array("tBAtag"=>"towerFaceB", "display"=>"Tower Face B");
 $ScoreFields[11] = array("tBAtag"=>"towerFaceC", "display"=>"Tower Face C");
