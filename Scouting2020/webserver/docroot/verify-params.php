@@ -12,7 +12,7 @@
   require "bluealliance.inc";
 
   // header and setup
-  pheader("Verifying Customer Parameter Configuration");
+  pheader("Verifying Custom Parameter Configuration");
   $connection = dbsetup();
 
  // if not administrator, display error.  Otherwise show admin section.
@@ -40,7 +40,7 @@
     "; // end of print
 
   // loop through each param group
-  foreach(array('Play','Match') as $paramgroup)
+  foreach(array('Bot','Match') as $paramgroup)
   {
     // initialize
     $fcnt=0;
