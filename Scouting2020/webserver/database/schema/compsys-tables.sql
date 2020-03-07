@@ -165,6 +165,46 @@ create table teambot
   rank_pos3 real,		# overall rank in position 3
   rating_pos3 int,		# 0-9 rating in position 3
   rating_driver int,            # 0-9 rating for driver
+  PlayField_0 varchar(25),	# Play Field 0 (meaning/assignment defined in params)
+  PlayField_1 varchar(25),	# Play Field 1 (meaning/assignment defined in params)	
+  PlayField_2 varchar(25),	# Play Field 2 (meaning/assignment defined in params)
+  PlayField_3 varchar(25),	# Play Field 3 (meaning/assignment defined in params)
+  PlayField_4 varchar(25),	# Play Field 4 (meaning/assignment defined in params)
+  PlayField_5 varchar(25),	# Play Field 5 (meaning/assignment defined in params)
+  PlayField_6 varchar(25),	# Play Field 6 (meaning/assignment defined in params)
+  PlayField_7 varchar(25),	# Play Field 7 (meaning/assignment defined in params)
+  PlayField_8 varchar(25),	# Play Field 8 (meaning/assignment defined in params)
+  PlayField_9 varchar(25),	# Play Field 9 (meaning/assignment defined in params)
+  PlayField_10 varchar(25),	# Play Field 10 (meaning/assignment defined in params)
+  PlayField_11 varchar(25),	# Play Field 11 (meaning/assignment defined in params)
+  PlayField_12 varchar(25),	# Play Field 12 (meaning/assignment defined in params)
+  PlayField_13 varchar(25),	# Play Field 13 (meaning/assignment defined in params)
+  PlayField_14 varchar(25),	# Play Field 14 (meaning/assignment defined in params)
+  PlayField_15 varchar(25),	# Play Field 15 (meaning/assignment defined in params)
+  PlayField_16 varchar(25),	# Play Field 16 (meaning/assignment defined in params)
+  PlayField_17 varchar(25),	# Play Field 17 (meaning/assignment defined in params)
+  PlayField_18 varchar(25),	# Play Field 18 (meaning/assignment defined in params)
+  PlayField_19 varchar(25),	# Play Field 19 (meaning/assignment defined in params)
+  PlayField_20 varchar(25),	# Play Field 20 (meaning/assignment defined in params)
+  PlayField_21 varchar(25),	# Play Field 21 (meaning/assignment defined in params)
+  PlayField_22 varchar(25),	# Play Field 22 (meaning/assignment defined in params)
+  PlayField_23 varchar(25),	# Play Field 23 (meaning/assignment defined in params)
+  PlayField_24 varchar(25),	# Play Field 24 (meaning/assignment defined in params)
+  PlayField_25 varchar(25),	# Play Field 25 (meaning/assignment defined in params)
+  PlayField_26 varchar(25),	# Play Field 26 (meaning/assignment defined in params)
+  PlayField_27 varchar(25),	# Play Field 27 (meaning/assignment defined in params)
+  PlayField_28 varchar(25),	# Play Field 28 (meaning/assignment defined in params)
+  PlayField_29 varchar(25),	# Play Field 29 (meaning/assignment defined in params)
+  PlayField_30 varchar(25),	# Play Field 30 (meaning/assignment defined in params)
+  PlayField_31 varchar(25),	# Play Field 31 (meaning/assignment defined in params)
+  PlayField_32 varchar(25),	# Play Field 32 (meaning/assignment defined in params)
+  PlayField_33 varchar(25),	# Play Field 33 (meaning/assignment defined in params)
+  PlayField_34 varchar(25),	# Play Field 34 (meaning/assignment defined in params)
+  PlayField_35 varchar(25),	# Play Field 35 (meaning/assignment defined in params)
+  PlayField_36 varchar(25),	# Play Field 36 (meaning/assignment defined in params)
+  PlayField_37 varchar(25),	# Play Field 37 (meaning/assignment defined in params)
+  PlayField_38 varchar(25),	# Play Field 38 (meaning/assignment defined in params)
+  PlayField_39 varchar(25),	# Play Field 39 (meaning/assignment defined in params)
   offense_analysis text(1000),	# offense analysis (text)
   defense_analysis text(1000), 	# defense analysis (text)
   pos1_analysis text(1000),		# position 1 analysis (text)
@@ -360,6 +400,46 @@ create table match_team
   raw_points int,		# raw points scored
   human_points int,		# human points scored
   penalties int,		# penalty points
+  MatchField_0 varchar(25),	# Match Field 0 (configured by params)
+  MatchField_1 varchar(25),	# Match Field 1 (configured by params)
+  MatchField_2 varchar(25),	# Match Field 2 (configured by params)
+  MatchField_3 varchar(25),	# Match Field 3 (configured by params)
+  MatchField_4 varchar(25),	# Match Field 4 (configured by params)
+  MatchField_5 varchar(25),	# Match Field 5 (configured by params)
+  MatchField_6 varchar(25),	# Match Field 6 (configured by params)
+  MatchField_7 varchar(25),	# Match Field 7 (configured by params)
+  MatchField_8 varchar(25),	# Match Field 8 (configured by params)
+  MatchField_9 varchar(25),	# Match Field 9 (configured by params)
+  MatchField_10 varchar(25),	# Match Field 10 (configured by params)
+  MatchField_11 varchar(25),	# Match Field 11 (configured by params)
+  MatchField_12 varchar(25),	# Match Field 12 (configured by params)
+  MatchField_13 varchar(25),	# Match Field 13 (configured by params)
+  MatchField_14 varchar(25),	# Match Field 14 (configured by params)
+  MatchField_15 varchar(25),	# Match Field 15 (configured by params)
+  MatchField_16 varchar(25),	# Match Field 16 (configured by params)
+  MatchField_17 varchar(25),	# Match Field 17 (configured by params)
+  MatchField_18 varchar(25),	# Match Field 18 (configured by params)
+  MatchField_19 varchar(25),	# Match Field 19 (configured by params)
+  MatchField_20 varchar(25),	# Match Field 20 (configured by params)
+  MatchField_21 varchar(25),	# Match Field 21 (configured by params)
+  MatchField_22 varchar(25),	# Match Field 22 (configured by params)
+  MatchField_23 varchar(25),	# Match Field 23 (configured by params)
+  MatchField_24 varchar(25),	# Match Field 24 (configured by params)
+  MatchField_25 varchar(25),	# Match Field 25 (configured by params)
+  MatchField_26 varchar(25),	# Match Field 26 (configured by params)
+  MatchField_27 varchar(25),	# Match Field 27 (configured by params)
+  MatchField_28 varchar(25),	# Match Field 28 (configured by params)
+  MatchField_29 varchar(25),	# Match Field 29 (configured by params)
+  MatchField_30 varchar(25),	# Match Field 30 (configured by params)
+  MatchField_31 varchar(25),	# Match Field 31 (configured by params)
+  MatchField_32 varchar(25),	# Match Field 32 (configured by params)
+  MatchField_33 varchar(25),	# Match Field 33 (configured by params)
+  MatchField_34 varchar(25),	# Match Field 34 (configured by params)
+  MatchField_35 varchar(25),	# Match Field 35 (configured by params)
+  MatchField_36 varchar(25),	# Match Field 36 (configured by params)
+  MatchField_37 varchar(25),	# Match Field 37 (configured by params)
+  MatchField_38 varchar(25),	# Match Field 38 (configured by params)
+  MatchField_39 varchar(25),	# Match Field 39 (configured by params)
   match_notes text(1000),	# Match notes
   match_offense_analysis text(1000),		# offense analysis (text)
   match_defense_analysis text(1000), 	# defense analysis (text)
@@ -452,7 +532,6 @@ create table process_lock
 # insert needed locks
 insert into process_lock (lock_id) values ('ranking');		# ranking process
 insert into process_lock (lock_id) values ('finals_selection');	# ranking process
-insert into process_lock (lock_id) values ('custom_param');	# custom_parameter process
 insert into process_lock (lock_id) values ('doc_topics');	# topics for docprocess
 
 
@@ -490,41 +569,6 @@ create table user_profile
   showevaluators bool,          # user preference: show other evaluators in matcheval and matchteameval screens
   primary key (user)
  );
-
-
-#
-# custom_param
-#
-# customer parameter definitions
-#
-# Used by the administrator to define custom parameters for a given season.  These 
-#  parameters are used to generate .sql files that alter base tables to include
-#  the custom parameters, as well as php include structures used to drive the app.
-# 
-create table custom_param
- (
-  tag varchar(20) not null,	# also serves as column name in database, or reported column name on calcs 
-#  tag_lower varchar(20) not null unique,  # lowercase unique tag so because column names are case-insensitive
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.  May not use.
-  updatedby varchar(200), 	# last updated by users
-  position int not null,	# order displayed (0 through end)
-  used boolean not null,	# used in UI -- may exist in database
-  vargroup varchar(10),		# var function (Bot, Match, or other)
-  entrytype varchar(1),		# entry type: D=Direct, C=Calc'd
-  dbtype varchar(10),		# database column type
-  display varchar(20) not null, # display text in app
-  inputlen int,			# input length for field in form
-  maxlen int,			# max len of input. Will also set field size in database
-  default_value varchar(20),	# default value
-  list_of_values varchar(100),	# future feature: list of values in value1,tag1;value2,tag2 format
-  db_calc varchar (50),		# SQL format group calculation from match data
-  formula_calc varchar (200),	# php formula calclation
-  test_avg int,			# test average value - used for test generation
-  test_range int,		# test range + or - from average value - used for test generation
-  test_values varchar (200),	# comma-separated values to be used in testing varchars and text
-  primary key (tag)
- );
-
 
 #
 # stores all documentation

@@ -50,7 +50,7 @@
   	"rank_pos1","rating_pos1","rank_pos2","rating_pos2","rank_pos3","rating_pos3","offense_analysis",
   	"defense_analysis","pos1_analysis","pos2_analysis","pos3_analysis", /* DEPRICATE? "robot_analysis",*/"driver_analysis",
   	"with_recommendation","against_recommendation"),
-  	param_array("Bot"),
+  	param_array("Play"),
   	$firstcols
   	);
 
@@ -240,7 +240,7 @@
     //
     // parameters side-by-side
     //
-    print param_report ($team, "Bot", $public, $teamcnt);
+    print param_report ($team, "Play", $public, $teamcnt);
 
     // rank and stats side by side
     print "<tr></tr>\n";

@@ -2,30 +2,27 @@
   // $Revision: 2.1 $
   // $Date: 2010/04/22 04:00:55 $
   //
-  // Competition System - Sample page with edits
+  // Competition System - Sample page
   //
   require "page.inc";
 
-  // get variables, checking for existance
+  // get variables
   $teamnum=$_GET["teamnum"];
-  if(isset($_GET["edit"])) $edit=$_GET["edit"]; else $edit=NULL;
+  $edit=$_GET["edit"];
 
   // header and setup
-  pheader("Sample Edit - " . $teamnum);
+  pheader("Team Details - " . $teamnum);
   $connection = dbsetup();
 
-  // initialize variables and arrays
-
   // define lock array, fields arrays
-  //   the arrays set how array-based functions for lock and field editing work
-  $dblock = array("table"=>"team","where"=>"teamnum = {$teamnum}");
+  $dblock = array(table=>"team",where=>"teamnum = {$teamnum}");
   $table_team = array("name","nickname","org","location","students","website");
 
   // handle update if returning from edit mode
-  if ($edit == 2)   // performs database save
+  if ($edit == 2)
   {
   	// load operation
-  	if (isset($_POST["op"]) && ($_POST["op"] == "Save"))
+  	if ( $_POST[op] == "Save" )
 	{
   		// check row
   		dblock($dblock,"check");
@@ -35,7 +32,6 @@
 		$query = "update team set " . fields_insert("update",$formfields) . " where teamnum = {$teamnum}";
 
 		// process query
-		if (debug()) print "<br>DEBUG-template: " . $query . "<br>\n";
 		if (! (@mysqli_query ($connection, $query) ))
 			dbshowerror($connection, "die");
 
@@ -47,7 +43,7 @@
 	// abondon lock
 	dblock($dblock,"abandon");
 
-    // update completed, reset edit mode
+    // update completed
     $edit = 0;
    }
 
@@ -55,16 +51,14 @@
    if ($edit) dblock($dblock,"lock");  // lock row with current user id
 
 
-//
-// top of form rendering
-//
-
-print "
+print EOF_EOF
 <!----- Top of page ----->
-<table valign=\"top\">
-<tr valign=\"top\">
+<table valign="top">
+<tr valign="top">
 <td>
-"; // end of print
+
+EOF_EOF
+; // end of print
 
   //
   // create page
@@ -73,11 +67,9 @@ print "
   // check teamnum
   if (! ($teamnum)) print "<h1>No Team Number Specified</h1>\n";
 
-
   // get team details define result set
-  $query = "select ". fields_insert("nameonly",NULL,$custom_param) . " from team where teamnum = {$teamnum}";
-  if (debug()) print "<br>DEBUG-template: " . $query . "<br>\n";
-  if (!($result = @ mysqli_query ($connection, $query)))
+  if (!($result = @ mysqli_query ($connection,
+  	"select ". fields_insert("nameonly",NULL,$table_team) . " from team where teamnum = {$teamnum}")))
     dbshowerror($connection);
 
   // get row
@@ -88,12 +80,11 @@ print "
 
   // if in edit mode, signal save with edit=2
   if ($edit)
-  	print "<form method=\"POST\" action=\"/teamdetails.php?edit=2&teamnum={$teamnum}\">\n";
+  	print "<form method=\"POST\" action=\"/teamdetails.php?edit=2&teamnum={$teamnum}\">\n"
 
   print "
   <!--- table for display data --->
-  <table valign=\"top\">
-  "
+  <table valign=\"top\">"
   . tabtextfield($edit,$options,$row, "name","Team name:",15,30)
   . tabtextfield($edit,$options,$row, "","",1,1)
   . "\n<tr><td><br><br></td></tr>\n<tr><td>\n";

@@ -114,7 +114,7 @@
 			$teamsrank[$teamnum]=$_POST["{$teamnum}_{$sort}"];
 		}
 
-        // sort teamsrank array
+        // sort ranks
         asort($teamsrank);
 
         // store in order processed, placing NULL's at end
@@ -238,7 +238,7 @@
   // show edit
   print dblockshowedit($edit, $dblock, $url_root . $sort . "&lsort=" . $lsort . "&order=" . $order) . "\n";
   // Return navigation
-  print "\n&nbsp;&nbsp;&nbsp;<a href=\"{$base}\">Return to Home</a>\n";
+  print "\n<br><a href=\"{$base}\">Return to Home</a>\n";
 
 
   // set up table heading

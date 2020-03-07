@@ -24,7 +24,7 @@
   if ($edit == 2)
   {
   	// load operation
-  	if (isset($_POST["op"]) && $_POST["op"] == "Save" )
+  	if ( $_POST["op"] == "Save" )
 	{
 	  	// check row
 		dblock($dblock,"check");
@@ -160,9 +160,9 @@
     if (!($result = @mysqli_query ($connection, $query)))
       dbshowerror($connection);
 	else
-    	while ($rowh = mysqli_fetch_array($result))
+    	while ($row = mysqli_fetch_array($result))
 		{
-		  print "<tr><td>{$rowh['year']}</td><td>{$rowh['reg_name']}</td><td>{$rowh['award_name']}</td></tr>\n";
+		  print "<tr><td>{$row['year']}</td><td>{$row['reg_name']}</td><td>{$row['award_name']}</td></tr>\n";
 		}
 
     // end history table
