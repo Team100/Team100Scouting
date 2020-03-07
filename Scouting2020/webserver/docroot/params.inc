@@ -43,9 +43,14 @@ $tba_AppId= $frcteam . ':compsystem:v02';
 // Site parameters
 //
 // site names as in http://site/
-$site = $_SERVER['SERVER_NAME'];
+if(isset($_SERVER['SERVER_NAME'])) $site = $_SERVER['SERVER_NAME']; else $site = NULL;
 // base - everything after site.  Example: /compsys.  Leave at "/" if nothing.
 $base = "/";
+
+
+//
+// Custom params limit per type
+$custom_params_limit = 40;
 
 
 // 
@@ -70,6 +75,9 @@ $field_positions = FALSE;
 //
 //
 //   Should we create a "alliance position" switch too?  (for later)
+
+// included from db-generated file
+require "params-custom.inc";
 
 // Comment out unsed params or set used to FALSE
 

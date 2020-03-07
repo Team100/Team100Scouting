@@ -1,7 +1,4 @@
 #
-# $Revision: 3.0 $
-# $Date: 2016/03/14 23:00:02 $
-#
 # Red Rock Robotics, WildHats, Verkler
 # Competition System Table Schema
 #
@@ -46,8 +43,26 @@
 #  manage instances of the app and team, using the same event model.
 #
 #
-create table event
+create table custom_param
  (
+  tag varchar(20) not null,	# also serves as column name in database, or reported column name on calcs 
+  position int not null,	# order displayed (0 through end)
+  used boolean not null,	# used in UI -- may exist in database
+  type varchar(10),		# database column type
+  display varchar(20) not null, # display text in app
+  inputlen int,			# input length for field in form
+  maxlen int,			# max len of input. Will also set field size in database
+  default_value varchar(20),	# default value
+  list_of_values varchar(100),	# future feature: list of values in value1,tag1;value2,tag2 format
+  db_calc varchar (50),		# SQL format group calculation from match data
+  forumla_calc (200),		# php formula calclation
+  
+  test
+  
+  
+  
+  
+  
   event_id varchar(10),		# tBA key (event key), format yyyy[Event_Code]
   name varchar(20),             # tBA short_name
   long_name varchar(100),       # tBA name, official name
@@ -59,6 +74,23 @@ create table event
   website varchar(100),         # tBA website, event webssite	
   primary key (event_id)
  );
+
+
+  used boolean,			# used in UI -- may exist in database
+  column varchar(20),		# also serves as tag
+  type varchar(10),		# 
+  display varcharg(20),		# 
+  inputlen int,			#
+  maxlen int,			#
+  default_value			# 
+  
+  
+  
+  
+  
+  
+  
+
 
 
 
@@ -211,11 +243,11 @@ create table teambot
   pos2_analysis text(1000),		# position 2 analysis (text)
   pos3_analysis text(1000),		# position 3 analysis (text)
   robot_analysis text(1000),		# overall robot analysis /* candidate to DEPRICATE */
-  driver_analysis text(1000),		# driver analysis
+  driver_analysis text(1000),	# driver analysis
   with_recommendation text(1000),	# recommendation if partnered with
   against_recommendation text(1000),	# recommendation if partnered against
-  notes text(1000),                  	# general notes
-  pit_notes text(1000),              	# notes from pit
+  notes text(1000),                  # general notes
+  pit_notes text(1000),              # notes from pit
   primary key(event_id,teamnum)
  );
 
@@ -229,11 +261,11 @@ create table teambot
 
 create table alliance
  (
-  event_id varchar(8),                  # FK to event table (PK)
-  alliancenum int,			# Alliance - #1 through #8 (PK)
+  event_id varchar(8),                  # FK to event table 
+  alliancenum int,			# Alliance - #1 through #8
   locked varchar(12), 			# row locked for editing by user.  Can clear in application.
-  offense_analysis text(1000),		# offense analysis (text)
-  defense_analysis text(1000), 		# defense analysis (text)
+  offense_analysis text(1000),	# offense analysis (text)
+  defense_analysis text(1000), 	# defense analysis (text)
   pos1_analysis text(1000),		# position 1 analysis (text)
   pos2_analysis text(1000),		# position 2 analysis (text)
   pos3_analysis text(1000),		# position 3 analysis (text)
@@ -250,9 +282,9 @@ create table alliance
 
 create table alliance_team
  (
-  event_id varchar(8),                  # FK to event table  (PK)
-  alliancenum int,			# Alliance - #1 through #8  (PK)
-  teamnum  int, 			# FIRST team number - foreign key from team table  (PK)
+  event_id varchar(8),                  # FK to event table 
+  alliancenum int,			# Alliance - #1 through #8
+  teamnum  int, 			# FIRST team number - foreign key from team table
   locked varchar(12), 			# row locked for editing by user.  Can clear in application.
   position int,				# position in the alliance (1,2,3)
   primary key (event_id, alliancenum, teamnum)
@@ -263,9 +295,9 @@ create table alliance_team
 #  teams that refused us
 #
 create table alliance_unavailable
- ( 
-  event_id varchar(8),                  # FK to event table  (PK)
-  alliancenum int,			# Alliance - #1 through #8 (PK)
+ (
+  event_id varchar(8),                  # FK to event table 
+  alliancenum int,			# Alliance - #1 through #8
   teamnum  int, 			# FIRST team number - foreign key from team table
   unavailable boolean,			# marked if team selection is unavailable (refused or otherwise)
   refused boolean,			# refused our offer, so take off the availability list
@@ -288,10 +320,10 @@ create table alliance_unavailable
 #
 create table match_instance
  (
-  event_id varchar(8),          # FK to event table (PK)
-  type varchar(1), 		# Q=qualifying, P=practice, F=Final  part of primary key (PK)
+  event_id varchar(8),          # FK to event table 
+  type varchar(1), 		# Q=qualifying, P=practice, F=Final  part of primary key
                                 #   from tBA match_number
-  matchnum int,			# match number, part of primary key (PK).  If taken from tBA, decoded (
+  matchnum int,			# match number, part of primary key.  If taken from tBA, decoded
                                 #   from tBA match_number, which looks lik 2010sc_qm20
   locked varchar(12), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
@@ -319,10 +351,10 @@ create table match_instance
 #
 create table match_instance_alliance
  (
-  event_id varchar(8),          # FK to event table (PK)
-  type varchar(1), 		# Q=qualifying, P=practice, F=Final  part of primary key (PK)
-  matchnum int,			# match number, part of primary key (PK)
-  color varchar(1),		# R=Red, B=Blue (PK)
+  event_id varchar(8),          # FK to event table 
+  type varchar(1), 		# Q=qualifying, P=practice, F=Final  part of primary key
+  matchnum int,			# match number, part of primary key
+  color varchar(1),		# R=Red, B=Blue
   locked varchar(12), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   score int,			# tBA score, final score
@@ -387,10 +419,10 @@ create table match_instance_alliance
 # 
 create table match_team
  (
-  event_id varchar(8),          # FK to event table (PK)
-  type varchar(1), 		# foreign key to match_instance table (PK)
-  matchnum int,			# match number, foreign key to match_instance table (PK)
-  teamnum int,			# team number, foreign key to team table (PK)
+  event_id varchar(8),          # FK to event table 
+  type varchar(1), 		# foreign key to match_instance table
+  matchnum int,			# match number, foreign key to match_instance table
+  teamnum int,			# team number, foreign key to team table
   locked varchar(12), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   color varchar(1),		# R=Red, B=Blue
@@ -459,10 +491,10 @@ create table match_team
 #
 #create table match_alliance_team
 # (
-#  event_id varchar(8),         # FK to event table (PK)
-#  type varchar(1), 		# foreign key to match_instance table (PK)
-#  matchnum int,		# match number, foreign key to match_instance table (PK)
-#  alliancenum int,		# Alliance - #1 through #8, foreign key to alliance table (PK)
+#  event_id varchar(8),          # FK to event table 
+#  type varchar(1), 		# foreign key to match_instance table
+#  matchnum int,			# match number, foreign key to match_instance table
+#  alliancenum int,		# Alliance - #1 through #8, foreign key to alliance table
 #  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
 #  updatedby varchar(200), 	# last updated by users
 #  color varchar(1),		# R=Red, B=Blue
@@ -483,7 +515,7 @@ create table match_team
 #
 #create table championteam
 #(
-#  event_id varchar(8),         # FK to event table 
+#  event_id varchar(8),          # FK to event table 
 #  league_name varchar(25),	# long-form of league name
 #  teamnum  int, 		# FIRST team number - primary key
 #  primary key (event_id, teamnum)
@@ -497,8 +529,8 @@ create table match_team
 create table schedule
  (
   scheduled_utime int, 		# schedule time of match
-  type varchar(1),		# match type (see match table) (PK)
-  matchnum int,		  	# match number (PK)
+  type varchar(1),		# match type (see match table)
+  matchnum int,		  	# match number
   blue1 int,			# blue teamnum
   blue2 int,			# blue teamnum
   blue3 int,			# blue teamnum
@@ -532,7 +564,6 @@ create table process_lock
 # insert needed locks
 insert into process_lock (lock_id) values ('ranking');		# ranking process
 insert into process_lock (lock_id) values ('finals_selection');	# ranking process
-insert into process_lock (lock_id) values ('custom_param');	# custom_parameter process
 insert into process_lock (lock_id) values ('doc_topics');	# topics for docprocess
 
 
