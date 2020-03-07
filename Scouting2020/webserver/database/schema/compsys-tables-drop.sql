@@ -38,4 +38,9 @@ drop table if exists documentation;
 drop table if exists pagetodoc;
 drop table if exists system_value;
 drop table if exists tba_last_modified;
-
+# 
+# custom parameters
+drop table if exists custom_param;
+#
+# end of drops
+#

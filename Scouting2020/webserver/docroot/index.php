@@ -81,6 +81,10 @@ print "
         print "</table></td><td><table border=\"2\">\n";
    }
 
+
+//JLV took out Evaluate a match
+//<li><a href=\"/matchlist.php\">Evaluate a match</a></li>
+
 // end table
 print "
 </table>
@@ -100,7 +104,6 @@ print "
 <h3><center><u>Functions</u></center></h3>
 <ul>
 <li><a href=\"/matchlist.php\">Match Listings</a></li>
-<li><a href=\"/matchlist.php\">Evaluate a match</a></li>
 <li><a href=\"/matchnew.php?edit=1\">Create new match</a></li>
 <br>
 <li><a href=\"/rank.php\">Rank Teams</a></li>
