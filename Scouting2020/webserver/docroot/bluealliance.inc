@@ -214,13 +214,13 @@ function tba_getmatcharray ($tba_response_array)
 function tba_get_event_teams()
 {
   global $sys_event_id;
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   global $connection;
   global $tba_team_to_team, $tba_team_to_teambot;
 
   // get data
-  if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/event/{$sys_event_id}/teams", FALSE)))
+  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/teams", FALSE)))
   {
     print "API returned " . $tba_error['message'] . "<br>\n";
   }
@@ -278,7 +278,7 @@ function tba_get_event_teams()
 function tba_get_matches()
 {
   global $sys_event_id;
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   global $connection;
   global $tba_match_to_match_instance, $tba_match_to_match_alliance, $tba_match_to_match_team;
@@ -299,7 +299,7 @@ function tba_get_matches()
     $tba_score_to_match_alliance = array_merge($tba_score_to_match_alliance, array($scoredef['tBAtag']=>"f_score{$element}"));
 
   // get data
-  if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/event/{$sys_event_id}/matches", FALSE)))
+  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/matches", FALSE)))
     print "API returned " . $tba_error['message'] . "<br>\n";
   else
   {
@@ -405,13 +405,13 @@ function tba_get_matches()
 function tba_get_event_stats()
 {
   global $sys_event_id;
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   global $connection;
   global $tba_stats_to_teambot;
 
   // get data
-  if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/event/{$sys_event_id}/stats", FALSE)))
+  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/stats", FALSE)))
     print "API returned " . $tba_error['message'] . "<br>\n";
   else
   {
@@ -460,7 +460,7 @@ function tba_get_event_stats()
 
 function tba_get_event_rankings()
 {
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   global $sys_event_id;
   global $connection;
@@ -482,7 +482,7 @@ function tba_get_event_rankings()
   }
   
   // get data
-  if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/event/{$sys_event_id}/rankings", FALSE)))
+  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/rankings", FALSE)))
     print "API returned " . $tba_error['message'] . "<br>\n";
   else
   {
@@ -534,7 +534,7 @@ function tba_get_event_rankings()
 function tba_get_event_statss()
 {
   global $sys_event_id;
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   global $connection;
   global $tba_stats_to_teambot;
@@ -559,7 +559,7 @@ function tba_get_event_statss()
 function tba_get_team_history()
 {
   global $sys_event_id;
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   global $connection;
   global $tba_history_to_history;
@@ -572,7 +572,7 @@ function tba_get_team_history()
   while ($row = mysqli_fetch_array($result))
   {
     // get data
-    if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/team/frc{$row['teamnum']}/history/events", FALSE)))
+    if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/team/frc{$row['teamnum']}/history/events", FALSE)))
       print "API returned " . $tba_error['message'] . "<br>\n";
     else
     {
@@ -615,7 +615,7 @@ function tba_get_team_history()
 function tba_get_team_awards()
 {
   global $sys_event_id;
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   global $connection;
   global $tba_award_history_to_award_history;
@@ -628,7 +628,7 @@ function tba_get_team_awards()
   while ($row = mysqli_fetch_array($result))
   {
     // get data
-    if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/team/frc{$row['teamnum']}/history/awards", FALSE)))
+    if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/team/frc{$row['teamnum']}/history/awards", FALSE)))
       print "API returned " . $tba_error['message'] . "<br>\n";
     else
       foreach($tba_response->body as $award)
@@ -686,7 +686,7 @@ function tba_get_team_awards()
 
 //  
 // function: tba_getdata($tba_url, $skiplastmod) - 
-//   $tba_url - URL to call
+//   $tba_url - URL/endpoint to call
 //   $skiplastmod - Boolean value that determines if lastmod function is used
 //         True means skip, false means process lastmod
 //
@@ -702,7 +702,7 @@ function tba_get_team_awards()
 
 function tba_getdata($tba_url, $skiplastmod)
 {
-  global $tba_AppId;
+  global $tba_AuthKey;
   global $tba_error;
   $tba_error = array("state"=>FALSE);
   
@@ -711,10 +711,13 @@ function tba_getdata($tba_url, $skiplastmod)
   if(!($skiplastmod))
     $last = tba_getlastmod($tba_url);
   
+  // debug
+  if (debug()) print "\n<br>DEBUG-tba_getdata: URL {$tba_url}<br>\n";
+  
   try
   {
     $tba_response = \Httpful\Request::get($tba_url)
-       ->addHeader('X-TBA-App-Id',$tba_AppId)
+       ->addHeader('X-TBA-Auth-Key',$tba_AuthKey)
        ->addHeader('If-Modified-Since',$last)
        ->send();
   } catch (Exception $e)
@@ -861,7 +864,12 @@ function tba_mapfields ($tba_fieldmap, $tba_responsearray, $tba_dbarray)
 // JLV - commenting out but may cause problems
 //       if ($tba_responsearray->$field != NULL)
          $tba_dbarray[$value] = $tba_responsearray->$field;
-
+     else
+       if (debug())
+       {
+         print "\n<br>DEBUG:tba_mapfields: no response found for field {$field}<br>\n";
+         print_r($tba_responsearray);
+       }
    return($tba_dbarray);
 }
 
@@ -894,7 +902,7 @@ function tba_updatedb($tablename, $table_identifiers, $tba_dbarray)
    
    // select to see if update or insert
    $query = "select 'dummy' from {$tablename} where " . $where;
-   if (debug()) print "<br>DEBUG:tba_updatedb, Select query: " . $query . "<br>\n";
+   if (debug()) print "\n<br>DEBUG:tba_updatedb, Select query: " . $query . "<br>\n";
    
    if (! ($result = @ mysqli_query ($connection, $query)))
   	  dbshowerror($connection, "die");
@@ -904,7 +912,7 @@ function tba_updatedb($tablename, $table_identifiers, $tba_dbarray)
    {
      $query = "update {$tablename} set " . fields_insert("update", $tba_dbarray, "")
             .  " where " . $where;
-     if (debug()) print "<br>DEBUG:tba_updatedb, update :" . $query . "<br>\n";
+     if (debug()) print "\n<br>DEBUG:tba_updatedb, update :" . $query . "<br>\n";
      if (! (@mysqli_query ($connection, $query) ))
        dbshowerror($connection, "die");
    } 
@@ -913,7 +921,7 @@ function tba_updatedb($tablename, $table_identifiers, $tba_dbarray)
      $query = "insert into {$tablename} (" . fields_insert("nameonly", $tba_dbarray, "")
              . ") values (" . fields_insert("insert", $tba_dbarray, "") . " )";
              
-     if (debug()) print "<br>DEBUG:tba_updatedb, insert: " . $query . "<br>\n"; 
+     if (debug()) print "\n<br>DEBUG:tba_updatedb, insert: " . $query . "<br>\n"; 
      if (! (@mysqli_query ($connection, $query) ))
        dbshowerror($connection, "die");
    }
@@ -946,7 +954,7 @@ function tba_updatedbifnew($tablename, $table_identifiers, $tba_dbarray)
    
    // select to see if update or insert
    $query = "select * from {$tablename} where " . $where;
-   if (debug()) print "<br>DEBUG:tba_newupdatedb, Select query: " . $query . "<br>\n";
+   if (debug()) print "\n<br>DEBUG:tba_newupdatedb, Select query: " . $query . "<br>\n";
    
    if (! ($result = @ mysqli_query ($connection, $query)))
   	  dbshowerror($connection, "die");
@@ -962,7 +970,7 @@ function tba_updatedbifnew($tablename, $table_identifiers, $tba_dbarray)
      // form query with subset of fields
      $query = "update {$tablename} set " . fields_insert("update", $new_dbarray, "")
             .  " where " . $where;
-     if (debug()) print "<br>DEBUG:tba_newupdatedb, update :" . $query . "<br>\n";
+     if (debug()) print "\n<br>DEBUG:tba_newupdatedb, update :" . $query . "<br>\n";
      if (! (@mysqli_query ($connection, $query) ))
        dbshowerror($connection, "die");
    } 
@@ -971,7 +979,7 @@ function tba_updatedbifnew($tablename, $table_identifiers, $tba_dbarray)
      $query = "insert into {$tablename} (" . fields_insert("nameonly", $tba_dbarray, "")
              . ") values (" . fields_insert("insert", $tba_dbarray, "") . " )";
              
-     if (debug()) print "<br>DEBUG:tba_newupdatedb, insert: " . $query . "<br>\n"; 
+     if (debug()) print "\n<br>DEBUG:tba_newupdatedb, insert: " . $query . "<br>\n"; 
      if (! (@mysqli_query ($connection, $query) ))
        dbshowerror($connection, "die");
    }
