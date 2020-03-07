@@ -16,12 +16,12 @@ echo "Building Competition System Tables..."
 
 echo "  Dropping current tables..."
 mysql -D ${dbname} -u ${dbuser} --password=${dbpass} \
-      < $WEBSRVROOT/database/schema/compsystem-tables-drop.sql
+      < $WEBSRVROOT/database/schema/compsys-tables-drop.sql
 echo "    done."
 
 echo "  Creating all tables..."
 mysql -D ${dbname} -u ${dbuser} --password=${dbpass} \
-      < $WEBSRVROOT/database/schema/compsystem-tables.sql
+      < $WEBSRVROOT/database/schema/compsys-tables.sql
 echo "    done."
 echo " "
 echo "Competition System Tables Built"
