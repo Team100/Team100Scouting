@@ -238,7 +238,7 @@
   // show edit
   print dblockshowedit($edit, $dblock, $url_root . $sort . "&lsort=" . $lsort . "&order=" . $order) . "\n";
   // Return navigation
-  print "\n<br><a href=\"{$base}\">Return to Home</a>\n";
+  print "\n&nbsp;&nbsp;&nbsp;<a href=\"{$base}\">Return to Home</a>\n";
 
 
   // set up table heading

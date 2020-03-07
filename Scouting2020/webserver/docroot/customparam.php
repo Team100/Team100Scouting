@@ -57,6 +57,7 @@ else
 		$cnt=0;
 		foreach ($sortpos as $sortp=>$sortval)
 		  $_POST[$sortp]=$cnt++;
+        // end of position sorting
 
 		// load form fields
 		for ($cnt = 0; $cnt < $custom_params_limit; $cnt++)
@@ -66,14 +67,25 @@ else
 		  // if not null, create or insert
 		  if ($formfields["tag"] != NULL )
 		  {
-		    // add vargroup
-		    $formfields["vargroup"] = $vargroup;
-		    // specify where
-		    $where = array( "vargroup"=> $vargroup, "tag"=> $formfields["tag"]);
-		    db_update_or_create("custom_param", $where, $formfields);
+		    // check if tag is well-formed
+            $regexp = "/[ ?\"':;!@#\$%^&\*\(\)\[\]\{\}]/";
+            if (! preg_match($regexp, $formfields["tag"]))
+            {
+              // Unneeded with case-insensitive char sets that are default for Maria DB
+              // add tag_lower -- lowercase tag that serves to check for duplicate columns
+              // $formfields["tag_lower"] = strtolower($formfields["tag"]);
+
+              // add vargroup
+		      $formfields["vargroup"] = $vargroup;
+		      // specify where clause before updating row
+		      $where = array( "vargroup"=> $vargroup, "tag"=> $formfields["tag"]);
+		      db_update_or_create("custom_param", $where, $formfields);
+		    }
+		    else
+		      showerror("Tag '{$formfields["tag"]}' may not contain spaces or special characters. Please re-enter.");
 		  }
 
-		}
+		} // end of for
 
 		// commit
 		if (! (@mysqli_commit($connection) ))
@@ -127,12 +139,12 @@ print "
     // for each field
 
     print "<tr align=\"left\">\n"
-    . tabtextfield($edit,$options,$row, "tag","Tag",10,15,NULL,$editprefix)
+    . tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,$editprefix)
     . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,$editprefix)
     . tabtextfield($edit,$options,$row, "used","Used",1,1,1,$editprefix)
     . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",$editprefix)
-    . tabtextfield($edit,$options,$row, "dbtype","DB type",8,8,"varchar",$editprefix)
-    . tabtextfield($edit,$options,$row, "display","Display",14,15,NULL,$editprefix)
+    . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",$editprefix)
+    . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,$editprefix)
     . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,$editprefix)
     . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,$editprefix)
     . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,$editprefix)

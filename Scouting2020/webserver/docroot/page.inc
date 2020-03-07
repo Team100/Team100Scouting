@@ -809,8 +809,8 @@ function tabtextarea( $edit, $options, $data, $fieldname, $fieldtag, $row, $col,
     
     // look for value
     if (! (isset($value))) $value = $data[$fieldname];
-    
-    // set match length
+
+    // set max length
     // JLV: mistake? if (! (isset($maxlength))) $maxlength = $size;
   
   // start table
@@ -974,6 +974,7 @@ function fields_insert_add ( $operation, $formfields, $fieldname, $insert)
   {
   	// get db connection
   	global $connection;
+  	global $db_case_sensitive;
   	      	
       	switch ($operation)
       	{
@@ -1031,7 +1032,7 @@ function fields_insert_add ( $operation, $formfields, $fieldname, $insert)
       		if ( $formfields[$fieldname] === "" ) 
         		$insert .= "$fieldname = NULL";
       		else
-        		$insert .= "$fieldname = '$formfields[$fieldname]'"; 
+        		$insert .= "$fieldname {$db_case_sensitive} = '$formfields[$fieldname]'"; 
         	break;
       	  	
           default:
@@ -1069,8 +1070,9 @@ function param_array ($paramgroup)
    
    foreach($dispfields[$paramgroup] as $key)
      if ($key['used'] == TRUE)
-     	$fieldnames[] = $paramgroup . "Field_" . $fcnt++;
-   
+//DBCOL     	$fieldnames[] = $paramgroup . "Field_" . $fcnt++;
+     	$fieldnames[] = $key['tag'];   
+
    return($fieldnames);
 }
 
@@ -1133,7 +1135,8 @@ function tabparamfields($edit, $options, $data, $paramgroup)
    	// if param is used place in group
    	if ($dispfields[$paramgroup][$cnt]["used"]===TRUE)
    	{
-		$ret = $ret . "\n" . tabtextfield ( $edit, $options, $data, $paramgroup . "Field_" . $cnt, 
+//DBCOL		$ret = $ret . "\n" . tabtextfield ( $edit, $options, $data, $paramgroup . "Field_" . $cnt, 
+		$ret = $ret . "\n" . tabtextfield ( $edit, $options, $data, $dispfields[$paramgroup][$cnt]['tag'], 
 			$dispfields[$paramgroup][$cnt]["display"],
 			$dispfields[$paramgroup][$cnt]["inputlen"], $dispfields[$paramgroup][$cnt]["maxlen"],
 			$dispfields[$paramgroup][$cnt]["default_value"]);
@@ -1181,7 +1184,8 @@ function param_insert( $operation, $formfields, $paramgroup)
    while ( isset($dispfields[$paramgroup][$cnt]) && ( $cnt < 50 ) )
    {
    	if ($dispfields[$paramgroup][$cnt]["used"]===TRUE)
-		$fieldnames[$cnt] = $paramgroup . "Field_" . $cnt;
+//DBCOL		$fieldnames[$cnt] = $paramgroup . "Field_" . $cnt;
+		$fieldnames[$cnt] = $dispfields[$paramgroup][$cnt]["tag"];
 	$cnt = ++$cnt;
    }
    
@@ -1210,7 +1214,8 @@ function param_load( $post, $paramgroup)
    while ( isset($dispfields[$paramgroup][$cnt]) && ( $cnt < 50 ) )
    {
 	if ($dispfields[$paramgroup][$cnt]["used"]===TRUE)
-		$fieldnames[$cnt] = $paramgroup . "Field_" . $cnt;
+//DBCOL		$fieldnames[$cnt] = $paramgroup . "Field_" . $cnt;
+		$fieldnames[$cnt] = $dispfields[$paramgroup][$cnt]["tag"];
 	$cnt = ++$cnt;
    }
    
@@ -1243,7 +1248,8 @@ function param_report ($data, $paramgroup, $public, $teamcnt)
 	if ($dispfields[$paramgroup][$cnt]["used"]===TRUE)
 	{
 		// find field name
-		$fieldname = $paramgroup . "Field_" . $cnt; 
+//DBCOL		$fieldname = $paramgroup . "Field_" . $cnt; 
+//		$fieldname = $dispfields[$paramgroup][$cnt]["tag"]; 
 
 		// start row
 		$ret = $ret . "<tr><td>{$dispfields[$paramgroup][$cnt]["display"]}</td>\n";
