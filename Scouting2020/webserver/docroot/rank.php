@@ -114,7 +114,7 @@
 			$teamsrank[$teamnum]=$_POST["{$teamnum}_{$sort}"];
 		}
 
-        // sort teamsrank array
+        // sort ranks
         asort($teamsrank);
 
         // store in order processed, placing NULL's at end

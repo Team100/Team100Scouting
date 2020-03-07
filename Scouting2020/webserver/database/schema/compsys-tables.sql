@@ -532,7 +532,6 @@ create table process_lock
 # insert needed locks
 insert into process_lock (lock_id) values ('ranking');		# ranking process
 insert into process_lock (lock_id) values ('finals_selection');	# ranking process
-insert into process_lock (lock_id) values ('custom_param');	# custom_parameter process
 insert into process_lock (lock_id) values ('doc_topics');	# topics for docprocess
 
 

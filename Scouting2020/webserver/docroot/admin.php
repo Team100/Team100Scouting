@@ -52,16 +52,6 @@
    </ul>
 
 
-   &nbsp;&nbsp;&nbsp;&nbsp;<b>Custom Parameters (Be careful in this area!):</b>
-   <ul>
-   <li><a href=\"/customparam.php?vargroup=Bot\">Define robot/team-based custom parameters</li>
-   <br>
-   <li><a href=\"/customparam.php?vargroup=Match\">Define match-based custom parameters</li>
-   <br>
-   <li><a href=\"/verify-params.php\">Verify custom parameters from config file</a></li>
-   </ul>
-
-
    &nbsp;&nbsp;&nbsp;&nbsp;<b>Documentation System:</b>
    <ul>
    <li><a href=\"/admin.php\">Create document</a></li>

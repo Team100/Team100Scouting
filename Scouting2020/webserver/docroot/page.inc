@@ -12,7 +12,7 @@ require "params.inc";
 
 
 // software release version
-$release_version="4.0.1";
+$release_version="3.1";
 
 
 //
@@ -29,7 +29,6 @@ $debug=FALSE;
 //
 //check $get variable
 if(isset($_GET['debug'])) $debug=TRUE;
-
 //
 function debug()
 {
@@ -162,20 +161,13 @@ function dblock($dblock, $op)
     foreach($working as $wlock)
     {
     	// look for row-locked user  
-    	$query = "select locked from {$wlock["table"]} where {$wlock["where"]}";
-    	if (debug()) print "<br>DEBUG-dblock: " . $query . "<br>\n";
-	if (! ($result = @mysqli_query ($connection, $query) ))
+	if (! ($result = @mysqli_query ($connection, "select locked from {$wlock["table"]} where {$wlock["where"]}") ))
 		dbshowerror($connection, "die");
 
 	// get row and field
-	$rowret = TRUE;
 	if ($row = mysqli_fetch_array($result))
 		$rowlocked = $row["locked"];
-        else 
-        { 
-          $rowret = FALSE;
-          $rowlocked = NULL;
-        }
+        else $rowlocked = NULL;
         
 	// perform various operations, per switch	    	
     	switch ($op)
@@ -193,19 +185,16 @@ function dblock($dblock, $op)
 	 	break;
 	 	
 	    case "check":
-	    	// if row has returned, then check/abort. if row locked by another user, abort transaction
-	    	if ($rowret === TRUE)
-	    	{
-	    	  if ($rowlocked != $user)
-	    	     if ($rowlocked == "")
-		 	die(showerror("Database row in {$wlock["table"]} as edited by someone else.  Please abort and return to Home Page!"));
-	    	     else 
+	    	// if row locked by another user, abort transaction
+	    	if ($rowlocked != $user)
+	    	   if ($rowlocked == "")
+			die(showerror("Database row in {$wlock["table"]} as edited by someone else.  Please abort and return to Home Page!"));
+	    	   else 
 			die(showerror("Database row in {$wlock["table"]} has been locked by a different user - {$rowlocked}. Edit aborted.  Hit back on browser to continue."));
 
-	    	  // add userid as locked user  
-	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
+	    	// add userid as locked user  
+	    	if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
 			dbshowerror($connection, "die");	    
-		}
 		
 		break;
 
@@ -215,7 +204,6 @@ function dblock($dblock, $op)
 		    	if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
 				dbshowerror($connection, "die");	
 		break;
-		
 	    case "changedby":
 	    	if ($rowlocked == $user)
 	    	{
@@ -394,7 +382,7 @@ function showupdatedby($dblock)
 
 // function: db_update($tablename, $table_identifiers, $db_array)
 //   $tablename - table name in compsys for which array applies
-//   $table_identifiers - formatted array of key/value pairs where the 
+//   $table_identifies - formatted array of key/value pairs where the 
 //        key is the db column name that is part of the identifier
 //        (and thus the where clause), and the value is the data.
 //   $db_data_array - tBA data, formatted as an array of key/value 
@@ -428,7 +416,7 @@ function db_update($tablename, $table_identifiers, $db_array)
 
 // function: db_update_or_create($tablename, $table_identifiers, $db_array)
 //   $tablename - table name in compsys for which array applies
-//   $table_identifiers - formatted array of key/value pairs where the 
+//   $table_identifies - formatted array of key/value pairs where the 
 //        key is the db column name that is part of the identifier
 //        (and thus the where clause), and the value is the data.
 //   $db_data_array - tBA data, formatted as an array of key/value 
@@ -446,9 +434,9 @@ function db_update_or_create($tablename, $table_identifiers, $db_array)
    // set up dummy column for test
 //   $dummycol="";
 //   foreach($table_identifiers as $column=>$value)
-//    if ($dummycol == "") $dummycol = $column;
+     if ($dummycol == "") $dummycol = $column;
 
-   // set where clause
+   // set where clauase
    $where = fields_insert("where", $table_identifiers, "");
    
    // select to see if update or insert
@@ -685,19 +673,16 @@ function teamhref ( $teamnum)
 }
 
 //
-// function: tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $editprefix)
-//  (function table text field)
+// function: tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $value)
 //  $edit - edit flag, 1 if editing
 //  $options - options to add (see below)
 //  $data - dataarray with associative element named fieldname
-//  $fieldname - name of field (in associative element, in forms, etc.)
+//  $fieldname - name of field (in associative element, in forms, etc.
 //  $fieldtag - tag to display by field.  if "DisplayField", display field translation is referenced
 //  $size - size of editing text box
 //  $maxlength - max length of input allowed
 //  $defvalue - value to place in text box if in editing mode.  Otherwise this value comes from $data
-//  $editprefix - placed on the front of every edit field so that multiple rows can be processed 
-//                  if using tabular entry
-//   
+//       ---- Not implemented yet
 //
 // Displays for reading or for edit in two <td> boxes.  Intended as a generic method to layout boxes
 //  within layout tables.
@@ -707,12 +692,10 @@ function teamhref ( $teamnum)
 //  ["notag="] = TRUE - do not print field label/tag.  Just the field itself
 //  ["notd"] = TRUE - do not print <td> open and close
 //  ["href"] = TRUE - enclose data value in href tag
-//  ["th"] = TRUE - use <th></th> tags instead of <td> throughout
-//  ["header"] = TRUE - use tag within <th> line without any data.
 //   
 //
 
-function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $maxlength = NULL, $defvalue = NULL, $editprefix = NULL )
+function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $maxlength = NULL, $defvalue = NULL )
 {
   // set null vars
   $beg_tr = NULL; $beg_td = NULL; $beg_href = NULL; $end_href = NULL; $end_td = NULL; $end_tr = NULL; $tag = NULL;
@@ -722,15 +705,8 @@ function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $ma
     // tr
     if ((isset($options["tr"])) && ($options["tr"] !== FALSE)) {$beg_tr="<tr valign=\"top\">\n"; $end_tr="</tr>"; }
     //
-    // no td -- TRUE means don't include <td> tags.  Check if we're using th instead of td
-    if ((! isset($options["notd"])) || ($options["notd"] !== TRUE)) 
-    {
-      // check if <th> instead of <td>
-       if ((isset($options["th"])) && ($options["th"] !== FALSE)) 
-       	 {$beg_td="<th>"; $end_td="</th>"; }       
-       else
-         {$beg_td="<td>"; $end_td="</td>"; }
-    }
+    // no td -- TRUE means don't include <td> tags
+    if ((! isset($options["notd"])) || ($options["notd"] !== TRUE)) {$beg_td="<td>"; $end_td="</td>"; }
     //
     // notag -- don't include tag
     if ((! isset($options["notag"])) || ($options["notag"] !== TRUE)) $tag = "{$beg_td}{$fieldtag}{$end_td}";
@@ -754,16 +730,12 @@ function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $ma
     // set match length
     if (! isset($maxlength)) $maxlength = $size;
     
-  // if in header mode, just print <th>$tag</th>, otherwise set up fields
-  if ((isset($options["header"])) && ($options["header"] !== FALSE))
-    $ret="{$beg_tr}{$beg_href}{$tag}{$end_href}\n{$end_tr}";
-  else
-    // set up edit and non-edit mode  
-    if ($edit)
-      $ret="{$beg_tr}{$tag}{$beg_td}<input type=\"text\" name=\"{$editprefix}{$fieldname}\" size={$size} maxlength={$maxlength} value=\"{$value}\">{$end_td}{$end_tr}";
-    else  
-      $ret="{$beg_tr}{$tag}{$beg_td}{$beg_href}{$value}{$end_href}{$end_td}\n{$end_tr}";
-   
+  // set up edit and non-edit mode  
+  if ($edit)
+    $ret="{$beg_tr}{$tag}{$beg_td}<input type=\"text\" name=\"{$fieldname}\" size={$size} maxlength={$maxlength} value=\"{$value}\">{$end_td}{$end_tr}";
+  else  
+    $ret="{$beg_tr}{$tag}{$beg_td}{$beg_href}{$value}{$end_href}{$end_td}\n{$end_tr}\n";
+
    return($ret);
 }
 
@@ -855,7 +827,7 @@ function texttfield( $fieldtag, $fieldname, $size, $maxlength, $value )
 //   $fieldname - name used for variables and db field
 //   $value - value placed in field
 //
-//  Used to place a hidden field within a form.
+//  Used to place a hidden field within a fox.
 //
 
 function hiddenfield( $fieldname, $value )
@@ -894,33 +866,26 @@ function alliancefield ( $color )
 
 
 //
-// function: fields_load: ($post, $fieldnames, $editprefix)
+// function: fields_load: ($post, $fieldnames)
 //  loads fields names from post operation
-//   $post = text value for get or post.  If set to "post" otherwise assumes get
-//   $fieldnames = array of field names assumed to match html form field names
-//   $editprefix = prefix appended to each fieldname for searching $_POST.  The 
-//                  prefix allows easy processing of tabular data. See tabtextfields for use.
+//   $post = text value for get or post
+//   $fieldnames = array of field names assumed to match html form names
 //
 // Loads fieldnames from $GET or $POST.  If $post is set to "post", uses a $post variable.
 //
 
-function fields_load ( $post, $fieldnames, $editprefix = NULL )
+function fields_load ( $post, $fieldnames )
 {
    // iterate through field names
    foreach ($fieldnames as $fieldname)
     {
       // assign name a value
       if ( $post == "post" )
-        // if $editprefix is used, accommodate
-	if ($editprefix != NULL)
-	  if (isset($_POST[$editprefix . $fieldname])) $formfields[$fieldname] = $_POST[$editprefix . $fieldname];
-  	  else
-            $formfields[$fieldname] = NULL;
-        else
-	  if (isset($_POST[$fieldname])) $formfields[$fieldname] = $_POST[$fieldname];
-  	  else 
-            $formfields[$fieldname] = NULL;
-      else // not "post"
+	if (isset($_POST[$fieldname]))
+	  $formfields[$fieldname] = $_POST[$fieldname];
+	else
+          $formfields[$fieldname] = NULL;	  
+      else
       	if (isset($_GET[$fieldname]))
           $formfields[$fieldname] = $_GET[$fieldname];
         else
@@ -933,7 +898,7 @@ function fields_load ( $post, $fieldnames, $editprefix = NULL )
 
 
 //
-// function: fields_insert ( $operation, $formfields, $fieldnames )
+// function: ( $operation, $formfields, $fieldnames )
 //  fields_insert: create insert string
 //  $operation - name, value, where
 //        nameonly or fieldname - name of fields, comma separated
@@ -947,8 +912,7 @@ function fields_load ( $post, $fieldnames, $editprefix = NULL )
 //
 //   Returns string for insertion into SQL statement.
 //
-//  Creates strings for insertion into SQL statements based on $operation.
-//   Strings include column names (fieldname or nameonly),
+//  Creates strings for insertion into SQL statements.  Strings include column names (fieldname or nameonly),
 //   insert values ('value','value'...), or update/where statements (field='value')
 //
 //
@@ -956,7 +920,7 @@ function fields_load ( $post, $fieldnames, $editprefix = NULL )
 function fields_insert ( $operation, $formfields, $fieldnames = NULL )
 {
    $insert="";
-
+   
    // if field names, use the array that is passed, otherwise iterate over formfields
    if ($fieldnames)
      foreach($fieldnames as $fieldname)
@@ -1155,7 +1119,7 @@ function tabparamfields($edit, $options, $data, $paramgroup)
 //
 //
 // function: param_insert($operation, $formfields, $paramgroup)
-//  display/edit custom parameterized fields
+//  display/edit parameterized fields
 //
 //  NOTE: operands similar to fields_insert
 //  $operation - name, value, where
