@@ -117,7 +117,7 @@
   $options["pagebreak"]=3;
   $options["pagebreakstring"]="\n</table>\n</td><td>\n<table border=\"1\">\n";
 
-  print tabparamfields($edit, $options, $row, "Bot");
+  print tabparamfields($edit, $options, $row, "Play");
 
   // end of blocks of data and two layouts
   print "\n</table>\n</td></tr></table>\n</td></tr></table>";

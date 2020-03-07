@@ -250,24 +250,21 @@
 		$dbcontrol=null;
 	}//remove your own control if not editing
 	if(!$edit && !$dbcontrol)
-		print "<a href=\"/finalselect.php?edit=1\">Edit this page</a>&nbsp;&nbsp;&nbsp;\n";
+		print "<a href=\"/finalselect.php?edit=1\">Edit this page</a><br>";
 	else if($dbcontrol && $dbcontrol!=$user)
 	{
 		print "Locked by {$dbcontrol}- <a href=\"/finalselect.php\">Retry</a>\n";
-		print " &nbsp; <a href=\"/finalselect.php?dblocksteal=1&edit=1\">!Steal the page!</a>&nbsp;&nbsp;&nbsp;\n";
+		print " &nbsp; <a href=\"/finalselect.php?dblocksteal=1&edit=1\">!Steal the page!</a><br>\n";
 	}//page stealing
 
 	if($error_message)
 		print "<br><font color=\"red\"><b>{$error_message}</font></b>\n";
 
-    // Return navigation
-    print "\n<a href=\"{$base}\">Return to Home</a>\n";
-
     //************************************************
   	//Conrads Work:
 
 
-    // JLV: separate Conrad's refused processing from the edit=10 so that edit=13 can use
+    // JLV: separate Conrad's refused processing from the edit=10 so that edet=13 can use
     //
     // refused processing
     //

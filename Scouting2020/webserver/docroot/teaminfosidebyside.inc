@@ -27,8 +27,7 @@
     
   // add Matchfields
   foreach($dispfields['Match'] as $fieldnum=>$matcharray)
-//DBCOL    $match_fields = array_merge($match_fields, array("MatchField_" . $fieldnum => $matcharray['display']));
-    $match_fields = array_merge($match_fields, array($matcharray['tag'] => $matcharray['display']));
+    $match_fields = array_merge($match_fields, array("MatchField_" . $fieldnum => $matcharray['display']));
  
  
   // create first column as averages column 
@@ -147,7 +146,7 @@
   $options["notag"]=FALSE;
 //  $options["pagebreak"]=0;
 //  $options["pagebreakstring"]="\n</table>\n</td><td>\n<table border=\"1\">\n";
-  print tabparamfields($edit, $options, $row, "Bot");
+  print tabparamfields($edit, $options, $row, "Play");
 
 
 

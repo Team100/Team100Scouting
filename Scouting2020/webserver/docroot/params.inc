@@ -43,14 +43,9 @@ $tba_AppId= $frcteam . ':compsystem:v02';
 // Site parameters
 //
 // site names as in http://site/
-if(isset($_SERVER['SERVER_NAME'])) $site = $_SERVER['SERVER_NAME']; else $site = NULL;
+$site = $_SERVER['SERVER_NAME'];
 // base - everything after site.  Example: /compsys.  Leave at "/" if nothing.
 $base = "/";
-
-
-//
-// Custom params limit per type
-$custom_params_limit = 40;
 
 
 // 
@@ -75,10 +70,99 @@ $field_positions = FALSE;
 //
 //
 //   Should we create a "alliance position" switch too?  (for later)
-//
-// All definted from included db-generated file
-require "params-custom.inc";
 
+// Comment out unsed params or set used to FALSE
+
+//
+// Play Fields -- analyzed from field play, pit, or other analysis of robot
+//
+
+$dispfields["Play"][0] = array("used"=>TRUE, "tag"=>"opstatus", "display"=>"Oper Status", "inputlen"=>4, "maxlen"=>4, "default_value"=>"");
+$dispfields["Play"][1] = array("used"=>TRUE, "tag"=>"drivetrain", "display"=>"Drivetrain", "inputlen"=>10, "maxlen"=>20, "default_value"=>"");
+$dispfields["Play"][2] = array("used"=>TRUE, "tag"=>"shooter", "display"=>"Shooter?", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+$dispfields["Play"][3] = array("used"=>TRUE, "tag"=>"highshooter", "display"=>"High Shooter?", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+$dispfields["Play"][4] = array("used"=>TRUE, "tag"=>"pickup", "display"=>"Pickup?", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+$dispfields["Play"][5] = array("used"=>TRUE, "tag"=>"scaling", "display"=>"Scaling Mech?", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+$dispfields["Play"][6] = array("used"=>TRUE, "tag"=>"specialmech", "display"=>"Special Mech?", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+$dispfields["Play"][7] = array("used"=>TRUE, "tag"=>"portcullis", "display"=>"Portcullis", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][8] = array("used"=>TRUE, "tag"=>"cheval", "display"=>"Cheval", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][9] = array("used"=>TRUE, "tag"=>"moat", "display"=>"Moat", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][10] = array("used"=>TRUE, "tag"=>"ramparts", "display"=>"Ramparts", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][11] = array("used"=>TRUE, "tag"=>"drawbridge", "display"=>"Drawbridge", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][12] = array("used"=>TRUE, "tag"=>"sallyPort", "display"=>"Sally Port", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][13] = array("used"=>TRUE, "tag"=>"rockwall", "display"=>"Rock Wall", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][14] = array("used"=>TRUE, "tag"=>"roughterrain", "display"=>"Rough Terrain", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][15] = array("used"=>TRUE, "tag"=>"lowbar", "display"=>"Low Bar", "inputlen"=>2, "maxlen"=>2, "default_value"=>"0");
+$dispfields["Play"][16] = array("used"=>TRUE, "tag"=>"", "display"=>"Speed Rating", "inputlen"=>1, "maxlen"=>1, "default_value"=>"5");
+$dispfields["Play"][17] = array("used"=>TRUE, "tag"=>"", "display"=>"Pickup Rating", "inputlen"=>1, "maxlen"=>1, "default_value"=>"5");
+$dispfields["Play"][18] = array("used"=>TRUE, "tag"=>"", "display"=>"Low Shoot Rating", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+$dispfields["Play"][19] = array("used"=>TRUE, "tag"=>"", "display"=>"High Shoot Rating", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+$dispfields["Play"][20] = array("used"=>TRUE, "tag"=>"", "display"=>"Breach Rating", "inputlen"=>1, "maxlen"=>1, "default_value"=>"5");
+// $dispfields["Play"][21] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][22] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][23] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][24] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][25] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][26] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][27] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][28] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][29] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][30] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][31] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][32] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][33] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][34] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][35] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][36] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][37] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][38] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Play"][39] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+
+
+//
+// Match Fields -- analyzed in each match.  Data specific to that match
+//
+
+$dispfields["Match"][0] = array("used"=>TRUE, "tag"=>"autoscorebot", "display"=>"Auto Score Bot", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][1] = array("used"=>TRUE, "tag"=>"autoscoretop", "display"=>"Auto Score Top", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][2] = array("used"=>TRUE, "tag"=>"AutoRock Wall", "display"=>"AutoRock Wall", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][3] = array("used"=>TRUE, "tag"=>"AutoMoat", "display"=>"AutoMoat", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][4] = array("used"=>TRUE, "tag"=>"AutoDrawbridge", "display"=>"AutoDrawbridge", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][5] = array("used"=>TRUE, "tag"=>"AutoCheval de frise", "display"=>"AutoCheval de frise", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][6] = array("used"=>TRUE, "tag"=>"AutoLow Bar", "display"=>"AutoLow Bar", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][7] = array("used"=>TRUE, "tag"=>"startposition", "display"=>"startposition", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][8] = array("used"=>TRUE, "tag"=>"Misses High", "display"=>"Misses High", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][9] = array("used"=>TRUE, "tag"=>"Misses Low", "display"=>"Misses Low", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][10] = array("used"=>TRUE, "tag"=>"Percent Accuracy", "display"=>"Percent Accuracy", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][11] = array("used"=>TRUE, "tag"=>"driverrating", "display"=>"driverrating", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][12] = array("used"=>TRUE, "tag"=>"pickuprating", "display"=>"pickuprating", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][13] = array("used"=>TRUE, "tag"=>"BreacherRating", "display"=>"BreacherRating", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][14] = array("used"=>TRUE, "tag"=>"Rock Wall", "display"=>"Rock Wall", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][15] = array("used"=>TRUE, "tag"=>"Rock Wall Difficult?", "display"=>"Rock Wall Difficult?", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][16] = array("used"=>TRUE, "tag"=>"Moat", "display"=>"Moat", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][17] = array("used"=>TRUE, "tag"=>"Moat Difficult?", "display"=>"Moat Difficult?", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][18] = array("used"=>TRUE, "tag"=>"Drawbridge", "display"=>"Drawbridge", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][19] = array("used"=>TRUE, "tag"=>"Drawbridge Difficult?", "display"=>"Drawbridge Difficult?", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][20] = array("used"=>TRUE, "tag"=>"Cheval de frise", "display"=>"Cheval de frise", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][21] = array("used"=>TRUE, "tag"=>"Cheval de frise Difficult?", "display"=>"Cheval de frise Difficult?", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][22] = array("used"=>TRUE, "tag"=>"Low Bar", "display"=>"Low Bar", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][23] = array("used"=>TRUE, "tag"=>"Low Bar Difficult", "display"=>"Low Bar Difficult", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][24] = array("used"=>TRUE, "tag"=>"robottype", "display"=>"robottype", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][25] = array("used"=>TRUE, "tag"=>"Pickup Speed", "display"=>"Pickup Speed", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][26] = array("used"=>TRUE, "tag"=>"Pickup Stable", "display"=>"Pickup Stable", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][27] = array("used"=>TRUE, "tag"=>"telescorebot", "display"=>"telescorebot", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][28] = array("used"=>TRUE, "tag"=>"telescoretop", "display"=>"telescoretop", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][29] = array("used"=>TRUE, "tag"=>"TechFoul", "display"=>"TechFoul", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][30] = array("used"=>TRUE, "tag"=>"FinalPosit", "display"=>"FinalPosit", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][31] = array("used"=>TRUE, "tag"=>"redcard", "display"=>"redcard", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][32] = array("used"=>TRUE, "tag"=>"Disabled", "display"=>"Disabled", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][33] = array("used"=>TRUE, "tag"=>"Broken", "display"=>"Broken", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+// $dispfields["Match"][34] = array("used"=>TRUE, "tag"=>"Notes", "display"=>"Notes", "inputlen"=>3, "maxlen"=>3, "default_value"=>"");
+// $dispfields["Match"][35] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Match"][36] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Match"][37] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Match"][38] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
+// $dispfields["Match"][39] = array("used"=>TRUE, "tag"=>"", "display"=>"", "inputlen"=>1, "maxlen"=>1, "default_value"=>"");
 
 //
 // set max length of Match fields to match the database.  Tablet data longer than this is truncated.
@@ -339,18 +423,6 @@ $dbpass = "100hats";
 
 $dbhost = "localhost";
 
-// database collate character set map
-//  Note: unfortunately, MySQL and MariaDB use case-insensitive collation
-//   sequences by default for comparisons. Go figure.  For where clause
-//   identification on keys, the "collate char-set" can be inserted behind
-//   the column name to perform case-sensitive compares.  We use this structure
-//   to change "where" clauses, for example in fields_insert
-//
-//   This parameter can be set to perform comparison.  Note that not all char sets
-//   can be converted.  utf8mb4 will not convert to latin1_general_cs, as an example.
-//
-$db_case_sensitive = " collate utf8mb4_bin ";
-
 
 // ***************************
 //
@@ -429,11 +501,10 @@ function rap_custom_field_data ($team, $teamcnt)
     
   // build fields list
   $fields = "";
-  foreach($defenses as $botfield)
+  foreach($defenses as $playfield)
   {
     if ($fields != "") $fields = $fields . ", ";
-//DBCOL    $fields = $fields . "avg(PlayField_{$botfield}) PlayField_{$botfield} ";
-    $fields .= "avg({$dispfields['Bot'][$botfield]['tag']}) {$dispfields['Bot'][$botfield]['tag']} ";
+    $fields = $fields . "avg(PlayField_{$playfield}) PlayField_{$playfield} ";
   }  
   
   // define and execute averages query
@@ -449,10 +520,8 @@ function rap_custom_field_data ($team, $teamcnt)
 
   // load sort array
   $averages = array();
-  foreach($defenses as $botfield)
-//DBCOL    $averages = array_merge($averages, array(" {$botfield}" => $row["PlayField_{$botfield}"]));
-//DBCOL -- ??? why space in array?
-    $averages = array_merge($averages, array(" {$botfield}" => $row[$dispfields['Bot'][$botfield]['tag']]));
+  foreach($defenses as $playfield)
+    $averages = array_merge($averages, array(" {$playfield}" => $row["PlayField_{$playfield}"]));
 
   // sort array
   asort($averages);
@@ -462,9 +531,9 @@ function rap_custom_field_data ($team, $teamcnt)
   print "<table border=\"1\">\n";
   foreach ($averages as $stringfield=>$value)
   {
-    $botfield = intval($stringfield);
+    $playfield = intval($stringfield);
     $displayvalue = sprintf("%.2f", $value);
-    print "<tr><td>{$dispfields['Bot'][$botfield]['display']}</td><td>{$displayvalue}</td></tr>\n";
+    print "<tr><td>{$dispfields['Play'][$playfield]['display']}</td><td>{$displayvalue}</td></tr>\n";
   }
   
   // end table 

@@ -32,13 +32,13 @@
 		"rank_pos1","rating_pos1","rank_pos2","rating_pos2","rank_pos3","rating_pos3","offense_analysis",
 		"defense_analysis","pos1_analysis","pos2_analysis","pos3_analysis",/* DEPRICATE? "robot_analysis" ,*/"driver_analysis",
 		"with_recommendation","against_recommendation"),
-		param_array("Bot"));
+		param_array("Play"));
   else
 	  $table_teambot = array_merge ( array("rank_overall","rating_overall","rating_overall_off","rating_overall_def",
 		"offense_analysis",
 		"defense_analysis", /* DEPRICATE? "robot_analysis",*/ "driver_analysis",
 		"with_recommendation","against_recommendation"),
-		param_array("Bot"));
+		param_array("Play"));
 
   // handle update if returning from edit mode
   if ($edit == 2)
