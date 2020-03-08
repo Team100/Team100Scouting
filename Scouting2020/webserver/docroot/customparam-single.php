@@ -8,7 +8,7 @@
 
   // get variables, checking for existance
   if(isset($_GET["vargroup"])) $vargroup=$_GET["vargroup"]; else $vargroup="Bot";
-  if(isset($_GET["tag"])) $vargroup=$_GET["tag"]; else $tag=NULL;
+  if(isset($_GET["tag"])) $tag=$_GET["tag"]; else $tag=NULL;
   if(isset($_GET["edit"])) $edit=$_GET["edit"]; else $edit=NULL;
 
   // header and setup
@@ -19,7 +19,7 @@
 
   // define lock array, fields arrays
   //   the arrays set how array-based functions for lock and field editing work
-  $dblock = array("table"=>"custom_param","where"=>"vargroup = '{$vargroup}'");
+  $dblock = array("table"=>"custom_param","where"=>"vargroup = '{$vargroup}' and tag = '{$tag}'");
   $custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","inputlen","maxlen",
      "default_value","list_of_values","db_calc","formula_calc","test_avg","test_range","test_values",
      "description","tBA_tag","tBA_type");
@@ -31,14 +31,17 @@
   	if (isset($_POST["op"]) && ($_POST["op"] == "Save"))
 	{
   		// check row
-  		dblock($dblock,"check");
+ 		dblock($dblock,"check");
 
 		// load form fields
 		$formfields = fields_load("post", $custom_param);
-		$query = "update custom_param set " . fields_insert("update",$formfields) . " where tag = {$tag}";
 
+        // add vargroup
+        $formfields["vargroup"] = $vargroup;
+
+		$query = "update custom_param set " . fields_insert("update",$formfields) . " where tag = '{$tag}'";
 		// process query
-		if (debug()) print "<br>DEBUG-mtemplate: " . $query . "<br>\n";
+		if (debug()) print "<br>DEBUG-customparam-single: " . $query . "<br>\n";
 		if (! (@mysqli_query ($connection, $query) ))
 			dbshowerror($connection, "die");
 
@@ -74,7 +77,8 @@ print "
   //
 
   // get custom_param details define result set
-  $query = "select ". fields_insert("nameonly",NULL,$custom_param) . " from custom_param where vargroup = '{$vargroup}'";
+  $query = "select ". fields_insert("nameonly",NULL,$custom_param) . " from custom_param";
+  $query .= " where vargroup = '{$vargroup}' and tag = '{$tag}'";
   if (debug()) print "<br>DEBUG-template: " . $query . "<br>\n";
   if (!($result = @ mysqli_query ($connection, $query)))
     dbshowerror($connection);
@@ -85,77 +89,57 @@ print "
   // field options
   $options["tr"] = 1;  // add tr tags
 
+  $desc_options = $options;
+  $desc_options["notagabove"] = TRUE;
+
   // if in edit mode, signal save with edit=2
   if ($edit)
-  	print "<form method=\"POST\" action=\"/template-simple-edit.php?edit=2\">\n";
+  	print "<form method=\"POST\" action=\"/customparam-single.php?vargroup={$vargroup}&tag={$tag}&edit=2\">\n";
 
-  // Use tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue)
+  // Use tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $lov, $editprefix)
   // for each field
 
 
       if ($vargroup == "tBA")
-        print "<tr align=\"left\">\n"
-        . tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",25,50,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "tBA_type","tBA Type",10,10,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,$editprefix)
-        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",$editprefix)
-        . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",$editprefix)
-        . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,$editprefix)
+        print tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",40,50,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "tBA_type","tBA Type",10,10,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,NULL)
+        . tabtextfield($edit,$options,$row, "dbtype","DB type",10,10,"varchar",NULL,NULL)
+        . tabtextfield($edit,$options,$row, "display","Display",20,20,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_values","TestValues",50,200,NULL,NULL,NULL)
+        . tabtextarea($edit,$desc_options,$row, "description","Description",6,50,NULL,NULL,NULL)
         . "</tr>\n\n";
       else
-        print "<tr align=\"left\">\n"
-        . tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,$editprefix)
-        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",$editprefix)
-        . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",$editprefix)
-        . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,$editprefix)
-        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,$editprefix)
-        . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "list_of_values","List of Val",10,100,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "db_calc","DB Calc",10,50,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,$editprefix)
-        . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,$editprefix)
-      . "</tr>\n\n";
-
-
-  print "
-  <!--- table for display data --->
-  <table valign=\"top\">
-  "
-  . tabtextfield($edit,$options,$row, "tag","Tag",10,15)
-  . tabtextfield($edit,$options,$row, "position","Ord",3,3)
-  . tabtextfield($edit,$options,$row, "used","Used",1,1)
-  . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1)
-  . tabtextfield($edit,$options,$row, "dbtype","DB type",8,8)
-  . tabtextfield($edit,$options,$row, "display","Display",14,15)
-  . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2)
-  . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2)
-  . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20)
-  . tabtextfield($edit,$options,$row, "list_of_values","List of Val",10,100)
-  . tabtextfield($edit,$options,$row, "db_calc","DB Calc",10,50)
-  . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200)
-  . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3)
-  . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3)
-  . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200)
-  . "\n<tr><td><br><br></td></tr>\n<tr><td>\n";
+        print tabtextfield($edit,$options,$row, "tag","Tag",20,20,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,NULL)
+        . tabtextfield($edit,$options,$row, "dbtype","DB type",10,10,"varchar",NULL,NULL)
+        . tabtextfield($edit,$options,$row, "display","Display",20,20,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "list_of_values","List of Val",50,100,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "db_calc","DB Calc",50,50,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_values","TestValues",50,200,NULL,NULL,NULL)
+        . tabtextarea($edit,$desc_options,$row, "description","Description",6,50,NULL,NULL,NULL)
+      . "\n\n";
 
   // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/template-simple-edit.php?vargroup={$vargroup}") . "\n";
+  print dblockshowedit($edit, $dblock, "/customparam-single.php?vargroup={$vargroup}&tag={$tag}") . "\n";
 
   // return and home buttons
-  print "<br><br><a href=\"/admin.php\">Return to Admin</a><br>\n";
-  print "<a href=\"/\">Return to Home</a>\n";
+  print "<br><br><a href=\"/customparam.php?vargroup={$vargroup}\">Return to Custom Parms</a>\n";
+  print "&nbsp;&nbsp;&nbsp;<a href=\"/admin.php\">Return to Admin</a><br>\n";
+  print "<a href=\"/\">Return to Home</a><br><br>\n";
 
   // finish table and continue
   print "</td></tr></table>\n";

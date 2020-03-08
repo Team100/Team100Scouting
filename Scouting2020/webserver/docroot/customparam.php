@@ -153,42 +153,43 @@ print "
 
     // set special URL tag options
     $tagoptions = $options;
-    $tagoptions["href"] = "/customparam-simple.php?vargroup={$vargroup}&tag={$row["tag"]}";
+    if (!($edit))
+      $tagoptions["href"] = "/customparam-single.php?vargroup={$vargroup}&tag={$row["tag"]}";
 
     // special formating for tBA
     if ($vargroup == "tBA")
       print "<tr align=\"left\">\n"
-      . tabtextfield($edit,$tagoptions,$row, "tag","Tag",15,20,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",25,50,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "tBA_type","tBA Type",10,10,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "used","Used",1,1,1,$editprefix)
-      . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",$editprefix)
-      . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",$editprefix)
-      . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,$editprefix)
+      . tabtextfield($edit,$tagoptions,$row, "tag","Tag",15,20,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",25,50,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "tBA_type","tBA Type",10,10,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,NULL,$editprefix)
       . "</tr>\n\n";
     else
       print "<tr align=\"left\">\n"
-      . tabtextfield($edit,$tagoptions,$row, "tag","Tag",15,20,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "used","Used",1,1,1,$editprefix)
-      . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",$editprefix)
-      . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",$editprefix)
-      . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,$editprefix)
-      . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,$editprefix)
-      . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "list_of_values","List of Val",10,100,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "db_calc","DB Calc",10,50,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,$editprefix)
-      . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,$editprefix)
+      . tabtextfield($edit,$tagoptions,$row, "tag","Tag",15,20,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "list_of_values","List of Val",10,100,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "db_calc","DB Calc",10,50,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,NULL,$editprefix)
       . "</tr>\n\n";
   }
 
