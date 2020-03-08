@@ -16,7 +16,7 @@ Brief instructions on setting up a MySQL, PHP, apache web server for the competi
    containing docroot, admin, and database directories.  If on Unix, run admin/START_HERE.bash.
    You may need to change it to executabe with chmod +x START_HERE.bash.
    
-   For a refresh of code, run admin/utils/refresh-install.bash
+   For a refresh of code on linux, including multiserver environment, run admin/utils/refresh-install.bash
 
 3. Install needed infrastructure software:
    The system requires Maria DB (a mysql database), apache web server, and PHP.
