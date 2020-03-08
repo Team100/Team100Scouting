@@ -39,7 +39,7 @@ include ('lib/httpful.phar');
 
 // ***************************
 //
-// The Blue Alliance API fieldmaps
+// The Blue Alliance API fieldmaps, API v3
 //
 // Sets up map from Blue Alliance to our scheme structure
 //
@@ -53,11 +53,12 @@ include ('lib/httpful.phar');
 
 // tBA event to event table
 $tba_event_to_event = array ("key"=>"event_id","short_name"=>"name","name"=>"long_name","event_code"=>"event_code",
-   "event_type_string"=>"event_type","event_type"=>"event_type_id","year"=>"year","location"=>"location",
-   "website"=>"website" );
+   "event_type_string"=>"event_type","event_type"=>"event_type_id","year"=>"year","city"=>"city",
+   "state_prov"=>"state_prov","country"=>"country","website"=>"website" );
    
 // tBA team to team table
-$tba_team_to_team = array ("team_number" =>"teamnum","nickname"=>"name","location"=>"location",
+$tba_team_to_team = array ("team_number" =>"teamnum","nickname"=>"name","city"=>"city",
+   "state_prov"=>"state_prov","country"=>"country",
    "website"=>"website","name"=>"sponsors","rookie_year"=>"rookie_year");
    
 // tBA team history to team history
@@ -111,7 +112,10 @@ $map_ranking_to_teambot = array (0=>"f_ranking", 1=>"teamnum");
 //
 //  Maps [element field] 
 //     from blue alliance returned object in array to a tba_dbarray.
+//     A tba_dbarray is a col=>value map that can be inserted/updated in the db.
+//
 //  Returns the tba_dbarray
+//
 
 
 // Field Mapper: team key to teamnum
@@ -129,6 +133,9 @@ $map_ranking_to_teambot = array (0=>"f_ranking", 1=>"teamnum");
 
 function tba_map_teamnum($tba_response_array,$tba_dbarray)
 {
+  // initialize if not already an array
+  if (! is_array($tba_dbarray)) $tba_dbarray = array();
+   
   sscanf($tba_response_array->key, "frc%d", $teamnum);
 
   // place into dbarray
@@ -244,7 +251,7 @@ function tba_get_event_teams()
       $tba_dbarray['event_id']=$sys_event_id;
 
       // map fields from response for teambot  table
-      $tba_dbarray = tba_mapfields($tba_team_to_teambot, $teamobj, $tba_dbarray);
+// skip      $tba_dbarray = tba_mapfields($tba_team_to_teambot, $teamobj, $tba_dbarray);
 
       // update event data in event table
       tba_updatedb("teambot", array ("event_id"=>$sys_event_id, "teamnum"=>$tba_dbarray["teamnum"]), $tba_dbarray);
@@ -252,7 +259,7 @@ function tba_get_event_teams()
       // inform user
       print "{$tba_dbarray["teamnum"]}, ";
 
-      }
+    }
 
     // commit
     if (! (@mysqli_commit($connection) ))
@@ -315,6 +322,7 @@ function tba_get_matches()
                           
       // map fields from response for match_instance table
       $tba_dbarray = tba_mapfields($tba_match_to_match_instance, $matchobj, $tba_dbarray);
+
       
       // update event data in event table
       tba_updatedb("match_instance", $match_id_array, $tba_dbarray);
@@ -857,6 +865,9 @@ function tba_setlastmod($tba_url, $lastmod)
 
 function tba_mapfields ($tba_fieldmap, $tba_responsearray, $tba_dbarray)
 {
+   // initialize if not already an array
+   if (! is_array($tba_dbarray)) $tba_dbarray = array();
+
    // loop through fieldmap picking up any named fields from object
    // and storing them in dbarray
    foreach($tba_fieldmap as $field =>$value)
@@ -865,11 +876,18 @@ function tba_mapfields ($tba_fieldmap, $tba_responsearray, $tba_dbarray)
 //       if ($tba_responsearray->$field != NULL)
          $tba_dbarray[$value] = $tba_responsearray->$field;
      else
+     {
+       // message user.  Not sure if this message should be here or in debug mode.  Putting in both.
+       print "\n<br><br><b>WARNING:</b> tba_mapfields: no tBA response found for field {$field}.<br>\n";
+       print "        Please check Blue Alliance schema and field mappings in bluealliance.inc.<br>\n";
+       print "        Run in debug mode for entire array maps that can help you see the field and query.<br><br>\n";     
+       
        if (debug())
        {
          print "\n<br>DEBUG:tba_mapfields: no response found for field {$field}<br>\n";
          print_r($tba_responsearray);
        }
+      }
    return($tba_dbarray);
 }
 
@@ -896,6 +914,9 @@ function tba_mapfields ($tba_fieldmap, $tba_responsearray, $tba_dbarray)
 function tba_updatedb($tablename, $table_identifiers, $tba_dbarray)
 {
    global $connection;
+
+   // initialize if not already an array
+   if (! is_array($tba_dbarray)) $tba_dbarray = array();
    
    // set where clauase
    $where = fields_insert("where", $table_identifiers, "");
@@ -948,7 +969,10 @@ function tba_updatedb($tablename, $table_identifiers, $tba_dbarray)
 function tba_updatedbifnew($tablename, $table_identifiers, $tba_dbarray)
 {
    global $connection;
-   
+
+   // initialize if not already an array
+   if (! is_array($tba_dbarray)) $tba_dbarray = array();   
+
    // set where clauase
    $where = fields_insert("where", $table_identifiers, "");
    

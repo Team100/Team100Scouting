@@ -58,6 +58,8 @@
    <br>
    <li><a href=\"/customparam.php?vargroup=Match\">Define match-based custom parameters</li>
    <br>
+   <li><a href=\"/customparam.php?vargroup=tBA\">Define The Blue Alliance custom parameters</li>
+   <br>
    <li><a href=\"/verify-params.php\">Verify custom parameters from config file</a></li>
    </ul>
 

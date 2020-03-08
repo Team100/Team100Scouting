@@ -55,7 +55,10 @@ create table event
   event_type varchar(20),       # tBA event_type_string, human-readable event, i.e. 'Regional'
   event_type_id int,            # tBA event_type, with a number code
   year int,                     # tBA year
-  location varchar(40),         # tBA location
+  city varchar(35),		# tBA city of team
+  state_prov varchar(20),	# tBA state_prov of team
+  country varchar(25),		# tBA country of team
+  location varchar(80),		# tBA location, location of team compiled from c,s,c
   website varchar(100),         # tBA website, event webssite	
   primary key (event_id)
  );
@@ -77,7 +80,10 @@ create table team
   nickname varchar(30),		# our nickname for team
   rating int,                   # our 0-9 rating of team capabilities and competencies
   org varchar(80),		# high school or other organization
-  location varchar(80),		# tBA location, location of team
+  city varchar(35),		# tBA city of team
+  state_prov varchar(20),	# tBA state_prov of team
+  country varchar(25),		# tBA country of team
+  location varchar(80),		# tBA location, location of team compiled from c,s,c
   students int,			# number of students on team
   website varchar(80),		# tBA website, team web site
   sponsors varchar(1000),	# tBA name, team sponsors
@@ -504,12 +510,11 @@ create table user_profile
 create table custom_param
  (
   tag varchar(20) not null,	# also serves as column name in database, or reported column name on calcs 
-#  tag_lower varchar(20) not null unique,  # lowercase unique tag so because column names are case-insensitive
   locked varchar(12), 		# row locked for editing by user.  Can clear in application.  May not use.
   updatedby varchar(200), 	# last updated by users
   position int not null,	# order displayed (0 through end)
   used boolean not null,	# used in UI -- may exist in database
-  vargroup varchar(10),		# var function (Bot, Match, or other)
+  vargroup varchar(10),		# var function (Bot, Match, tBA, or other)
   entrytype varchar(1),		# entry type: D=Direct, C=Calc'd
   dbtype varchar(10),		# database column type
   display varchar(20) not null, # display text in app
@@ -522,6 +527,9 @@ create table custom_param
   test_avg int,			# test average value - used for test generation
   test_range int,		# test range + or - from average value - used for test generation
   test_values varchar (200),	# comma-separated values to be used in testing varchars and text
+  description text(500),	# text description of parameter
+  tBA_tag varchar(60),		# tBA_tag from v3 interface
+  tBA_type varchar(10),		# tBA_type from v3 interface
   primary key (tag)
  );
 

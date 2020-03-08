@@ -2,16 +2,17 @@
   // $Revision: 2.1 $
   // $Date: 2010/04/22 04:00:55 $
   //
-  // Competition System - Sample page with edits
+  // Competition System - Custom Parameter Single Tag Entry
   //
   require "page.inc";
 
   // get variables, checking for existance
   if(isset($_GET["vargroup"])) $vargroup=$_GET["vargroup"]; else $vargroup="Bot";
+  if(isset($_GET["tag"])) $vargroup=$_GET["tag"]; else $tag=NULL;
   if(isset($_GET["edit"])) $edit=$_GET["edit"]; else $edit=NULL;
 
   // header and setup
-  pheader("Custom Parameters Setup - Be Careful");
+  pheader("Custom Parameters Setup - Group: {$vargroup}, Tag: {$tag}");
   $connection = dbsetup();
 
   // initialize variables and arrays
@@ -20,7 +21,8 @@
   //   the arrays set how array-based functions for lock and field editing work
   $dblock = array("table"=>"custom_param","where"=>"vargroup = '{$vargroup}'");
   $custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","inputlen","maxlen",
-     "default_value","list_of_values","db_calc","formula_calc","test_avg","test_range","test_values");
+     "default_value","list_of_values","db_calc","formula_calc","test_avg","test_range","test_values",
+     "description","tBA_tag","tBA_type");
 
   // handle update if returning from edit mode
   if ($edit == 2)   // performs database save
@@ -89,6 +91,44 @@ print "
 
   // Use tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue)
   // for each field
+
+
+      if ($vargroup == "tBA")
+        print "<tr align=\"left\">\n"
+        . tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",25,50,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "tBA_type","tBA Type",10,10,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,$editprefix)
+        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",$editprefix)
+        . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",$editprefix)
+        . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,$editprefix)
+        . "</tr>\n\n";
+      else
+        print "<tr align=\"left\">\n"
+        . tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,$editprefix)
+        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",$editprefix)
+        . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",$editprefix)
+        . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,$editprefix)
+        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,$editprefix)
+        . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "list_of_values","List of Val",10,100,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "db_calc","DB Calc",10,50,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200,NULL,$editprefix)
+        . tabtextfield($edit,$options,$row, "description","Description",10,200,NULL,$editprefix)
+      . "</tr>\n\n";
+
+
   print "
   <!--- table for display data --->
   <table valign=\"top\">

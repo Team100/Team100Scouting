@@ -1,0 +1,1033 @@
+AuthKey:DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+
+Response from Blue Alliance
+https://www.thebluealliance.com/api/v3/event/2020cala/teams/simple
+
+Httpful\Response Object
+(
+    [body] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [city] => Torrance
+                    [country] => USA
+                    [key] => frc1197
+                    [name] => SolidWorks/Northrop Grumman/John Deere/Praxair/Raytheon/The Boeing Company/SAGE Millimeter, Inc./LA Solar Group/The Johnson Family/Moog Aircraft Group/Torrance Education Foundation/Blue Robotics/LA Stagecall/Torrance Refinery Company/Masimo Corp./Mastercam/MathWorks&South High School
+                    [nickname] => TorBots
+                    [state_prov] => California
+                    [team_number] => 1197
+                )
+
+            [1] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc1452
+                    [name] => Boeing / Windward School Robotics / Mr. and Mrs. Stephen and Jill Petty & Windward School
+                    [nickname] => Omnicats
+                    [state_prov] => California
+                    [team_number] => 1452
+                )
+
+            [2] => stdClass Object
+                (
+                    [city] => Beverly Hills
+                    [country] => USA
+                    [key] => frc1515
+                    [name] => Enterprise / BHHS Career Technical Education / BHEF & Beverly Hills High School
+                    [nickname] => MorTorq
+                    [state_prov] => California
+                    [team_number] => 1515
+                )
+
+            [3] => stdClass Object
+                (
+                    [city] => El Segundo
+                    [country] => USA
+                    [key] => frc1759
+                    [name] => Raytheon / Xerox Corporation / El Segundo Ed! Foundation & El Segundo High School
+                    [nickname] => Potatoes
+                    [state_prov] => California
+                    [team_number] => 1759
+                )
+
+            [4] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc1836
+                    [name] => Milken Community School/Mitchell Academy of Science and Technology/Jay Manufacturing Corp/Too Mac Engineering, Inc./Republic Lagun Machine Tool/The Marvin Group/Frazier Avation, Inc./Industrial Metal Supply/The Schloss Group at Merrill Lynch/The Boeing Company/Leslie Zola Science Scholarship/Dassault Systèmes SolidWorks Corp./Arnaco Powder Coating Co .inc/Academy Awning/Universal Compressor Services/Decker Design/Mastercam/Haas Automation, Inc./WestCoast Products & Design LLC & Milken Community School
+                    [nickname] => The MilkenKnights
+                    [state_prov] => California
+                    [team_number] => 1836
+                )
+
+            [5] => stdClass Object
+                (
+                    [city] => Hawthorne
+                    [country] => USA
+                    [key] => frc207
+                    [name] => Walt Disney Imagineering / The Boeing Company / Space X / Northrop Grumman Aerospace Systems / Idustrial Metal Supply / Cooler Master & Hawthorne High School
+                    [nickname] => METALCRAFTERS
+                    [state_prov] => California
+                    [team_number] => 207
+                )
+
+            [6] => stdClass Object
+                (
+                    [city] => Santiago
+                    [country] => Chile
+                    [key] => frc2576
+                    [name] => Fundación Redes Creativas/OTT Camiones y Buses/Centro Creativo/AMKA Chilena/Dynae&Corporacion Corazon Tecnologico de Chile
+                    [nickname] => Chilean Heart
+                    [state_prov] => Región Metropolitana de Santiago
+                    [team_number] => 2576
+                )
+
+            [7] => stdClass Object
+                (
+                    [city] => Rolling Hills Estates
+                    [country] => USA
+                    [key] => frc2637
+                    [name] => Kinecta / Boeing / John Deere / Raytheon Corporation / Astro Machine Company / Honda / JKSS, Inc. / R.R. Donnelley / Marathon / Time Station / Velox CNC / M&K Metals / Walong Marketing, Inc / Hickory Tree School / Hashiro and Sheh CNC Services & Palos Verdes Peninsula HS
+                    [nickname] => Phantom Catz
+                    [state_prov] => California
+                    [team_number] => 2637
+                )
+
+            [8] => stdClass Object
+                (
+                    [city] => Rancho Palos Verdes
+                    [country] => USA
+                    [key] => frc2710
+                    [name] => The Muskwa Club, Inc/DENSO/Boeing/Google/Northrop Grumman/Bob and Barbara Morel/Raytheon/SolidWorks/Teradyne/Marine Exchange of Southern California&Family/Community
+                    [nickname] => JetStream
+                    [state_prov] => California
+                    [team_number] => 2710
+                )
+
+            [9] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc3408
+                    [name] => Gerald Oppenheimer Family Foundation (Jill and Stephen Petty)/John Deere/Boeing/Raytheon/Boeing/Robert Yaccarino/Kate and Janet Pregler&Loyola High School Los Angeles
+                    [nickname] => cyberCubs
+                    [state_prov] => California
+                    [team_number] => 3408
+                )
+
+            [10] => stdClass Object
+                (
+                    [city] => Orcutt
+                    [country] => USA
+                    [key] => frc3512
+                    [name] => Melfred Borzall/Phillips 66/Department of Defense STEM Grant/Solidworks/Fastenal & Orcutt Acad Charter High Sch
+                    [nickname] => Spartatroniks
+                    [state_prov] => California
+                    [team_number] => 3512
+                )
+
+            [11] => stdClass Object
+                (
+                    [city] => Fullerton
+                    [country] => USA
+                    [key] => frc3952
+                    [name] => Boeing&Troy High School
+                    [nickname] => Troy Robotics
+                    [state_prov] => California
+                    [team_number] => 3952
+                )
+
+            [12] => stdClass Object
+                (
+                    [city] => Studio City
+                    [country] => USA
+                    [key] => frc4019
+                    [name] => SolidWorks/The Paton Group/NASA&Bridges Academy
+                    [nickname] => Mechanical Paradise
+                    [state_prov] => California
+                    [team_number] => 4019
+                )
+
+            [13] => stdClass Object
+                (
+                    [city] => Bellflower
+                    [country] => USA
+                    [key] => frc4123
+                    [name] => The Boeing Company/NASA - Robotics Alliance Project/Pelican Products/Milwaukee Tools/Tribe Community Supporters&St. John Bosco High School&St Joseph High School-Lakewood
+                    [nickname] => Tribe Robotics
+                    [state_prov] => California
+                    [team_number] => 4123
+                )
+
+            [14] => stdClass Object
+                (
+                    [city] => El Segundo
+                    [country] => USA
+                    [key] => frc4201
+                    [name] => Raytheon/TraPac/The Boeing Company/SpaceX/Da Vinci Schools/Danger Research&Da Vinci Science
+                    [nickname] => The Vitruvian Bots
+                    [state_prov] => California
+                    [team_number] => 4201
+                )
+
+            [15] => stdClass Object
+                (
+                    [city] => TORREON
+                    [country] => Mexico
+                    [key] => frc4400
+                    [name] => PEÑOLES&COLEGIO CERVANTES DE TORREON
+                    [nickname] => PEÑOLES - CERBOTICS
+                    [state_prov] => Coahuila
+                    [team_number] => 4400
+                )
+
+            [16] => stdClass Object
+                (
+                    [city] => Santa Monica
+                    [country] => USA
+                    [key] => frc4501
+                    [name] => New Roads High School
+                    [nickname] => Humans
+                    [state_prov] => California
+                    [team_number] => 4501
+                )
+
+            [17] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc4578
+                    [name] => Wesm-Enriched Sciences Mag HS
+                    [nickname] => CometBots
+                    [state_prov] => California
+                    [team_number] => 4578
+                )
+
+            [18] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc4964
+                    [name] => NRG/Disney Imagineering/Raytheon /I.Am.Angel Foundation/SoCal Office Technologies ,GISX-Xerox&Theodore Roosevelt Senior High School
+                    [nickname] => LA Streetbots
+                    [state_prov] => California
+                    [team_number] => 4964
+                )
+
+            [19] => stdClass Object
+                (
+                    [city] => Long Beach
+                    [country] => USA
+                    [key] => frc4999
+                    [name] => Long Beach Unified School District/Boeing/Empowered Minds CC&Sato Academy of Math and Science&Shared Science
+                    [nickname] => Momentum
+                    [state_prov] => California
+                    [team_number] => 4999
+                )
+
+            [20] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc5089
+                    [name] => Roddenberry Foundation / THE WILLIAM C. BANNERMAN FOUNDATION & Benjamin Franklin High School
+                    [nickname] => Robo-Nerds
+                    [state_prov] => California
+                    [team_number] => 5089
+                )
+
+            [21] => stdClass Object
+                (
+                    [city] => Torrance
+                    [country] => USA
+                    [key] => frc5124
+                    [name] => John Deere/NASA/Raytheon/Torrance Education Foundation&West High School
+                    [nickname] => West Torrance Robotics
+                    [state_prov] => California
+                    [team_number] => 5124
+                )
+
+            [22] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc5510
+                    [name] => Lockheed Martin / Northrop Grumman / Spin Master / Family Industries / Erector by Meccano / Kinetic Lighting & Alexander Hamilton Sr High Sch
+                    [nickname] => The Da Vinci Coders
+                    [state_prov] => California
+                    [team_number] => 5510
+                )
+
+            [23] => stdClass Object
+                (
+                    [city] => Recoleta
+                    [country] => Chile
+                    [key] => frc5512
+                    [name] => Municipalidad de Recoleta/Corporación Cultural de Recoleta/Casillas CargoSud/Fundación Prosegur/Rotatecno Chile/Robotics Lab SCL/Ministerio de Educación - Programa Inglés Abre Puertas/Microsoft Chile/TACH Ingeniería/Instituto Chileno Norteamericano - American Spaces/U.S. Embassy Santiago & Liceo Valentín Letelier & Centro Cultural y Juvenil de Tecnología y Robótica Educativa Aplicada STEM ACADEMY CHILE
+                    [nickname] => Pizza Mecánica
+                    [state_prov] => Región Metropolitana de Santiago
+                    [team_number] => 5512
+                )
+
+            [24] => stdClass Object
+                (
+                    [city] => Neuville-sur-Saône
+                    [country] => France
+                    [key] => frc5553
+                    [name] => Groupe NOËL/SDRA/Elior/Région Auvergne-Rhône-Alpes/Immobilière Notre Dame de Bellegarde/Lions Club/Crédit Mutuel/APEL Notre Dame de Bellegarde/JEEDOM/IDRAC Business School/TraceParts/RS Components/Party Lite/Mairie de Collonges au Mont d'Or/Boucherie ROSIER/THALES/HEXIS/Concept & Impression/BBL GROUPE/ROTARY/Groupe KARDOL/Embassy Suites by Hilton Los Angeles International Airport South/CIC/ELCIA&Notre Dame de Bellegarde
+                    [nickname] => Robo'Lyon
+                    [state_prov] => Rhône
+                    [team_number] => 5553
+                )
+
+            [25] => stdClass Object
+                (
+                    [city] => Lakewood
+                    [country] => USA
+                    [key] => frc5634
+                    [name] => The Boeing Co. & St Joseph High School
+                    [nickname] => Jesterminators
+                    [state_prov] => California
+                    [team_number] => 5634
+                )
+
+            [26] => stdClass Object
+                (
+                    [city] => Rosemead
+                    [country] => USA
+                    [key] => frc5669
+                    [name] => Don Bosco Tech Institute
+                    [nickname] => Techmen
+                    [state_prov] => California
+                    [team_number] => 5669
+                )
+
+            [27] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc5802
+                    [name] => Boeing/i.am.angel Foundation/Disney Imagineering /Raytheon&Boyle Heights STEM Academy
+                    [nickname] => Los STEMateros
+                    [state_prov] => California
+                    [team_number] => 5802
+                )
+
+            [28] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc597
+                    [name] => The Boeing Company/USC-MESA/Vertirbi School of Engineering/NASA/Raytheon/Supervisor Mark Ridley-Thomas/The William C. Bannerman Foundation/L. A. City Council/Cushman & Wakefield/X-treme Solutions/Perkins Grant/CTEIG/Office of Dr. George Mckenna LAUSD/Stephen and Jill Petty/Northrop Grumman/Foshay Learning Center/Lowe's&James a Foshay Learning Ctr
+                    [nickname] => The Wolverines
+                    [state_prov] => California
+                    [team_number] => 597
+                )
+
+            [29] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc6000
+                    [name] => Google & Shalhevet School
+                    [nickname] => Firehawk Robotics
+                    [state_prov] => California
+                    [team_number] => 6000
+                )
+
+            [30] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc606
+                    [name] => Raytheon/Aerospace Corporation/Northrop Grumman/Los Angeles Trade Technical College/Boys and Girls Club of King Drew/The William C. Bannerman Foundation/Walt Disney Imagineering&King-Drew Medical Magnet HS
+                    [nickname] => Cyber Eagles
+                    [state_prov] => California
+                    [team_number] => 606
+                )
+
+            [31] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc6658
+                    [name] => Boeing & Eagle Rock High School
+                    [nickname] => Rockbotics
+                    [state_prov] => California
+                    [team_number] => 6658
+                )
+
+            [32] => stdClass Object
+                (
+                    [city] => Carson
+                    [country] => USA
+                    [key] => frc687
+                    [name] => The Boeing Company / Northrop-Grumman / Raytheon / CAMS PTSO & California Academy Math & Sci
+                    [nickname] => The Nerd Herd
+                    [state_prov] => California
+                    [team_number] => 687
+                )
+
+            [33] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc6904
+                    [name] => Animo College Prep Acad & College Track Watts
+                    [nickname] => TeraWatts
+                    [state_prov] => California
+                    [team_number] => 6904
+                )
+
+            [34] => stdClass Object
+                (
+                    [city] => Los Angeles
+                    [country] => USA
+                    [key] => frc6938
+                    [name] => Village Glen West (non public)
+                    [nickname] => STEM3 West Robotics
+                    [state_prov] => California
+                    [team_number] => 6938
+                )
+
+            [35] => stdClass Object
+                (
+                    [city] => Medianeira
+                    [country] => Brazil
+                    [key] => frc7033
+                    [name] => 3M&AIDTEC
+                    [nickname] => Roosters
+                    [state_prov] => Paraná
+                    [team_number] => 7033
+                )
+
+            [36] => stdClass Object
+                (
+                    [city] => Baldwin Park
+                    [country] => USA
+                    [key] => frc7051
+                    [name] => NASA & Sierra Vista High School
+                    [nickname] => RoboDons
+                    [state_prov] => California
+                    [team_number] => 7051
+                )
+
+            [37] => stdClass Object
+                (
+                    [city] => Glendora
+                    [country] => USA
+                    [key] => frc7185
+                    [name] => Glendora High School
+                    [nickname] => Glendora High School Robotics 
+                    [state_prov] => California
+                    [team_number] => 7185
+                )
+
+            [38] => stdClass Object
+                (
+                    [city] => Irvine
+                    [country] => USA
+                    [key] => frc7447
+                    [name] => Argosy Foundation/Digital Map Products&Portola High School
+                    [nickname] => Rōnin Robotics
+                    [state_prov] => California
+                    [team_number] => 7447
+                )
+
+            [39] => stdClass Object
+                (
+                    [city] => Harbor City
+                    [country] => USA
+                    [key] => frc7455
+                    [name] => Nathaniel Narbonne High School
+                    [nickname] => Narbots
+                    [state_prov] => California
+                    [team_number] => 7455
+                )
+
+            [40] => stdClass Object
+                (
+                    [city] => Ataşehir
+                    [country] => Turkey
+                    [key] => frc8159
+                    [name] => Jr.Robotics & Family/Community
+                    [nickname] => Golden Horn
+                    [state_prov] => Istanbul
+                    [team_number] => 8159
+                )
+
+            [41] => stdClass Object
+                (
+                    [city] => Richmond
+                    [country] => USA
+                    [key] => frc841
+                    [name] => Chevron/SunPower/Atlassian/BAE Systems/Intuitive Surgical/Applied Materials/Engineering Partnership Academy & College and Career Center/Applied Lasers LLC/M. Welding Creations and Industrial Finishing&Richmond High School
+                    [nickname] => The BioMechs
+                    [state_prov] => California
+                    [team_number] => 841
+                )
+
+            [42] => stdClass Object
+                (
+                    [city] => Sylmar
+                    [country] => USA
+                    [key] => frc980
+                    [name] => Walt Disney Imagineering/NASA-JPL/Boeing/Solutions for Automation/Lingua Machining Solutions/Raytheon/Neighbors Empowering Youth&FRC Team 980 ThunderBots
+                    [nickname] => ThunderBots
+                    [state_prov] => California
+                    [team_number] => 980
+                )
+
+            [43] => stdClass Object
+                (
+                    [city] => Las Vegas
+                    [country] => USA
+                    [key] => frc987
+                    [name] => Steve and Susan Philpott/Limelight/Innovation First International/Switch/Purvis Industries/Thompson Family/Nevada YESCO LLC./Tesla/BAE Systems/Gene Haas Foundation/American Family Insurance/4 The Team!  LLC/Mark Jones/Bosze/Mike and Nancy Barry&Cimarron-Memorial High School
+                    [nickname] => HIGHROLLERS
+                    [state_prov] => Nevada
+                    [team_number] => 987
+                )
+
+        )
+
+    [raw_body] => [
+  {
+    "city": "Torrance", 
+    "country": "USA", 
+    "key": "frc1197", 
+    "name": "SolidWorks/Northrop Grumman/John Deere/Praxair/Raytheon/The Boeing Company/SAGE Millimeter, Inc./LA Solar Group/The Johnson Family/Moog Aircraft Group/Torrance Education Foundation/Blue Robotics/LA Stagecall/Torrance Refinery Company/Masimo Corp./Mastercam/MathWorks&South High School", 
+    "nickname": "TorBots", 
+    "state_prov": "California", 
+    "team_number": 1197
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc1452", 
+    "name": "Boeing / Windward School Robotics / Mr. and Mrs. Stephen and Jill Petty & Windward School", 
+    "nickname": "Omnicats", 
+    "state_prov": "California", 
+    "team_number": 1452
+  }, 
+  {
+    "city": "Beverly Hills", 
+    "country": "USA", 
+    "key": "frc1515", 
+    "name": "Enterprise / BHHS Career Technical Education / BHEF & Beverly Hills High School", 
+    "nickname": "MorTorq", 
+    "state_prov": "California", 
+    "team_number": 1515
+  }, 
+  {
+    "city": "El Segundo", 
+    "country": "USA", 
+    "key": "frc1759", 
+    "name": "Raytheon / Xerox Corporation / El Segundo Ed! Foundation & El Segundo High School", 
+    "nickname": "Potatoes", 
+    "state_prov": "California", 
+    "team_number": 1759
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc1836", 
+    "name": "Milken Community School/Mitchell Academy of Science and Technology/Jay Manufacturing Corp/Too Mac Engineering, Inc./Republic Lagun Machine Tool/The Marvin Group/Frazier Avation, Inc./Industrial Metal Supply/The Schloss Group at Merrill Lynch/The Boeing Company/Leslie Zola Science Scholarship/Dassault Syst\u00e8mes SolidWorks Corp./Arnaco Powder Coating Co .inc/Academy Awning/Universal Compressor Services/Decker Design/Mastercam/Haas Automation, Inc./WestCoast Products & Design LLC & Milken Community School", 
+    "nickname": "The MilkenKnights", 
+    "state_prov": "California", 
+    "team_number": 1836
+  }, 
+  {
+    "city": "Hawthorne", 
+    "country": "USA", 
+    "key": "frc207", 
+    "name": "Walt Disney Imagineering / The Boeing Company / Space X / Northrop Grumman Aerospace Systems / Idustrial Metal Supply / Cooler Master & Hawthorne High School", 
+    "nickname": "METALCRAFTERS", 
+    "state_prov": "California", 
+    "team_number": 207
+  }, 
+  {
+    "city": "Santiago", 
+    "country": "Chile", 
+    "key": "frc2576", 
+    "name": "Fundaci\u00f3n Redes Creativas/OTT Camiones y Buses/Centro Creativo/AMKA Chilena/Dynae&Corporacion Corazon Tecnologico de Chile", 
+    "nickname": "Chilean Heart", 
+    "state_prov": "Regi\u00f3n Metropolitana de Santiago", 
+    "team_number": 2576
+  }, 
+  {
+    "city": "Rolling Hills Estates", 
+    "country": "USA", 
+    "key": "frc2637", 
+    "name": "Kinecta / Boeing / John Deere / Raytheon Corporation / Astro Machine Company / Honda / JKSS, Inc. / R.R. Donnelley / Marathon / Time Station / Velox CNC / M&K Metals / Walong Marketing, Inc / Hickory Tree School / Hashiro and Sheh CNC Services & Palos Verdes Peninsula HS", 
+    "nickname": "Phantom Catz", 
+    "state_prov": "California", 
+    "team_number": 2637
+  }, 
+  {
+    "city": "Rancho Palos Verdes", 
+    "country": "USA", 
+    "key": "frc2710", 
+    "name": "The Muskwa Club, Inc/DENSO/Boeing/Google/Northrop Grumman/Bob and Barbara Morel/Raytheon/SolidWorks/Teradyne/Marine Exchange of Southern California&Family/Community", 
+    "nickname": "JetStream", 
+    "state_prov": "California", 
+    "team_number": 2710
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc3408", 
+    "name": "Gerald Oppenheimer Family Foundation (Jill and Stephen Petty)/John Deere/Boeing/Raytheon/Boeing/Robert Yaccarino/Kate and Janet Pregler&Loyola High School Los Angeles", 
+    "nickname": "cyberCubs", 
+    "state_prov": "California", 
+    "team_number": 3408
+  }, 
+  {
+    "city": "Orcutt", 
+    "country": "USA", 
+    "key": "frc3512", 
+    "name": "Melfred Borzall/Phillips 66/Department of Defense STEM Grant/Solidworks/Fastenal & Orcutt Acad Charter High Sch", 
+    "nickname": "Spartatroniks", 
+    "state_prov": "California", 
+    "team_number": 3512
+  }, 
+  {
+    "city": "Fullerton", 
+    "country": "USA", 
+    "key": "frc3952", 
+    "name": "Boeing&Troy High School", 
+    "nickname": "Troy Robotics", 
+    "state_prov": "California", 
+    "team_number": 3952
+  }, 
+  {
+    "city": "Studio City", 
+    "country": "USA", 
+    "key": "frc4019", 
+    "name": "SolidWorks/The Paton Group/NASA&Bridges Academy", 
+    "nickname": "Mechanical Paradise", 
+    "state_prov": "California", 
+    "team_number": 4019
+  }, 
+  {
+    "city": "Bellflower", 
+    "country": "USA", 
+    "key": "frc4123", 
+    "name": "The Boeing Company/NASA - Robotics Alliance Project/Pelican Products/Milwaukee Tools/Tribe Community Supporters&St. John Bosco High School&St Joseph High School-Lakewood", 
+    "nickname": "Tribe Robotics", 
+    "state_prov": "California", 
+    "team_number": 4123
+  }, 
+  {
+    "city": "El Segundo", 
+    "country": "USA", 
+    "key": "frc4201", 
+    "name": "Raytheon/TraPac/The Boeing Company/SpaceX/Da Vinci Schools/Danger Research&Da Vinci Science", 
+    "nickname": "The Vitruvian Bots", 
+    "state_prov": "California", 
+    "team_number": 4201
+  }, 
+  {
+    "city": "TORREON", 
+    "country": "Mexico", 
+    "key": "frc4400", 
+    "name": "PE\u00d1OLES&COLEGIO CERVANTES DE TORREON", 
+    "nickname": "PE\u00d1OLES - CERBOTICS", 
+    "state_prov": "Coahuila", 
+    "team_number": 4400
+  }, 
+  {
+    "city": "Santa Monica", 
+    "country": "USA", 
+    "key": "frc4501", 
+    "name": "New Roads High School", 
+    "nickname": "Humans", 
+    "state_prov": "California", 
+    "team_number": 4501
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc4578", 
+    "name": "Wesm-Enriched Sciences Mag HS", 
+    "nickname": "CometBots", 
+    "state_prov": "California", 
+    "team_number": 4578
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc4964", 
+    "name": "NRG/Disney Imagineering/Raytheon /I.Am.Angel Foundation/SoCal Office Technologies ,GISX-Xerox&Theodore Roosevelt Senior High School", 
+    "nickname": "LA Streetbots", 
+    "state_prov": "California", 
+    "team_number": 4964
+  }, 
+  {
+    "city": "Long Beach", 
+    "country": "USA", 
+    "key": "frc4999", 
+    "name": "Long Beach Unified School District/Boeing/Empowered Minds CC&Sato Academy of Math and Science&Shared Science", 
+    "nickname": "Momentum", 
+    "state_prov": "California", 
+    "team_number": 4999
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc5089", 
+    "name": "Roddenberry Foundation / THE WILLIAM C. BANNERMAN FOUNDATION & Benjamin Franklin High School", 
+    "nickname": "Robo-Nerds", 
+    "state_prov": "California", 
+    "team_number": 5089
+  }, 
+  {
+    "city": "Torrance", 
+    "country": "USA", 
+    "key": "frc5124", 
+    "name": "John Deere/NASA/Raytheon/Torrance Education Foundation&West High School", 
+    "nickname": "West Torrance Robotics", 
+    "state_prov": "California", 
+    "team_number": 5124
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc5510", 
+    "name": "Lockheed Martin / Northrop Grumman / Spin Master / Family Industries / Erector by Meccano / Kinetic Lighting & Alexander Hamilton Sr High Sch", 
+    "nickname": "The Da Vinci Coders", 
+    "state_prov": "California", 
+    "team_number": 5510
+  }, 
+  {
+    "city": "Recoleta", 
+    "country": "Chile", 
+    "key": "frc5512", 
+    "name": "Municipalidad de Recoleta/Corporaci\u00f3n Cultural de Recoleta/Casillas CargoSud/Fundaci\u00f3n Prosegur/Rotatecno Chile/Robotics Lab SCL/Ministerio de Educaci\u00f3n - Programa Ingl\u00e9s Abre Puertas/Microsoft Chile/TACH Ingenier\u00eda/Instituto Chileno Norteamericano - American Spaces/U.S. Embassy Santiago & Liceo Valent\u00edn Letelier & Centro Cultural y Juvenil de Tecnolog\u00eda y Rob\u00f3tica Educativa Aplicada STEM ACADEMY CHILE", 
+    "nickname": "Pizza Mec\u00e1nica", 
+    "state_prov": "Regi\u00f3n Metropolitana de Santiago", 
+    "team_number": 5512
+  }, 
+  {
+    "city": "Neuville-sur-Sa\u00f4ne", 
+    "country": "France", 
+    "key": "frc5553", 
+    "name": "Groupe NO\u00cbL/SDRA/Elior/R\u00e9gion Auvergne-Rh\u00f4ne-Alpes/Immobili\u00e8re Notre Dame de Bellegarde/Lions Club/Cr\u00e9dit Mutuel/APEL Notre Dame de Bellegarde/JEEDOM/IDRAC Business School/TraceParts/RS Components/Party Lite/Mairie de Collonges au Mont d'Or/Boucherie ROSIER/THALES/HEXIS/Concept & Impression/BBL GROUPE/ROTARY/Groupe KARDOL/Embassy Suites by Hilton Los Angeles International Airport South/CIC/ELCIA&Notre Dame de Bellegarde", 
+    "nickname": "Robo'Lyon", 
+    "state_prov": "Rh\u00f4ne", 
+    "team_number": 5553
+  }, 
+  {
+    "city": "Lakewood", 
+    "country": "USA", 
+    "key": "frc5634", 
+    "name": "The Boeing Co. & St Joseph High School", 
+    "nickname": "Jesterminators", 
+    "state_prov": "California", 
+    "team_number": 5634
+  }, 
+  {
+    "city": "Rosemead", 
+    "country": "USA", 
+    "key": "frc5669", 
+    "name": "Don Bosco Tech Institute", 
+    "nickname": "Techmen", 
+    "state_prov": "California", 
+    "team_number": 5669
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc5802", 
+    "name": "Boeing/i.am.angel Foundation/Disney Imagineering /Raytheon&Boyle Heights STEM Academy", 
+    "nickname": "Los STEMateros", 
+    "state_prov": "California", 
+    "team_number": 5802
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc597", 
+    "name": "The Boeing Company/USC-MESA/Vertirbi School of Engineering/NASA/Raytheon/Supervisor Mark Ridley-Thomas/The William C. Bannerman Foundation/L. A. City Council/Cushman & Wakefield/X-treme Solutions/Perkins Grant/CTEIG/Office of Dr. George Mckenna LAUSD/Stephen and Jill Petty/Northrop Grumman/Foshay Learning Center/Lowe's&James a Foshay Learning Ctr", 
+    "nickname": "The Wolverines", 
+    "state_prov": "California", 
+    "team_number": 597
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc6000", 
+    "name": "Google & Shalhevet School", 
+    "nickname": "Firehawk Robotics", 
+    "state_prov": "California", 
+    "team_number": 6000
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc606", 
+    "name": "Raytheon/Aerospace Corporation/Northrop Grumman/Los Angeles Trade Technical College/Boys and Girls Club of King Drew/The William C. Bannerman Foundation/Walt Disney Imagineering&King-Drew Medical Magnet HS", 
+    "nickname": "Cyber Eagles", 
+    "state_prov": "California", 
+    "team_number": 606
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc6658", 
+    "name": "Boeing & Eagle Rock High School", 
+    "nickname": "Rockbotics", 
+    "state_prov": "California", 
+    "team_number": 6658
+  }, 
+  {
+    "city": "Carson", 
+    "country": "USA", 
+    "key": "frc687", 
+    "name": "The Boeing Company / Northrop-Grumman / Raytheon / CAMS PTSO & California Academy Math & Sci", 
+    "nickname": "The Nerd Herd", 
+    "state_prov": "California", 
+    "team_number": 687
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc6904", 
+    "name": "Animo College Prep Acad & College Track Watts", 
+    "nickname": "TeraWatts", 
+    "state_prov": "California", 
+    "team_number": 6904
+  }, 
+  {
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "key": "frc6938", 
+    "name": "Village Glen West (non public)", 
+    "nickname": "STEM3 West Robotics", 
+    "state_prov": "California", 
+    "team_number": 6938
+  }, 
+  {
+    "city": "Medianeira", 
+    "country": "Brazil", 
+    "key": "frc7033", 
+    "name": "3M&AIDTEC", 
+    "nickname": "Roosters", 
+    "state_prov": "Paran\u00e1", 
+    "team_number": 7033
+  }, 
+  {
+    "city": "Baldwin Park", 
+    "country": "USA", 
+    "key": "frc7051", 
+    "name": "NASA & Sierra Vista High School", 
+    "nickname": "RoboDons", 
+    "state_prov": "California", 
+    "team_number": 7051
+  }, 
+  {
+    "city": "Glendora", 
+    "country": "USA", 
+    "key": "frc7185", 
+    "name": "Glendora High School", 
+    "nickname": "Glendora High School Robotics ", 
+    "state_prov": "California", 
+    "team_number": 7185
+  }, 
+  {
+    "city": "Irvine", 
+    "country": "USA", 
+    "key": "frc7447", 
+    "name": "Argosy Foundation/Digital Map Products&Portola High School", 
+    "nickname": "R\u014dnin Robotics", 
+    "state_prov": "California", 
+    "team_number": 7447
+  }, 
+  {
+    "city": "Harbor City", 
+    "country": "USA", 
+    "key": "frc7455", 
+    "name": "Nathaniel Narbonne High School", 
+    "nickname": "Narbots", 
+    "state_prov": "California", 
+    "team_number": 7455
+  }, 
+  {
+    "city": "Ata\u015fehir", 
+    "country": "Turkey", 
+    "key": "frc8159", 
+    "name": "Jr.Robotics & Family/Community", 
+    "nickname": "Golden Horn", 
+    "state_prov": "Istanbul", 
+    "team_number": 8159
+  }, 
+  {
+    "city": "Richmond", 
+    "country": "USA", 
+    "key": "frc841", 
+    "name": "Chevron/SunPower/Atlassian/BAE Systems/Intuitive Surgical/Applied Materials/Engineering Partnership Academy & College and Career Center/Applied Lasers LLC/M. Welding Creations and Industrial Finishing&Richmond High School", 
+    "nickname": "The BioMechs", 
+    "state_prov": "California", 
+    "team_number": 841
+  }, 
+  {
+    "city": "Sylmar", 
+    "country": "USA", 
+    "key": "frc980", 
+    "name": "Walt Disney Imagineering/NASA-JPL/Boeing/Solutions for Automation/Lingua Machining Solutions/Raytheon/Neighbors Empowering Youth&FRC Team 980 ThunderBots", 
+    "nickname": "ThunderBots", 
+    "state_prov": "California", 
+    "team_number": 980
+  }, 
+  {
+    "city": "Las Vegas", 
+    "country": "USA", 
+    "key": "frc987", 
+    "name": "Steve and Susan Philpott/Limelight/Innovation First International/Switch/Purvis Industries/Thompson Family/Nevada YESCO LLC./Tesla/BAE Systems/Gene Haas Foundation/American Family Insurance/4 The Team!  LLC/Mark Jones/Bosze/Mike and Nancy Barry&Cimarron-Memorial High School", 
+    "nickname": "HIGHROLLERS", 
+    "state_prov": "Nevada", 
+    "team_number": 987
+  }
+]
+    [headers] => Httpful\Response\Headers Object
+        (
+            [headers:Httpful\Response\Headers:private] => Array
+                (
+                    [date] => Sun, 08 Mar 2020 15:28:50 GMT
+                    [content-type] => application/json; charset="utf-8"
+                    [content-length] => 14114
+                    [set-cookie] => __cfduid=de668e55d65ca93b944d282ff292b35781583681330; expires=Tue, 07-Apr-20 15:28:50 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+                    [access-control-allow-origin] => *
+                    [x-robots-tag] => noindex
+                    [cache-control] => public, max-age=61, s-maxage=61
+                    [etag] => W/"b34874b1e10493951aaec1663ffd7eaa"
+                    [last-modified] => Sun, 08 Mar 2020 01:50:51 GMT
+                    [x-tba-version] => 3
+                    [vary] => Accept-Encoding
+                    [x-cloud-trace-context] => b1b2afb4aa03bf5408b02b8b3ba71322
+                    [cf-cache-status] => DYNAMIC
+                    [expect-ct] => max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+                    [server] => cloudflare
+                    [cf-ray] => 570d969d0e6a6c8c-SJC
+                )
+
+        )
+
+    [raw_headers] => HTTP/2 200 
+date: Sun, 08 Mar 2020 15:28:50 GMT
+content-type: application/json; charset="utf-8"
+content-length: 14114
+set-cookie: __cfduid=de668e55d65ca93b944d282ff292b35781583681330; expires=Tue, 07-Apr-20 15:28:50 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+access-control-allow-origin: *
+x-robots-tag: noindex
+cache-control: public, max-age=61, s-maxage=61
+etag: W/"b34874b1e10493951aaec1663ffd7eaa"
+last-modified: Sun, 08 Mar 2020 01:50:51 GMT
+x-tba-version: 3
+vary: Accept-Encoding
+x-cloud-trace-context: b1b2afb4aa03bf5408b02b8b3ba71322
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+server: cloudflare
+cf-ray: 570d969d0e6a6c8c-SJC
+    [request] => Httpful\Request Object
+        (
+            [uri] => https://www.thebluealliance.com/api/v3/event/2020cala/teams/simple
+            [method] => GET
+            [headers] => Array
+                (
+                    [X-TBA-Auth-Key] => DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+                    [Content-Length] => 0
+                )
+
+            [raw_headers] => GET /api/v3/event/2020cala/teams/simple HTTP/1.1
+Host: www.thebluealliance.com
+Expect:
+User-Agent: Httpful/0.3.0 (cURL/7.67.0 PHP/7.4.2 (WINNT))
+Content-Type: 
+Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
+X-TBA-Auth-Key: DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+Content-Length: 0
+
+            [strict_ssl] => 
+            [content_type] => 
+            [expected_type] => 
+            [additional_curl_opts] => Array
+                (
+                )
+
+            [auto_parse] => 1
+            [serialize_payload_method] => 2
+            [username] => 
+            [password] => 
+            [serialized_payload] => 
+            [payload] => 
+            [parse_callback] => 
+            [error_callback] => 
+            [send_callback] => 
+            [follow_redirects] => 
+            [max_redirects] => 25
+            [payload_serializers] => Array
+                (
+                )
+
+            [_debug] => 
+        )
+
+    [code] => 200
+    [content_type] => application/json
+    [parent_type] => application/json
+    [charset] => "utf-8"
+    [meta_data] => Array
+        (
+            [url] => https://www.thebluealliance.com/api/v3/event/2020cala/teams/simple
+            [content_type] => application/json; charset="utf-8"
+            [http_code] => 200
+            [header_size] => 763
+            [request_size] => 300
+            [filetime] => -1
+            [ssl_verify_result] => 0
+            [redirect_count] => 0
+            [total_time] => 0.272899
+            [namelookup_time] => 0.047712
+            [connect_time] => 0.074618
+            [pretransfer_time] => 0.124291
+            [size_upload] => 0
+            [size_download] => 14114
+            [speed_download] => 51889
+            [speed_upload] => 0
+            [download_content_length] => 14114
+            [upload_content_length] => -1
+            [starttransfer_time] => 0.268438
+            [redirect_time] => 0
+            [redirect_url] => 
+            [primary_ip] => 104.27.168.189
+            [certinfo] => Array
+                (
+                )
+
+            [primary_port] => 443
+            [local_ip] => 172.24.124.185
+            [local_port] => 57524
+            [http_version] => 3
+            [protocol] => 2
+            [ssl_verifyresult] => 0
+            [scheme] => HTTPS
+            [appconnect_time_us] => 124197
+            [connect_time_us] => 74618
+            [namelookup_time_us] => 47712
+            [pretransfer_time_us] => 124291
+            [redirect_time_us] => 0
+            [starttransfer_time_us] => 268438
+            [total_time_us] => 272899
+        )
+
+    [is_mime_vendor_specific] => 
+    [is_mime_personal] => 
+    [parsers:Httpful\Response:private] => 
+)
+
+
+end.

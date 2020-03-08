@@ -1,0 +1,2353 @@
+AuthKey:DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+
+Response from Blue Alliance
+https://www.thebluealliance.com/api/v3/event/2020cala/teams
+
+Httpful\Response Object
+(
+    [body] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Torrance
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc1197
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => SolidWorks/Northrop Grumman/John Deere/Praxair/Raytheon/The Boeing Company/SAGE Millimeter, Inc./LA Solar Group/The Johnson Family/Moog Aircraft Group/Torrance Education Foundation/Blue Robotics/LA Stagecall/Torrance Refinery Company/Masimo Corp./Mastercam/MathWorks&South High School
+                    [nickname] => TorBots
+                    [postal_code] => 90505
+                    [rookie_year] => 2003
+                    [school_name] => South High School
+                    [state_prov] => California
+                    [team_number] => 1197
+                    [website] => http://www.team1197.com
+                )
+
+            [1] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc1452
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Boeing / Windward School Robotics / Mr. and Mrs. Stephen and Jill Petty & Windward School
+                    [nickname] => Omnicats
+                    [postal_code] => 90066
+                    [rookie_year] => 2004
+                    [school_name] => Windward School
+                    [state_prov] => California
+                    [team_number] => 1452
+                    [website] => https://www.team1452.com
+                )
+
+            [2] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Beverly Hills
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc1515
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Enterprise / BHHS Career Technical Education / BHEF & Beverly Hills High School
+                    [nickname] => MorTorq
+                    [postal_code] => 90212
+                    [rookie_year] => 2005
+                    [school_name] => Beverly Hills High School
+                    [state_prov] => California
+                    [team_number] => 1515
+                    [website] => http://team1515.org
+                )
+
+            [3] => stdClass Object
+                (
+                    [address] => 
+                    [city] => El Segundo
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc1759
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Raytheon / Xerox Corporation / El Segundo Ed! Foundation & El Segundo High School
+                    [nickname] => Potatoes
+                    [postal_code] => 90245
+                    [rookie_year] => 2006
+                    [school_name] => El Segundo High School
+                    [state_prov] => California
+                    [team_number] => 1759
+                    [website] => http://www.eshspotatoes.com/
+                )
+
+            [4] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc1836
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Milken Community School/Mitchell Academy of Science and Technology/Jay Manufacturing Corp/Too Mac Engineering, Inc./Republic Lagun Machine Tool/The Marvin Group/Frazier Avation, Inc./Industrial Metal Supply/The Schloss Group at Merrill Lynch/The Boeing Company/Leslie Zola Science Scholarship/Dassault Systèmes SolidWorks Corp./Arnaco Powder Coating Co .inc/Academy Awning/Universal Compressor Services/Decker Design/Mastercam/Haas Automation, Inc./WestCoast Products & Design LLC & Milken Community School
+                    [nickname] => The MilkenKnights
+                    [postal_code] => 90049
+                    [rookie_year] => 2006
+                    [school_name] => Milken Community School
+                    [state_prov] => California
+                    [team_number] => 1836
+                    [website] => http:///www.MilkenKnights.com
+                )
+
+            [5] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Hawthorne
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc207
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Walt Disney Imagineering / The Boeing Company / Space X / Northrop Grumman Aerospace Systems / Idustrial Metal Supply / Cooler Master & Hawthorne High School
+                    [nickname] => METALCRAFTERS
+                    [postal_code] => 90250
+                    [rookie_year] => 1999
+                    [school_name] => Hawthorne High School
+                    [state_prov] => California
+                    [team_number] => 207
+                    [website] => http:///HHSCouagrs.org/engineeing 
+                )
+
+            [6] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Santiago
+                    [country] => Chile
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Detroit
+                        )
+
+                    [key] => frc2576
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Fundación Redes Creativas/OTT Camiones y Buses/Centro Creativo/AMKA Chilena/Dynae&Corporacion Corazon Tecnologico de Chile
+                    [nickname] => Chilean Heart
+                    [postal_code] => 7700468
+                    [rookie_year] => 2008
+                    [school_name] => Corporacion Corazon Tecnologico de Chile
+                    [state_prov] => Región Metropolitana de Santiago
+                    [team_number] => 2576
+                    [website] => http://www.corazondechileno.cl/
+                )
+
+            [7] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Rolling Hills Estates
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc2637
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Kinecta / Boeing / John Deere / Raytheon Corporation / Astro Machine Company / Honda / JKSS, Inc. / R.R. Donnelley / Marathon / Time Station / Velox CNC / M&K Metals / Walong Marketing, Inc / Hickory Tree School / Hashiro and Sheh CNC Services & Palos Verdes Peninsula HS
+                    [nickname] => Phantom Catz
+                    [postal_code] => 90274
+                    [rookie_year] => 2008
+                    [school_name] => Palos Verdes Peninsula HS
+                    [state_prov] => California
+                    [team_number] => 2637
+                    [website] => https://www.frcteam2637.org/
+                )
+
+            [8] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Rancho Palos Verdes
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc2710
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => The Muskwa Club, Inc/DENSO/Boeing/Google/Northrop Grumman/Bob and Barbara Morel/Raytheon/SolidWorks/Teradyne/Marine Exchange of Southern California&Family/Community
+                    [nickname] => JetStream
+                    [postal_code] => 90275
+                    [rookie_year] => 2009
+                    [school_name] => Family/Community
+                    [state_prov] => California
+                    [team_number] => 2710
+                    [website] => http://muskwaclub.wixsite.com/muskwa/robotics-team
+                )
+
+            [9] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc3408
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Gerald Oppenheimer Family Foundation (Jill and Stephen Petty)/John Deere/Boeing/Raytheon/Boeing/Robert Yaccarino/Kate and Janet Pregler&Loyola High School Los Angeles
+                    [nickname] => cyberCubs
+                    [postal_code] => 90006
+                    [rookie_year] => 2010
+                    [school_name] => Loyola High School Los Angeles
+                    [state_prov] => California
+                    [team_number] => 3408
+                    [website] => https://frcteam3408.wordpress.com
+                )
+
+            [10] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Orcutt
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc3512
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Melfred Borzall/Phillips 66/Department of Defense STEM Grant/Solidworks/Fastenal & Orcutt Acad Charter High Sch
+                    [nickname] => Spartatroniks
+                    [postal_code] => 93455
+                    [rookie_year] => 2011
+                    [school_name] => Orcutt Acad Charter High Sch
+                    [state_prov] => California
+                    [team_number] => 3512
+                    [website] => http://www.spartatroniks.com
+                )
+
+            [11] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Fullerton
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc3952
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Boeing&Troy High School
+                    [nickname] => Troy Robotics
+                    [postal_code] => 92831
+                    [rookie_year] => 2012
+                    [school_name] => Troy High School
+                    [state_prov] => California
+                    [team_number] => 3952
+                    [website] => http://team3952.org
+                )
+
+            [12] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Studio City
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4019
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => SolidWorks/The Paton Group/NASA&Bridges Academy
+                    [nickname] => Mechanical Paradise
+                    [postal_code] => 91604
+                    [rookie_year] => 2012
+                    [school_name] => Bridges Academy
+                    [state_prov] => California
+                    [team_number] => 4019
+                    [website] => https://www.team4019.com
+                )
+
+            [13] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Bellflower
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4123
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => The Boeing Company/NASA - Robotics Alliance Project/Pelican Products/Milwaukee Tools/Tribe Community Supporters&St. John Bosco High School&St Joseph High School-Lakewood
+                    [nickname] => Tribe Robotics
+                    [postal_code] => 90706
+                    [rookie_year] => 2012
+                    [school_name] => St Joseph High School-Lakewood & St. John Bosco High School
+                    [state_prov] => California
+                    [team_number] => 4123
+                    [website] => http://frc4123.com
+                )
+
+            [14] => stdClass Object
+                (
+                    [address] => 
+                    [city] => El Segundo
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4201
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Raytheon/TraPac/The Boeing Company/SpaceX/Da Vinci Schools/Danger Research&Da Vinci Science
+                    [nickname] => The Vitruvian Bots
+                    [postal_code] => 90245
+                    [rookie_year] => 2012
+                    [school_name] => Da Vinci Science
+                    [state_prov] => California
+                    [team_number] => 4201
+                    [website] => https://team4201.weebly.com/
+                )
+
+            [15] => stdClass Object
+                (
+                    [address] => 
+                    [city] => TORREON
+                    [country] => Mexico
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4400
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => PEÑOLES&COLEGIO CERVANTES DE TORREON
+                    [nickname] => PEÑOLES - CERBOTICS
+                    [postal_code] => 27276
+                    [rookie_year] => 2012
+                    [school_name] => COLEGIO CERVANTES DE TORREON
+                    [state_prov] => Coahuila
+                    [team_number] => 4400
+                    [website] => http://www.cerbotics.com
+                )
+
+            [16] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Santa Monica
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4501
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => New Roads High School
+                    [nickname] => Humans
+                    [postal_code] => 90404
+                    [rookie_year] => 2013
+                    [school_name] => New Roads High School
+                    [state_prov] => California
+                    [team_number] => 4501
+                    [website] => http://www.firstinspires.org/
+                )
+
+            [17] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4578
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Wesm-Enriched Sciences Mag HS
+                    [nickname] => CometBots
+                    [postal_code] => 90045
+                    [rookie_year] => 2013
+                    [school_name] => Wesm-Enriched Sciences Mag HS
+                    [state_prov] => California
+                    [team_number] => 4578
+                    [website] => http://www.firstinspires.org/
+                )
+
+            [18] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4964
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => NRG/Disney Imagineering/Raytheon /I.Am.Angel Foundation/SoCal Office Technologies ,GISX-Xerox&Theodore Roosevelt Senior High School
+                    [nickname] => LA Streetbots
+                    [postal_code] => 90033
+                    [rookie_year] => 2014
+                    [school_name] => Theodore Roosevelt Senior High School
+                    [state_prov] => California
+                    [team_number] => 4964
+                    [website] => http:///www.lastreetbots.com
+                )
+
+            [19] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Long Beach
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc4999
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Long Beach Unified School District/Boeing/Empowered Minds CC&Sato Academy of Math and Science&Shared Science
+                    [nickname] => Momentum
+                    [postal_code] => 90803
+                    [rookie_year] => 2014
+                    [school_name] => Shared Science & Sato Academy of Math and Science
+                    [state_prov] => California
+                    [team_number] => 4999
+                    [website] => https://momentum4999.com/
+                )
+
+            [20] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc5089
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Roddenberry Foundation / THE WILLIAM C. BANNERMAN FOUNDATION & Benjamin Franklin High School
+                    [nickname] => Robo-Nerds
+                    [postal_code] => 90042
+                    [rookie_year] => 2014
+                    [school_name] => Benjamin Franklin High School
+                    [state_prov] => California
+                    [team_number] => 5089
+                    [website] => http://www.firstinspires.org/
+                )
+
+            [21] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Torrance
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc5124
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => John Deere/NASA/Raytheon/Torrance Education Foundation&West High School
+                    [nickname] => West Torrance Robotics
+                    [postal_code] => 90503
+                    [rookie_year] => 2014
+                    [school_name] => West High School
+                    [state_prov] => California
+                    [team_number] => 5124
+                    [website] => http://westtorrancerobotics.org
+                )
+
+            [22] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc5510
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Lockheed Martin / Northrop Grumman / Spin Master / Family Industries / Erector by Meccano / Kinetic Lighting & Alexander Hamilton Sr High Sch
+                    [nickname] => The Da Vinci Coders
+                    [postal_code] => 90034
+                    [rookie_year] => 2015
+                    [school_name] => Alexander Hamilton Sr High Sch
+                    [state_prov] => California
+                    [team_number] => 5510
+                    [website] => http://team5510.weebly.com
+                )
+
+            [23] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Recoleta
+                    [country] => Chile
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Detroit
+                        )
+
+                    [key] => frc5512
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Municipalidad de Recoleta/Corporación Cultural de Recoleta/Casillas CargoSud/Fundación Prosegur/Rotatecno Chile/Robotics Lab SCL/Ministerio de Educación - Programa Inglés Abre Puertas/Microsoft Chile/TACH Ingeniería/Instituto Chileno Norteamericano - American Spaces/U.S. Embassy Santiago & Liceo Valentín Letelier & Centro Cultural y Juvenil de Tecnología y Robótica Educativa Aplicada STEM ACADEMY CHILE
+                    [nickname] => Pizza Mecánica
+                    [postal_code] => 8420549
+                    [rookie_year] => 2015
+                    [school_name] => Centro Cultural y Juvenil de Tecnología y Robótica Educativa Aplicada STEM ACADEMY CHILE & Liceo Valentín Letelier
+                    [state_prov] => Región Metropolitana de Santiago
+                    [team_number] => 5512
+                    [website] => http://www.stemacademy.cl/
+                )
+
+            [24] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Neuville-sur-Saône
+                    [country] => France
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc5553
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Groupe NOËL/SDRA/Elior/Région Auvergne-Rhône-Alpes/Immobilière Notre Dame de Bellegarde/Lions Club/Crédit Mutuel/APEL Notre Dame de Bellegarde/JEEDOM/IDRAC Business School/TraceParts/RS Components/Party Lite/Mairie de Collonges au Mont d'Or/Boucherie ROSIER/THALES/HEXIS/Concept & Impression/BBL GROUPE/ROTARY/Groupe KARDOL/Embassy Suites by Hilton Los Angeles International Airport South/CIC/ELCIA&Notre Dame de Bellegarde
+                    [nickname] => Robo'Lyon
+                    [postal_code] => 69250
+                    [rookie_year] => 2015
+                    [school_name] => Notre Dame de Bellegarde
+                    [state_prov] => Rhône
+                    [team_number] => 5553
+                    [website] => http://www.robolyon.com
+                )
+
+            [25] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Lakewood
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc5634
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => The Boeing Co. & St Joseph High School
+                    [nickname] => Jesterminators
+                    [postal_code] => 90713
+                    [rookie_year] => 2015
+                    [school_name] => St Joseph High School
+                    [state_prov] => California
+                    [team_number] => 5634
+                    [website] => http://www.firstinspires.org/
+                )
+
+            [26] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Rosemead
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc5669
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Don Bosco Tech Institute
+                    [nickname] => Techmen
+                    [postal_code] => 91770
+                    [rookie_year] => 2015
+                    [school_name] => Don Bosco Tech Institute & Don Bosco Tech Institute
+                    [state_prov] => California
+                    [team_number] => 5669
+                    [website] => http://frctechmen-com.webs.com/
+                )
+
+            [27] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc5802
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Boeing/i.am.angel Foundation/Disney Imagineering /Raytheon&Boyle Heights STEM Academy
+                    [nickname] => Los STEMateros
+                    [postal_code] => 90033
+                    [rookie_year] => 2016
+                    [school_name] => Boyle Heights STEM Academy
+                    [state_prov] => California
+                    [team_number] => 5802
+                    [website] => http://www.firstinspires.org/
+                )
+
+            [28] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc597
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => The Boeing Company/USC-MESA/Vertirbi School of Engineering/NASA/Raytheon/Supervisor Mark Ridley-Thomas/The William C. Bannerman Foundation/L. A. City Council/Cushman & Wakefield/X-treme Solutions/Perkins Grant/CTEIG/Office of Dr. George Mckenna LAUSD/Stephen and Jill Petty/Northrop Grumman/Foshay Learning Center/Lowe's&James a Foshay Learning Ctr
+                    [nickname] => The Wolverines
+                    [postal_code] => 90018
+                    [rookie_year] => 2001
+                    [school_name] => James a Foshay Learning Ctr
+                    [state_prov] => California
+                    [team_number] => 597
+                    [website] => http://www.team597.org
+                )
+
+            [29] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc6000
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Google & Shalhevet School
+                    [nickname] => Firehawk Robotics
+                    [postal_code] => 90036
+                    [rookie_year] => 2016
+                    [school_name] => Shalhevet School
+                    [state_prov] => California
+                    [team_number] => 6000
+                    [website] => http://www.team6000.com/
+                )
+
+            [30] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc606
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Raytheon/Aerospace Corporation/Northrop Grumman/Los Angeles Trade Technical College/Boys and Girls Club of King Drew/The William C. Bannerman Foundation/Walt Disney Imagineering&King-Drew Medical Magnet HS
+                    [nickname] => Cyber Eagles
+                    [postal_code] => 90059
+                    [rookie_year] => 2001
+                    [school_name] => King-Drew Medical Magnet HS
+                    [state_prov] => California
+                    [team_number] => 606
+                    [website] => http://www.robotics-team606.com
+                )
+
+            [31] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc6658
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Boeing & Eagle Rock High School
+                    [nickname] => Rockbotics
+                    [postal_code] => 90041
+                    [rookie_year] => 2017
+                    [school_name] => Eagle Rock High School
+                    [state_prov] => California
+                    [team_number] => 6658
+                    [website] => 
+                )
+
+            [32] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Carson
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc687
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => The Boeing Company / Northrop-Grumman / Raytheon / CAMS PTSO & California Academy Math & Sci
+                    [nickname] => The Nerd Herd
+                    [postal_code] => 90747
+                    [rookie_year] => 2001
+                    [school_name] => California Academy Math & Sci
+                    [state_prov] => California
+                    [team_number] => 687
+                    [website] => http://www.camsrobotics.org
+                )
+
+            [33] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc6904
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Animo College Prep Acad & College Track Watts
+                    [nickname] => TeraWatts
+                    [postal_code] => 90002
+                    [rookie_year] => 2018
+                    [school_name] => Animo College Prep Acad
+                    [state_prov] => California
+                    [team_number] => 6904
+                    [website] => 
+                )
+
+            [34] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Los Angeles
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc6938
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Village Glen West (non public)
+                    [nickname] => STEM3 West Robotics
+                    [postal_code] => 90066
+                    [rookie_year] => 2018
+                    [school_name] => Village Glen West (non public)
+                    [state_prov] => California
+                    [team_number] => 6938
+                    [website] => 
+                )
+
+            [35] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Medianeira
+                    [country] => Brazil
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc7033
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => 3M&AIDTEC
+                    [nickname] => Roosters
+                    [postal_code] => 85884-000
+                    [rookie_year] => 2018
+                    [school_name] => AIDTEC
+                    [state_prov] => Paraná
+                    [team_number] => 7033
+                    [website] => 
+                )
+
+            [36] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Baldwin Park
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc7051
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => NASA & Sierra Vista High School
+                    [nickname] => RoboDons
+                    [postal_code] => 91706
+                    [rookie_year] => 2018
+                    [school_name] => Sierra Vista High School
+                    [state_prov] => California
+                    [team_number] => 7051
+                    [website] => 
+                )
+
+            [37] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Glendora
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc7185
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Glendora High School
+                    [nickname] => Glendora High School Robotics 
+                    [postal_code] => 91741
+                    [rookie_year] => 2018
+                    [school_name] => Glendora High School
+                    [state_prov] => California
+                    [team_number] => 7185
+                    [website] => 
+                )
+
+            [38] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Irvine
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc7447
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Argosy Foundation/Digital Map Products&Portola High School
+                    [nickname] => Rōnin Robotics
+                    [postal_code] => 92618
+                    [rookie_year] => 2019
+                    [school_name] => Portola High School
+                    [state_prov] => California
+                    [team_number] => 7447
+                    [website] => https://roninrobotics.wixsite.com/7447
+                )
+
+            [39] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Harbor City
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc7455
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Nathaniel Narbonne High School
+                    [nickname] => Narbots
+                    [postal_code] => 90710
+                    [rookie_year] => 2019
+                    [school_name] => Nathaniel Narbonne High School
+                    [state_prov] => California
+                    [team_number] => 7455
+                    [website] => 
+                )
+
+            [40] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Ataşehir
+                    [country] => Turkey
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc8159
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Jr.Robotics & Family/Community
+                    [nickname] => Golden Horn
+                    [postal_code] => 34750
+                    [rookie_year] => 2020
+                    [school_name] => Family/Community
+                    [state_prov] => Istanbul
+                    [team_number] => 8159
+                    [website] => https://www.teamgoldenhorn.com
+                )
+
+            [41] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Richmond
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc841
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Chevron/SunPower/Atlassian/BAE Systems/Intuitive Surgical/Applied Materials/Engineering Partnership Academy & College and Career Center/Applied Lasers LLC/M. Welding Creations and Industrial Finishing&Richmond High School
+                    [nickname] => The BioMechs
+                    [postal_code] => 94804
+                    [rookie_year] => 2002
+                    [school_name] => Richmond High School
+                    [state_prov] => California
+                    [team_number] => 841
+                    [website] => https://www.team841.org
+                )
+
+            [42] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Sylmar
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc980
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Walt Disney Imagineering/NASA-JPL/Boeing/Solutions for Automation/Lingua Machining Solutions/Raytheon/Neighbors Empowering Youth&FRC Team 980 ThunderBots
+                    [nickname] => ThunderBots
+                    [postal_code] => 91342
+                    [rookie_year] => 2002
+                    [school_name] => FRC Team 980 ThunderBots
+                    [state_prov] => California
+                    [team_number] => 980
+                    [website] => http://www.team980.com
+                )
+
+            [43] => stdClass Object
+                (
+                    [address] => 
+                    [city] => Las Vegas
+                    [country] => USA
+                    [gmaps_place_id] => 
+                    [gmaps_url] => 
+                    [home_championship] => stdClass Object
+                        (
+                            [2020] => Houston
+                        )
+
+                    [key] => frc987
+                    [lat] => 
+                    [lng] => 
+                    [location_name] => 
+                    [motto] => 
+                    [name] => Steve and Susan Philpott/Limelight/Innovation First International/Switch/Purvis Industries/Thompson Family/Nevada YESCO LLC./Tesla/BAE Systems/Gene Haas Foundation/American Family Insurance/4 The Team!  LLC/Mark Jones/Bosze/Mike and Nancy Barry&Cimarron-Memorial High School
+                    [nickname] => HIGHROLLERS
+                    [postal_code] => 89128
+                    [rookie_year] => 2002
+                    [school_name] => Cimarron-Memorial High School
+                    [state_prov] => Nevada
+                    [team_number] => 987
+                    [website] => http://www.team987.com
+                )
+
+        )
+
+    [raw_body] => [
+  {
+    "address": null, 
+    "city": "Torrance", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc1197", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "SolidWorks/Northrop Grumman/John Deere/Praxair/Raytheon/The Boeing Company/SAGE Millimeter, Inc./LA Solar Group/The Johnson Family/Moog Aircraft Group/Torrance Education Foundation/Blue Robotics/LA Stagecall/Torrance Refinery Company/Masimo Corp./Mastercam/MathWorks&South High School", 
+    "nickname": "TorBots", 
+    "postal_code": "90505", 
+    "rookie_year": 2003, 
+    "school_name": "South High School", 
+    "state_prov": "California", 
+    "team_number": 1197, 
+    "website": "http://www.team1197.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc1452", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Boeing / Windward School Robotics / Mr. and Mrs. Stephen and Jill Petty & Windward School", 
+    "nickname": "Omnicats", 
+    "postal_code": "90066", 
+    "rookie_year": 2004, 
+    "school_name": "Windward School", 
+    "state_prov": "California", 
+    "team_number": 1452, 
+    "website": "https://www.team1452.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Beverly Hills", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc1515", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Enterprise / BHHS Career Technical Education / BHEF & Beverly Hills High School", 
+    "nickname": "MorTorq", 
+    "postal_code": "90212", 
+    "rookie_year": 2005, 
+    "school_name": "Beverly Hills High School", 
+    "state_prov": "California", 
+    "team_number": 1515, 
+    "website": "http://team1515.org"
+  }, 
+  {
+    "address": null, 
+    "city": "El Segundo", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc1759", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Raytheon / Xerox Corporation / El Segundo Ed! Foundation & El Segundo High School", 
+    "nickname": "Potatoes", 
+    "postal_code": "90245", 
+    "rookie_year": 2006, 
+    "school_name": "El Segundo High School", 
+    "state_prov": "California", 
+    "team_number": 1759, 
+    "website": "http://www.eshspotatoes.com/"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc1836", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Milken Community School/Mitchell Academy of Science and Technology/Jay Manufacturing Corp/Too Mac Engineering, Inc./Republic Lagun Machine Tool/The Marvin Group/Frazier Avation, Inc./Industrial Metal Supply/The Schloss Group at Merrill Lynch/The Boeing Company/Leslie Zola Science Scholarship/Dassault Syst\u00e8mes SolidWorks Corp./Arnaco Powder Coating Co .inc/Academy Awning/Universal Compressor Services/Decker Design/Mastercam/Haas Automation, Inc./WestCoast Products & Design LLC & Milken Community School", 
+    "nickname": "The MilkenKnights", 
+    "postal_code": "90049", 
+    "rookie_year": 2006, 
+    "school_name": "Milken Community School", 
+    "state_prov": "California", 
+    "team_number": 1836, 
+    "website": "http:///www.MilkenKnights.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Hawthorne", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc207", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Walt Disney Imagineering / The Boeing Company / Space X / Northrop Grumman Aerospace Systems / Idustrial Metal Supply / Cooler Master & Hawthorne High School", 
+    "nickname": "METALCRAFTERS", 
+    "postal_code": "90250", 
+    "rookie_year": 1999, 
+    "school_name": "Hawthorne High School", 
+    "state_prov": "California", 
+    "team_number": 207, 
+    "website": "http:///HHSCouagrs.org/engineeing "
+  }, 
+  {
+    "address": null, 
+    "city": "Santiago", 
+    "country": "Chile", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Detroit"
+    }, 
+    "key": "frc2576", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Fundaci\u00f3n Redes Creativas/OTT Camiones y Buses/Centro Creativo/AMKA Chilena/Dynae&Corporacion Corazon Tecnologico de Chile", 
+    "nickname": "Chilean Heart", 
+    "postal_code": "7700468", 
+    "rookie_year": 2008, 
+    "school_name": "Corporacion Corazon Tecnologico de Chile", 
+    "state_prov": "Regi\u00f3n Metropolitana de Santiago", 
+    "team_number": 2576, 
+    "website": "http://www.corazondechileno.cl/"
+  }, 
+  {
+    "address": null, 
+    "city": "Rolling Hills Estates", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc2637", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Kinecta / Boeing / John Deere / Raytheon Corporation / Astro Machine Company / Honda / JKSS, Inc. / R.R. Donnelley / Marathon / Time Station / Velox CNC / M&K Metals / Walong Marketing, Inc / Hickory Tree School / Hashiro and Sheh CNC Services & Palos Verdes Peninsula HS", 
+    "nickname": "Phantom Catz", 
+    "postal_code": "90274", 
+    "rookie_year": 2008, 
+    "school_name": "Palos Verdes Peninsula HS", 
+    "state_prov": "California", 
+    "team_number": 2637, 
+    "website": "https://www.frcteam2637.org/"
+  }, 
+  {
+    "address": null, 
+    "city": "Rancho Palos Verdes", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc2710", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "The Muskwa Club, Inc/DENSO/Boeing/Google/Northrop Grumman/Bob and Barbara Morel/Raytheon/SolidWorks/Teradyne/Marine Exchange of Southern California&Family/Community", 
+    "nickname": "JetStream", 
+    "postal_code": "90275", 
+    "rookie_year": 2009, 
+    "school_name": "Family/Community", 
+    "state_prov": "California", 
+    "team_number": 2710, 
+    "website": "http://muskwaclub.wixsite.com/muskwa/robotics-team"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc3408", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Gerald Oppenheimer Family Foundation (Jill and Stephen Petty)/John Deere/Boeing/Raytheon/Boeing/Robert Yaccarino/Kate and Janet Pregler&Loyola High School Los Angeles", 
+    "nickname": "cyberCubs", 
+    "postal_code": "90006", 
+    "rookie_year": 2010, 
+    "school_name": "Loyola High School Los Angeles", 
+    "state_prov": "California", 
+    "team_number": 3408, 
+    "website": "https://frcteam3408.wordpress.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Orcutt", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc3512", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Melfred Borzall/Phillips 66/Department of Defense STEM Grant/Solidworks/Fastenal & Orcutt Acad Charter High Sch", 
+    "nickname": "Spartatroniks", 
+    "postal_code": "93455", 
+    "rookie_year": 2011, 
+    "school_name": "Orcutt Acad Charter High Sch", 
+    "state_prov": "California", 
+    "team_number": 3512, 
+    "website": "http://www.spartatroniks.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Fullerton", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc3952", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Boeing&Troy High School", 
+    "nickname": "Troy Robotics", 
+    "postal_code": "92831", 
+    "rookie_year": 2012, 
+    "school_name": "Troy High School", 
+    "state_prov": "California", 
+    "team_number": 3952, 
+    "website": "http://team3952.org"
+  }, 
+  {
+    "address": null, 
+    "city": "Studio City", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4019", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "SolidWorks/The Paton Group/NASA&Bridges Academy", 
+    "nickname": "Mechanical Paradise", 
+    "postal_code": "91604", 
+    "rookie_year": 2012, 
+    "school_name": "Bridges Academy", 
+    "state_prov": "California", 
+    "team_number": 4019, 
+    "website": "https://www.team4019.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Bellflower", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4123", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "The Boeing Company/NASA - Robotics Alliance Project/Pelican Products/Milwaukee Tools/Tribe Community Supporters&St. John Bosco High School&St Joseph High School-Lakewood", 
+    "nickname": "Tribe Robotics", 
+    "postal_code": "90706", 
+    "rookie_year": 2012, 
+    "school_name": "St Joseph High School-Lakewood & St. John Bosco High School", 
+    "state_prov": "California", 
+    "team_number": 4123, 
+    "website": "http://frc4123.com"
+  }, 
+  {
+    "address": null, 
+    "city": "El Segundo", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4201", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Raytheon/TraPac/The Boeing Company/SpaceX/Da Vinci Schools/Danger Research&Da Vinci Science", 
+    "nickname": "The Vitruvian Bots", 
+    "postal_code": "90245", 
+    "rookie_year": 2012, 
+    "school_name": "Da Vinci Science", 
+    "state_prov": "California", 
+    "team_number": 4201, 
+    "website": "https://team4201.weebly.com/"
+  }, 
+  {
+    "address": null, 
+    "city": "TORREON", 
+    "country": "Mexico", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4400", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "PE\u00d1OLES&COLEGIO CERVANTES DE TORREON", 
+    "nickname": "PE\u00d1OLES - CERBOTICS", 
+    "postal_code": "27276", 
+    "rookie_year": 2012, 
+    "school_name": "COLEGIO CERVANTES DE TORREON", 
+    "state_prov": "Coahuila", 
+    "team_number": 4400, 
+    "website": "http://www.cerbotics.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Santa Monica", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4501", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "New Roads High School", 
+    "nickname": "Humans", 
+    "postal_code": "90404", 
+    "rookie_year": 2013, 
+    "school_name": "New Roads High School", 
+    "state_prov": "California", 
+    "team_number": 4501, 
+    "website": "http://www.firstinspires.org/"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4578", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Wesm-Enriched Sciences Mag HS", 
+    "nickname": "CometBots", 
+    "postal_code": "90045", 
+    "rookie_year": 2013, 
+    "school_name": "Wesm-Enriched Sciences Mag HS", 
+    "state_prov": "California", 
+    "team_number": 4578, 
+    "website": "http://www.firstinspires.org/"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4964", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "NRG/Disney Imagineering/Raytheon /I.Am.Angel Foundation/SoCal Office Technologies ,GISX-Xerox&Theodore Roosevelt Senior High School", 
+    "nickname": "LA Streetbots", 
+    "postal_code": "90033", 
+    "rookie_year": 2014, 
+    "school_name": "Theodore Roosevelt Senior High School", 
+    "state_prov": "California", 
+    "team_number": 4964, 
+    "website": "http:///www.lastreetbots.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Long Beach", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc4999", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Long Beach Unified School District/Boeing/Empowered Minds CC&Sato Academy of Math and Science&Shared Science", 
+    "nickname": "Momentum", 
+    "postal_code": "90803", 
+    "rookie_year": 2014, 
+    "school_name": "Shared Science & Sato Academy of Math and Science", 
+    "state_prov": "California", 
+    "team_number": 4999, 
+    "website": "https://momentum4999.com/"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc5089", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Roddenberry Foundation / THE WILLIAM C. BANNERMAN FOUNDATION & Benjamin Franklin High School", 
+    "nickname": "Robo-Nerds", 
+    "postal_code": "90042", 
+    "rookie_year": 2014, 
+    "school_name": "Benjamin Franklin High School", 
+    "state_prov": "California", 
+    "team_number": 5089, 
+    "website": "http://www.firstinspires.org/"
+  }, 
+  {
+    "address": null, 
+    "city": "Torrance", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc5124", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "John Deere/NASA/Raytheon/Torrance Education Foundation&West High School", 
+    "nickname": "West Torrance Robotics", 
+    "postal_code": "90503", 
+    "rookie_year": 2014, 
+    "school_name": "West High School", 
+    "state_prov": "California", 
+    "team_number": 5124, 
+    "website": "http://westtorrancerobotics.org"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc5510", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Lockheed Martin / Northrop Grumman / Spin Master / Family Industries / Erector by Meccano / Kinetic Lighting & Alexander Hamilton Sr High Sch", 
+    "nickname": "The Da Vinci Coders", 
+    "postal_code": "90034", 
+    "rookie_year": 2015, 
+    "school_name": "Alexander Hamilton Sr High Sch", 
+    "state_prov": "California", 
+    "team_number": 5510, 
+    "website": "http://team5510.weebly.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Recoleta", 
+    "country": "Chile", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Detroit"
+    }, 
+    "key": "frc5512", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Municipalidad de Recoleta/Corporaci\u00f3n Cultural de Recoleta/Casillas CargoSud/Fundaci\u00f3n Prosegur/Rotatecno Chile/Robotics Lab SCL/Ministerio de Educaci\u00f3n - Programa Ingl\u00e9s Abre Puertas/Microsoft Chile/TACH Ingenier\u00eda/Instituto Chileno Norteamericano - American Spaces/U.S. Embassy Santiago & Liceo Valent\u00edn Letelier & Centro Cultural y Juvenil de Tecnolog\u00eda y Rob\u00f3tica Educativa Aplicada STEM ACADEMY CHILE", 
+    "nickname": "Pizza Mec\u00e1nica", 
+    "postal_code": "8420549", 
+    "rookie_year": 2015, 
+    "school_name": "Centro Cultural y Juvenil de Tecnolog\u00eda y Rob\u00f3tica Educativa Aplicada STEM ACADEMY CHILE & Liceo Valent\u00edn Letelier", 
+    "state_prov": "Regi\u00f3n Metropolitana de Santiago", 
+    "team_number": 5512, 
+    "website": "http://www.stemacademy.cl/"
+  }, 
+  {
+    "address": null, 
+    "city": "Neuville-sur-Sa\u00f4ne", 
+    "country": "France", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc5553", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Groupe NO\u00cbL/SDRA/Elior/R\u00e9gion Auvergne-Rh\u00f4ne-Alpes/Immobili\u00e8re Notre Dame de Bellegarde/Lions Club/Cr\u00e9dit Mutuel/APEL Notre Dame de Bellegarde/JEEDOM/IDRAC Business School/TraceParts/RS Components/Party Lite/Mairie de Collonges au Mont d'Or/Boucherie ROSIER/THALES/HEXIS/Concept & Impression/BBL GROUPE/ROTARY/Groupe KARDOL/Embassy Suites by Hilton Los Angeles International Airport South/CIC/ELCIA&Notre Dame de Bellegarde", 
+    "nickname": "Robo'Lyon", 
+    "postal_code": "69250", 
+    "rookie_year": 2015, 
+    "school_name": "Notre Dame de Bellegarde", 
+    "state_prov": "Rh\u00f4ne", 
+    "team_number": 5553, 
+    "website": "http://www.robolyon.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Lakewood", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc5634", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "The Boeing Co. & St Joseph High School", 
+    "nickname": "Jesterminators", 
+    "postal_code": "90713", 
+    "rookie_year": 2015, 
+    "school_name": "St Joseph High School", 
+    "state_prov": "California", 
+    "team_number": 5634, 
+    "website": "http://www.firstinspires.org/"
+  }, 
+  {
+    "address": null, 
+    "city": "Rosemead", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc5669", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Don Bosco Tech Institute", 
+    "nickname": "Techmen", 
+    "postal_code": "91770", 
+    "rookie_year": 2015, 
+    "school_name": "Don Bosco Tech Institute & Don Bosco Tech Institute", 
+    "state_prov": "California", 
+    "team_number": 5669, 
+    "website": "http://frctechmen-com.webs.com/"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc5802", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Boeing/i.am.angel Foundation/Disney Imagineering /Raytheon&Boyle Heights STEM Academy", 
+    "nickname": "Los STEMateros", 
+    "postal_code": "90033", 
+    "rookie_year": 2016, 
+    "school_name": "Boyle Heights STEM Academy", 
+    "state_prov": "California", 
+    "team_number": 5802, 
+    "website": "http://www.firstinspires.org/"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc597", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "The Boeing Company/USC-MESA/Vertirbi School of Engineering/NASA/Raytheon/Supervisor Mark Ridley-Thomas/The William C. Bannerman Foundation/L. A. City Council/Cushman & Wakefield/X-treme Solutions/Perkins Grant/CTEIG/Office of Dr. George Mckenna LAUSD/Stephen and Jill Petty/Northrop Grumman/Foshay Learning Center/Lowe's&James a Foshay Learning Ctr", 
+    "nickname": "The Wolverines", 
+    "postal_code": "90018", 
+    "rookie_year": 2001, 
+    "school_name": "James a Foshay Learning Ctr", 
+    "state_prov": "California", 
+    "team_number": 597, 
+    "website": "http://www.team597.org"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc6000", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Google & Shalhevet School", 
+    "nickname": "Firehawk Robotics", 
+    "postal_code": "90036", 
+    "rookie_year": 2016, 
+    "school_name": "Shalhevet School", 
+    "state_prov": "California", 
+    "team_number": 6000, 
+    "website": "http://www.team6000.com/"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc606", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Raytheon/Aerospace Corporation/Northrop Grumman/Los Angeles Trade Technical College/Boys and Girls Club of King Drew/The William C. Bannerman Foundation/Walt Disney Imagineering&King-Drew Medical Magnet HS", 
+    "nickname": "Cyber Eagles", 
+    "postal_code": "90059", 
+    "rookie_year": 2001, 
+    "school_name": "King-Drew Medical Magnet HS", 
+    "state_prov": "California", 
+    "team_number": 606, 
+    "website": "http://www.robotics-team606.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc6658", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Boeing & Eagle Rock High School", 
+    "nickname": "Rockbotics", 
+    "postal_code": "90041", 
+    "rookie_year": 2017, 
+    "school_name": "Eagle Rock High School", 
+    "state_prov": "California", 
+    "team_number": 6658, 
+    "website": null
+  }, 
+  {
+    "address": null, 
+    "city": "Carson", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc687", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "The Boeing Company / Northrop-Grumman / Raytheon / CAMS PTSO & California Academy Math & Sci", 
+    "nickname": "The Nerd Herd", 
+    "postal_code": "90747", 
+    "rookie_year": 2001, 
+    "school_name": "California Academy Math & Sci", 
+    "state_prov": "California", 
+    "team_number": 687, 
+    "website": "http://www.camsrobotics.org"
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc6904", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Animo College Prep Acad & College Track Watts", 
+    "nickname": "TeraWatts", 
+    "postal_code": "90002", 
+    "rookie_year": 2018, 
+    "school_name": "Animo College Prep Acad", 
+    "state_prov": "California", 
+    "team_number": 6904, 
+    "website": null
+  }, 
+  {
+    "address": null, 
+    "city": "Los Angeles", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc6938", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Village Glen West (non public)", 
+    "nickname": "STEM3 West Robotics", 
+    "postal_code": "90066", 
+    "rookie_year": 2018, 
+    "school_name": "Village Glen West (non public)", 
+    "state_prov": "California", 
+    "team_number": 6938, 
+    "website": null
+  }, 
+  {
+    "address": null, 
+    "city": "Medianeira", 
+    "country": "Brazil", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc7033", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "3M&AIDTEC", 
+    "nickname": "Roosters", 
+    "postal_code": "85884-000", 
+    "rookie_year": 2018, 
+    "school_name": "AIDTEC", 
+    "state_prov": "Paran\u00e1", 
+    "team_number": 7033, 
+    "website": null
+  }, 
+  {
+    "address": null, 
+    "city": "Baldwin Park", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc7051", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "NASA & Sierra Vista High School", 
+    "nickname": "RoboDons", 
+    "postal_code": "91706", 
+    "rookie_year": 2018, 
+    "school_name": "Sierra Vista High School", 
+    "state_prov": "California", 
+    "team_number": 7051, 
+    "website": null
+  }, 
+  {
+    "address": null, 
+    "city": "Glendora", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc7185", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Glendora High School", 
+    "nickname": "Glendora High School Robotics ", 
+    "postal_code": "91741", 
+    "rookie_year": 2018, 
+    "school_name": "Glendora High School", 
+    "state_prov": "California", 
+    "team_number": 7185, 
+    "website": null
+  }, 
+  {
+    "address": null, 
+    "city": "Irvine", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc7447", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Argosy Foundation/Digital Map Products&Portola High School", 
+    "nickname": "R\u014dnin Robotics", 
+    "postal_code": "92618", 
+    "rookie_year": 2019, 
+    "school_name": "Portola High School", 
+    "state_prov": "California", 
+    "team_number": 7447, 
+    "website": "https://roninrobotics.wixsite.com/7447"
+  }, 
+  {
+    "address": null, 
+    "city": "Harbor City", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc7455", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Nathaniel Narbonne High School", 
+    "nickname": "Narbots", 
+    "postal_code": "90710", 
+    "rookie_year": 2019, 
+    "school_name": "Nathaniel Narbonne High School", 
+    "state_prov": "California", 
+    "team_number": 7455, 
+    "website": null
+  }, 
+  {
+    "address": null, 
+    "city": "Ata\u015fehir", 
+    "country": "Turkey", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc8159", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Jr.Robotics & Family/Community", 
+    "nickname": "Golden Horn", 
+    "postal_code": "34750", 
+    "rookie_year": 2020, 
+    "school_name": "Family/Community", 
+    "state_prov": "Istanbul", 
+    "team_number": 8159, 
+    "website": "https://www.teamgoldenhorn.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Richmond", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc841", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Chevron/SunPower/Atlassian/BAE Systems/Intuitive Surgical/Applied Materials/Engineering Partnership Academy & College and Career Center/Applied Lasers LLC/M. Welding Creations and Industrial Finishing&Richmond High School", 
+    "nickname": "The BioMechs", 
+    "postal_code": "94804", 
+    "rookie_year": 2002, 
+    "school_name": "Richmond High School", 
+    "state_prov": "California", 
+    "team_number": 841, 
+    "website": "https://www.team841.org"
+  }, 
+  {
+    "address": null, 
+    "city": "Sylmar", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc980", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Walt Disney Imagineering/NASA-JPL/Boeing/Solutions for Automation/Lingua Machining Solutions/Raytheon/Neighbors Empowering Youth&FRC Team 980 ThunderBots", 
+    "nickname": "ThunderBots", 
+    "postal_code": "91342", 
+    "rookie_year": 2002, 
+    "school_name": "FRC Team 980 ThunderBots", 
+    "state_prov": "California", 
+    "team_number": 980, 
+    "website": "http://www.team980.com"
+  }, 
+  {
+    "address": null, 
+    "city": "Las Vegas", 
+    "country": "USA", 
+    "gmaps_place_id": null, 
+    "gmaps_url": null, 
+    "home_championship": {
+      "2020": "Houston"
+    }, 
+    "key": "frc987", 
+    "lat": null, 
+    "lng": null, 
+    "location_name": null, 
+    "motto": null, 
+    "name": "Steve and Susan Philpott/Limelight/Innovation First International/Switch/Purvis Industries/Thompson Family/Nevada YESCO LLC./Tesla/BAE Systems/Gene Haas Foundation/American Family Insurance/4 The Team!  LLC/Mark Jones/Bosze/Mike and Nancy Barry&Cimarron-Memorial High School", 
+    "nickname": "HIGHROLLERS", 
+    "postal_code": "89128", 
+    "rookie_year": 2002, 
+    "school_name": "Cimarron-Memorial High School", 
+    "state_prov": "Nevada", 
+    "team_number": 987, 
+    "website": "http://www.team987.com"
+  }
+]
+    [headers] => Httpful\Response\Headers Object
+        (
+            [headers:Httpful\Response\Headers:private] => Array
+                (
+                    [date] => Sun, 08 Mar 2020 16:11:51 GMT
+                    [content-type] => application/json; charset="utf-8"
+                    [content-length] => 30318
+                    [set-cookie] => __cfduid=d9de012a04234667c1a0bb55a484f52b91583683910; expires=Tue, 07-Apr-20 16:11:50 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+                    [access-control-allow-origin] => *
+                    [x-robots-tag] => noindex
+                    [cache-control] => public, max-age=61, s-maxage=61
+                    [etag] => W/"c7bb90aee1c2efe80bf5bfe55018a1ec"
+                    [last-modified] => Sun, 08 Mar 2020 16:11:47 GMT
+                    [x-tba-version] => 3
+                    [vary] => Accept-Encoding
+                    [x-cloud-trace-context] => d9ec82365e7b6799484a093665782a48
+                    [cf-cache-status] => DYNAMIC
+                    [expect-ct] => max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+                    [server] => cloudflare
+                    [cf-ray] => 570dd5999a676c98-SJC
+                )
+
+        )
+
+    [raw_headers] => HTTP/2 200 
+date: Sun, 08 Mar 2020 16:11:51 GMT
+content-type: application/json; charset="utf-8"
+content-length: 30318
+set-cookie: __cfduid=d9de012a04234667c1a0bb55a484f52b91583683910; expires=Tue, 07-Apr-20 16:11:50 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+access-control-allow-origin: *
+x-robots-tag: noindex
+cache-control: public, max-age=61, s-maxage=61
+etag: W/"c7bb90aee1c2efe80bf5bfe55018a1ec"
+last-modified: Sun, 08 Mar 2020 16:11:47 GMT
+x-tba-version: 3
+vary: Accept-Encoding
+x-cloud-trace-context: d9ec82365e7b6799484a093665782a48
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+server: cloudflare
+cf-ray: 570dd5999a676c98-SJC
+    [request] => Httpful\Request Object
+        (
+            [uri] => https://www.thebluealliance.com/api/v3/event/2020cala/teams
+            [method] => GET
+            [headers] => Array
+                (
+                    [X-TBA-Auth-Key] => DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+                    [Content-Length] => 0
+                )
+
+            [raw_headers] => GET /api/v3/event/2020cala/teams HTTP/1.1
+Host: www.thebluealliance.com
+Expect:
+User-Agent: Httpful/0.3.0 (cURL/7.67.0 PHP/7.4.2 (WINNT))
+Content-Type: 
+Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
+X-TBA-Auth-Key: DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+Content-Length: 0
+
+            [strict_ssl] => 
+            [content_type] => 
+            [expected_type] => 
+            [additional_curl_opts] => Array
+                (
+                )
+
+            [auto_parse] => 1
+            [serialize_payload_method] => 2
+            [username] => 
+            [password] => 
+            [serialized_payload] => 
+            [payload] => 
+            [parse_callback] => 
+            [error_callback] => 
+            [send_callback] => 
+            [follow_redirects] => 
+            [max_redirects] => 25
+            [payload_serializers] => Array
+                (
+                )
+
+            [_debug] => 
+        )
+
+    [code] => 200
+    [content_type] => application/json
+    [parent_type] => application/json
+    [charset] => "utf-8"
+    [meta_data] => Array
+        (
+            [url] => https://www.thebluealliance.com/api/v3/event/2020cala/teams
+            [content_type] => application/json; charset="utf-8"
+            [http_code] => 200
+            [header_size] => 763
+            [request_size] => 293
+            [filetime] => -1
+            [ssl_verify_result] => 0
+            [redirect_count] => 0
+            [total_time] => 1.017782
+            [namelookup_time] => 0.004349
+            [connect_time] => 0.032728
+            [pretransfer_time] => 0.094354
+            [size_upload] => 0
+            [size_download] => 30318
+            [speed_download] => 29811
+            [speed_upload] => 0
+            [download_content_length] => 30318
+            [upload_content_length] => -1
+            [starttransfer_time] => 1.009634
+            [redirect_time] => 0
+            [redirect_url] => 
+            [primary_ip] => 104.27.169.189
+            [certinfo] => Array
+                (
+                )
+
+            [primary_port] => 443
+            [local_ip] => 172.24.124.185
+            [local_port] => 58605
+            [http_version] => 3
+            [protocol] => 2
+            [ssl_verifyresult] => 0
+            [scheme] => HTTPS
+            [appconnect_time_us] => 94168
+            [connect_time_us] => 32728
+            [namelookup_time_us] => 4349
+            [pretransfer_time_us] => 94354
+            [redirect_time_us] => 0
+            [starttransfer_time_us] => 1009634
+            [total_time_us] => 1017782
+        )
+
+    [is_mime_vendor_specific] => 
+    [is_mime_personal] => 
+    [parsers:Httpful\Response:private] => 
+)
+
+
+end.

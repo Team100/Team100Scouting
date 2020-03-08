@@ -350,8 +350,8 @@ $dbhost = "localhost";
 //   This parameter can be set to perform comparison.  Note that not all char sets
 //   can be converted.  utf8mb4 will not convert to latin1_general_cs, as an example.
 //
-$db_case_sensitive = " collate utf8mb4_bin ";
-
+//$db_case_sensitive = " collate utf8mb4_bin ";
+$db_case_sensitive = "";
 
 // ***************************
 //

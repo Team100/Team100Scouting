@@ -173,6 +173,13 @@
   <li><a href=\"/bluealliance.php?op=allteams\">Update all FIRST teams</a><br>(!! be very careful - lots of data)</li>
   </ul>
 
+
+  <h4><u>Custom Parameters</u></h4>
+
+  <ul>
+  <li><a href=\"/customparam.php?vargroup=tBA\">Define The Blue Alliance custom parameters</li>
+  </ul>
+
   "; // end of print
 
 

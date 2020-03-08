@@ -24,10 +24,14 @@ date_default_timezone_set($sys_time_zone);
 //
 // function: debug
 //  returns true if $debug is true, otherwise returns false
-$debug=FALSE;
-$debug=TRUE;
 //
-//check $get variable
+//  Typical use: if (debug()) print "\n<br>DEBUG-set-event: {$query} <br>\n";
+//
+// comment out TRUE to turn off
+$debug=FALSE;
+//$debug=TRUE;
+//
+//check $get variable for debug and turn to true (easy for on-the-fly)
 if(isset($_GET['debug'])) $debug=TRUE;
 
 //
@@ -85,15 +89,26 @@ function dbsetup()
   mysqli_autocommit($connection, FALSE);
 
   // load default event_id and name for this instance from database
-  $query="select value, name from system_value, event where skey = 'sys_event_id' and event_id = value";
+  //$query="select value, name from system_value, event where skey = 'sys_event_id' and event_id = value";
+  // use left join syntax for outer join
+  $query="select value, name from system_value left join event on event_id = value where skey = 'sys_event_id'";
+
+  if (debug()) print "\n<br>DEBUG-dbsetup: {$query} <br>\n";
+
   if (! ($result = @mysqli_query ($connection, $query) ))
   	dbshowerror($connection, "die");
-  $row = mysqli_fetch_array($result);
-  $sys_event_id = $row["value"];
-  $sys_event_name = $row["name"];
+  if ($row = mysqli_fetch_array($result))
+  {
+    $sys_event_id = $row["value"];
+    $sys_event_name = $row["name"];
+  }
+  else
+    $sys_event_id = "";
+    
   mysqli_free_result($result);
   
   if ($sys_event_id == "") $sys_event_name = "No competition event selected !!";
+
  
   // check for autocommit off
   //if (debug()) 
@@ -706,7 +721,9 @@ function teamhref ( $teamnum)
 //  ["tr"] = TRUE - add beginning and ending <tr> tags
 //  ["notag="] = TRUE - do not print field label/tag.  Just the field itself
 //  ["notd"] = TRUE - do not print <td> open and close
-//  ["href"] = TRUE - enclose data value in href tag
+//  ["href"] = TRUE or data_value - enclose data value in href tag.
+//               if set to TRUE, encloses the value in an href tag, starting with http://
+//               if set to a data value, uses that in a href tag not starting with anything
 //  ["th"] = TRUE - use <th></th> tags instead of <td> throughout
 //  ["header"] = TRUE - use tag within <th> line without any data.
 //   
@@ -741,12 +758,17 @@ function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $ma
     // set up href option
     if (isset($options["href"]))
     	{
-    	  // strip off http start if there is one  
-    	  if ( ! ($web = (strstr($value, 'http://'))) === FALSE)
+    	  // if href is true, use value, otherwise use the href tag itself
+    	  if ($options["href"] === TRUE)
+            // strip off http start if there is one  
+      	    if ( ! ($web = (strstr($value, 'http://'))) === FALSE)
 	  	$beg_href = "<a href=\"http://" . substr($web, 7) . "\">";    
-	  else
+	    else
         	$beg_href = "<a href=\"http://{$value}\">" ; 
-	
+        	
+          else // href tag is it's own value
+	     beg_href = "<a href=\"$options["href"]\">" ; 
+	     
 	  $end_href = "</a>";
 	}
    

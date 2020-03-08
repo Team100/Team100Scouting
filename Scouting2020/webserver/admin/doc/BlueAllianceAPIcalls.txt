@@ -1,0 +1,105 @@
+<?php
+//
+// Blue Alliance API test
+//
+
+include ('../../docroot/lib/httpful.phar');
+
+$year='2020';
+$event='cada';
+$ourteam='frc0100';
+
+$tba_AuthKey = "DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc";
+
+print "AuthKey:" . $tbaAPIkey . "\n\n";
+
+$url = "https://www.thebluealliance.com/api/v3/status";
+
+// URLs:
+//  /teams
+//
+//
+//
+//
+//
+//
+//
+//
+// /teams/{year}/{page_num}/keys
+//   Gets a list Team Keys that competed in the given year, paginated in groups of 500.
+//
+// /team/{team_key}
+//
+// /team/{team_key}/robots
+//
+// /team/{team_key}
+//   Gets a list of year and robot name pairs for each year that a robot name was provided.
+//   Will return an empty array if the team has never named a robot.
+//
+//
+//
+// /event/{event_key}/teams
+//
+// https://www.thebluealliance.com/api/v3/event/{$new_sys_event_id}
+//
+//
+// /team/{team_key}/robots  - year and bot name
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/teams/{year}/{page_num}/keys
+   Gets a list Team Keys that competed in the given year, paginated in groups of 500.
+
+/team/{team_key}
+   Gets a list of year and robot name pairs for each year that a robot name was provided.
+   Will return an empty array if the team has never named a robot.
+
+
+
+
+//$url = "https://www.thebluealliance.com/api/v3/events/{$year}";
+// http://www.thebluealliance.com/api/v2
+
+$response = \Httpful\Request::get($url)
+    ->addHeader('X-TBA-Auth-Key',$tba_AuthKey)
+    ->send();
+
+print "Response from Blue Alliance\n";
+print $url . "\n";
+
+print_r ($response);
+
+print "\nYear: {$year}\n";
+print "Event: {$event}\n";
+//print "\n\nRanking Array:\n";
+//print_r($response->body[0]);
+
+print "\n\nend.\n";
+
+?>
