@@ -21,6 +21,7 @@
 
     // initialize
     $editor = NULL;
+    $upcoming = array();  // teams we are playing against
 
 	$alliance_data = array("color", "score", "raw_points", "penalty_points");
 
@@ -301,7 +302,8 @@
 
     // loop through array
     foreach($ScoreFields as $element=>$scorefield)
-      $fields = array_merge($fields, array("f_score{$element}" => $scorefield['display']));
+//DBCOL      $fields = array_merge($fields, array("f_score{$element}" => $scorefield['display']));
+      $fields = array_merge($fields, array($scorefield['tag'] => $scorefield['display']));
 
     // form query
     $query = "select " . fields_insert("nameonly", $fields, "") . " from match_instance_alliance where "

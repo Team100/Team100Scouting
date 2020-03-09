@@ -289,7 +289,8 @@ function tba_get_matches()
   global $tba_error;
   global $connection;
   global $tba_match_to_match_instance, $tba_match_to_match_alliance, $tba_match_to_match_team;
-  global $ScoreFields;
+  global $tba_score_to_match_alliance;
+//  global $ScoreFields;
   
   // 
   // create internal mapping table for score breakdown
@@ -301,9 +302,9 @@ function tba_get_matches()
   //  - column: if needed, column used for database mapping.  For custom fields
   //     column is derived from position in ScoreField array.
   //
-  $tba_score_to_match_alliance = array();
-  foreach($ScoreFields as $element=>$scoredef)
-    $tba_score_to_match_alliance = array_merge($tba_score_to_match_alliance, array($scoredef['tBAtag']=>"f_score{$element}"));
+  //$tba_score_to_match_alliance = array();
+  //foreach($ScoreFields as $element=>$scoredef)
+  //  $tba_score_to_match_alliance = array_merge($tba_score_to_match_alliance, array($scoredef['tBAtag']=>"f_score{$element}"));
 
   // get data
   if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/matches", FALSE)))
@@ -344,7 +345,7 @@ function tba_get_matches()
         tba_updatedb("match_instance_alliance", $match_alliance_array, $tba_dbarray);
         
         // loop through each team in alliance and update match_team table
-        foreach($allianceobj->teams as $teamkey)
+        foreach($allianceobj->team_keys as $teamkey)
         {
           // turn teamkey to teamnum
           sscanf($teamkey, "frc%d", $teamnum);
@@ -377,6 +378,7 @@ function tba_get_matches()
         $match_alliance_array = array_merge ($match_id_array,array("color"=>$color));
  
         // map fields from response for team table
+        // reset array
         $tba_dbarray=array();
         $tba_dbarray = tba_mapfields($tba_score_to_match_alliance, $scoreobj, $tba_dbarray);
 
@@ -385,7 +387,7 @@ function tba_get_matches()
 
       } 
 
-      // inform user
+      // inform user that match is processed
       print "{$match_alliance_array["type"]}{$match_alliance_array["matchnum"]}, ";
 
     } // end of match

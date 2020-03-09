@@ -26,6 +26,7 @@
 
   // initialize vars
   $editor = NULL;
+  $upcoming = array();  // teams we are playing against
 
   // if no teamnum, then select first team num for match
   if (! ($teamnum))

@@ -1,0 +1,150 @@
+AuthKey:DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+
+Response from Blue Alliance
+https://www.thebluealliance.com/api/v3/event/2020cala/matches/timeseries
+
+Httpful\Response Object
+(
+    [body] => Array
+        (
+        )
+
+    [raw_body] => []
+    [headers] => Httpful\Response\Headers Object
+        (
+            [headers:Httpful\Response\Headers:private] => Array
+                (
+                    [date] => Mon, 09 Mar 2020 16:21:52 GMT
+                    [content-type] => application/json; charset="utf-8"
+                    [content-length] => 2
+                    [set-cookie] => __cfduid=d9f30e2660b41b44e00f6e0605170870b1583770912; expires=Wed, 08-Apr-20 16:21:52 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+                    [access-control-allow-origin] => *
+                    [x-robots-tag] => noindex
+                    [cache-control] => public, max-age=3600, s-maxage=3600
+                    [etag] => W/"d751713988987e9331980363e24189ce"
+                    [x-tba-version] => 3
+                    [vary] => Accept-Encoding
+                    [x-cloud-trace-context] => 024cc50f59bd29d24f32feba82f8fd1e
+                    [cf-cache-status] => DYNAMIC
+                    [expect-ct] => max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+                    [server] => cloudflare
+                    [cf-ray] => 571621a82bd96d46-SJC
+                )
+
+        )
+
+    [raw_headers] => HTTP/2 200 
+date: Mon, 09 Mar 2020 16:21:52 GMT
+content-type: application/json; charset="utf-8"
+content-length: 2
+set-cookie: __cfduid=d9f30e2660b41b44e00f6e0605170870b1583770912; expires=Wed, 08-Apr-20 16:21:52 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+access-control-allow-origin: *
+x-robots-tag: noindex
+cache-control: public, max-age=3600, s-maxage=3600
+etag: W/"d751713988987e9331980363e24189ce"
+x-tba-version: 3
+vary: Accept-Encoding
+x-cloud-trace-context: 024cc50f59bd29d24f32feba82f8fd1e
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+server: cloudflare
+cf-ray: 571621a82bd96d46-SJC
+    [request] => Httpful\Request Object
+        (
+            [uri] => https://www.thebluealliance.com/api/v3/event/2020cala/matches/timeseries
+            [method] => GET
+            [headers] => Array
+                (
+                    [X-TBA-Auth-Key] => DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+                    [Content-Length] => 0
+                )
+
+            [raw_headers] => GET /api/v3/event/2020cala/matches/timeseries HTTP/1.1
+Host: www.thebluealliance.com
+Expect:
+User-Agent: Httpful/0.3.0 (cURL/7.67.0 PHP/7.4.2 (WINNT))
+Content-Type: 
+Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
+X-TBA-Auth-Key: DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+Content-Length: 0
+
+            [strict_ssl] => 
+            [content_type] => 
+            [expected_type] => 
+            [additional_curl_opts] => Array
+                (
+                )
+
+            [auto_parse] => 1
+            [serialize_payload_method] => 2
+            [username] => 
+            [password] => 
+            [serialized_payload] => 
+            [payload] => 
+            [parse_callback] => 
+            [error_callback] => 
+            [send_callback] => 
+            [follow_redirects] => 
+            [max_redirects] => 25
+            [payload_serializers] => Array
+                (
+                )
+
+            [_debug] => 
+        )
+
+    [code] => 200
+    [content_type] => application/json
+    [parent_type] => application/json
+    [charset] => "utf-8"
+    [meta_data] => Array
+        (
+            [url] => https://www.thebluealliance.com/api/v3/event/2020cala/matches/timeseries
+            [content_type] => application/json; charset="utf-8"
+            [http_code] => 200
+            [header_size] => 717
+            [request_size] => 306
+            [filetime] => -1
+            [ssl_verify_result] => 0
+            [redirect_count] => 0
+            [total_time] => 1.037772
+            [namelookup_time] => 0.004016
+            [connect_time] => 0.033096
+            [pretransfer_time] => 0.113788
+            [size_upload] => 0
+            [size_download] => 2
+            [speed_download] => 1
+            [speed_upload] => 0
+            [download_content_length] => 2
+            [upload_content_length] => -1
+            [starttransfer_time] => 1.037731
+            [redirect_time] => 0
+            [redirect_url] => 
+            [primary_ip] => 104.27.168.189
+            [certinfo] => Array
+                (
+                )
+
+            [primary_port] => 443
+            [local_ip] => 172.24.124.185
+            [local_port] => 60378
+            [http_version] => 3
+            [protocol] => 2
+            [ssl_verifyresult] => 0
+            [scheme] => HTTPS
+            [appconnect_time_us] => 113443
+            [connect_time_us] => 33096
+            [namelookup_time_us] => 4016
+            [pretransfer_time_us] => 113788
+            [redirect_time_us] => 0
+            [starttransfer_time_us] => 1037731
+            [total_time_us] => 1037772
+        )
+
+    [is_mime_vendor_specific] => 
+    [is_mime_personal] => 
+    [parsers:Httpful\Response:private] => 
+)
+
+
+end.

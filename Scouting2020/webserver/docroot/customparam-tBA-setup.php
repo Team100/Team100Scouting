@@ -13,7 +13,7 @@
   if(isset($_GET["edit"])) $edit=$_GET["edit"]; else $edit=NULL;
 
   // header and setup
-  pheader("Custom Parameters - Blue Alliance Setup");
+  pheader("Custom Parameters - Blue Alliance Pasted Params Setup");
   $connection = dbsetup();
 
   // initialize variables and arrays
@@ -30,33 +30,101 @@
   	// load operation
   	if (isset($_POST["op"]) && ($_POST["op"] == "Save"))
 	{
-  		// check row
-  		dblock($dblock,"check");
+      // check row
+      if (isset($_POST["rawparams"]))
+        {
+		  // load rawparams into array
+		  $paramlines = explode("\n",$_POST["rawparams"]);
 
-		// load form fields
-		$formfields = fields_load("post", $custom_param);
-		$query = "update custom_param set " . fields_insert("update",$formfields) . " where tag is not null";
+		  // debug
+		  if (debug()) { print "\n\nArray received:\n"; print_r($paramlines);}
 
-		// process query
-		if (debug()) print "<br>DEBUG-mtemplate: " . $query . "<br>\n";
-		if (! (@mysqli_query ($connection, $query) ))
-			dbshowerror($connection, "die");
+          // loop through paramlines, exploding with tab for tBA type
+          $cnt=0;
+          foreach ($paramlines as $paramline)
+          {
 
-		// commit
-		if (! (@mysqli_commit($connection) ))
-			dbshowerror($connection, "die");
-	}
+            $params = explode("\t",$paramline);
 
-	// abondon lock
-	dblock($dblock,"abandon");
+            if (debug()) { print "\n  Pair received:\n"; print_r($paramline);}
 
-    // update completed, reset edit mode
-    $edit = 0;
+            $tba_tag = $params[0];
+
+            $tba_type = rtrim($params[1]);
+
+            // truncate tag at 20 chars
+            $tag = substr("f_" . $tba_tag, 0, 20);
+
+            // test tag and skip if needed
+            if ($tag == "")
+              // show user
+              print "<br><b>A tag was NULL.  Skipping that tag.</b><br>\n";
+            else
+            {
+              // message user
+              print "Processing tBA tag {$tba_tag}<br>\n";
+              // dbtype helper
+              $dbtype = "varchar";  // default
+              switch ($tba_type) {
+                case "integer": $dbtype = "int"; break;
+                case "boolean": $dbtype = "boolean"; break;
+              }
+
+              $col_len = 20; 	// default database column length
+
+              // assign vars
+              $custom_params = array("tag"=>$tag,"position"=>$cnt,"used"=>1,"vargroup"=>"tBA",
+                 "entrytype"=>"R","dbtype"=>$dbtype,"display"=>$tag,"maxlen"=>$col_len,
+                 "description"=>"Blue Alliance custom variable {$tba_tag}",
+                 "tBA_tag"=>$tba_tag,"tBA_type"=>$tba_type);
+
+              $cnt++;
+
+              // set up query
+              $query = "insert into custom_param (" . fields_insert("nameonly", $custom_params, "")
+                   . ") values (" . fields_insert("insert", $custom_params, "") . " )";
+
+		      // process query
+		      if (debug()) print "<br>DEBUG-customparam-tBA-setup: " . $query . "<br>\n";
+		      if (! (@mysqli_query ($connection, $query) ))
+		    	    dbshowerror($connection, "die");
+
+		     } // end else tag
+          }   // end of foreach paramlines
+
+	      // commit
+		  if (! (@mysqli_commit($connection) ))
+		   	dbshowerror($connection, "die");
+
+
+	  } // if isset rawparms
+	}  // isset op
+
+
+    // update completed, instead of reset edit mode used edit mode 90 to paint results page
+    $edit = 90;
    }
 
-   // lock tables if in edit mode
-   if ($edit) dblock($dblock,"lock");  // lock row with current user id
 
+//
+// paint results page, or paint entry page
+//
+
+if ($edit == 90)
+print "
+<br>
+<br>
+Tag processing completed.  Go to custom parameter editing to finish customization.
+Check display names and descriptions.
+<br>
+<br>
+<a href=\"/customparam.php?vargroup=tBA\">Go to Custom Parameter Entry<a>
+<br>
+<br>
+";
+
+else
+{
 
 //
 // top of form rendering
@@ -69,79 +137,54 @@
 print "
 This form provides a short-cut to load custom Blue Alliance parameters.  It sets up
 <ol>
-<li>Go to BlueAlliance.com API documentation page and look for the definition at the bottom of the page.
-
-
+<li>Go to BlueAlliance.com API documentation page
+( <a href=\"https://www.thebluealliance.com/apidocs/v3\">www.thebluealliance.com/apidocs/v3<a>)
+<li>Look for the definition at the bottom of the page in the schema section, with a phrase
+such as \"Match Score Breakdown_XXXX\".
+<li>Select and copy the variables and types.
+<li>Copy into notepad or another editor, and clean up any abnormalities.
+<li>Your output should be of the form VariableName<tab>Type
+<li>Paste into the text area below
 </ol>
 "; // end print
 
 
 
 print "
+
+<form method=\"POST\" action=\"/customparam-tBA-setup.php?edit=2\">
+
+
+
 <!----- Top of page ----->
 <table valign=\"top\">
 <tr valign=\"top\">
-<td>
+<td>The Blue Alliance custom params -tab- type</td>
+</tr>
+
+<tr>
+<td><textarea name=\"rawparams\" rows=\"40\" cols=\"70\"></textarea>
+</td>
+</tr>
+
+<INPUT TYPE=\"submit\" name=\"op\" VALUE=\"Save\" ALIGN=middle BORDER=0>
+&nbsp;<INPUT TYPE=\"submit\" name=\"op\" VALUE=\"Cancel\" ALIGN=middle BORDER=0>
+
+<br><br><a href=\"/customparam.php?vargroup=tBA\">Return to Custom Parms</a>
+
 "; // end of print
 
-  //
-  // create page
-  //
+  // close page
+  print "</td></tr></table>\n";
+  print "</form>\n";
 
-  // get custom_param details define result set
-  $query = "select ". fields_insert("nameonly",NULL,$custom_param) . " from custom_param where vargroup = '{$vargroup}'";
-  if (debug()) print "<br>DEBUG-template: " . $query . "<br>\n";
-  if (!($result = @ mysqli_query ($connection, $query)))
-    dbshowerror($connection);
-
-  // get row
-  $row = mysqli_fetch_array($result);
-
-  // field options
-  $options["tr"] = 1;  // add tr tags
-
-  // if in edit mode, signal save with edit=2
-  if ($edit)
-  	print "<form method=\"POST\" action=\"/template-simple-edit.php?edit=2\">\n";
-
-  // Use tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue)
-  // for each field
-  print "
-  <!--- table for display data --->
-  <table valign=\"top\">
-  "
-  . tabtextfield($edit,$options,$row, "tag","Tag",10,15)
-  . tabtextfield($edit,$options,$row, "position","Ord",3,3)
-  . tabtextfield($edit,$options,$row, "used","Used",1,1)
-  . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1)
-  . tabtextfield($edit,$options,$row, "dbtype","DB type",8,8)
-  . tabtextfield($edit,$options,$row, "display","Display",14,15)
-  . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2)
-  . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2)
-  . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20)
-  . tabtextfield($edit,$options,$row, "list_of_values","List of Val",10,100)
-  . tabtextfield($edit,$options,$row, "db_calc","DB Calc",10,50)
-  . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200)
-  . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3)
-  . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3)
-  . tabtextfield($edit,$options,$row, "test_values","TestValues",10,200)
-  . "\n<tr><td><br><br></td></tr>\n<tr><td>\n";
-
-  // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/template-simple-edit.php?vargroup={$vargroup}") . "\n";
+} // end of else from edit=90 or regular paint
 
   // return and home buttons
   print "<br><br><a href=\"/admin.php\">Return to Admin</a><br>\n";
   print "<a href=\"/\">Return to Home</a>\n";
 
-  // finish table and continue
-  print "</td></tr></table>\n";
-
-
-  // close the form if in edit mode
-  if ($edit) print "\n</form>\n";
-
-  print "</tr>\n</table>\n";
+  print"</tr></table>\n";
 
    pfooter();
   ?>

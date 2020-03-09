@@ -1133,6 +1133,7 @@ function param_array ($paramgroup)
    
    // initialize
    $fcnt=0;
+   $fieldnames = array();
    
    foreach($dispfields[$paramgroup] as $key)
      if ($key['used'] == TRUE)

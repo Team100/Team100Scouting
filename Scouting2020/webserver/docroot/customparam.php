@@ -153,7 +153,7 @@ print "
 
     // set special URL tag options
     $tagoptions = $options;
-    if (!($edit))
+    if (!($edit) && isset($row["tag"]))
       $tagoptions["href"] = "/customparam-single.php?vargroup={$vargroup}&tag={$row["tag"]}";
 
     // special formating for tBA
@@ -166,6 +166,7 @@ print "
       . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,$editprefix)
       . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,$editprefix)
       . tabtextfield($edit,$options,$row, "dbtype","DB type",8,10,"varchar",NULL,$editprefix)
+      . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,$editprefix)
       . tabtextfield($edit,$options,$row, "display","Display",15,20,NULL,NULL,$editprefix)
       . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,$editprefix)
       . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,$editprefix)

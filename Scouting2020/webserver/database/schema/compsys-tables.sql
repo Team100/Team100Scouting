@@ -296,51 +296,6 @@ create table match_instance_alliance
   penalty_points int,		# penalty points -- depricate in 2017 if not used and not found in code
   other_points int,		# other points, might need in the future -- depricate in 2017 if not used and not found in code
   seed_points int,		# seed points - seed points in system -- depricate in 2017 if not used and not found in code
-  f_score0 varchar(25),          # tBA custom score field
-  f_score1 varchar(25),          # tBA custom score field
-  f_score2 varchar(25),          # tBA custom score field
-  f_score3 varchar(25),          # tBA custom score field
-  f_score4 varchar(25),          # tBA custom score field
-  f_score5 varchar(25),          # tBA custom score field
-  f_score6 varchar(25),          # tBA custom score field
-  f_score7 varchar(25),          # tBA custom score field
-  f_score8 varchar(25),          # tBA custom score field
-  f_score9 varchar(25),          # tBA custom score field
-  f_score10 varchar(25),          # tBA custom score field
-  f_score11 varchar(25),          # tBA custom score field
-  f_score12 varchar(25),          # tBA custom score field
-  f_score13 varchar(25),          # tBA custom score field
-  f_score14 varchar(25),          # tBA custom score field
-  f_score15 varchar(25),          # tBA custom score field
-  f_score16 varchar(25),          # tBA custom score field
-  f_score17 varchar(25),          # tBA custom score field
-  f_score18 varchar(25),          # tBA custom score field
-  f_score19 varchar(25),          # tBA custom score field
-  f_score20 varchar(25),          # tBA custom score field
-  f_score21 varchar(25),          # tBA custom score field
-  f_score22 varchar(25),          # tBA custom score field
-  f_score23 varchar(25),          # tBA custom score field
-  f_score24 varchar(25),          # tBA custom score field
-  f_score25 varchar(25),          # tBA custom score field
-  f_score26 varchar(25),          # tBA custom score field
-  f_score27 varchar(25),          # tBA custom score field
-  f_score28 varchar(25),          # tBA custom score field
-  f_score29 varchar(25),          # tBA custom score field
-  f_score30 varchar(25),          # tBA custom score field
-  f_score31 varchar(25),          # tBA custom score field
-  f_score32 varchar(25),          # tBA custom score field
-  f_score33 varchar(25),          # tBA custom score field
-  f_score34 varchar(25),          # tBA custom score field
-  f_score35 varchar(25),          # tBA custom score field
-  f_score36 varchar(25),          # tBA custom score field
-  f_score37 varchar(25),          # tBA custom score field
-  f_score38 varchar(25),          # tBA custom score field
-  f_score39 varchar(25),          # tBA custom score field
-  f_score40 varchar(25),          # tBA custom score field
-  f_score41 varchar(25),          # tBA custom score field
-  f_score42 varchar(25),          # tBA custom score field
-  f_score43 varchar(25),          # tBA custom score field
-  f_score44 varchar(25),          # tBA custom score field 
   primary key (event_id, type, matchnum, color)
  );
 

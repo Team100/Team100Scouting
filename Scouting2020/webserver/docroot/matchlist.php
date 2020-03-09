@@ -23,6 +23,9 @@ else
 // set today
 $today = date('Y-m-d');
 
+// initialize vars
+$upcoming = array();  // teams we are playing against
+
 //
 // setup for needs eval functions
 //

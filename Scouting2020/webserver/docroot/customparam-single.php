@@ -108,6 +108,7 @@ print "
         . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,NULL)
         . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,NULL)
         . tabtextfield($edit,$options,$row, "dbtype","DB type",10,10,"varchar",NULL,NULL)
+        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,NULL)
         . tabtextfield($edit,$options,$row, "display","Display",20,20,NULL,NULL,NULL)
         . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,NULL)
         . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,NULL)

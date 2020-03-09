@@ -78,8 +78,8 @@ $field_positions = FALSE;
 //   Should we create a "alliance position" switch too?  (for later)
 //
 // All definted from included db-generated file
-require "params-custom.inc";
-
+//require "params-custom.inc";
+include "params-custom.inc";
 
 //
 // set max length of Match fields to match the database.  Tablet data longer than this is truncated.
@@ -105,54 +105,6 @@ $map_match_tags = array ("offensiverating"=>"rating_offense", "defensiverating"=
 // Note:
 //   - To determine which fields are used in a given year, run admin/utils/blue-score.php
 
-
-
-$ScoreFields[0] = array("tBAtag"=>"totalPoints", "display"=>"Total Points");
-$ScoreFields[1] = array("tBAtag"=>"techFoulCount", "display"=>"Foul Count");
-$ScoreFields[2] = array("tBAtag"=>"adjustPoints", "display"=>"Adjust Points");
-$ScoreFields[3] = array("tBAtag"=>"capturePoints", "display"=>"Capture Points");
-$ScoreFields[4] = array("tBAtag"=>"teleopPoints", "display"=>"TeleOp Points");
-$ScoreFields[5] = array("tBAtag"=>"autoPoints", "display"=>"Auto Points");
-$ScoreFields[6] = array("tBAtag"=>"breachPoints", "display"=>"Breach Points");
-$ScoreFields[7] = array("tBAtag"=>"foulCount", "display"=>"Fouls");
-$ScoreFields[8] = array("tBAtag"=>"foulPoints", "display"=>"Fouls Points");
-$ScoreFields[9] = array("tBAtag"=>"towerFaceA", "display"=>"Tower Face A");
-$ScoreFields[10] = array("tBAtag"=>"towerFaceB", "display"=>"Tower Face B");
-$ScoreFields[11] = array("tBAtag"=>"towerFaceC", "display"=>"Tower Face C");
-$ScoreFields[12] = array("tBAtag"=>"autoCrossingPoints", "display"=>"Auto Crossing Points");
-$ScoreFields[13] = array("tBAtag"=>"autoBoulderPoints", "display"=>"Boulder Points");
-$ScoreFields[14] = array("tBAtag"=>"autoBouldersLow", "display"=>"Boulders Low");
-$ScoreFields[15] = array("tBAtag"=>"autoBouldersHigh", "display"=>"Bloulders High");
-$ScoreFields[16] = array("tBAtag"=>"autoReachPoints", "display"=>"Reach Points");
-$ScoreFields[17] = array("tBAtag"=>"teleopCrossingPoints", "display"=>"Crossing Points");
-$ScoreFields[18] = array("tBAtag"=>"teleopBoulderPoints", "display"=>"Boulder Points");
-$ScoreFields[19] = array("tBAtag"=>"teleopBouldersHigh", "display"=>"Tele Boulders High");
-$ScoreFields[20] = array("tBAtag"=>"teleopBouldersLow", "display"=>"Tele Boulder Low");
-$ScoreFields[21] = array("tBAtag"=>"teleopDefensesBreached", "display"=>"Tele Denfenses Breached");
-$ScoreFields[22] = array("tBAtag"=>"teleopScalePoints", "display"=>"Tele Scale Points");
-$ScoreFields[23] = array("tBAtag"=>"teleopTowerCaptured", "display"=>"Tele Tower Captured");
-$ScoreFields[24] = array("tBAtag"=>"teleopChallengePoints", "display"=>"Tele Challenge Points");
-$ScoreFields[25] = array("tBAtag"=>"towerEndStrength", "display"=>"Tele End Strength");
-$ScoreFields[26] = array("tBAtag"=>"robot1Auto", "display"=>"Robot 1 Auto");
-$ScoreFields[27] = array("tBAtag"=>"robot2Auto", "display"=>"Robot 2 Auto");
-$ScoreFields[28] = array("tBAtag"=>"robot3Auto", "display"=>"Robot 3 Auto");
-$ScoreFields[29] = array("tBAtag"=>"position1", "display"=>"Position 1");
-$ScoreFields[30] = array("tBAtag"=>"position2", "display"=>"Position 2");
-$ScoreFields[31] = array("tBAtag"=>"position3", "display"=>"Position 3");
-$ScoreFields[32] = array("tBAtag"=>"position4", "display"=>"Position 4");
-$ScoreFields[33] = array("tBAtag"=>"position5", "display"=>"Position 5");
-$ScoreFields[34] = array("tBAtag"=>"position1crossings", "display"=>"Position 1 Crossings");
-$ScoreFields[35] = array("tBAtag"=>"position2crossings", "display"=>"Position 2 Crossings");
-$ScoreFields[36] = array("tBAtag"=>"position3crossings", "display"=>"Position 3 Crossings");
-$ScoreFields[37] = array("tBAtag"=>"position4crossings", "display"=>"Position 4 Crossings");
-$ScoreFields[38] = array("tBAtag"=>"position5crossings", "display"=>"Position 5 Crossings");
-//$ScoreFields[39] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[40] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[41] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[42] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[43] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[44] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[] = array("tBAtag"=>"", "display"=>"");
 
 
 //

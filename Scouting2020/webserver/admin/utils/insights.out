@@ -1,0 +1,529 @@
+AuthKey:DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+
+Response from Blue Alliance
+https://www.thebluealliance.com/api/v3/event/2020cala/insights
+
+Httpful\Response Object
+(
+    [body] => stdClass Object
+        (
+            [playoff] => stdClass Object
+                (
+                    [achieve_stage1_count] => Array
+                        (
+                            [0] => 31
+                            [1] => 32
+                            [2] => 96.875
+                        )
+
+                    [achieve_stage2_count] => Array
+                        (
+                            [0] => 4
+                            [1] => 32
+                            [2] => 12.5
+                        )
+
+                    [achieve_stage3_count] => Array
+                        (
+                            [0] => 0
+                            [1] => 32
+                            [2] => 0
+                        )
+
+                    [average_cell_count] => 20.59375
+                    [average_cell_count_auto] => 6.53125
+                    [average_cell_count_bottom] => 0
+                    [average_cell_count_bottom_auto] => 0
+                    [average_cell_count_bottom_teleop] => 0
+                    [average_cell_count_inner] => 2.6875
+                    [average_cell_count_inner_auto] => 0.53125
+                    [average_cell_count_inner_teleop] => 2.15625
+                    [average_cell_count_outer] => 17.90625
+                    [average_cell_count_outer_auto] => 6
+                    [average_cell_count_outer_teleop] => 11.90625
+                    [average_cell_count_teleop] => 14.0625
+                    [average_cell_points_auto] => 27.1875
+                    [average_cell_points_teleop] => 30.28125
+                    [average_cell_score] => 57.46875
+                    [average_control_panel_points] => 1.25
+                    [average_endgame_points] => 46.875
+                    [average_foul_score] => 7.21875
+                    [average_init_line_points_auto] => 13.75
+                    [average_num_robots_hanging] => 1.4375
+                    [average_points_auto] => 40.9375
+                    [average_points_teleop] => 78.40625
+                    [average_score] => 126.5625
+                    [average_win_margin] => 58.625
+                    [average_win_score] => 155.875
+                    [exit_init_line_count] => Array
+                        (
+                            [0] => 88
+                            [1] => 96
+                            [2] => 91.666666666667
+                        )
+
+                    [generator_energized_rp_achieved] => Array
+                        (
+                            [0] => 0
+                            [1] => 32
+                            [2] => 0
+                        )
+
+                    [generator_level_count] => Array
+                        (
+                            [0] => 15
+                            [1] => 32
+                            [2] => 46.875
+                        )
+
+                    [generator_operational_rp_achieved] => Array
+                        (
+                            [0] => 0
+                            [1] => 32
+                            [2] => 0
+                        )
+
+                    [hang_count] => Array
+                        (
+                            [0] => 46
+                            [1] => 96
+                            [2] => 47.916666666667
+                        )
+
+                    [high_score] => Array
+                        (
+                            [0] => 210
+                            [1] => 2020cala_sf2m1
+                            [2] => SF2-1
+                        )
+
+                    [park_count] => Array
+                        (
+                            [0] => 25
+                            [1] => 96
+                            [2] => 26.041666666667
+                        )
+
+                    [unicorn_matches] => Array
+                        (
+                            [0] => 0
+                            [1] => 32
+                            [2] => 0
+                        )
+
+                )
+
+            [qual] => stdClass Object
+                (
+                    [achieve_stage1_count] => Array
+                        (
+                            [0] => 88
+                            [1] => 148
+                            [2] => 59.459459459459
+                        )
+
+                    [achieve_stage2_count] => Array
+                        (
+                            [0] => 4
+                            [1] => 148
+                            [2] => 2.7027027027027
+                        )
+
+                    [achieve_stage3_count] => Array
+                        (
+                            [0] => 0
+                            [1] => 148
+                            [2] => 0
+                        )
+
+                    [average_cell_count] => 13.222972972973
+                    [average_cell_count_auto] => 2.972972972973
+                    [average_cell_count_bottom] => 1.0540540540541
+                    [average_cell_count_bottom_auto] => 0.060810810810811
+                    [average_cell_count_bottom_teleop] => 0.99324324324324
+                    [average_cell_count_inner] => 1.5878378378378
+                    [average_cell_count_inner_auto] => 0.50675675675676
+                    [average_cell_count_inner_teleop] => 1.0810810810811
+                    [average_cell_count_outer] => 10.581081081081
+                    [average_cell_count_outer_auto] => 2.4054054054054
+                    [average_cell_count_outer_teleop] => 8.1756756756757
+                    [average_cell_count_teleop] => 10.25
+                    [average_cell_points_auto] => 12.783783783784
+                    [average_cell_points_teleop] => 20.587837837838
+                    [average_cell_score] => 33.371621621622
+                    [average_control_panel_points] => 0.27027027027027
+                    [average_endgame_points] => 24.121621621622
+                    [average_foul_score] => 13.033783783784
+                    [average_init_line_points_auto] => 12.364864864865
+                    [average_num_robots_hanging] => 0.61486486486486
+                    [average_points_auto] => 25.148648648649
+                    [average_points_teleop] => 44.97972972973
+                    [average_score] => 83.162162162162
+                    [average_win_margin] => 50.486486486486
+                    [average_win_score] => 108.40540540541
+                    [exit_init_line_count] => Array
+                        (
+                            [0] => 366
+                            [1] => 444
+                            [2] => 82.432432432432
+                        )
+
+                    [generator_energized_rp_achieved] => Array
+                        (
+                            [0] => 0
+                            [1] => 148
+                            [2] => 0
+                        )
+
+                    [generator_level_count] => Array
+                        (
+                            [0] => 21
+                            [1] => 148
+                            [2] => 14.189189189189
+                        )
+
+                    [generator_operational_rp_achieved] => Array
+                        (
+                            [0] => 9
+                            [1] => 148
+                            [2] => 6.0810810810811
+                        )
+
+                    [hang_count] => Array
+                        (
+                            [0] => 91
+                            [1] => 444
+                            [2] => 20.495495495495
+                        )
+
+                    [high_score] => Array
+                        (
+                            [0] => 217
+                            [1] => 2020cala_qm74
+                            [2] => Q74
+                        )
+
+                    [park_count] => Array
+                        (
+                            [0] => 196
+                            [1] => 444
+                            [2] => 44.144144144144
+                        )
+
+                    [unicorn_matches] => Array
+                        (
+                            [0] => 0
+                            [1] => 148
+                            [2] => 0
+                        )
+
+                )
+
+        )
+
+    [raw_body] => {
+  "playoff": {
+    "achieve_stage1_count": [
+      31, 
+      32, 
+      96.875
+    ], 
+    "achieve_stage2_count": [
+      4, 
+      32, 
+      12.5
+    ], 
+    "achieve_stage3_count": [
+      0, 
+      32, 
+      0.0
+    ], 
+    "average_cell_count": 20.59375, 
+    "average_cell_count_auto": 6.53125, 
+    "average_cell_count_bottom": 0.0, 
+    "average_cell_count_bottom_auto": 0.0, 
+    "average_cell_count_bottom_teleop": 0.0, 
+    "average_cell_count_inner": 2.6875, 
+    "average_cell_count_inner_auto": 0.53125, 
+    "average_cell_count_inner_teleop": 2.15625, 
+    "average_cell_count_outer": 17.90625, 
+    "average_cell_count_outer_auto": 6.0, 
+    "average_cell_count_outer_teleop": 11.90625, 
+    "average_cell_count_teleop": 14.0625, 
+    "average_cell_points_auto": 27.1875, 
+    "average_cell_points_teleop": 30.28125, 
+    "average_cell_score": 57.46875, 
+    "average_control_panel_points": 1.25, 
+    "average_endgame_points": 46.875, 
+    "average_foul_score": 7.21875, 
+    "average_init_line_points_auto": 13.75, 
+    "average_num_robots_hanging": 1.4375, 
+    "average_points_auto": 40.9375, 
+    "average_points_teleop": 78.40625, 
+    "average_score": 126.5625, 
+    "average_win_margin": 58.625, 
+    "average_win_score": 155.875, 
+    "exit_init_line_count": [
+      88, 
+      96, 
+      91.66666666666667
+    ], 
+    "generator_energized_rp_achieved": [
+      0, 
+      32, 
+      0.0
+    ], 
+    "generator_level_count": [
+      15, 
+      32, 
+      46.875
+    ], 
+    "generator_operational_rp_achieved": [
+      0, 
+      32, 
+      0.0
+    ], 
+    "hang_count": [
+      46, 
+      96, 
+      47.916666666666664
+    ], 
+    "high_score": [
+      210, 
+      "2020cala_sf2m1", 
+      "SF2-1"
+    ], 
+    "park_count": [
+      25, 
+      96, 
+      26.041666666666668
+    ], 
+    "unicorn_matches": [
+      0, 
+      32, 
+      0.0
+    ]
+  }, 
+  "qual": {
+    "achieve_stage1_count": [
+      88, 
+      148, 
+      59.45945945945946
+    ], 
+    "achieve_stage2_count": [
+      4, 
+      148, 
+      2.7027027027027026
+    ], 
+    "achieve_stage3_count": [
+      0, 
+      148, 
+      0.0
+    ], 
+    "average_cell_count": 13.222972972972974, 
+    "average_cell_count_auto": 2.972972972972973, 
+    "average_cell_count_bottom": 1.054054054054054, 
+    "average_cell_count_bottom_auto": 0.060810810810810814, 
+    "average_cell_count_bottom_teleop": 0.9932432432432432, 
+    "average_cell_count_inner": 1.587837837837838, 
+    "average_cell_count_inner_auto": 0.5067567567567568, 
+    "average_cell_count_inner_teleop": 1.0810810810810811, 
+    "average_cell_count_outer": 10.58108108108108, 
+    "average_cell_count_outer_auto": 2.4054054054054053, 
+    "average_cell_count_outer_teleop": 8.175675675675675, 
+    "average_cell_count_teleop": 10.25, 
+    "average_cell_points_auto": 12.783783783783784, 
+    "average_cell_points_teleop": 20.58783783783784, 
+    "average_cell_score": 33.37162162162162, 
+    "average_control_panel_points": 0.2702702702702703, 
+    "average_endgame_points": 24.12162162162162, 
+    "average_foul_score": 13.033783783783784, 
+    "average_init_line_points_auto": 12.364864864864865, 
+    "average_num_robots_hanging": 0.6148648648648649, 
+    "average_points_auto": 25.14864864864865, 
+    "average_points_teleop": 44.979729729729726, 
+    "average_score": 83.16216216216216, 
+    "average_win_margin": 50.486486486486484, 
+    "average_win_score": 108.4054054054054, 
+    "exit_init_line_count": [
+      366, 
+      444, 
+      82.43243243243244
+    ], 
+    "generator_energized_rp_achieved": [
+      0, 
+      148, 
+      0.0
+    ], 
+    "generator_level_count": [
+      21, 
+      148, 
+      14.18918918918919
+    ], 
+    "generator_operational_rp_achieved": [
+      9, 
+      148, 
+      6.081081081081081
+    ], 
+    "hang_count": [
+      91, 
+      444, 
+      20.495495495495497
+    ], 
+    "high_score": [
+      217, 
+      "2020cala_qm74", 
+      "Q74"
+    ], 
+    "park_count": [
+      196, 
+      444, 
+      44.14414414414414
+    ], 
+    "unicorn_matches": [
+      0, 
+      148, 
+      0.0
+    ]
+  }
+}
+    [headers] => Httpful\Response\Headers Object
+        (
+            [headers:Httpful\Response\Headers:private] => Array
+                (
+                    [date] => Mon, 09 Mar 2020 16:19:06 GMT
+                    [content-type] => application/json; charset="utf-8"
+                    [set-cookie] => __cfduid=d6294a72e74e4658b46823df240c01d1a1583770746; expires=Wed, 08-Apr-20 16:19:06 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+                    [access-control-allow-origin] => *
+                    [x-robots-tag] => noindex
+                    [etag] => W/"abf6b042eeec51c63791cd32fb926249"
+                    [last-modified] => Mon, 09 Mar 2020 02:02:01 GMT
+                    [x-tba-version] => 3
+                    [vary] => Accept-Encoding
+                    [x-cloud-trace-context] => 2cd8d83c2f6a11acb1030b866288c536
+                    [cache-control] => public, max-age=61, s-maxage=61
+                    [age] => 0
+                    [cf-cache-status] => DYNAMIC
+                    [expect-ct] => max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+                    [server] => cloudflare
+                    [cf-ray] => 57161d9e19b79666-SJC
+                )
+
+        )
+
+    [raw_headers] => HTTP/2 200 
+date: Mon, 09 Mar 2020 16:19:06 GMT
+content-type: application/json; charset="utf-8"
+set-cookie: __cfduid=d6294a72e74e4658b46823df240c01d1a1583770746; expires=Wed, 08-Apr-20 16:19:06 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+access-control-allow-origin: *
+x-robots-tag: noindex
+etag: W/"abf6b042eeec51c63791cd32fb926249"
+last-modified: Mon, 09 Mar 2020 02:02:01 GMT
+x-tba-version: 3
+vary: Accept-Encoding
+x-cloud-trace-context: 2cd8d83c2f6a11acb1030b866288c536
+cache-control: public, max-age=61, s-maxage=61
+age: 0
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+server: cloudflare
+cf-ray: 57161d9e19b79666-SJC
+    [request] => Httpful\Request Object
+        (
+            [uri] => https://www.thebluealliance.com/api/v3/event/2020cala/insights
+            [method] => GET
+            [headers] => Array
+                (
+                    [X-TBA-Auth-Key] => DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+                    [Content-Length] => 0
+                )
+
+            [raw_headers] => GET /api/v3/event/2020cala/insights HTTP/1.1
+Host: www.thebluealliance.com
+Expect:
+User-Agent: Httpful/0.3.0 (cURL/7.67.0 PHP/7.4.2 (WINNT))
+Content-Type: 
+Accept: */*; q=0.5, text/plain; q=0.8, text/html;level=3;
+X-TBA-Auth-Key: DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc
+Content-Length: 0
+
+            [strict_ssl] => 
+            [content_type] => 
+            [expected_type] => 
+            [additional_curl_opts] => Array
+                (
+                )
+
+            [auto_parse] => 1
+            [serialize_payload_method] => 2
+            [username] => 
+            [password] => 
+            [serialized_payload] => 
+            [payload] => 
+            [parse_callback] => 
+            [error_callback] => 
+            [send_callback] => 
+            [follow_redirects] => 
+            [max_redirects] => 25
+            [payload_serializers] => Array
+                (
+                )
+
+            [_debug] => 
+        )
+
+    [code] => 200
+    [content_type] => application/json
+    [parent_type] => application/json
+    [charset] => "utf-8"
+    [meta_data] => Array
+        (
+            [url] => https://www.thebluealliance.com/api/v3/event/2020cala/insights
+            [content_type] => application/json; charset="utf-8"
+            [http_code] => 200
+            [header_size] => 748
+            [request_size] => 296
+            [filetime] => -1
+            [ssl_verify_result] => 0
+            [redirect_count] => 0
+            [total_time] => 0.353923
+            [namelookup_time] => 0.003392
+            [connect_time] => 0.031824
+            [pretransfer_time] => 0.114427
+            [size_upload] => 0
+            [size_download] => 4079
+            [speed_download] => 11555
+            [speed_upload] => 0
+            [download_content_length] => -1
+            [upload_content_length] => -1
+            [starttransfer_time] => 0.353023
+            [redirect_time] => 0
+            [redirect_url] => 
+            [primary_ip] => 104.27.168.189
+            [certinfo] => Array
+                (
+                )
+
+            [primary_port] => 443
+            [local_ip] => 172.24.124.185
+            [local_port] => 60321
+            [http_version] => 3
+            [protocol] => 2
+            [ssl_verifyresult] => 0
+            [scheme] => HTTPS
+            [appconnect_time_us] => 114329
+            [connect_time_us] => 31824
+            [namelookup_time_us] => 3392
+            [pretransfer_time_us] => 114427
+            [redirect_time_us] => 0
+            [starttransfer_time_us] => 353023
+            [total_time_us] => 353923
+        )
+
+    [is_mime_vendor_specific] => 
+    [is_mime_personal] => 
+    [parsers:Httpful\Response:private] => 
+)
+
+
+end.
