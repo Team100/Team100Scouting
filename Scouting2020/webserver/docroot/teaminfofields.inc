@@ -96,6 +96,9 @@
   
   
   // add game-specific fields
+//DBCOL  foreach($RankFields as $rankfield)
+//DBCOL    if ($rankfield['display'] != NULL)
+//DBCOL      print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['column']]}</td><tr>\n";
   foreach($RankFields as $rankfield)
     if ($rankfield['display'] != NULL)
       print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['column']]}</td><tr>\n";

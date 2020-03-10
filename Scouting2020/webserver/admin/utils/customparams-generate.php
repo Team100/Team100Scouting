@@ -16,7 +16,7 @@ $custom_param = array("tag","position","used","vargroup","entrytype","dbtype","d
      "default_value","list_of_values","tBA_tag","tBA_type");
 
 // vargroup to dbfile mapping array
-$vartodb = array("Bot"=>"teambot", "Match"=>"match_team","tBA_Match"=>"match_instance_alliance", "tBA_Bot"=>"teambot");
+$vartodb = array("Bot"=>"teambot", "Match"=>"match_team","tBA_Bot"=>"teambot", "tBA_Match"=>"match_instance_alliance");
 
 //
 // Inform user
@@ -128,9 +128,9 @@ foreach ($vartodb as $vargroup=>$table)
     // if Blue Alliance, make scorefield, otherwise dispfield
     if (substr($vargroup,0,3) == "tBA")
     {
-      $pfiletext = "\$tbaFields[\"" . substr($vargroup,4) . "\"][" . $row['position'] . ']' . " = array(\"used\"=>{$used},";
+      $pfiletext = '$dispfields["' . $row['vargroup'] . '"][' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
       $pfiletext .= "\"tag\"=>\"{$row['tag']}\", ";
-      $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['display']}\" );\r\n";
+      $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['display']}\", \"maxlen\"=>{$row['maxlen']} );\r\n";
 
       // add entry to tbamap
       $tbamap .= ",\n  \"{$row['tBA_tag']}\"=>\"{$row['tag']}\"";
