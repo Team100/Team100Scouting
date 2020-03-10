@@ -74,7 +74,7 @@
               $col_len = 20; 	// default database column length
 
               // assign vars
-              $custom_params = array("tag"=>$tag,"position"=>$cnt,"used"=>1,"vargroup"=>"tBA_match",
+              $custom_params = array("tag"=>$tag,"position"=>$cnt,"used"=>1,"vargroup"=>"tBA_Match",
                  "entrytype"=>"R","dbtype"=>$dbtype,"display"=>$tag,"maxlen"=>$col_len,
                  "description"=>"Blue Alliance custom variable {$tba_tag}",
                  "tBA_tag"=>$tba_tag,"tBA_type"=>$tba_type);

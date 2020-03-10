@@ -16,7 +16,7 @@ $custom_param = array("tag","position","used","vargroup","entrytype","dbtype","d
      "default_value","list_of_values","tBA_tag","tBA_type");
 
 // vargroup to dbfile mapping array
-$vartodb = array("Bot"=>"teambot", "Match"=>"match_team","tBA"=>"match_instance_alliance");
+$vartodb = array("Bot"=>"teambot", "Match"=>"match_team","tBA_Match"=>"match_instance_alliance", "tBA_Bot"=>"teambot");
 
 //
 // Inform user
@@ -100,8 +100,8 @@ foreach ($vartodb as $vargroup=>$table)
   $pfiletext .= "// Parameters for vargroup {$vargroup}\n//\n";
 
   // add array declaration
-  if ($vargroup == "tBA")
-    $pfiletext .= "\$ScoreFields = array();\n";
+  if (substr($vargroup,0,3) == "tBA")
+    $pfiletext .= "\$tbaFields[\"" . substr($vargroup,4) . "\"]  = array();\n";
   else
     $pfiletext .= "\$dispfields[\"{$vargroup}\"] = array();\n";
   fwrite($fparams, $pfiletext);
@@ -126,9 +126,9 @@ foreach ($vartodb as $vargroup=>$table)
     if ($row['used'] == 1) $used="TRUE"; else $used="FALSE";
 
     // if Blue Alliance, make scorefield, otherwise dispfield
-    if ($vargroup == "tBA")
+    if (substr($vargroup,0,3) == "tBA")
     {
-      $pfiletext = '$ScoreFields[' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
+      $pfiletext = "\$tbaFields[\"" . substr($vargroup,4) . "\"][" . $row['position'] . ']' . " = array(\"used\"=>{$used},";
       $pfiletext .= "\"tag\"=>\"{$row['tag']}\", ";
       $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['display']}\" );\r\n";
 

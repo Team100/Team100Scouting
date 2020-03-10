@@ -1,7 +1,7 @@
 #
 # Competition System - Custom Parameters Table Additions
 #
-# Generated: 2020-03-10 07:48:09
+# Generated: 2020-03-10 14:10:22
 #
 # Should be run after freshdb creation.  Can also be run as new params are
 #  generated.  The script should not try to recreate columns if they already
@@ -18,7 +18,7 @@
 
 
 #
-# Database mods for vargroup tBA
+# Database mods for vargroup tBA_Match
 alter table match_instance_alliance add column if not exists (f_initLineRobot1 varchar (20));
 alter table match_instance_alliance add column if not exists (f_endgameRobot1 varchar (20));
 alter table match_instance_alliance add column if not exists (f_initLineRobot2 varchar (20));
@@ -53,6 +53,12 @@ alter table match_instance_alliance add column if not exists (f_adjustPoints int
 alter table match_instance_alliance add column if not exists (f_foulPoints int );
 alter table match_instance_alliance add column if not exists (f_rp int );
 alter table match_instance_alliance add column if not exists (f_totalPoints int );
+
+
+#
+# Database mods for vargroup tBA_Bot
+alter table teambot add column if not exists (f_power_cells real );
+alter table teambot add column if not exists (f_endgame_pts real );
 #
 # End of custom generated columns
 #

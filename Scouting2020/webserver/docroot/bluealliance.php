@@ -74,11 +74,20 @@
       // rankings
       // inform user
       print "Retrieving rankings...<br>\n";
-      if (tba_get_event_rankings())
+//      if (tba_get_event_rankings())
+//        print "Blue Alliance operation successful.<br>\n";
+//      else
+//        print "Blue Alliance operation failed.  Please check errors.<br>\n";
+//      print "<br>";
+
+      // standard tBA stats
+      // inform user
+      print "Retrieving event 'oprs' stats...<br>\n";
+      if (tba_get_event_oprs())
         print "Blue Alliance operation successful.<br>\n";
       else
         print "Blue Alliance operation failed.  Please check errors.<br>\n";
-      print "<br>";
+      print "<br>\n";
 
 
       break;

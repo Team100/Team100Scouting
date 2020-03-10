@@ -26,6 +26,7 @@
     // initialize
     $editor = NULL;
     $teams_need_eval = array();
+    $upcoming = array();
 
 	$matchidentifiers = fields_load("GET", array("type", "matchnum"));
 
@@ -304,7 +305,7 @@
     $fields = array("score"=>"Score");
 
     // loop through array
-    foreach($ScoreFields as $element=>$scorefield)
+    foreach($tbaFields["Match"] as $element=>$scorefield)
 //DBCOL      $fields = array_merge($fields, array("f_score{$element}" => $scorefield['display']));
       $fields = array_merge($fields, array($scorefield['tag'] => $scorefield['display']));
 

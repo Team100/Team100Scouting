@@ -650,6 +650,7 @@ function tba_get_event_statss()
 } // end of function
 
 
+
 // function: tba_get_event_oprs()
 //   Returns - message string of what to print as a final message
 //
@@ -663,14 +664,60 @@ function tba_get_event_oprs()
   global $tba_error;
   global $sys_event_id;
   global $connection;
+  global $tba_stats_to_teambot;
+ 
+  // get data
+  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/oprs", FALSE)))
+    print "API returned " . $tba_error['message'] . "<br>\n";
+  else
+  {
+    foreach ($tba_stats_to_teambot as $tba_stat=>$stat)
+    {
+      foreach ($tba_response->body->$tba_stat as $teamkey=>$value)
+      {
+        // set up tba_dbarray with team
+        $tba_dbarray = array ("teamnum"=>$teamkey, $stat=>$value);
+        // convert teamnum
+        $tba_dbarray = tba_convert_teamnum($tba_dbarray); 
+     
+        // update teambot
+        tba_updatedb("teambot", array("event_id"=>$sys_event_id, "teamnum"=>$tba_dbarray['teamnum']), $tba_dbarray);
 
-  // define simple array for mapper to use
-  // - if display is not defined, skip
-  // - if column is "teamnum", set $teamnum_element
-  //$tba_ranking_to_teambot = array();
-  //foreach($RankFields as $rankdef)
-  //{
+        // inform user
+        print $tba_dbarray['teamnum'] . ", ";
+      } // foreach
+    } // end of $tba_response        
+        
+    // commit
+    if (! (@mysqli_commit($connection) ))
+      dbshowerror($connection, "die");
+
+    // Inform user
+    print "<br>&nbsp;&nbsp;&nbsp; ... blue alliance oprs loading complete.<br>\n";
+
+    return(TRUE);
+
+  } // end of else from REST query
+
+  return(TRUE);
   
+} // end of function
+
+
+// function: tba_get_event_oprs()
+//   Returns - message string of what to print as a final message
+//
+// Gets event oprs based on $sys_event_id
+// Decode the event oprs based on display variable structures
+//
+
+function tba_get_event_oprsss()
+{
+  global $tba_AuthKey;
+  global $tba_error;
+  global $sys_event_id;
+  global $connection;
+ 
   // get data
   if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/rankings", FALSE)))
     print "API returned " . $tba_error['message'] . "<br>\n";
@@ -699,7 +746,7 @@ function tba_get_event_oprs()
       dbshowerror($connection, "die");
 
     // Inform user
-    print "<br>&nbsp;&nbsp;&nbsp; ... rankings loading complete.<br>\n";
+    print "<br>&nbsp;&nbsp;&nbsp; ... blue alliance oprs loading complete.<br>\n";
 
     return(TRUE);
 
@@ -708,7 +755,6 @@ function tba_get_event_oprs()
   return(TRUE);
   
 } // end of function
-
 
 
 

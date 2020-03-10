@@ -20,7 +20,7 @@ $event_key = $year . $event;
 
 print "AuthKey:" . $tba_AuthKey . "\n\n";
 
-$url = "https://www.thebluealliance.com/api/v3/event/$event_key/rankings";
+$url = "https://www.thebluealliance.com/api/v3/event/$event_key/oprs";
 
 // URLs:
 //
@@ -88,10 +88,22 @@ print "\n\n\nArray Body responses:\n";
 
 
 // uncomment to exit early
-exit ():
+//exit ();
+
+$stats = array("oprs","dprs","ccwms");
+
+foreach ($stats as $stat)
+{
+  foreach ($response->body->$stat as $teamkey=>$value)
+  {
+    print $teamkey . ":" . $value . "\n";
+  }
+}
 
 
 // example
+
+exit();
 
 foreach ($response->body->rankings as $key=>$rankobj)
 {
