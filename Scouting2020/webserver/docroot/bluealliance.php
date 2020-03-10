@@ -71,6 +71,17 @@
     // stats and rankings
     case "stats":
 
+      // rankings
+      // inform user
+      print "Retrieving rankings...<br>\n";
+      if (tba_get_event_rankings())
+        print "Blue Alliance operation successful.<br>\n";
+      else
+        print "Blue Alliance operation failed.  Please check errors.<br>\n";
+      print "<br>";
+
+
+      break;
       // stats first
 
       // inform user
@@ -81,14 +92,6 @@
         print "Blue Alliance operation failed.  Please check errors.<br>\n";
       print "<br>\n";
 
-      // rankings
-      // inform user
-      print "Retrieving rankings...<br>\n";
-      if (tba_get_event_rankings())
-        print "Blue Alliance operation successful.<br>\n";
-      else
-        print "Blue Alliance operation failed.  Please check errors.<br>\n";
-      print "<br>";
 
       break;
 

@@ -68,12 +68,13 @@
               switch ($tba_type) {
                 case "integer": $dbtype = "int"; break;
                 case "boolean": $dbtype = "boolean"; break;
+                case "real": $dbtype = "real"; break;
               }
 
               $col_len = 20; 	// default database column length
 
               // assign vars
-              $custom_params = array("tag"=>$tag,"position"=>$cnt,"used"=>1,"vargroup"=>"tBA",
+              $custom_params = array("tag"=>$tag,"position"=>$cnt,"used"=>1,"vargroup"=>"tBA_match",
                  "entrytype"=>"R","dbtype"=>$dbtype,"display"=>$tag,"maxlen"=>$col_len,
                  "description"=>"Blue Alliance custom variable {$tba_tag}",
                  "tBA_tag"=>$tba_tag,"tBA_type"=>$tba_type);

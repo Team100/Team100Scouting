@@ -65,6 +65,13 @@
 // top of form rendering
 //
 
+  // if tBA, special instructions
+  if (substr($vargroup,0,3) == "tBA")
+  {
+     print "\nNOTE: The Blue Alliance or \"FIRST\" custom parameter tags are preceeded by \"f_\" to help";
+     print "distinguish them from other system tags and columns.<br><br>\n";
+  }
+
 print "
 <!----- Top of page ----->
 <table valign=\"top\">
@@ -100,7 +107,7 @@ print "
   // for each field
 
 
-      if ($vargroup == "tBA")
+      if (substr($vargroup,0,3) == "tBA")
         print tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,NULL,NULL)
         . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,NULL)
         . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",40,50,NULL,NULL,NULL)

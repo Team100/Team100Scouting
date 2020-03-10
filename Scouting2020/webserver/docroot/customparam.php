@@ -134,7 +134,7 @@ print "
   //
 
   // if tBA, special instructions
-  if ($vargroup == "tBA")
+  if (substr($vargroup,0,3) == "tBA")
   {
      print "\nNOTE: The Blue Alliance or \"FIRST\" custom parameter tags are preceeded by \"f_\" to help";
      print "distinguish them from other system tags and columns.<br><br>\n";
@@ -156,8 +156,8 @@ print "
     if (!($edit) && isset($row["tag"]))
       $tagoptions["href"] = "/customparam-single.php?vargroup={$vargroup}&tag={$row["tag"]}";
 
-    // special formating for tBA
-    if ($vargroup == "tBA")
+    // special formating for tBA field mapping
+    if (substr($vargroup,0,3) == "tBA")
       print "<tr align=\"left\">\n"
       . tabtextfield($edit,$tagoptions,$row, "tag","Tag",15,20,NULL,NULL,$editprefix)
       . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,$editprefix)

@@ -146,6 +146,10 @@ create table teambot
   bot_name varchar(30),         # tBA robot name
   f_ranking int,                # tBA ranking from FIRST
   f_rank_score real,            # tBA seed points from FIRST
+  f_wins int,                   # tBA FIRST wins (part of W-L-T)
+  f_losses int,                 # tBA FIRST losses (part of W-L-T)
+  f_ties int,                   # tBA FIRST ties (part of W-L-T)
+
   f_record varchar(8),          # tBA FIRST record, W-L-T
   f_games_played int,            # tBA FIRST games played
   f_rankparam0 real,            # tBA FIRST parameter 0 in game-specific rankings
@@ -157,6 +161,7 @@ create table teambot
   f_rankparam6 real,            # tBA FIRST parameter 6 in game-specific rankings
   f_rankparam7 real,            # tBA FIRST parameter 7 in game-specific rankings
   f_rankparam8 real,            # tBA FIRST parameter 8 in game-specific rankings
+
   opr real,                     # tBA oprs, Offensive power rating
   dpr real,                     # tBA dprs, defensive power rating
   ccwm real,                    # tBA ccwm, calculated contribution to winning margin

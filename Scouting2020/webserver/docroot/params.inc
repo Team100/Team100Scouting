@@ -104,7 +104,7 @@ $map_match_tags = array ("offensiverating"=>"rating_offense", "defensiverating"=
 //
 // Note:
 //   - To determine which fields are used in a given year, run admin/utils/blue-score.php
-
+//
 
 
 //

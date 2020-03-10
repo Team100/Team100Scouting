@@ -2459,9 +2459,9 @@ Httpful\Response Object
         (
             [headers:Httpful\Response\Headers:private] => Array
                 (
-                    [date] => Tue, 10 Mar 2020 13:30:03 GMT
+                    [date] => Tue, 10 Mar 2020 14:10:05 GMT
                     [content-type] => application/json; charset="utf-8"
-                    [set-cookie] => __cfduid=d4400542895b0fefd852ea89cd20aab4f1583847003; expires=Thu, 09-Apr-20 13:30:03 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+                    [set-cookie] => __cfduid=dc0485ecb0f6ad1e8946408b83896057f1583849405; expires=Thu, 09-Apr-20 14:10:05 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
                     [access-control-allow-origin] => *
                     [x-robots-tag] => noindex
                     [etag] => W/"213147f7ec4853249ef97a882cef976f"
@@ -2474,15 +2474,15 @@ Httpful\Response Object
                     [cf-cache-status] => DYNAMIC
                     [expect-ct] => max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
                     [server] => cloudflare
-                    [cf-ray] => 571d635b091b6bf6-SJC
+                    [cf-ray] => 571d9dff2ecc93f4-SJC
                 )
 
         )
 
     [raw_headers] => HTTP/2 200 
-date: Tue, 10 Mar 2020 13:30:03 GMT
+date: Tue, 10 Mar 2020 14:10:05 GMT
 content-type: application/json; charset="utf-8"
-set-cookie: __cfduid=d4400542895b0fefd852ea89cd20aab4f1583847003; expires=Thu, 09-Apr-20 13:30:03 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
+set-cookie: __cfduid=dc0485ecb0f6ad1e8946408b83896057f1583849405; expires=Thu, 09-Apr-20 14:10:05 GMT; path=/; domain=.thebluealliance.com; HttpOnly; SameSite=Lax; Secure
 access-control-allow-origin: *
 x-robots-tag: noindex
 etag: W/"213147f7ec4853249ef97a882cef976f"
@@ -2495,7 +2495,7 @@ age: 0
 cf-cache-status: DYNAMIC
 expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
 server: cloudflare
-cf-ray: 571d635b091b6bf6-SJC
+cf-ray: 571d9dff2ecc93f4-SJC
     [request] => Httpful\Request Object
         (
             [uri] => https://www.thebluealliance.com/api/v3/event/2020cala/rankings
@@ -2554,38 +2554,38 @@ Content-Length: 0
             [filetime] => -1
             [ssl_verify_result] => 0
             [redirect_count] => 0
-            [total_time] => 0.743625
-            [namelookup_time] => 0.002352
-            [connect_time] => 0.031926
-            [pretransfer_time] => 0.112345
+            [total_time] => 0.720044
+            [namelookup_time] => 0.002911
+            [connect_time] => 0.032736
+            [pretransfer_time] => 0.114776
             [size_upload] => 0
             [size_download] => 17450
-            [speed_download] => 23485
+            [speed_download] => 24236
             [speed_upload] => 0
             [download_content_length] => -1
             [upload_content_length] => -1
-            [starttransfer_time] => 0.739828
+            [starttransfer_time] => 0.715638
             [redirect_time] => 0
             [redirect_url] => 
-            [primary_ip] => 104.27.168.189
+            [primary_ip] => 104.27.169.189
             [certinfo] => Array
                 (
                 )
 
             [primary_port] => 443
             [local_ip] => 172.24.124.185
-            [local_port] => 53473
+            [local_port] => 54251
             [http_version] => 3
             [protocol] => 2
             [ssl_verifyresult] => 0
             [scheme] => HTTPS
-            [appconnect_time_us] => 111976
-            [connect_time_us] => 31926
-            [namelookup_time_us] => 2352
-            [pretransfer_time_us] => 112345
+            [appconnect_time_us] => 114219
+            [connect_time_us] => 32736
+            [namelookup_time_us] => 2911
+            [pretransfer_time_us] => 114776
             [redirect_time_us] => 0
-            [starttransfer_time_us] => 739828
-            [total_time_us] => 743625
+            [starttransfer_time_us] => 715638
+            [total_time_us] => 720044
         )
 
     [is_mime_vendor_specific] => 
@@ -2595,95 +2595,491 @@ Content-Length: 0
 
 
 
-Body responses:
+Array Body responses:
 Team_key: frc4201<<
 Rank wins:10<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4201
+    [f_wins] => 10
+    [f_losses] => 0
+    [f_ties] => 0
+)
 Team_key: frc987<<
 Rank wins:10<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 987
+    [f_wins] => 10
+    [f_losses] => 0
+    [f_ties] => 0
+)
 Team_key: frc1197<<
 Rank wins:9<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 1197
+    [f_wins] => 9
+    [f_losses] => 1
+    [f_ties] => 0
+)
 Team_key: frc3408<<
 Rank wins:7<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 3408
+    [f_wins] => 7
+    [f_losses] => 3
+    [f_ties] => 0
+)
 Team_key: frc3512<<
 Rank wins:7<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 3512
+    [f_wins] => 7
+    [f_losses] => 3
+    [f_ties] => 0
+)
 Team_key: frc5553<<
 Rank wins:7<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5553
+    [f_wins] => 7
+    [f_losses] => 3
+    [f_ties] => 0
+)
 Team_key: frc5089<<
 Rank wins:7<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5089
+    [f_wins] => 7
+    [f_losses] => 3
+    [f_ties] => 0
+)
 Team_key: frc4123<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4123
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc2710<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 2710
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc4400<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4400
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc1836<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 1836
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc207<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 207
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc5802<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5802
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc687<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 687
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc597<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 597
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc7051<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 7051
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc2576<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 2576
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc7185<<
 Rank wins:6<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 7185
+    [f_wins] => 6
+    [f_losses] => 4
+    [f_ties] => 0
+)
 Team_key: frc5124<<
 Rank wins:5<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5124
+    [f_wins] => 5
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc4501<<
 Rank wins:5<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4501
+    [f_wins] => 5
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc6000<<
 Rank wins:5<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 6000
+    [f_wins] => 5
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc6658<<
 Rank wins:5<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 6658
+    [f_wins] => 5
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc2637<<
 Rank wins:5<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 2637
+    [f_wins] => 5
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc980<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 980
+    [f_wins] => 4
+    [f_losses] => 6
+    [f_ties] => 0
+)
 Team_key: frc4019<<
 Rank wins:5<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4019
+    [f_wins] => 5
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc3952<<
 Rank wins:5<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 3952
+    [f_wins] => 5
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc1515<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 1515
+    [f_wins] => 4
+    [f_losses] => 6
+    [f_ties] => 0
+)
 Team_key: frc7033<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 7033
+    [f_wins] => 4
+    [f_losses] => 6
+    [f_ties] => 0
+)
 Team_key: frc4999<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4999
+    [f_wins] => 4
+    [f_losses] => 6
+    [f_ties] => 0
+)
 Team_key: frc7447<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 7447
+    [f_wins] => 4
+    [f_losses] => 6
+    [f_ties] => 0
+)
 Team_key: frc606<<
 Rank wins:3<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 606
+    [f_wins] => 3
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc6938<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 6938
+    [f_wins] => 4
+    [f_losses] => 5
+    [f_ties] => 0
+)
 Team_key: frc1759<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 1759
+    [f_wins] => 4
+    [f_losses] => 6
+    [f_ties] => 0
+)
 Team_key: frc5512<<
 Rank wins:4<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5512
+    [f_wins] => 4
+    [f_losses] => 6
+    [f_ties] => 0
+)
 Team_key: frc8159<<
 Rank wins:3<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 8159
+    [f_wins] => 3
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc5669<<
 Rank wins:3<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5669
+    [f_wins] => 3
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc841<<
 Rank wins:3<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 841
+    [f_wins] => 3
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc1452<<
 Rank wins:3<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 1452
+    [f_wins] => 3
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc6904<<
 Rank wins:3<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 6904
+    [f_wins] => 3
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc4578<<
 Rank wins:3<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4578
+    [f_wins] => 3
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc5510<<
 Rank wins:2<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5510
+    [f_wins] => 2
+    [f_losses] => 8
+    [f_ties] => 0
+)
 Team_key: frc5634<<
 Rank wins:2<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 5634
+    [f_wins] => 2
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc4964<<
 Rank wins:2<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 4964
+    [f_wins] => 2
+    [f_losses] => 7
+    [f_ties] => 0
+)
 Team_key: frc7455<<
 Rank wins:2<<
+
+Loaded DB array:
+Array
+(
+    [teamnum] => 7455
+    [f_wins] => 2
+    [f_losses] => 8
+    [f_ties] => 0
+)
 
 
 end.

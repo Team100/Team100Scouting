@@ -1,11 +1,11 @@
 #
 # Competition System - Custom Parameters Table Additions
 #
-# Generated: 2020-03-08 21:44:09
+# Generated: 2020-03-10 07:48:09
 #
 # Should be run after freshdb creation.  Can also be run as new params are
-#  generated.  The script may error is column alterations already exist,
-#  but it should make the new ones.
+#  generated.  The script should not try to recreate columns if they already
+#  exist, but will also not drop columns that are not used any more.  (future feature?)
 #
 
 
@@ -25,34 +25,34 @@ alter table match_instance_alliance add column if not exists (f_initLineRobot2 v
 alter table match_instance_alliance add column if not exists (f_endgameRobot2 varchar (20));
 alter table match_instance_alliance add column if not exists (f_initLineRobot3 varchar (20));
 alter table match_instance_alliance add column if not exists (f_endgameRobot3 varchar (20));
-alter table match_instance_alliance add column if not exists (f_autoCellsBottom varchar (20));
-alter table match_instance_alliance add column if not exists (f_autoCellsOuter varchar (20));
-alter table match_instance_alliance add column if not exists (f_autoCellsInner varchar (20));
-alter table match_instance_alliance add column if not exists (f_teleopCellsBottom varchar (20));
-alter table match_instance_alliance add column if not exists (f_teleopCellsOuter varchar (20));
-alter table match_instance_alliance add column if not exists (f_teleopCellsInner varchar (20));
-alter table match_instance_alliance add column if not exists (f_stage1Activated varchar (20));
-alter table match_instance_alliance add column if not exists (f_stage2Activated varchar (20));
-alter table match_instance_alliance add column if not exists (f_stage3Activated varchar (20));
+alter table match_instance_alliance add column if not exists (f_autoCellsBottom int );
+alter table match_instance_alliance add column if not exists (f_autoCellsOuter int );
+alter table match_instance_alliance add column if not exists (f_autoCellsInner int );
+alter table match_instance_alliance add column if not exists (f_teleopCellsBottom int );
+alter table match_instance_alliance add column if not exists (f_teleopCellsOuter int );
+alter table match_instance_alliance add column if not exists (f_teleopCellsInner int );
+alter table match_instance_alliance add column if not exists (f_stage1Activated boolean );
+alter table match_instance_alliance add column if not exists (f_stage2Activated boolean );
+alter table match_instance_alliance add column if not exists (f_stage3Activated boolean );
 alter table match_instance_alliance add column if not exists (f_stage3TargetColor varchar (20));
 alter table match_instance_alliance add column if not exists (f_endgameRungIsLevel varchar (20));
-alter table match_instance_alliance add column if not exists (f_autoInitLinePoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_autoCellPoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_autoPoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_teleopCellPoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_controlPanelPoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_endgamePoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_teleopPoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_shieldOperationalR varchar (20));
-alter table match_instance_alliance add column if not exists (f_shieldEnergizedRan varchar (20));
-alter table match_instance_alliance add column if not exists (f_tba_shieldEnergize varchar (20));
-alter table match_instance_alliance add column if not exists (f_tba_numRobotsHangi varchar (20));
-alter table match_instance_alliance add column if not exists (f_foulCount varchar (20));
-alter table match_instance_alliance add column if not exists (f_techFoulCount varchar (20));
-alter table match_instance_alliance add column if not exists (f_adjustPoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_foulPoints varchar (20));
-alter table match_instance_alliance add column if not exists (f_rp varchar (20));
-alter table match_instance_alliance add column if not exists (f_totalPoints varchar (20));
+alter table match_instance_alliance add column if not exists (f_autoInitLinePoints int );
+alter table match_instance_alliance add column if not exists (f_autoCellPoints int );
+alter table match_instance_alliance add column if not exists (f_autoPoints int );
+alter table match_instance_alliance add column if not exists (f_teleopCellPoints int );
+alter table match_instance_alliance add column if not exists (f_controlPanelPoints int );
+alter table match_instance_alliance add column if not exists (f_endgamePoints int );
+alter table match_instance_alliance add column if not exists (f_teleopPoints int );
+alter table match_instance_alliance add column if not exists (f_shieldOperationalR boolean );
+alter table match_instance_alliance add column if not exists (f_shieldEnergizedRan boolean );
+alter table match_instance_alliance add column if not exists (f_tba_shieldEnergize boolean );
+alter table match_instance_alliance add column if not exists (f_tba_numRobotsHangi int );
+alter table match_instance_alliance add column if not exists (f_foulCount int );
+alter table match_instance_alliance add column if not exists (f_techFoulCount int );
+alter table match_instance_alliance add column if not exists (f_adjustPoints int );
+alter table match_instance_alliance add column if not exists (f_foulPoints int );
+alter table match_instance_alliance add column if not exists (f_rp int );
+alter table match_instance_alliance add column if not exists (f_totalPoints int );
 #
 # End of custom generated columns
 #
