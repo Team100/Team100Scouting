@@ -53,7 +53,6 @@ $base = "/";
 // Custom params limit per type
 $custom_params_limit = 40;
 
-
 // 
 // Field positions
 //
@@ -340,20 +339,24 @@ $schedule_match_window = 1800;  // no more than an hour
 
 // ***************************
 //
-// The Blue Alliance API mapping fields
+// Notes: The Blue Alliance API mapping fields
+//   Field mappings to the API are defined in bluealliance.inc for performance reasons
+//     (not to be carried when not needed).  Include bluealliance.inc if you need them.
 //
-// Field mappings to the API are defined in bluealliance.inc for performance reasons
-//
+// ***************************
 
 
-// *****************************************************************
+// ***********************************************************************************
+// ***********************************************************************************
 //
 // Parameterized / Custom Functions
 //
 // Functions below are generally game-specific and must be written 
-//  for each year
+//  for each year.  They are called at various points in the rapsheet, given the
+//  the customizer options for pulling together the sheet that involves calculations
+//  including the offense and/or defense teams.
 //
-
+// See Templates/CustomExamples for previous year example code
 //
 // Custom Rap Sheet Functions
 //   $team array used in matchrapsheet
@@ -368,12 +371,17 @@ $schedule_match_window = 1800;  // no more than an hour
 // Examples include data analysis that helps in competition, field configuration
 //
 // Functions should simply print to the web page.
+// ***********************************************************************************
+
 
 // Inserted before Field Data
-function rap_custom_field_data ($team, $teamcnt)
+function rap_custom_field_data ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
+  
+  // nothing to do, return
+  return;
   
   print "\n<!--- Custom Insert before Field Data --->\n\n";
   
@@ -391,8 +399,8 @@ function rap_custom_field_data ($team, $teamcnt)
   
   // define and execute averages query
   
-  $query = "select {$fields} from teambot where teamnum = {$team[0]['teamnum']}
-             or teamnum = {$team[1]['teamnum']} or teamnum = {$team[2]['teamnum']}";
+  $query = "select {$fields} from teambot where teamnum = {$teams[0]['teamnum']}
+             or teamnum = {$teams[1]['teamnum']} or teamnum = {$teams[2]['teamnum']}";
     
   if (debug()) print "<br>DEBUG-teamfinfosidebyside: " . $query . "<br>\n";
   if (! ($result = @ mysqli_query ($connection, $query)))
@@ -428,7 +436,7 @@ function rap_custom_field_data ($team, $teamcnt)
 
 
 // Inserted before Competition Briefs
-function rap_custom_competition ($team, $teamcnt)
+function rap_custom_competition ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
@@ -440,7 +448,7 @@ function rap_custom_competition ($team, $teamcnt)
 
 
 // Inserted before Cooperation Briefs
-function rap_custom_cooperation ($team, $teamcnt)
+function rap_custom_cooperation ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;

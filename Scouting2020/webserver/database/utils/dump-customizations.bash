@@ -22,8 +22,8 @@ date=`date '+%y%m%d%H%M'`
 #  --complete-insert: form complete insert statements with col names
 #  --extended-insert: use multirow inserts that speed up load
 #  --no-create-db:    don't create the db
-#  --no-create-info:  don't create tables (not used)
-options=" --complete-insert --no-create-db --extended-insert"
+#  --no-create-info:  don't create tables
+options=" --complete-insert --no-create-db --extended-insert --no-create-info"
 
 
 #

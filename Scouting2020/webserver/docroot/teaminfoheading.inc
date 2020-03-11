@@ -123,8 +123,10 @@
   print "<br>\n";
 
   // add game-specific fields and stats columns
-  foreach($RankFields as $rankfield)
-    if ($rankfield['display'] != NULL ) $rankcolumns = $rankcolumns . $rankfield['column'] . ", ";
+  $rankcolumns = "";   // initialize
+  foreach($dispfields["tBA_Bot"] as $rankfield)
+    if ($rankfield['tag'] != NULL && $rankfield['used'] === TRUE)
+      $rankcolumns = $rankcolumns . $rankfield['tag'] . ", ";
 
   // add stats columns to rankcolumns
   foreach($stats_columns as $statcolumn=>$statarray)

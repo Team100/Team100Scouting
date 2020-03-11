@@ -2,7 +2,7 @@
 //
 // Competition System - Custom Parameters
 //
-// Generated: 2020-03-10 14:50:13
+// Generated: 2020-03-10 23:02:22
 //
 
 
@@ -10,64 +10,64 @@
 // Parameters for vargroup Bot
 //
 $dispfields["Bot"] = array();
-$dispfields["Bot"][0] = array("used"=>TRUE,"tag"=>"Weight", "display"=>"Robot Weight", "inputlen"=>4,"maxlen"=>4, "default_value"=>"155");
-$dispfields["Bot"][1] = array("used"=>TRUE,"tag"=>"EndGame", "display"=>"End Game Capable", "inputlen"=>3,"maxlen"=>3, "default_value"=>"1");
+$dispfields["Bot"][0] = array("used"=>TRUE,"tag"=>"Weight", "display"=>"Robot Weight", "heading"=>"Weight", "inputlen"=>3,"maxlen"=>3, "default_value"=>"", "format"=>"", "sortorder"=>"" );
+$dispfields["Bot"][1] = array("used"=>TRUE,"tag"=>"EndGameCapable", "display"=>"Endgame", "heading"=>"Endgame", "inputlen"=>3,"maxlen"=>3, "default_value"=>"", "format"=>"", "sortorder"=>"" );
 
 
 //
 // Parameters for vargroup Match
 //
 $dispfields["Match"] = array();
-$dispfields["Match"][0] = array("used"=>TRUE,"tag"=>"OutsideBalls", "display"=>"Outside Balls", "inputlen"=>3,"maxlen"=>3, "default_value"=>"");
-$dispfields["Match"][1] = array("used"=>TRUE,"tag"=>"LowBalls", "display"=>"Low Balls", "inputlen"=>3,"maxlen"=>3, "default_value"=>"");
+$dispfields["Match"][0] = array("used"=>TRUE,"tag"=>"OutsideBalls", "display"=>"Outside Balls", "heading"=>"OutB", "inputlen"=>3,"maxlen"=>3, "default_value"=>"", "format"=>"", "sortorder"=>"" );
+$dispfields["Match"][1] = array("used"=>TRUE,"tag"=>"LowBalls", "display"=>"Low Balls", "heading"=>"LowB", "inputlen"=>3,"maxlen"=>3, "default_value"=>"", "format"=>"", "sortorder"=>"" );
 
 
 //
 // Parameters for vargroup tBA_Bot
 //
-$tbaFields["Bot"]  = array();
-$dispfields["tBA_Bot"][0] = array("used"=>TRUE,"tag"=>"f_power_cells", "tBAtag"=>"power_cells_scored", "display"=>"F Power Cells", "maxlen"=>5 );
-$dispfields["tBA_Bot"][1] = array("used"=>TRUE,"tag"=>"f_endgame_pts", "tBAtag"=>"endgame_points", "display"=>"F Endgame Points", "maxlen"=>5 );
+$dispfields["tBA_Bot"] = array();
+$dispfields["tBA_Bot"][0] = array("used"=>TRUE,"tag"=>"f_power_cells_scored", "tBAtag"=>"power_cells_scored", "display"=>"PowerCl", "heading"=>"PowerCl", "maxlen"=>3, "format"=>"%.2f", "sortorder"=>"a" );
+$dispfields["tBA_Bot"][1] = array("used"=>TRUE,"tag"=>"f_endgame_points", "tBAtag"=>"endgame_points", "display"=>"Endgame", "heading"=>"Endgame", "maxlen"=>3, "format"=>"%.2f", "sortorder"=>"a" );
 
 
 //
 // Parameters for vargroup tBA_Match
 //
-$tbaFields["Match"]  = array();
-$dispfields["tBA_Match"][0] = array("used"=>TRUE,"tag"=>"f_initLineRobot1", "tBAtag"=>"initLineRobot1", "display"=>"f_initLineRobot1", "maxlen"=>20 );
-$dispfields["tBA_Match"][1] = array("used"=>TRUE,"tag"=>"f_endgameRobot1", "tBAtag"=>"endgameRobot1", "display"=>"f_endgameRobot1", "maxlen"=>20 );
-$dispfields["tBA_Match"][2] = array("used"=>TRUE,"tag"=>"f_initLineRobot2", "tBAtag"=>"initLineRobot2", "display"=>"f_initLineRobot2", "maxlen"=>20 );
-$dispfields["tBA_Match"][3] = array("used"=>TRUE,"tag"=>"f_endgameRobot2", "tBAtag"=>"endgameRobot2", "display"=>"f_endgameRobot2", "maxlen"=>20 );
-$dispfields["tBA_Match"][4] = array("used"=>TRUE,"tag"=>"f_initLineRobot3", "tBAtag"=>"initLineRobot3", "display"=>"f_initLineRobot3", "maxlen"=>20 );
-$dispfields["tBA_Match"][5] = array("used"=>TRUE,"tag"=>"f_endgameRobot3", "tBAtag"=>"endgameRobot3", "display"=>"f_endgameRobot3", "maxlen"=>20 );
-$dispfields["tBA_Match"][6] = array("used"=>TRUE,"tag"=>"f_autoCellsBottom", "tBAtag"=>"autoCellsBottom", "display"=>"f_autoCellsBottom", "maxlen"=>20 );
-$dispfields["tBA_Match"][7] = array("used"=>TRUE,"tag"=>"f_autoCellsOuter", "tBAtag"=>"autoCellsOuter", "display"=>"f_autoCellsOuter", "maxlen"=>20 );
-$dispfields["tBA_Match"][8] = array("used"=>TRUE,"tag"=>"f_autoCellsInner", "tBAtag"=>"autoCellsInner", "display"=>"f_autoCellsInner", "maxlen"=>20 );
-$dispfields["tBA_Match"][9] = array("used"=>TRUE,"tag"=>"f_teleopCellsBottom", "tBAtag"=>"teleopCellsBottom", "display"=>"f_teleopCellsBottom", "maxlen"=>20 );
-$dispfields["tBA_Match"][10] = array("used"=>TRUE,"tag"=>"f_teleopCellsOuter", "tBAtag"=>"teleopCellsOuter", "display"=>"f_teleopCellsOuter", "maxlen"=>20 );
-$dispfields["tBA_Match"][11] = array("used"=>TRUE,"tag"=>"f_teleopCellsInner", "tBAtag"=>"teleopCellsInner", "display"=>"f_teleopCellsInner", "maxlen"=>20 );
-$dispfields["tBA_Match"][12] = array("used"=>TRUE,"tag"=>"f_stage1Activated", "tBAtag"=>"stage1Activated", "display"=>"f_stage1Activated", "maxlen"=>20 );
-$dispfields["tBA_Match"][13] = array("used"=>TRUE,"tag"=>"f_stage2Activated", "tBAtag"=>"stage2Activated", "display"=>"f_stage2Activated", "maxlen"=>20 );
-$dispfields["tBA_Match"][14] = array("used"=>TRUE,"tag"=>"f_stage3Activated", "tBAtag"=>"stage3Activated", "display"=>"f_stage3Activated", "maxlen"=>20 );
-$dispfields["tBA_Match"][15] = array("used"=>TRUE,"tag"=>"f_stage3TargetColor", "tBAtag"=>"stage3TargetColor", "display"=>"f_stage3TargetColor", "maxlen"=>20 );
-$dispfields["tBA_Match"][16] = array("used"=>TRUE,"tag"=>"f_endgameRungIsLevel", "tBAtag"=>"endgameRungIsLevel", "display"=>"f_endgameRungIsLevel", "maxlen"=>20 );
-$dispfields["tBA_Match"][17] = array("used"=>TRUE,"tag"=>"f_autoInitLinePoints", "tBAtag"=>"autoInitLinePoints", "display"=>"f_autoInitLinePoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][18] = array("used"=>TRUE,"tag"=>"f_autoCellPoints", "tBAtag"=>"autoCellPoints", "display"=>"f_autoCellPoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][19] = array("used"=>TRUE,"tag"=>"f_autoPoints", "tBAtag"=>"autoPoints", "display"=>"f_autoPoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][20] = array("used"=>TRUE,"tag"=>"f_teleopCellPoints", "tBAtag"=>"teleopCellPoints", "display"=>"f_teleopCellPoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][21] = array("used"=>TRUE,"tag"=>"f_controlPanelPoints", "tBAtag"=>"controlPanelPoints", "display"=>"f_controlPanelPoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][22] = array("used"=>TRUE,"tag"=>"f_endgamePoints", "tBAtag"=>"endgamePoints", "display"=>"f_endgamePoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][23] = array("used"=>TRUE,"tag"=>"f_teleopPoints", "tBAtag"=>"teleopPoints", "display"=>"f_teleopPoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][24] = array("used"=>TRUE,"tag"=>"f_shieldOperationalR", "tBAtag"=>"shieldOperationalRankingPoint", "display"=>"f_shieldOperationalR", "maxlen"=>20 );
-$dispfields["tBA_Match"][25] = array("used"=>TRUE,"tag"=>"f_shieldEnergizedRan", "tBAtag"=>"shieldEnergizedRankingPoint", "display"=>"f_shieldEnergizedRan", "maxlen"=>20 );
-$dispfields["tBA_Match"][26] = array("used"=>TRUE,"tag"=>"f_tba_shieldEnergize", "tBAtag"=>"tba_shieldEnergizedRankingPointFromFoul", "display"=>"f_tba_shieldEnergize", "maxlen"=>20 );
-$dispfields["tBA_Match"][27] = array("used"=>TRUE,"tag"=>"f_tba_numRobotsHangi", "tBAtag"=>"tba_numRobotsHanging", "display"=>"f_tba_numRobotsHangi", "maxlen"=>20 );
-$dispfields["tBA_Match"][28] = array("used"=>TRUE,"tag"=>"f_foulCount", "tBAtag"=>"foulCount", "display"=>"f_foulCount", "maxlen"=>20 );
-$dispfields["tBA_Match"][29] = array("used"=>TRUE,"tag"=>"f_techFoulCount", "tBAtag"=>"techFoulCount", "display"=>"f_techFoulCount", "maxlen"=>20 );
-$dispfields["tBA_Match"][30] = array("used"=>TRUE,"tag"=>"f_adjustPoints", "tBAtag"=>"adjustPoints", "display"=>"f_adjustPoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][31] = array("used"=>TRUE,"tag"=>"f_foulPoints", "tBAtag"=>"foulPoints", "display"=>"f_foulPoints", "maxlen"=>20 );
-$dispfields["tBA_Match"][32] = array("used"=>TRUE,"tag"=>"f_rp", "tBAtag"=>"rp", "display"=>"f_rp", "maxlen"=>20 );
-$dispfields["tBA_Match"][33] = array("used"=>TRUE,"tag"=>"f_totalPoints", "tBAtag"=>"totalPoints", "display"=>"f_totalPoints", "maxlen"=>20 );
+$dispfields["tBA_Match"] = array();
+$dispfields["tBA_Match"][0] = array("used"=>TRUE,"tag"=>"f_initLineRobot1", "tBAtag"=>"initLineRobot1", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][1] = array("used"=>TRUE,"tag"=>"f_endgameRobot1", "tBAtag"=>"endgameRobot1", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][2] = array("used"=>TRUE,"tag"=>"f_initLineRobot2", "tBAtag"=>"initLineRobot2", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][3] = array("used"=>TRUE,"tag"=>"f_endgameRobot2", "tBAtag"=>"endgameRobot2", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][4] = array("used"=>TRUE,"tag"=>"f_initLineRobot3", "tBAtag"=>"initLineRobot3", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][5] = array("used"=>TRUE,"tag"=>"f_endgameRobot3", "tBAtag"=>"endgameRobot3", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][6] = array("used"=>TRUE,"tag"=>"f_autoCellsBottom", "tBAtag"=>"autoCellsBottom", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][7] = array("used"=>TRUE,"tag"=>"f_autoCellsOuter", "tBAtag"=>"autoCellsOuter", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][8] = array("used"=>TRUE,"tag"=>"f_autoCellsInner", "tBAtag"=>"autoCellsInner", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][9] = array("used"=>TRUE,"tag"=>"f_teleopCellsBottom", "tBAtag"=>"teleopCellsBottom", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][10] = array("used"=>TRUE,"tag"=>"f_teleopCellsOuter", "tBAtag"=>"teleopCellsOuter", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][11] = array("used"=>TRUE,"tag"=>"f_teleopCellsInner", "tBAtag"=>"teleopCellsInner", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][12] = array("used"=>TRUE,"tag"=>"f_stage1Activated", "tBAtag"=>"stage1Activated", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][13] = array("used"=>TRUE,"tag"=>"f_stage2Activated", "tBAtag"=>"stage2Activated", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][14] = array("used"=>TRUE,"tag"=>"f_stage3Activated", "tBAtag"=>"stage3Activated", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][15] = array("used"=>TRUE,"tag"=>"f_stage3TargetColor", "tBAtag"=>"stage3TargetColor", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][16] = array("used"=>TRUE,"tag"=>"f_endgameRungIsLevel", "tBAtag"=>"endgameRungIsLevel", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][17] = array("used"=>TRUE,"tag"=>"f_autoInitLinePoints", "tBAtag"=>"autoInitLinePoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][18] = array("used"=>TRUE,"tag"=>"f_autoCellPoints", "tBAtag"=>"autoCellPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][19] = array("used"=>TRUE,"tag"=>"f_autoPoints", "tBAtag"=>"autoPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][20] = array("used"=>TRUE,"tag"=>"f_teleopCellPoints", "tBAtag"=>"teleopCellPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][21] = array("used"=>TRUE,"tag"=>"f_controlPanelPoints", "tBAtag"=>"controlPanelPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][22] = array("used"=>TRUE,"tag"=>"f_endgamePoints", "tBAtag"=>"endgamePoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][23] = array("used"=>TRUE,"tag"=>"f_teleopPoints", "tBAtag"=>"teleopPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][24] = array("used"=>TRUE,"tag"=>"f_shieldOperationalR", "tBAtag"=>"shieldOperationalRankingPoint", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][25] = array("used"=>TRUE,"tag"=>"f_shieldEnergizedRan", "tBAtag"=>"shieldEnergizedRankingPoint", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][26] = array("used"=>TRUE,"tag"=>"f_tba_shieldEnergize", "tBAtag"=>"tba_shieldEnergizedRankingPointFromFoul", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][27] = array("used"=>TRUE,"tag"=>"f_tba_numRobotsHangi", "tBAtag"=>"tba_numRobotsHanging", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][28] = array("used"=>TRUE,"tag"=>"f_foulCount", "tBAtag"=>"foulCount", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][29] = array("used"=>TRUE,"tag"=>"f_techFoulCount", "tBAtag"=>"techFoulCount", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][30] = array("used"=>TRUE,"tag"=>"f_adjustPoints", "tBAtag"=>"adjustPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][31] = array("used"=>TRUE,"tag"=>"f_foulPoints", "tBAtag"=>"foulPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][32] = array("used"=>TRUE,"tag"=>"f_rp", "tBAtag"=>"rp", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
+$dispfields["tBA_Match"][33] = array("used"=>TRUE,"tag"=>"f_totalPoints", "tBAtag"=>"totalPoints", "display"=>"", "heading"=>"", "maxlen"=>20, "format"=>"", "sortorder"=>"" );
 
 
 //
@@ -75,8 +75,8 @@ $dispfields["tBA_Match"][33] = array("used"=>TRUE,"tag"=>"f_totalPoints", "tBAta
 // tBA - Blue Alliance - custom fields score map
 //   tBA score fields to custom score fields
 $tba_score_to_match_alliance = array (
-  "power_cells_scored"=>"f_power_cells",
-  "endgame_points"=>"f_endgame_pts",
+  "power_cells_scored"=>"f_power_cells_scored",
+  "endgame_points"=>"f_endgame_points",
   "initLineRobot1"=>"f_initLineRobot1",
   "endgameRobot1"=>"f_endgameRobot1",
   "initLineRobot2"=>"f_initLineRobot2",

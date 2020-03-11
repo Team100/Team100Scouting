@@ -6,6 +6,9 @@
   //
   // Shows competitive data for match
   //
+  // Significant customization opportunities are available with this form.
+  //
+  //
 
 	require "page.inc";
 	$connection = dbsetup();
@@ -38,8 +41,9 @@
 
   // determine FIRST data columns
   // add game-specific fields and stats columns
-  foreach($RankFields as $rankfield)
-    if ($rankfield['display'] != NULL ) $firstcols[] = $rankfield['column'];
+  foreach($dispfields["tBA_Bot"] as $rankfield)
+    if ($rankfield['tag'] != NULL && $rankfield['used'] === TRUE)
+      $firstcols[] = $rankfield['tag'];
 
   // add stats columns to rankcolumns
   foreach($stats_columns as $statcolumn=>$statarray)
@@ -104,7 +108,7 @@
 
 	// get our team
 	$query = "select teamnum, color from match_team where event_id = '{$sys_event_id}' and {$match_sql_identifier} and teamnum = {$host_teamnum}";
-	if (debug()) print "<br>matchrapsheet: " . $query . $where . "<br>\n";
+	if (debug()) print "<br>matchrapsheet: " . $query . "<br>\n";
 	if (! ($result = @ mysqli_query ($connection, $query)))
 		dbshowerror($connection, "die");
 
@@ -137,7 +141,7 @@
       . " and match_team.teamnum=teambot.teamnum and match_team.teamnum=team.teamnum"
       . " and match_team.teamnum != {$host_teamnum} and {$match_sql_identifier} order by match_team.color {$order}, match_team.teamnum";
 
-	if (debug()) print "<br>DEBUG-matchrapsheet: " . $query . $where . "<br>\n";
+	if (debug()) print "<br>DEBUG-matchrapsheet: " . $query . "<br>\n";
 	if (! ($result = @ mysqli_query ($connection, $query)))
   		dbshowerror($connection, "die");
 
@@ -250,13 +254,16 @@
     // set number of columns
     if ($public) $colcnt=3; else $colcnt = $teamcnt;
 
-    foreach($RankFields as $rankfield)
-      if ($rankfield['display'] != NULL)
+    // add game-specific fields and stats columns
+    $rankcolumns = "";   // initialize
+    foreach($dispfields["tBA_Bot"] as $rankfield)
+      if ($rankfield['tag'] != NULL && $rankfield['used'] === TRUE)
       {
         print "<tr><td>{$rankfield['display']}</td>\n";
+
         // data in each
         for($i=0; $i<$colcnt; $i++)
-          print "<td>{$team[$i][$rankfield['column']]}</td>";
+          print "<td>{$team[$i][$rankfield['tag']]}</td>";
         print "</tr>\n";
       }
 

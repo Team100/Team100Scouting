@@ -60,9 +60,9 @@
    <br>
    <li><a href=\"/customparam-tBA-setup.php?vargroup=tBA\">Copy parameters from theBlueAlliance.com</li>
    <br>
-   <li><a href=\"/customparam.php?vargroup=tBA_Match\">Define The Blue Alliance custom match parameters</li>
-   <br>
    <li><a href=\"/customparam.php?vargroup=tBA_Bot\">Define The Blue Alliance custom Bot stat parameters</li>
+   <br>
+   <li><a href=\"/customparam.php?vargroup=tBA_Match\">Define The Blue Alliance custom match parameters</li>
    <br>
    <li><a href=\"/verify-params.php\">Verify custom parameters from config file</a></li>
    </ul>

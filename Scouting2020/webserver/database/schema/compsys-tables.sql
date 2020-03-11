@@ -478,10 +478,13 @@ create table custom_param
   entrytype varchar(1),		# entry type: D=Direct, C=Calc'd
   dbtype varchar(10),		# database column type
   display varchar(20) not null, # display text in app
+  heading varchar(14),		# display heading in column/tabular form  
   inputlen int,			# input length for field in form
   maxlen int,			# max len of input. Will also set field size in database
   default_value varchar(20),	# default value
   list_of_values varchar(100),	# future feature: list of values in value1,tag1;value2,tag2 format
+  format varchar(10),           # print format (through printf.  
+  sortorder varchar(1),         # sort order: A - Ascending, D - Descending
   db_calc varchar (50),		# SQL format group calculation from match data
   formula_calc varchar (200),	# php formula calclation
   test_avg int,			# test average value - used for test generation

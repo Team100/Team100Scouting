@@ -15,13 +15,20 @@
   pheader("Custom Parameters Setup - Group: {$vargroup}, Tag: {$tag}");
   $connection = dbsetup();
 
+// if not administrator, display error.  Otherwise show admin section.
+if (! $admin)
+  print "<h3>You must be an administrator to use this page.</h3>\n";
+else
+{
   // initialize variables and arrays
+  $dbtypes = array("varchar","int","real","boolean");
 
   // define lock array, fields arrays
   //   the arrays set how array-based functions for lock and field editing work
   $dblock = array("table"=>"custom_param","where"=>"vargroup = '{$vargroup}' and tag = '{$tag}'");
-  $custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","inputlen","maxlen",
-     "default_value","list_of_values","db_calc","formula_calc","test_avg","test_range","test_values",
+  $custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","heading",
+     "inputlen","maxlen","default_value","list_of_values","format","sortorder",
+     "db_calc","formula_calc","test_avg","test_range","test_values",
      "description","tBA_tag","tBA_type");
 
   // handle update if returning from edit mode
@@ -65,11 +72,13 @@
 // top of form rendering
 //
 
+
   // if tBA, special instructions
   if (substr($vargroup,0,3) == "tBA")
   {
      print "\nNOTE: The Blue Alliance or \"FIRST\" custom parameter tags are preceeded by \"f_\" to help";
-     print "distinguish them from other system tags and columns.<br><br>\n";
+     print "distinguish them from other system tags and columns. ";
+     print "A typical format for a real number is %.2f<br><br>\n";
   }
 
 print "
@@ -108,37 +117,43 @@ print "
 
 
       if (substr($vargroup,0,3) == "tBA")
-        print tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",40,50,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "tBA_type","tBA Type",10,10,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,NULL)
-        . tabtextfield($edit,$options,$row, "dbtype","DB type",10,10,"varchar",NULL,NULL)
-        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "display","Display",20,20,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "test_values","TestValues",50,200,NULL,NULL,NULL)
-        . tabtextarea($edit,$desc_options,$row, "description","Description",6,50,NULL,NULL,NULL)
+        print tabtextfield($edit,$options,$row, "tag","Tag",15,20,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "tBA_tag","tBA Tag",40,50,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "tBA_type","tBA Type",10,10,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"R",NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "dbtype","DB type",10,10,NULL,"varchar",$dbtypes,NULL)
+        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "display","Display",20,20,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "heading","Heading",14,10,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "format","Format",10,10,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "sortorder","Sort",1,1,"a",NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_values","TestValues",50,200,NULL,NULL,NULL,NULL)
+        . tabtextarea($edit,$desc_options,$row, "description","Description",6,50,NULL,NULL,NULL,NULL)
         . "</tr>\n\n";
       else
-        print tabtextfield($edit,$options,$row, "tag","Tag",20,20,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,NULL)
-        . tabtextfield($edit,$options,$row, "dbtype","DB type",10,10,"varchar",NULL,NULL)
-        . tabtextfield($edit,$options,$row, "display","Display",20,20,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "list_of_values","List of Val",50,100,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "db_calc","DB Calc",50,50,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,NULL)
-        . tabtextfield($edit,$options,$row, "test_values","TestValues",50,200,NULL,NULL,NULL)
-        . tabtextarea($edit,$desc_options,$row, "description","Description",6,50,NULL,NULL,NULL)
+        print tabtextfield($edit,$options,$row, "tag","Tag",20,20,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "position","Pos",3,3,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "used","Used",1,1,1,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "entrytype","EntTyp",1,1,"D",NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "dbtype","DB type",10,10,NULL,"varchar",$dbtypes,NULL)
+        . tabtextfield($edit,$options,$row, "display","Display",20,20,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "heading","Heading",14,10,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "inputlen","InpLen",2,2,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "maxlen","MaxLen",2,2,3,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "default_value","Def Val",10,20,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "list_of_values","List of Val",50,100,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "format","Format",10,10,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "sortorder","Sort",1,1,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "db_calc","DB Calc",50,50,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "formula_calc","Formula Calc",10,200,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_avg","TestAvg",3,3,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_range","TestRng",3,3,NULL,NULL,NULL,NULL)
+        . tabtextfield($edit,$options,$row, "test_values","TestValues",50,200,NULL,NULL,NULL,NULL)
+        . tabtextarea($edit,$desc_options,$row, "description","Description",6,50,NULL,NULL,NULL,NULL)
       . "\n\n";
 
   // add edit link or submit button
@@ -157,6 +172,7 @@ print "
   if ($edit) print "\n</form>\n";
 
   print "</tr>\n</table>\n";
+} // end of if admin
 
    pfooter();
   ?>

@@ -12,9 +12,9 @@ require "../../docroot/page.inc";
 // parameters for script
 $dbfile = "../../database/schema/compsys-customparams.sql";
 $paramsfile = "../../docroot/params-custom.inc";
-$custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","inputlen","maxlen",
-     "default_value","list_of_values","tBA_tag","tBA_type");
-
+$custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","heading",
+   "inputlen","maxlen","default_value","list_of_values","format","sortorder",
+   "tBA_tag","tBA_type");
 // vargroup to dbfile mapping array
 $vartodb = array("Bot"=>"teambot", "Match"=>"match_team","tBA_Bot"=>"teambot", "tBA_Match"=>"match_instance_alliance");
 
@@ -100,10 +100,7 @@ foreach ($vartodb as $vargroup=>$table)
   $pfiletext .= "// Parameters for vargroup {$vargroup}\n//\n";
 
   // add array declaration
-  if (substr($vargroup,0,3) == "tBA")
-    $pfiletext .= "\$tbaFields[\"" . substr($vargroup,4) . "\"]  = array();\n";
-  else
-    $pfiletext .= "\$dispfields[\"{$vargroup}\"] = array();\n";
+  $pfiletext .= "\$dispfields[\"{$vargroup}\"] = array();\n";
   fwrite($fparams, $pfiletext);
 
   $dfiletext = "\n\n#\n# Database mods for vargroup {$vargroup}\n";
@@ -130,7 +127,9 @@ foreach ($vartodb as $vargroup=>$table)
     {
       $pfiletext = '$dispfields["' . $row['vargroup'] . '"][' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
       $pfiletext .= "\"tag\"=>\"{$row['tag']}\", ";
-      $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['display']}\", \"maxlen\"=>{$row['maxlen']} );\r\n";
+      $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['heading']}\", \"heading\"=>\"{$row['heading']}\", ";
+      $pfiletext .= "\"maxlen\"=>{$row['maxlen']}, \"format\"=>\"{$row['format']}\", \"sortorder\"=>\"{$row['sortorder']}\" ";
+      $pfiletext .= ");\r\n";
 
       // add entry to tbamap
       $tbamap .= ",\n  \"{$row['tBA_tag']}\"=>\"{$row['tag']}\"";
@@ -138,8 +137,10 @@ foreach ($vartodb as $vargroup=>$table)
     else
     {
       $pfiletext = '$dispfields["' . $row['vargroup'] . '"][' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
-      $pfiletext .= "\"tag\"=>\"{$row['tag']}\", \"display\"=>\"{$row['display']}\", \"inputlen\"=>{$row['inputlen']},";
-      $pfiletext .= "\"maxlen\"=>{$row['maxlen']}, \"default_value\"=>\"{$row['default_value']}\");\r\n";
+      $pfiletext .= "\"tag\"=>\"{$row['tag']}\", \"display\"=>\"{$row['display']}\", \"heading\"=>\"{$row['heading']}\", ";
+      $pfiletext .= "\"inputlen\"=>{$row['inputlen']},\"maxlen\"=>{$row['maxlen']}, \"default_value\"=>\"{$row['default_value']}\", ";
+      $pfiletext .= "\"format\"=>\"{$row['format']}\", \"sortorder\"=>\"{$row['sortorder']}\" ";
+      $pfiletext .= ");\r\n";
     }
     fwrite($fparams, $pfiletext);
 

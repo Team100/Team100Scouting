@@ -700,7 +700,7 @@ function teamhref ( $teamnum)
 }
 
 //
-// function: tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $editprefix)
+// function: tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $format, $list_of_vals, $editprefix)
 //  (function table text field)
 //  $edit - edit flag, 1 if editing
 //  $options - options to add (see below)
@@ -710,6 +710,7 @@ function teamhref ( $teamnum)
 //  $size - size of editing text box
 //  $maxlength - max length of input allowed
 //  $defvalue - value to place in text box if in editing mode.  Otherwise this value comes from $data
+//  $format - printf-style format for number rendering (usually something for real types such as %.2f
 //  $list_of_values - array of possible values, used in list_of_values selector when editing
 //  $editprefix - placed on the front of every edit field so that multiple rows can be processed 
 //                  if using tabular entry
@@ -731,7 +732,8 @@ function teamhref ( $teamnum)
 //
 
 function tabtextfield
-  ( $edit, $options, $data, $fieldname, $fieldtag, $size, $maxlength = NULL, $defvalue = NULL, $list__of_vals = NULL, $editprefix = NULL )
+  ( $edit, $options, $data, $fieldname, $fieldtag, $size, $maxlength = NULL, $defvalue = NULL, 
+    $format = NULL, $list_of_vals = NULL, $editprefix = NULL )
 {
   // set null vars
   $beg_tr = NULL; $beg_td = NULL; $beg_href = NULL; $end_href = NULL; $end_td = NULL; $end_tr = NULL; $tag = NULL;
@@ -756,6 +758,9 @@ function tabtextfield
     
     // look for value in data
     if (isset($data[$fieldname])) $value = $data[$fieldname]; else $value=$defvalue;
+    
+    // apply format if it exists
+    if (isset($format)) $value = sprintf($format, $value);
 
     // set up href option
     if (isset($options["href"]))
@@ -783,14 +788,31 @@ function tabtextfield
   else
     // set up edit and non-edit mode  
     if ($edit)
-      $ret="{$beg_tr}{$tag}{$beg_td}<input type=\"text\" name=\"{$editprefix}{$fieldname}\" size={$size} maxlength={$maxlength} value=\"{$value}\">{$end_td}{$end_tr}";
+    {
+      $ret = "{$beg_tr}{$tag}{$beg_td}";
+      
+      // if list of values, process
+      //   note: could set up LOV to be $val=>$display
+      if (isset($list_of_vals) && is_array($list_of_vals))
+      {
+        $ret .= "<select name= \"{$editprefix}{$fieldname}\">";
+        foreach ($list_of_vals as $val)
+        {
+          if ($val == $value) $selected="selected"; else $selected="";
+          $ret .= "\n   <option value=\"{$val}\" {$selected}>{$val}</option>";
+        }
+        $ret .= "</select>";
+      }
+      else
+        $ret .= "<input type=\"text\" name= \"{$editprefix}{$fieldname}\" size={$size} maxlength={$maxlength} value=\"{$value}\">";
+        
+      $ret .= "{$end_td}{$end_tr}\n";
+    }
     else  
       $ret="{$beg_tr}{$tag}{$beg_td}{$beg_href}{$value}{$end_href}{$end_td}{$end_tr}\n";
    
    return($ret);
 }
-
-
 
 
 //
@@ -1316,7 +1338,7 @@ function param_report ($data, $paramgroup, $public, $teamcnt)
 	{
 		// find field name
 //DBCOL		$fieldname = $paramgroup . "Field_" . $cnt; 
-//		$fieldname = $dispfields[$paramgroup][$cnt]["tag"]; 
+		$fieldname = $dispfields[$paramgroup][$cnt]["tag"]; 
 
 		// start row
 		$ret = $ret . "<tr><td>{$dispfields[$paramgroup][$cnt]["display"]}</td>\n";

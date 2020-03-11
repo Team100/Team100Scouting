@@ -99,9 +99,10 @@
 //DBCOL  foreach($RankFields as $rankfield)
 //DBCOL    if ($rankfield['display'] != NULL)
 //DBCOL      print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['column']]}</td><tr>\n";
-  foreach($RankFields as $rankfield)
-    if ($rankfield['display'] != NULL)
-      print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['column']]}</td><tr>\n";
+  // add game-specific fields and stats columns
+  $rankcolumns = "";   // initialize
+  foreach($dispfields["tBA_Bot"] as $rankfield)
+      print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['tag']]}</td><tr>\n";
 
   // end of first block of variables
   print "</table></td><td>&nbsp;&nbsp;</td><td>\n";

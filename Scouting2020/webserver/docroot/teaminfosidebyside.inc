@@ -190,9 +190,9 @@
   
   
   // add game-specific fields
-  foreach($RankFields as $rankfield)
-    if ($rankfield['display'] != NULL)
-      print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['column']]}</td><tr>\n";
+  foreach($dispfields["tBA_Bot"] as $rankfield)
+    if ($rankfield['tag'] != NULL && $rankfield['used'] === TRUE)
+      print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['tag']]}</td><tr>\n";
 
   // end of first block of variables
   print "</table></td>\n";

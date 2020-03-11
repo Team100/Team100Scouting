@@ -1091,7 +1091,10 @@ function tba_mapfields ($tba_fieldmap, $tba_responsearray, $tba_dbarray)
          if (debug())
          {
            print "\n<br>DEBUG:tba_mapfields: no response found for field {$field}<br>\n";
+           print "\nResponse Object:\n";
            print_r($tba_responsearray);
+           print "\ntBA dbarray:\n";
+           print_r($tba_dbarray);
          }
        }
      } // foreach
