@@ -5,6 +5,7 @@
 //  - docroot: params-custom.inc
 //
 // Generates for teambot, match_team, and match_instance_alliance tables
+// Also generates $tba_score_to_match_alliance for field mapping
 //
 
 require "../../docroot/page.inc";
@@ -85,9 +86,6 @@ fwrite($fdb, $dfiletext);
 $begin_tbamap  = "\n\n//\n//\n// tBA - Blue Alliance - custom fields score map\n";
 $begin_tbamap .= "//   tBA score fields to custom score fields\n";
 $begin_tbamap .= "\$tba_score_to_match_alliance = array (";
-
-print "MAP". $begin_tbamap;
-
 $end_tbamap=" );\n\n";
 $tbamap="";
 
@@ -127,12 +125,13 @@ foreach ($vartodb as $vargroup=>$table)
     {
       $pfiletext = '$dispfields["' . $row['vargroup'] . '"][' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
       $pfiletext .= "\"tag\"=>\"{$row['tag']}\", ";
-      $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['heading']}\", \"heading\"=>\"{$row['heading']}\", ";
+      $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['display']}\", \"heading\"=>\"{$row['heading']}\", ";
       $pfiletext .= "\"maxlen\"=>{$row['maxlen']}, \"format\"=>\"{$row['format']}\", \"sortorder\"=>\"{$row['sortorder']}\" ";
       $pfiletext .= ");\r\n";
 
-      // add entry to tbamap
-      $tbamap .= ",\n  \"{$row['tBA_tag']}\"=>\"{$row['tag']}\"";
+      // add entry to tbamap for tBA_Match
+      if ($vargroup == "tBA_Match")
+        $tbamap .= ",\n  \"{$row['tBA_tag']}\"=>\"{$row['tag']}\"";
     }
     else
     {

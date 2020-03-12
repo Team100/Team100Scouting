@@ -47,6 +47,9 @@ include ('lib/httpful.phar');
 //
 // Sets up map from Blue Alliance to our scheme structure
 //
+// Note: $tba_score_to_match_alliance is generated in params-custom.inc
+//
+//
 // Format of map:
 //   $tba_fieldmap - fieldmap which is an array of key value pairs 
 //        where key is the Blue Alliance field name and 
@@ -69,7 +72,7 @@ $tba_event_to_event = array ("key"=>"event_id","short_name"=>"name","name"=>"lon
 //   "website"=>"website","name"=>"sponsors","rookie_year"=>"rookie_year");
 
 $tba_team_to_team = array ("key" =>"teamnum","nickname"=>"name","city"=>"city",
-   "state_prov"=>"state_prov","country"=>"country",
+   "state_prov"=>"state_prov","country"=>"country", "school_name"=>"org",
    "website"=>"website","name"=>"sponsors","rookie_year"=>"rookie_year");
    
 // tBA team history to team history
@@ -222,6 +225,7 @@ function tba_getmatcharray ($tba_response_array)
 
 
 // ***********************************************************************************
+// ***********************************************************************************
 //
 // Data Retrieval and Update Functions
 //
@@ -235,6 +239,7 @@ function tba_getmatcharray ($tba_response_array)
 //  - tba_get_event_teams - uses api /event/{}/teams endpoint to get teams info 
 //  - tba_get_event_matches - retrieve match info from /event/()/matches
 //  - tba_get_event_rankings - 
+//  - tba_get_event_oprs
 // stats
 //
 //  - tba_get_team_history - 
@@ -263,13 +268,22 @@ function tba_get_event_teams()
     // inform user
     print "<br>Updated team ";
 
+    // initialize
+    $team_keys = array();
+      
     foreach($tba_response->body as $key=>$teamobj)
     {
+      // initialize
       $tba_dbarray = array();
+      
       // get teamnum
       //$tba_dbarray = tba_convert_teamnum($teamobj, "");
       // map fields from response for team table
       $tba_dbarray = tba_mapfields($tba_team_to_team, $teamobj, $tba_dbarray);
+      
+      // add to $team_keys
+      $team_keys[] = $tba_dbarray['teamnum'];
+      
       // convert teamnum
       $tba_dbarray = tba_convert_teamnum($tba_dbarray);
 
@@ -293,15 +307,56 @@ function tba_get_event_teams()
       // update event data in event table
       tba_updatedb("teambot", array ("event_id"=>$sys_event_id, "teamnum"=>$tba_dbarray["teamnum"]), $tba_dbarray);
 
-
-      //
-      // find bot information
-      
-
-
       // inform user
       print "{$tba_dbarray["teamnum"]}, ";
 
+    }
+
+    // update location with city, state_prov, country
+    $query = "update team set location = concat(city, ', ', state_prov, ' ', country) where location is NULL";
+    if (debug()) print "<br>DEBUG:blue-alliance.inc: " . $query . "<br>\n";  
+    if (!($result = @mysqli_query ($connection, $query)))
+      dbshowerror($connection);    
+
+    // commit
+    if (! (@mysqli_commit($connection) ))
+      dbshowerror($connection, "die");
+
+    // 
+    // load team bot names, $team_keys
+    //
+
+    // inform user
+    print "\n<br><br>Loading robot info...\n";
+    // get year
+    $query="select year from system_value, event where skey = 'sys_event_id' and event_id = value";
+    if (debug()) print "\n<br>DEBUG-set-event: {$query} <br>\n";
+    if (! ($result = @mysqli_query ($connection, $query) ))
+       dbshowerror($connection, "die");
+    $row = mysqli_fetch_array($result);
+    $sys_event_year = $row["year"];
+      
+    // loop through keys
+    foreach($team_keys as $team_key)
+    {
+      // get data
+      if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/team/$team_key/robots", FALSE)))
+      {
+        print "API returned " . $tba_error['message'] . "<br>\n";
+      }
+      else
+        foreach ($tba_response->body as $element)
+          if($element->year == $sys_event_year)
+          {
+            // set up array
+            $tba_dbarray = array("teamnum"=>$team_key, "bot_name"=>$element->robot_name);
+            // convert teamnum
+            $tba_dbarray = tba_convert_teamnum($tba_dbarray);
+
+            // update event data in event table
+            //JLV fix later: tba_updatedb("team", array ("event_id"=>$sys_event_id, "teamnum"=>$tba_dbarray["teamnum"]), $tba_dbarray);
+            tba_updatedb("team", array ("teamnum"=>$tba_dbarray["teamnum"]), $tba_dbarray);
+          }      
     }
 
     // commit
@@ -333,7 +388,6 @@ function tba_get_matches()
   global $connection;
   global $tba_match_to_match_instance, $tba_match_to_match_alliance, $tba_match_to_match_team;
   global $tba_score_to_match_alliance;
-//  global $ScoreFields;
   
   // 
   // create internal mapping table for score breakdown
@@ -367,7 +421,6 @@ function tba_get_matches()
       // map fields from response for match_instance table
       $tba_dbarray = tba_mapfields($tba_match_to_match_instance, $matchobj, $tba_dbarray);
 
-      
       // update event data in event table
       tba_updatedb("match_instance", $match_id_array, $tba_dbarray);
 
@@ -704,49 +757,56 @@ function tba_get_event_oprs()
 } // end of function
 
 
-// function: tba_get_event_oprs()
+// function: tba_get_event_predictions()
 //   Returns - message string of what to print as a final message
 //
 // Gets event oprs based on $sys_event_id
-// Decode the event oprs based on display variable structures
+// Decode the event predictions based on display variable structures
+//
+// Uses custom-defined array (see customparams.php) to order and source data
 //
 
-function tba_get_event_oprsss()
+function tba_get_event_predictions()
 {
   global $tba_AuthKey;
   global $tba_error;
   global $sys_event_id;
   global $connection;
+  global $dispfields;
  
   // get data
-  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/rankings", FALSE)))
+  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/predictions", FALSE)))
     print "API returned " . $tba_error['message'] . "<br>\n";
   else
   {
-    foreach($tba_response->body->rankings as $element=>$rankobj)
+    // loop through each tBA_Bot field and pull up mean, then add for each team
+    foreach($dispfields["tBA_Bot"] as $element)
     {
-      // teamnum and rank
-      $tba_dbarray = array("teamnum"=>$rankobj->team_key, "f_ranking"=>$rankobj->rank);
-      // convert teamnum
-      $tba_dbarray = tba_convert_teamnum($tba_dbarray); 
+      // assign tBA tag to use in object
+      $tBAtag=$element['tBAtag'];
+      foreach($tba_response->body->stat_mean_vars->qual->$tBAtag->mean as $team_key=>$value)
+      {
 
-      // mapfields for record
-      $tba_dbarray = tba_mapfields($tba_record_to_teambot, $rankobj->record, $tba_dbarray);
+        // teamnum and rank
+        $tba_dbarray = array("teamnum"=>$team_key, $element['tag']=>$value);
+        // convert teamnum
+        $tba_dbarray = tba_convert_teamnum($tba_dbarray); 
                       
-      // update teambot
-      tba_updatedb("teambot", array("event_id"=>$sys_event_id, "teamnum"=>$tba_dbarray['teamnum']), $tba_dbarray);
+        // update teambot
+        tba_updatedb("teambot", array("event_id"=>$sys_event_id, "teamnum"=>$tba_dbarray["teamnum"]), $tba_dbarray);
 
-      // inform user
-      print "{$teamnum}, ";
-      
-    } // end of $tba_response
-  
+        // inform user
+        print "{$tba_dbarray['teamnum']}, ";
+     
+      } // end of $tba_response
+    } // end of element foreach
+    
     // commit
     if (! (@mysqli_commit($connection) ))
       dbshowerror($connection, "die");
 
     // Inform user
-    print "<br>&nbsp;&nbsp;&nbsp; ... blue alliance oprs loading complete.<br>\n";
+    print "<br>&nbsp;&nbsp;&nbsp; ... blue alliance stats loading complete.<br>\n";
 
     return(TRUE);
 
@@ -755,8 +815,6 @@ function tba_get_event_oprsss()
   return(TRUE);
   
 } // end of function
-
-
 
 
 //
@@ -776,12 +834,13 @@ function tba_get_team_history()
   // for every team
   $query = "select teamnum from team";
 
+  if (debug()) print "<br>DEBUG:blue-alliance.inc: " . $query . "<br>\n";
   if (!($result = @mysqli_query ($connection, $query)))
        dbshowerror($connection, "die");
   while ($row = mysqli_fetch_array($result))
   {
     // get data
-    if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/team/frc{$row['teamnum']}/history/events", FALSE)))
+    if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/team/frc{$row['teamnum']}/events", FALSE)))
       print "API returned " . $tba_error['message'] . "<br>\n";
     else
     {
@@ -832,12 +891,13 @@ function tba_get_team_awards()
   // for every team
   $query = "select teamnum from team";
   
+  if (debug()) print "<br>DEBUG:blue-alliance.inc: " . $query . "<br>\n";
   if (!($result = @mysqli_query ($connection, $query)))
      dbshowerror($connection, "die");
   while ($row = mysqli_fetch_array($result))
   {
     // get data
-    if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/team/frc{$row['teamnum']}/history/awards", FALSE)))
+    if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/team/frc{$row['teamnum']}/awards", FALSE)))
       print "API returned " . $tba_error['message'] . "<br>\n";
     else
       foreach($tba_response->body as $award)

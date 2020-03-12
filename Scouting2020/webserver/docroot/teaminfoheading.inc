@@ -128,8 +128,10 @@
     if ($rankfield['tag'] != NULL && $rankfield['used'] === TRUE)
       $rankcolumns = $rankcolumns . $rankfield['tag'] . ", ";
 
-  // add stats columns to rankcolumns
-  foreach($stats_columns as $statcolumn=>$statarray)
+  // add stats columns to rankcolumns, including botname
+  // $stats_display_columns = array_merge($stats_columns, array("bot_name"=>array("display"=>"Robot Name")));
+  $stats_display_columns = $stats_columns;
+  foreach($stats_display_columns as $statcolumn=>$statarray)
     $rankcolumns = $rankcolumns . $statcolumn . ", ";
 
   // get team details define result set

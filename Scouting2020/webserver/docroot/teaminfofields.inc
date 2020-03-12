@@ -71,10 +71,15 @@
   <table border=\"1\" valign=\"top\">
   "; // end of print
   
-  foreach($stats_columns as $column=>$col_def)
+  // set display columnt
+
+  //$stats_display_columns = array_merge($stats_columns, array("bot_name"=>array("display"=>"Robot Name")));
+  $stats_display_columns = $stats_columns;
+
+  foreach($stats_display_columns as $column=>$col_def)
   {
     // check for format
-    if ($col_def['format'] != "") 
+    if (isset($col_def['format']) && ($col_def['format'] != ""))
       $show = sprintf($col_def['format'], $row[$column]);
     else
       $show = $row[$column];
@@ -102,7 +107,16 @@
   // add game-specific fields and stats columns
   $rankcolumns = "";   // initialize
   foreach($dispfields["tBA_Bot"] as $rankfield)
-      print "<tr><td>{$rankfield['display']}</td><td>{$row[$rankfield['tag']]}</td><tr>\n";
+  {
+    // set format if needed
+    if (isset($rankfield['format']) && ($rankfield['format'] != ""))
+      $value = sprintf($rankfield['format'], $row[$rankfield['tag']]);
+    else
+      $value = $row[$rankfield['tag']];
+
+    print "<tr><td>{$rankfield['display']}</td><td>{$value}</td><tr>\n";
+  }
+
 
   // end of first block of variables
   print "</table></td><td>&nbsp;&nbsp;</td><td>\n";

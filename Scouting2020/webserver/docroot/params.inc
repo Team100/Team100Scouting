@@ -28,7 +28,7 @@ $sys_time_zone='America/Los_Angeles';
 
 //
 // Host team - Team that uses this db
-$host_teamnum=100;
+$host_teamnum=987;
 //$host_teamnum=4;
 $host_team_name="Wildhats";
 // don't change next line
@@ -374,8 +374,20 @@ $schedule_match_window = 1800;  // no more than an hour
 // ***********************************************************************************
 
 
+// Inserted after Summary block
+function rap_custom_post_summary ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  print "\n<!--- Custom Insert after Summary block --->\n\n";
+
+  return;
+}
+
+
 // Inserted before Field Data
-function rap_custom_field_data ($teams, $teamcnt)
+function rap_custom_pre_field_data ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
@@ -435,8 +447,20 @@ function rap_custom_field_data ($teams, $teamcnt)
 }
 
 
+// Inserted after Field Data
+function rap_custom_post_field_data ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  print "\n<!--- Custom Insert after Competition Briefs --->\n\n";
+
+  return;
+}
+
+
 // Inserted before Competition Briefs
-function rap_custom_competition ($teams, $teamcnt)
+function rap_custom_pre_competition ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
@@ -447,8 +471,20 @@ function rap_custom_competition ($teams, $teamcnt)
 }
 
 
+// Inserted before Competition Briefs
+function rap_custom_post_competition ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  print "\n<!--- Custom Insert after Competition Briefs --->\n\n";
+
+  return;
+}
+
+
 // Inserted before Cooperation Briefs
-function rap_custom_cooperation ($teams, $teamcnt)
+function rap_custom_pre_cooperation ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
@@ -458,6 +494,17 @@ function rap_custom_cooperation ($teams, $teamcnt)
   return;
 }
 
+
+// Inserted before Cooperation Briefs
+function rap_custom_post_cooperation ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  print "\n<!--- Custom Insert after Cooperation Briefs --->\n\n";
+
+  return;
+}
 
 //
 // function that returns the seed score for a match

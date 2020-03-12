@@ -74,11 +74,11 @@
       // rankings
       // inform user
       print "Retrieving rankings...<br>\n";
-//      if (tba_get_event_rankings())
-//        print "Blue Alliance operation successful.<br>\n";
-//      else
-//        print "Blue Alliance operation failed.  Please check errors.<br>\n";
-//      print "<br>";
+      if (tba_get_event_rankings())
+        print "Blue Alliance operation successful.<br>\n";
+      else
+        print "Blue Alliance operation failed.  Please check errors.<br>\n";
+      print "<br>";
 
       // standard tBA stats
       // inform user
@@ -90,12 +90,10 @@
       print "<br>\n";
 
 
-      break;
-      // stats first
-
+      // stats / "predictions"
       // inform user
       print "Retrieving event stats...<br>\n";
-      if (tba_get_event_stats())
+      if (tba_get_event_predictions())
         print "Blue Alliance operation successful.<br>\n";
       else
         print "Blue Alliance operation failed.  Please check errors.<br>\n";
@@ -170,7 +168,8 @@
 
   <h4><u>Load and update during Regional</u></h4>
   <ul>
-  <li><a href=\"/bluealliance.php?op=eventteams\">Update team information for current event</a></li>
+  <li><a href=\"/bluealliance.php?op=eventteams\">Update team information for current event</a><br>
+      (will take a while to return)</li>
   <br>
   <li><a href=\"/bluealliance.php?op=matchdata\">Update match data for current event</a></li>
   <br>
@@ -180,7 +179,8 @@
   <h4><u>Large Loads (one time)</u></h4>
 
   <ul>
-  <li><a href=\"/bluealliance.php?op=history\">Update history and award info for teams in our database</a><br>(will take a while to return)</li>
+  <li><a href=\"/bluealliance.php?op=history\">Update history and award info for teams in our database</a><br>
+    (will take a long while to return)</li>
   <br>
   <li><a href=\"/bluealliance.php?op=allteams\">Update all FIRST teams</a><br>(!! be very careful - lots of data)</li>
   </ul>

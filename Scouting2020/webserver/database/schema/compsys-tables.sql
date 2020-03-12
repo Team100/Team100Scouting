@@ -48,7 +48,7 @@
 #
 create table event
  (
-  event_id varchar(10),		# tBA key (event key), format yyyy[Event_Code]
+  event_id varchar(15),		# tBA key (event key), format yyyy[Event_Code]
   name varchar(20),             # tBA short_name
   long_name varchar(100),       # tBA name, official name
   event_code varchar(4),        # tBA event_code
@@ -75,7 +75,7 @@ create table team
  (
   teamnum  int, 		# FIRST team number - primary key.  We do not use frcNNNN, just the NNNN
                                 #   Note: the mapping from tBA is done by mapping function
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   name varchar(50),		# tBA, FIRST nickname
   nickname varchar(30),		# our nickname for team
   rating int,                   # our 0-9 rating of team capabilities and competencies
@@ -88,6 +88,7 @@ create table team
   website varchar(80),		# tBA website, team web site
   sponsors varchar(1000),	# tBA name, team sponsors
   rookie_year int, 		# tBA rookie_year
+  bot_name varchar(30),         # tBA robot name for current year
   notes text(5000),		# notes on our interaction with the team
   primary key (teamnum)
  );
@@ -103,7 +104,7 @@ create table team
 create table team_history
  (
   teamnum  int, 		# FIRST team number - foreign key from team table
-  event_id varchar(10),         # tBA event_key ("key") in the history object.  Note: not a foreign key to event table
+  event_id varchar(15),         # tBA event_key ("key") in the history object.  Note: not a foreign key to event table
   year int,                     # tBA year
   reg_name varchar(60),         # tBA name of regional
   primary key (teamnum,event_id)
@@ -121,9 +122,9 @@ create table team_history
 create table team_history_award
  (
   teamnum  int, 		# FIRST team number - foreign key from team table
-  event_id varchar(10),         # tBA event_key ("key") in the team history award object Note: not a foreign key to event table
-  award_type varchar(3),        # tBA award_type (integer)
-  award_name varchar(100),       # tBA name in team history object
+  event_id varchar(15),         # tBA event_key ("key") in the team history award object Note: not a foreign key to event table
+  award_type int,               # tBA award_type (integer)
+  award_name varchar(100),      # tBA name in team history object
   primary key (teamnum,event_id,award_type)
  );
 
@@ -141,9 +142,8 @@ create table teambot
  (
   event_id varchar(8),          # FK to event table 
   teamnum  int, 		# FIRST team number - foreign key from team table
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
-  bot_name varchar(30),         # tBA robot name
   f_ranking int,                # tBA ranking from FIRST
   f_rank_score real,            # tBA seed points from FIRST
   f_wins int,                   # tBA FIRST wins (part of W-L-T)
@@ -202,7 +202,7 @@ create table alliance
  (
   event_id varchar(8),                  # FK to event table (PK)
   alliancenum int,			# Alliance - #1 through #8 (PK)
-  locked varchar(12), 			# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 			# row locked for editing by user.  Can clear in application.
   offense_analysis text(1000),		# offense analysis (text)
   defense_analysis text(1000), 		# defense analysis (text)
   pos1_analysis text(1000),		# position 1 analysis (text)
@@ -224,7 +224,7 @@ create table alliance_team
   event_id varchar(8),                  # FK to event table  (PK)
   alliancenum int,			# Alliance - #1 through #8  (PK)
   teamnum  int, 			# FIRST team number - foreign key from team table  (PK)
-  locked varchar(12), 			# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 			# row locked for editing by user.  Can clear in application.
   position int,				# position in the alliance (1,2,3)
   primary key (event_id, alliancenum, teamnum)
  );
@@ -264,7 +264,7 @@ create table match_instance
                                 #   from tBA match_number
   matchnum int,			# match number, part of primary key (PK).  If taken from tBA, decoded (
                                 #   from tBA match_number, which looks lik 2010sc_qm20
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   match_key varchar(5),         # tBA part after _ in match key, e.g. qm20
   final_type varchar(1),	# used in finals: Q=qarter, S=Semi, F=Final
@@ -294,7 +294,7 @@ create table match_instance_alliance
   type varchar(1), 		# Q=qualifying, P=practice, F=Final  part of primary key (PK)
   matchnum int,			# match number, part of primary key (PK)
   color varchar(1),		# R=Red, B=Blue (PK)
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   score int,			# tBA score, final score
   raw_points int, 		# raw points (prior to penalties)  -- depricate in 2017 if not used and not found in code
@@ -317,7 +317,7 @@ create table match_team
   type varchar(1), 		# foreign key to match_instance table (PK)
   matchnum int,			# match number, foreign key to match_instance table (PK)
   teamnum int,			# team number, foreign key to team table (PK)
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   color varchar(1),		# R=Red, B=Blue
   position varchar(3),		# position played on field
@@ -349,7 +349,7 @@ create table match_team
 #  type varchar(1), 		# foreign key to match_instance table (PK)
 #  matchnum int,		# match number, foreign key to match_instance table (PK)
 #  alliancenum int,		# Alliance - #1 through #8, foreign key to alliance table (PK)
-#  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+#  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
 #  updatedby varchar(200), 	# last updated by users
 #  color varchar(1),		# R=Red, B=Blue
 #  position varchar(3),		# position played on field
@@ -408,7 +408,7 @@ create table schedule
 create table process_lock
  (
    lock_id varchar(20), 	# id of lock in table
-   locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+   locked varchar(13), 		# row locked for editing by user.  Can clear in application.
    primary key (lock_id)
  );
 #
@@ -434,7 +434,7 @@ create table message
  (
    facility varchar(20), 	# unique facility using the message table.
    message varchar(200),	# message
-   locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+   locked varchar(13), 		# row locked for editing by user.  Can clear in application.
    primary key (facility)
  );
 #
@@ -470,7 +470,7 @@ create table user_profile
 create table custom_param
  (
   tag varchar(20) not null,	# also serves as column name in database, or reported column name on calcs 
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.  May not use.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.  May not use.
   updatedby varchar(200), 	# last updated by users
   position int not null,	# order displayed (0 through end)
   used boolean not null,	# used in UI -- may exist in database
@@ -487,6 +487,7 @@ create table custom_param
   sortorder varchar(1),         # sort order: A - Ascending, D - Descending
   db_calc varchar (50),		# SQL format group calculation from match data
   formula_calc varchar (200),	# php formula calclation
+  avg_calc varchar (200),	# SQL format average calculation (format Min-Avg-Max, column name Avg__XXXX)
   test_avg int,			# test average value - used for test generation
   test_range int,		# test range + or - from average value - used for test generation
   test_values varchar (200),	# comma-separated values to be used in testing varchars and text
@@ -505,7 +506,7 @@ create table documentation
    documentation varchar(20),	# title of this page, what the world will see
    topic varchar(20),		# what topic this page falls under, listed under the 'topic' table
    priority int,		# determines the order of the different doc pages under a topic
-   locked varchar(12), 		# current editor of this row
+   locked varchar(13), 		# current editor of this row
    data varchar(5000),		# stores the actual information for this page
    primary key (documentation)
  );
