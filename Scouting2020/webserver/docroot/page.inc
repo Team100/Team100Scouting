@@ -140,10 +140,16 @@ function dbsetup()
 //	"changedby" - update field 'updatedby' in the given table
 //
 // Implements poor-man's row-locking.  This single function performs all operations, via the $op directive.
-//  Function looks for locked column and if locked column exists, 
+//  Function looks for locked column and if locked column exists.
 //
 //  Can also be used with a "dblockshowedit" function, which will query for a lock and either show a "steal" page
 //   or display Save and Cancel buttons.
+//
+//  Implementation note: there is a "semi-locked" state that occurs when a database throws an error.  
+//   The user is instructed to go back, but may not.  In the case the user doesn't go back, 
+//    we want new users to edit the page.  In the case where he does go back, we would like the user
+//    to edit the page again. This situation is handled with a "semi lock" which is the username
+//    preceeded by a '_' character.  Clear adds it, and dblockshowedit ignores the lock if _ preceeds.
 //
 // Note: Can't seem to find a mysqli describe function to test if the column is there
 //

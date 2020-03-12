@@ -19,6 +19,9 @@
   require "page.inc";
   $connection = dbsetup();
 
+  // initialize
+  $edit=0;
+
   // load paramters
 
   // indicates "long form with all match listing on teams
@@ -143,7 +146,8 @@
 
 
     // get teams in match
-    $query="select teambot.teamnum teamnum, match_team.color color, name, nickname nickname, ". fields_insert("nameonly",NULL,$table_teambot)
+    $query="select teambot.teamnum teamnum, match_team.color color, name, nickname nickname, location, org, bot_name, "
+      . fields_insert("nameonly",NULL,$table_teambot)
       . " from match_team, teambot, team where match_team.event_id = '{$sys_event_id}' and teambot.event_id = '{$sys_event_id}' "
       . " and match_team.teamnum=teambot.teamnum and match_team.teamnum=team.teamnum"
       . " and match_team.teamnum != {$host_teamnum} and {$match_sql_identifier} order by match_team.color {$order}, match_team.teamnum";
@@ -342,8 +346,14 @@
         print "<tr><td><h3>Team {$team[$i]["teamnum"]} - {$team[$i]["name"]}";
         // if nickname, print too
         if ($team[$i]["nickname"]) print " ({$team[$i]["nickname"]})";
-        print "</h3>\n<table border=\"2\" valign=\"top\">";
-
+        print "</h3>\n";
+        print "<b>Location:</b>{$team[$i]["location"]} &nbsp;&nbsp;&nbsp; \n";
+        if(isset($team[$i]["org"]))
+          print "<b>Org:</b>{$team[$i]["org"]} &nbsp;&nbsp;&nbsp; \n";
+        if(isset($team[$i]["bot_name"]))
+          print "<b>Robot Name:</b>{$team[$i]["bot_name"]} &nbsp;&nbsp;&nbsp; \n";
+        print "<br>\n";
+        print "<table border=\"2\" valign=\"top\">";
 
         // loop through data in first fields and populate
 	    foreach ( $eval_against_fields as $fieldname => $field_desc)
@@ -375,8 +385,16 @@
 			print "<tr><td><h3>Team {$team[$i]["teamnum"]} - {$team[$i]["name"]}";
 			// if nickname, print too
 			if ($team[$i]["nickname"]) print " ({$team[$i]["nickname"]})";
-			print "</h3>\n<table border=\"2\" valign=\"top\">";
 
+			//print "</h3>\n<table border=\"2\" valign=\"top\">";
+            print "</h3>\n";
+            print "<b>Location:</b>{$team[$i]["location"]} &nbsp;&nbsp;&nbsp; \n";
+            if(isset($team[$i]["org"]))
+              print "<b>Org:</b>{$team[$i]["org"]} &nbsp;&nbsp;&nbsp; \n";
+            if(isset($team[$i]["bot_name"]))
+              print "<b>Robot Name:</b>{$team[$i]["bot_name"]} &nbsp;&nbsp;&nbsp; \n";
+            print "<br>\n";
+            print "<table border=\"2\" valign=\"top\">";
 
 			// loop through data in first fields and populate
 			foreach ( $eval_with_fields as $fieldname => $field_desc)
@@ -505,7 +523,7 @@ for($i=0; $i<$tot; $i++)
   $query = "select type, matchnum, scheduled_utime, actual_utime
 	from match_instance where ".$match_sql_identifier;
 
-   if (debug()) print "<br>matchrapsheet: " . $query . $where . "<br>\n";
+   if (debug()) print "<br>matchrapsheet: " . $query . "<br>\n";
    if (! ($result = @ mysqli_query ($connection, $query) ))
      dbshowerror($connection, "die");
    if (! ($resultR = @ mysqli_query ($connection, "select score from match_instance_alliance where {$match_sql_identifier} and color='R'") ))
@@ -530,21 +548,21 @@ for($i=0; $i<$tot; $i++)
    print "<td>{$scheduled_display}</td><td>{$actual_display}</td><td>{$pointsR['score']}</td><td>{$pointsB['score']}</td></tr>\n";
 
    //print teams
-   $color_names = array(R=>"Red", B=>"Blue");
+   $color_names = array("R"=>"Red", "B"=>"Blue");
    print "<table border=1><tr><b>Teams:</b></tr><tr>";//<td>Red</td>;
 
    foreach(array('R', 'B') as $color_initial)
    {
      print "<td>{$color_names[$color_initial]}</td>";
-     if (debug()) print "<br>matchrapsheet: " . $query . $where . "<br>\n";
+     if (debug()) print "<br>matchrapsheet: " . $query . "<br>\n";
      if (! ($result = @ mysqli_query ($connection, "select teamnum from match_team where ".$match_sql_identifier." and color='{$color_initial}'") ))
          dbshowerror($connection, "die");
      while($row = mysqli_fetch_array($result))
      {
        if($row["teamnum"]==$teamnum)
-         print "<td>{$row["color"]} {$row["teamnum"]}</td>";
+         print "<td>{$row["teamnum"]}</td>";
        else
-         print "<td>{$row["color"]} <a href=\"/matchteameval.php?teamnum={$row["teamnum"]}&"
+         print "<td>{<a href=\"/matchteameval.php?teamnum={$row["teamnum"]}&"
      		. "type={$matchidentifiers["type"]}&matchnum={$matchidentifiers["matchnum"]}\">{$row["teamnum"]}</a></td>";
 	 }
      print"</tr><tr>";
@@ -558,7 +576,7 @@ for($i=0; $i<$tot; $i++)
    $query = "select ". fields_insert("nameonly",NULL,$field_array)
  	. " from match_team where {$match_sql_identifier} and {$team_sql_identifier}";
 
-	if (debug()) print "<br>matchrapsheet: " . $query . $where . "<br>\n";
+	if (debug()) print "<br>matchrapsheet: " . $query ."<br>\n";
 	if (! ($result = @ mysqli_query ($connection, $query)))
 		dbshowerror($connection, "die");
 	$row = mysqli_fetch_array($result);

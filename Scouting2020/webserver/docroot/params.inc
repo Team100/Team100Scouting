@@ -124,7 +124,7 @@ $stats_columns  = array (
   );
 
 //
-// Ranking: custom columns to display
+// Ranking: custom columns to display in Ranking Page
 //
 //  Format:
 //   key=>array, array of arrays that include:
@@ -137,12 +137,14 @@ $stats_columns  = array (
 //  
 
 $rank_columns_custom  = array_merge(
-    array (
-    "f_ranking"=>array("display"=>"FIRST Ranking", "heading"=>"FIRST Rank", "format"=>"%d", "order"=>"a"),
-    "f_rank_score"=>array("display"=>"Ranking Score", "heading"=>"Rank Score", "format"=>"%.2f", "order"=>"a")
+ array (
+  "f_ranking"=>array("display"=>"FIRST Ranking", "heading"=>"FIRST Rank", "format"=>"%d", "order"=>"a"),
+  "f_rank_score"=>array("display"=>"Ranking Score", "heading"=>"Rank Score", "format"=>"%.2f", "order"=>"a"),
+  "opr"=>array("display"=>"Offensive Power Rating", "heading"=>"Off Power", "format"=>"%.2f", "order"=>"a"),
+  "dpr"=>array("display"=>"Defense Power Rating", "heading"=>"Def Power", "format"=>"%.2f", "order"=>"a"),
+  "ccwm"=>array("display"=>"Cont to Winning Margin", "heading"=>"CCW Marg", "format"=>"%.2f", "order"=>"a")
     // ""=>array("display"=>"", "heading"=>"", "format"=>""),
     ),
-  $stats_columns
   );
 
 //
