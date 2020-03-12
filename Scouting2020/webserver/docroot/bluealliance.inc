@@ -564,14 +564,7 @@ function tba_get_event_rankings()
   global $sys_event_id;
   global $connection;
   global $tba_record_to_teambot;
-
-  // define simple array for mapper to use
-  // - if display is not defined, skip
-  // - if column is "teamnum", set $teamnum_element
-  //$tba_ranking_to_teambot = array();
-  //foreach($RankFields as $rankdef)
-  //{
-  
+ 
   // get data
   if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/rankings", FALSE)))
     print "API returned " . $tba_error['message'] . "<br>\n";
@@ -609,99 +602,6 @@ function tba_get_event_rankings()
   return(TRUE);
   
 } // end of function
-
-
-
-function tba_get_event_rankings_old()
-{
-  global $tba_AuthKey;
-  global $tba_error;
-  global $sys_event_id;
-  global $connection;
-  global $RankFields;
-
-  // define simple array for mapper to use
-  // - if display is not defined, skip
-  // - if column is "teamnum", set $teamnum_element
-  $tba_ranking_to_teambot = array();
-  foreach($RankFields as $rankdef)
-  {
-    // check for teamnum
-    if ($rankdef['column'] == "teamnum") $teamnum_element = $rankdef['tBApos'];
-    
-    // add mapping if display not ""
-    // note: because we're using positional parameters, this is not set as key=>value
-    if ($rankdef['display'] != "" )
-      $tba_ranking_to_teambot[$rankdef['tBApos']] = $rankdef['column'];
-  }
-  
-  // get data
-  if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$sys_event_id}/rankings", FALSE)))
-    print "API returned " . $tba_error['message'] . "<br>\n";
-  else
-  {
-    foreach($tba_response->body as $element=>$rankobj)
-    {
-      // if not the first element, process
-      if ($element != 0)
-      {
-      // set teamnum
-        $teamnum = $rankobj[$teamnum_element];
-      
-        // map fields -- map manually as we are using positional arrays        
-        $tba_dbarray= array();
-        foreach($tba_ranking_to_teambot as $field => $value)
-          if ($rankobj[$field]) 
-            $tba_dbarray[$value] = $rankobj[$field];
-                
-        // update event data in event table
-        tba_updatedb("teambot", array("event_id"=>$sys_event_id, "teamnum"=>$teamnum), $tba_dbarray);
-
-        // inform user
-        print "{$teamnum}, ";
-      }
-      
-    } // end of $tba_response
-  
-    // commit
-    if (! (@mysqli_commit($connection) ))
-      dbshowerror($connection, "die");
-
-    // Inform user
-    print "<br>&nbsp;&nbsp;&nbsp; ... rankings loading complete.<br>\n";
-
-    return(TRUE);
-
-  } // end of else from REST query
-
-  return(TRUE);
-  
-} // end of function
-
-
-// function: tba_get_event_stats()
-//   Returns - message string of what to print as a final message
-//
-// Gets event stats based on $sys_event_id
-
-function tba_get_event_statss()
-{
-  global $sys_event_id;
-  global $tba_AuthKey;
-  global $tba_error;
-  global $connection;
-  global $tba_stats_to_teambot;
-
-  {
-
-    return(TRUE);
-
-  } // end of else from REST query
-
-  return(TRUE);
-  
-} // end of function
-
 
 
 // function: tba_get_event_oprs()

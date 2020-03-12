@@ -57,6 +57,8 @@ Brief instructions on setting up a MySQL, PHP, apache web server for the competi
         - Fresh database: run database/utils/fresh-db.bash
         - import from existing dataset:  
              mysql -Ddbname -u Username -p < dataset.dmp
+          Note: the import may be an entire dataset or just the customization parameters
+                for the year
         
 6.  Configure apache
     - set up web site in apache config file.  /etc/apache2/apache2.conf in linux or 

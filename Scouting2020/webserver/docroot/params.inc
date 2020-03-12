@@ -90,26 +90,8 @@ $map_match_tags = array ("offensiverating"=>"rating_offense", "defensiverating"=
 
 
 //
-// score breakout
 //
-// Format is different than the above arrays, as it combines tBA tags for import with 
-//  display
-// 
-// Key:
-//  - tBAtag: tag used by tBA.  Used by our system in Blue Alliance Loader
-//  - display: Text used to display field in application
-//  - column: if needed, column used for database mapping.  For custom fields
-//     column is derived from position in ScoreField array.
-//
-// Note:
-//   - To determine which fields are used in a given year, run admin/utils/blue-score.php
-//
-
-
-//
-// Ranking Fields (per-team)
-//
-// Per team ranking fields from FIRST / Blue Alliance, sorted on a per-team basis
+// Stats columns display definitions
 //
 // Format is different than the above arrays, as it combines tBA tags for import with 
 //  display
@@ -122,31 +104,6 @@ $map_match_tags = array ("offensiverating"=>"rating_offense", "defensiverating"=
 //
 // Order in the array is the order the fields will be displayed on teaminfo
 //
-// NOTES: 
-//   - To determine which fields are used in a given year, run admin/utils/blue-ranking.php
-//   - to display any of these fields in the rank.php page, go to parameter $rank_column_custom below.
-//   - blue alliance loader expects one of the fields to be labeled with column=>teamnum
-
-$RankFields[0] = array("tBApos"=>"1", "column"=>"teamnum", "display"=>"");  // leave display blank for no display
-$RankFields[1] = array("tBApos"=>"0", "column"=>"f_ranking", "display"=>"FIRST Rank");
-$RankFields[2] = array("tBApos"=>"2", "column"=>"f_rank_score", "display"=>"Ranking Score");
-$RankFields[3] = array("tBApos"=>"7", "column"=>"f_record", "display"=>"Record (W-L-T)");
-$RankFields[4] = array("tBApos"=>"8", "column"=>"f_games_played", "display"=>"Played");
-
-$RankFields[5] = array("tBApos"=>"3", "column"=>"f_rankparam0", "display"=>"Auto");
-$RankFields[6] = array("tBApos"=>"4", "column"=>"f_rankparam1", "display"=>"Scale/Challenge");
-$RankFields[7] = array("tBApos"=>"5", "column"=>"f_rankparam2", "display"=>"Goals");
-$RankFields[8] = array("tBApos"=>"6", "column"=>"f_rankparam3", "display"=>"Defense");
-//$RankFields[9] = array("tBApos"=>"", "column"=>"f_rankparam4", "display"=>"");
-//$RankFields[10] = array("tBApos"=>"", "column"=>"f_rankparam5", "display"=>"");
-//$RankFields[11] = array("tBApos"=>"", "column"=>"f_rankparam6", "display"=>"");
-//$RankFields[12] = array("tBApos"=>"", "column"=>"f_rankparam7", "display"=>"");
-//$RankFields[13] = array("tBApos"=>"", "column"=>"f_rankparam8", "display"=>"");
-
-
-//
-// Stats columns display definitions (similar to Ranking below
-//
 //  Format:
 //   key=>array, array of arrays that include:
 //     - key: db column name
@@ -156,10 +113,14 @@ $RankFields[8] = array("tBApos"=>"6", "column"=>"f_rankparam3", "display"=>"Defe
 //       - format mask to be used in printf
 //       - order: a for ascending sort, d for descending
 //
+// 
 $stats_columns  = array (
   "opr"=>array("display"=>"Offensive Power Rating", "heading"=>"Off Power", "format"=>"%.2f", "order"=>"a"),
   "dpr"=>array("display"=>"Defense Power Rating", "heading"=>"Def Power", "format"=>"%.2f", "order"=>"a"),
-  "ccwm"=>array("display"=>"Cont to Winning Margin", "heading"=>"CCW Marg", "format"=>"%.2f", "order"=>"a")
+  "ccwm"=>array("display"=>"Cont to Winning Margin", "heading"=>"CCW Marg", "format"=>"%.2f", "order"=>"a"),
+  "f_wins"=>array("display"=>"Wins", "heading"=>"Wins", "format"=>"", "order"=>"a"),
+  "f_losses"=>array("display"=>"Losses", "heading"=>"Losses", "format"=>"", "order"=>"a"),
+  "f_ties"=>array("display"=>"Ties", "heading"=>"Ties", "format"=>"", "order"=>"a")
   );
 
 //
