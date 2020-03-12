@@ -9,17 +9,17 @@ $year='2020';
 $event='cada';
 $ourteam='frc0100';
 
-$tbaAPIkey = "DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc";
+$tba_AuthKey = "DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc";
 
 print "AuthKey:" . $tbaAPIkey . "\n\n";
 
 $url = "https://www.thebluealliance.com/api/v3/status";
 
 //$url = "https://www.thebluealliance.com/api/v3/events/{$year}";
-
+// http://www.thebluealliance.com/api/v2
 
 $response = \Httpful\Request::get($url)
-    ->addHeader('X-TBA-Auth-Key',$tbaAPIkey)
+    ->addHeader('X-TBA-Auth-Key',$tba_AuthKey)
     ->send();
 
 print "Response from Blue Alliance\n";

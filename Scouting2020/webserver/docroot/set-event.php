@@ -27,9 +27,13 @@
   $new_sys_event_name = NULL;
   $new_sys_event_year = NULL;
 
-  // get variables if they exist
+  // get variables if they exist (and check for post
   if (isset($_GET["new_sys_event_id"])) $new_sys_event_id = $_GET["new_sys_event_id"];
-  	else $new_sys_event_id = NULL;
+  else if (isset($_POST["new_sys_event_id"]))
+  	$new_sys_event_id = $_POST["new_sys_event_id"];
+  else
+    $new_sys_event_id = NULL;
+
   if (isset($_GET["edit"])) $edit=$_GET["edit"]; else $edit = NULL;
 
   // put variables if they exist
@@ -38,10 +42,7 @@
   else
   	$listyear = date("Y");  // default to this year if not set
 
-  if (isset($_POST["new_sys_event_id"]))
-  	$new_sys_event_id = $_POST["new_sys_event_id"];
-  else
-    $new_sys_event_id = NULL;
+
 
   if (isset($_POST["op"]))
   	$op = $_POST["op"];
@@ -62,16 +63,16 @@
     if ($op == "Yes")
     {
       // verify event id
-      if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/event/{$new_sys_event_id}", TRUE)))
+      if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$new_sys_event_id}", TRUE)))
         print "API returned " . $tba_error['message'] . "<br>\n";
       else
       {
 /*
       try
       {
-        $tba_url = "http://www.thebluealliance.com/api/v2/event/{$new_sys_event_id}";
+        $tba_url = "https://www.thebluealliance.com/api/v3/event/{$new_sys_event_id}";
         $tba_response = \Httpful\Request::get($tba_url)
-           ->addHeader('X-TBA-App-Id',$tba_AppId)
+           ->addHeader('X-TBA-Auth-Key',$tba_AuthKey)
            ->send();
       } catch (Exception $e)
       {
@@ -86,8 +87,15 @@
       // update event data in event table
       tba_updatedb("event", array ("event_id"=>$new_sys_event_id), $tba_dbarray);
 
+      // compile location from city, state_prov, country
+      $query="update event set location = concat(city, ', ', state_prov, ' ', country)";
+      if (debug()) print "\n<br>DEBUG-set-event: {$query} <br>\n";
+      if (! ($result = @mysqli_query ($connection, $query) ))
+         dbshowerror($connection, "die");
+
       // set system event ID
       $query = "update system_value set value = '{$new_sys_event_id}' where skey = 'sys_event_id'";
+      if (debug()) print "\n<br>DEBUG-set-event: {$query} <br>\n";
       if (! (@mysqli_query ($connection, $query) ))
         dbshowerror($connection, "die");
 
@@ -130,7 +138,7 @@
     {
 
       // get data
-      if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/event/{$new_sys_event_id}", TRUE)))
+      if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/event/{$new_sys_event_id}", TRUE)))
       {
         print "API returned " . $tba_error['message'] . "<br>\n";
         showerror("Event ID '{$new_sys_event_id}' probably does not exist or server is not connected.");
@@ -141,9 +149,9 @@
 /*
       try
       {
-        $tba_url = "http://www.thebluealliance.com/api/v2/event/{$new_sys_event_id}";
+        $tba_url = "https://www.thebluealliance.com/api/v3/event/{$new_sys_event_id}";
           $tba_response = \Httpful\Request::get($tba_url)
-             ->addHeader('X-TBA-App-Id',$tba_AppId)
+             ->addHeader('X-TBA-Auth-Key',$tba_AuthKey)
              ->send();
 
       } catch (Exception $e)
@@ -167,6 +175,7 @@
   if ($sys_event_id != "")
     {
       $query="select year from system_value, event where skey = 'sys_event_id' and event_id = value";
+      if (debug()) print "\n<br>DEBUG-set-event: {$query} <br>\n";
       if (! ($result = @mysqli_query ($connection, $query) ))
          dbshowerror($connection, "die");
       $row = mysqli_fetch_array($result);
@@ -259,7 +268,7 @@
     print "<br><br>\n";
 
     // get data
-    if (! ($tba_response = tba_getdata("http://www.thebluealliance.com/api/v2/events/{$listyear}", TRUE)))
+    if (! ($tba_response = tba_getdata("https://www.thebluealliance.com/api/v3/events/{$listyear}", TRUE)))
       print "API returned " . $tba_error['message'] . "<br>\n";
     else
     {
@@ -267,9 +276,9 @@
     // get data
     try
     {
-      $tba_url = "http://www.thebluealliance.com/api/v2/events/{$listyear}";
+      $tba_url = "https://www.thebluealliance.com/api/v3/events/{$listyear}";
       $tba_response = \Httpful\Request::get($tba_url)
-         ->addHeader('X-TBA-App-Id',$tba_AppId)
+         ->addHeader('X-TBA-Auth-Key',$tba_AuthKey)
          ->send();
     } catch (Exception $e)
     {
@@ -279,7 +288,7 @@
     }
 */
 
-    print "<table border=2>\n<tr><th>EventID</th><th>Year</th><th>Event Name</th><th>Location</th></tr>\n";
+    print "<table border=2>\n<tr><th>EventID</th><th>Date</th><th>Event Name</th><th>Location</th></tr>\n";
 
     // loop through object
     foreach($tba_response->body as $key=>$value)
@@ -287,11 +296,13 @@
       print "<tr><td>";
       print $value->key;
       print "</td><td>";
-      print $value->year;
+      print $value->start_date;
       print "</td><td>";
       print $value->short_name;
       print "</td><td>";
-      print $value->location;
+      print $value->city . ", ";
+      print $value->state_prov . " ";
+      print $value->country;
       print "</td></tr>\n";
     }
 

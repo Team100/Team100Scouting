@@ -23,6 +23,9 @@ else
 // set today
 $today = date('Y-m-d');
 
+// initialize vars
+$upcoming = array();  // teams we are playing against
+
 //
 // setup for needs eval functions
 //
@@ -236,8 +239,8 @@ EOF_EOF
 
 		// print each row with href
 		print "<tr>";
-		print "<td>{$bold}<a href=\"/matcheval.php?final={$final}&type={$row["type"]}&matchnum={$row["matchnum"]}\">{$row["type"]}</a></td>\n";
-		print "<td>{$bold}<a href=\"/matcheval.php?final={$final}&type={$row["type"]}&matchnum={$row["matchnum"]}\">{$row["matchnum"]}</a></td>\n";
+		print "<td>{$bold}<a href=\"/matchdetails.php?final={$final}&type={$row["type"]}&matchnum={$row["matchnum"]}\">{$row["type"]}</a></td>\n";
+		print "<td>{$bold}<a href=\"/matchdetails.php?final={$final}&type={$row["type"]}&matchnum={$row["matchnum"]}\">{$row["matchnum"]}</a></td>\n";
 		if ($final == 1) print "<td>{$row["final_type"]}</td>";   // show final type only if set
 
         //

@@ -4,17 +4,20 @@
 //  - database schema: compsys-customparams.sql
 //  - docroot: params-custom.inc
 //
+// Generates for teambot, match_team, and match_instance_alliance tables
+// Also generates $tba_score_to_match_alliance for field mapping
+//
 
 require "../../docroot/page.inc";
 
 // parameters for script
 $dbfile = "../../database/schema/compsys-customparams.sql";
 $paramsfile = "../../docroot/params-custom.inc";
-$custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","inputlen","maxlen",
-     "default_value");
-
+$custom_param = array("tag","position","used","vargroup","entrytype","dbtype","display","heading",
+   "inputlen","maxlen","default_value","list_of_values","format","sortorder",
+   "tBA_tag","tBA_type");
 // vargroup to dbfile mapping array
-$vartodb = array("Bot"=>"teambot", "Match"=>"match_team");
+$vartodb = array("Bot"=>"teambot", "Match"=>"match_team","tBA_Bot"=>"teambot", "tBA_Match"=>"match_instance_alliance");
 
 //
 // Inform user
@@ -66,8 +69,8 @@ $dfiletext = "#
 # Generated: {$displaydate}
 #
 # Should be run after freshdb creation.  Can also be run as new params are
-#  generated.  The script may error is column alterations already exist,
-#  but it should make the new ones.
+#  generated.  The script should not try to recreate columns if they already
+#  exist, but will also not drop columns that are not used any more.  (future feature?)
 #
 ";
 fwrite($fdb, $dfiletext);
@@ -77,8 +80,30 @@ fwrite($fdb, $dfiletext);
 // loop through database dumps for tables, building params at the same time
 //
 
+//
+// beginning and end of tBA mapping array parameter
+//
+$begin_tbamap  = "\n\n//\n//\n// tBA - Blue Alliance - custom fields score map\n";
+$begin_tbamap .= "//   tBA score fields to custom score fields\n";
+$begin_tbamap .= "\$tba_score_to_match_alliance = array (";
+$end_tbamap=" );\n\n";
+$tbamap="";
+
+
 foreach ($vartodb as $vargroup=>$table)
 {
+
+  // params and database file headers
+  $pfiletext = "\n\n//\n";
+  $pfiletext .= "// Parameters for vargroup {$vargroup}\n//\n";
+
+  // add array declaration
+  $pfiletext .= "\$dispfields[\"{$vargroup}\"] = array();\n";
+  fwrite($fparams, $pfiletext);
+
+  $dfiletext = "\n\n#\n# Database mods for vargroup {$vargroup}\n";
+  fwrite($fdb, $dfiletext);
+
   //
   // dump database params
   //
@@ -94,9 +119,28 @@ foreach ($vartodb as $vargroup=>$table)
   {
     // check for used and turn to true/false
     if ($row['used'] == 1) $used="TRUE"; else $used="FALSE";
-    $pfiletext = '$dispfields["' . $row['vargroup'] . '"][' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
-    $pfiletext .= "\"tag\"=>\"{$row['tag']}\", \"display\"=>\"{$row['display']}\", \"inputlen\"=>{$row['inputlen']},";
-    $pfiletext .= "\"maxlen\"=>{$row['maxlen']}, \"default_value\"=>\"{$row['default_value']}\");\r\n";
+
+    // if Blue Alliance, make scorefield, otherwise dispfield
+    if (substr($vargroup,0,3) == "tBA")
+    {
+      $pfiletext = '$dispfields["' . $row['vargroup'] . '"][' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
+      $pfiletext .= "\"tag\"=>\"{$row['tag']}\", ";
+      $pfiletext .= "\"tBAtag\"=>\"{$row['tBA_tag']}\", \"display\"=>\"{$row['display']}\", \"heading\"=>\"{$row['heading']}\", ";
+      $pfiletext .= "\"maxlen\"=>{$row['maxlen']}, \"format\"=>\"{$row['format']}\", \"sortorder\"=>\"{$row['sortorder']}\" ";
+      $pfiletext .= ");\r\n";
+
+      // add entry to tbamap for tBA_Match
+      if ($vargroup == "tBA_Match")
+        $tbamap .= ",\n  \"{$row['tBA_tag']}\"=>\"{$row['tag']}\"";
+    }
+    else
+    {
+      $pfiletext = '$dispfields["' . $row['vargroup'] . '"][' . $row['position'] . ']' . " = array(\"used\"=>{$used},";
+      $pfiletext .= "\"tag\"=>\"{$row['tag']}\", \"display\"=>\"{$row['display']}\", \"heading\"=>\"{$row['heading']}\", ";
+      $pfiletext .= "\"inputlen\"=>{$row['inputlen']},\"maxlen\"=>{$row['maxlen']}, \"default_value\"=>\"{$row['default_value']}\", ";
+      $pfiletext .= "\"format\"=>\"{$row['format']}\", \"sortorder\"=>\"{$row['sortorder']}\" ";
+      $pfiletext .= ");\r\n";
+    }
     fwrite($fparams, $pfiletext);
 
     // database file
@@ -108,11 +152,16 @@ foreach ($vartodb as $vargroup=>$table)
 
     $dfiletext = "alter table {$table} add column if not exists ({$row['tag']} {$dbtype} {$len});\r\n";
     fwrite($fdb, $dfiletext);
-   }
+   } // end of rows
+
 } // end of foreach
 
+//
 // wrap up files
-$pfiletext = "//
+//
+// chop off first character of $tbamap
+$pfiletext = $begin_tbamap . substr($tbamap,1) . $end_tbamap;
+$pfiletext .= "//
 // End of custom generated file
 //
 ?>";
@@ -129,6 +178,21 @@ fwrite($fdb, $dfiletext);
 fclose($fparams);
 fclose($fdb);
 
-print "\nComplete.\n";
+//
+// !!! wrap up  by testing include files again.  Because we are generating an include file, if we generate
+// a broken one, it can break the system.
+//
+
+print "
+Generation of files complete.
+
+
+!!! Now please check that generated params file didn't break the system.
+
+!!! Run this utility again.  If it doesn't run, then the generated file
+       broke the system.  Check the include file
+       {$paramsfile} and fix the problem. Then regenerate.
+
+";
 
 ?>

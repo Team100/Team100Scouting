@@ -24,10 +24,14 @@ date_default_timezone_set($sys_time_zone);
 //
 // function: debug
 //  returns true if $debug is true, otherwise returns false
+//
+//  Typical use: if (debug()) print "\n<br>DEBUG-set-event: {$query} <br>\n";
+//
+// comment out TRUE to turn off
 $debug=FALSE;
 //$debug=TRUE;
 //
-//check $get variable
+//check $get variable for debug and turn to true (easy for on-the-fly)
 if(isset($_GET['debug'])) $debug=TRUE;
 
 //
@@ -85,15 +89,26 @@ function dbsetup()
   mysqli_autocommit($connection, FALSE);
 
   // load default event_id and name for this instance from database
-  $query="select value, name from system_value, event where skey = 'sys_event_id' and event_id = value";
+  //$query="select value, name from system_value, event where skey = 'sys_event_id' and event_id = value";
+  // use left join syntax for outer join
+  $query="select value, name from system_value left join event on event_id = value where skey = 'sys_event_id'";
+
+  if (debug()) print "\n<br>DEBUG-dbsetup: {$query} <br>\n";
+
   if (! ($result = @mysqli_query ($connection, $query) ))
   	dbshowerror($connection, "die");
-  $row = mysqli_fetch_array($result);
-  $sys_event_id = $row["value"];
-  $sys_event_name = $row["name"];
+  if ($row = mysqli_fetch_array($result))
+  {
+    $sys_event_id = $row["value"];
+    $sys_event_name = $row["name"];
+  }
+  else
+    $sys_event_id = "";
+    
   mysqli_free_result($result);
   
   if ($sys_event_id == "") $sys_event_name = "No competition event selected !!";
+
  
   // check for autocommit off
   //if (debug()) 
@@ -685,7 +700,7 @@ function teamhref ( $teamnum)
 }
 
 //
-// function: tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $editprefix)
+// function: tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $format, $list_of_vals, $editprefix)
 //  (function table text field)
 //  $edit - edit flag, 1 if editing
 //  $options - options to add (see below)
@@ -695,6 +710,8 @@ function teamhref ( $teamnum)
 //  $size - size of editing text box
 //  $maxlength - max length of input allowed
 //  $defvalue - value to place in text box if in editing mode.  Otherwise this value comes from $data
+//  $format - printf-style format for number rendering (usually something for real types such as %.2f
+//  $list_of_values - array of possible values, used in list_of_values selector when editing
 //  $editprefix - placed on the front of every edit field so that multiple rows can be processed 
 //                  if using tabular entry
 //   
@@ -706,13 +723,17 @@ function teamhref ( $teamnum)
 //  ["tr"] = TRUE - add beginning and ending <tr> tags
 //  ["notag="] = TRUE - do not print field label/tag.  Just the field itself
 //  ["notd"] = TRUE - do not print <td> open and close
-//  ["href"] = TRUE - enclose data value in href tag
+//  ["href"] = TRUE or data_value - enclose data value in href tag.
+//               if set to TRUE, encloses the value in an href tag, starting with http://
+//               if set to a data value, uses that in a href tag not starting with anything
 //  ["th"] = TRUE - use <th></th> tags instead of <td> throughout
 //  ["header"] = TRUE - use tag within <th> line without any data.
 //   
 //
 
-function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $maxlength = NULL, $defvalue = NULL, $editprefix = NULL )
+function tabtextfield
+  ( $edit, $options, $data, $fieldname, $fieldtag, $size, $maxlength = NULL, $defvalue = NULL, 
+    $format = NULL, $list_of_vals = NULL, $editprefix = NULL )
 {
   // set null vars
   $beg_tr = NULL; $beg_td = NULL; $beg_href = NULL; $end_href = NULL; $end_td = NULL; $end_tr = NULL; $tag = NULL;
@@ -737,16 +758,23 @@ function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $ma
     
     // look for value in data
     if (isset($data[$fieldname])) $value = $data[$fieldname]; else $value=$defvalue;
+    
+    // apply format if it exists
+    if (isset($format)) $value = sprintf($format, $value);
 
     // set up href option
     if (isset($options["href"]))
     	{
-    	  // strip off http start if there is one  
-    	  if ( ! ($web = (strstr($value, 'http://'))) === FALSE)
-	  	$beg_href = "<a href=\"http://" . substr($web, 7) . "\">";    
-	  else
-        	$beg_href = "<a href=\"http://{$value}\">" ; 
-	
+    	  // if href is true, use value, otherwise use the href tag itself
+    	  if ($options["href"] === TRUE)
+            // strip off http start if there is one  
+      	    if ( ! ($web = (strstr($value, 'http://'))) === FALSE)
+	      $beg_href = "<a href=\"http://" . substr($web, 7) . "\">";    
+	    else
+              $beg_href = "<a href=\"http://{$value}\">" ; 	
+          else // href tag is it's own value
+	    $beg_href = "<a href=\"{$options['href']}\">" ; 
+	     
 	  $end_href = "</a>";
 	}
    
@@ -760,18 +788,35 @@ function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $ma
   else
     // set up edit and non-edit mode  
     if ($edit)
-      $ret="{$beg_tr}{$tag}{$beg_td}<input type=\"text\" name=\"{$editprefix}{$fieldname}\" size={$size} maxlength={$maxlength} value=\"{$value}\">{$end_td}{$end_tr}";
+    {
+      $ret = "{$beg_tr}{$tag}{$beg_td}";
+      
+      // if list of values, process
+      //   note: could set up LOV to be $val=>$display
+      if (isset($list_of_vals) && is_array($list_of_vals))
+      {
+        $ret .= "<select name= \"{$editprefix}{$fieldname}\">";
+        foreach ($list_of_vals as $val)
+        {
+          if ($val == $value) $selected="selected"; else $selected="";
+          $ret .= "\n   <option value=\"{$val}\" {$selected}>{$val}</option>";
+        }
+        $ret .= "</select>";
+      }
+      else
+        $ret .= "<input type=\"text\" name= \"{$editprefix}{$fieldname}\" size={$size} maxlength={$maxlength} value=\"{$value}\">";
+        
+      $ret .= "{$end_td}{$end_tr}\n";
+    }
     else  
-      $ret="{$beg_tr}{$tag}{$beg_td}{$beg_href}{$value}{$end_href}{$end_td}\n{$end_tr}";
+      $ret="{$beg_tr}{$tag}{$beg_td}{$beg_href}{$value}{$end_href}{$end_td}{$end_tr}\n";
    
    return($ret);
 }
 
 
-
-
 //
-// function: tabtextarea ($edit, $options, $data, $fieldname, $fieldtag, $row, $col, $value )
+// function: tabtextarea ($edit, $options, $data, $fieldname, $fieldtag, $row, $col, $defvalue, $list__of_vals, $editprefix  )
 //  $edit - edit flag, 1 if editing
 //  $options - options to add (see below)
 //  $data - dataarray with associative element named fieldname
@@ -787,50 +832,93 @@ function tabtextfield( $edit, $options, $data, $fieldname, $fieldtag, $size, $ma
 //  ["tr"] = TRUE - add beginning and ending <tr> tags
 //  ["notd"] = TRUE - don't use <td> tags to seperate values
 //  ["notag="] = TRUE - do not print field label/tag.  Just the field itself
+//  ["href"] = TRUE or data_value - enclose data value in href tag.
+//               if set to TRUE, encloses the value in an href tag, starting with http://
+//               if set to a data value, uses that in a href tag not starting with anything
+//  ["th"] = TRUE - use <th></th> tags instead of <td> throughout
+//  ["header"] = TRUE - use tag within <th> line without any data.
+//  ["notagabove"] = TRUE - usually tabtextfield puts the description tag above the textbox 
+//                    for rendering and editing.  If this option is set true, no setting above
+//                    occurs.  No <tr> tags are used to create a "description on one row and 
+//                    and edit box on the next.
 //   
 //
 
-function tabtextarea( $edit, $options, $data, $fieldname, $fieldtag, $row, $col, $value = NULL)
+function tabtextarea
+   ( $edit, $options, $data, $fieldname, $fieldtag, $row, $col, $defvalue = NULL, $list__of_vals = NULL, $editprefix = NULL  )
 {
   // set null vars
-  $beg_tr = NULL; $beg_td = NULL; $end_td = NULL; $end_tr = NULL; 
+  $beg_tr = NULL; $beg_td = NULL; $beg_href = NULL; $end_href = NULL; $end_td = NULL; $end_tr = NULL; $tag = NULL;
+  $value = NULL;
   
-  //
   // set up options for inclusion / exclusion
     // tr
     if ((isset($options["tr"])) && ($options["tr"] !== FALSE)) {$beg_tr="<tr valign=\"top\">\n"; $end_tr="</tr>"; }
     //
-    // no td -- TRUE means don't include <td> tags
-    if ((! isset($options["notd"])) || ($options["notd"] !== TRUE)) {$beg_td="<td>"; $end_td="</td>"; }
+    // no td -- TRUE means don't include <td> tags.  Check if we're using th instead of td
+    if ((! isset($options["notd"])) || ($options["notd"] !== TRUE)) 
+    {
+      // check if <th> instead of <td>
+       if ((isset($options["th"])) && ($options["th"] !== FALSE)) 
+       	 {$beg_td="<th>"; $end_td="</th>"; }       
+       else
+         {$beg_td="<td>"; $end_td="</td>"; }
+    }
     //
     // notag -- don't include tag
     $tag="";
-    if ((! isset($options["notag"])) || ($options["notag"] !== TRUE)) $tag = "<tr><td><u>{$fieldtag}</u></td></tr>\n";
-    
-    // look for value
-    if (! (isset($value))) $value = $data[$fieldname];
+    if ((! isset($options["notag"])) || ($options["notag"] !== TRUE))
+      // look for "notagabove" - if set, do not underline or put above
+      if (isset($options["notagabove"]) && ($options["notagabove"] !== FALSE))
+        // non- above tag
+        $tag = "{$beg_td}{$fieldtag}{$end_td}";
+      else
+        // "above style" tag
+        $tag = "<tr>{$beg_td}<u>{$fieldtag}</u>{$beg_td}</tr>\n";
+ 
+    // look for value in data
+    if (isset($data[$fieldname])) $value = $data[$fieldname]; else $value=$defvalue;
 
-    // set max length
-    // JLV: mistake? if (! (isset($maxlength))) $maxlength = $size;
-  
-  // start table
-  $ret="{$beg_tr}{$beg_td}<table>{$tag}<tr><td>";
+    // set up href option
+    if (isset($options["href"]))
+    	{
+    	  // if href is true, use value, otherwise use the href tag itself
+    	  if ($options["href"] === TRUE)
+            // strip off http start if there is one  
+      	    if ( ! ($web = (strstr($value, 'http://'))) === FALSE)
+	      $beg_href = "<a href=\"http://" . substr($web, 7) . "\">";    
+	    else
+              $beg_href = "<a href=\"http://{$value}\">" ; 	
+          else // href tag is it's own value
+	    $beg_href = "<a href=\"{$options['href']}\">" ; 
+	     
+	  $end_href = "</a>";
+	}
+   
+  // if notagabove, treat like other edit boxes.  Otherwise start table to separate entry area
+  if ((isset($options["notagabove"])) && ($options["notagabove"] !== FALSE))
+    $ret="{$beg_tr}{$tag}{$beg_td}";
+  else
+    // start table
+    $ret="{$beg_tr}{$beg_td}<table>{$tag}<tr><td>";
       
   // set up edit and non-edit mode  
   if ($edit)
-    $ret=$ret . "<textarea name=\"{$fieldname}\" rows=\"{$row}\" cols=\"{$col}\">{$value}</textarea>";
+    $ret .= "<textarea name=\"{$fieldname}\" rows=\"{$row}\" cols=\"{$col}\">{$value}</textarea>";
   else  
-    $ret=$ret . "{$value}\n";
+    $ret .= "{$beg_href}{$value}{$end_href}\n";
         
-  // finish table
-  $ret=$ret . "</td></tr></table>{$end_td}{$end_tr}\n";
-  
+
+  // if notagabove, treat like other edit boxes.  Otherwise finish table
+  if ((isset($options["notagabove"])) && ($options["notagabove"] !== FALSE))
+    $ret .= "{$end_td}\n{$end_tr}";
+  else
+    // finish table
+    $ret .= "</td></tr></table>{$end_td}{$end_tr}\n";
+    
+    
   return($ret);
 }
-
-
-
-
 
 //
 // function: texttfield ($fieldtag, $fieldname, $size, $maxlength, $value )
@@ -1067,6 +1155,7 @@ function param_array ($paramgroup)
    
    // initialize
    $fcnt=0;
+   $fieldnames = array();
    
    foreach($dispfields[$paramgroup] as $key)
      if ($key['used'] == TRUE)
@@ -1249,7 +1338,7 @@ function param_report ($data, $paramgroup, $public, $teamcnt)
 	{
 		// find field name
 //DBCOL		$fieldname = $paramgroup . "Field_" . $cnt; 
-//		$fieldname = $dispfields[$paramgroup][$cnt]["tag"]; 
+		$fieldname = $dispfields[$paramgroup][$cnt]["tag"]; 
 
 		// start row
 		$ret = $ret . "<tr><td>{$dispfields[$paramgroup][$cnt]["display"]}</td>\n";

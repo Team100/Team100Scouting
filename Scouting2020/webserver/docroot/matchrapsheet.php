@@ -6,44 +6,55 @@
   //
   // Shows competitive data for match
   //
+  // Significant customization opportunities are available withing this form.
+  //
+  // To see the areas laid out on the form, turn the "$showareas flag to 1
+  //  and rerender the form in your browser.
+  //
 
-	require "page.inc";
-	$connection = dbsetup();
+  // uncomment the =1 assignment to show tags (for form design decisions)
+  $showcustom = 0;
+  // $showcustom = 1;
 
-	// load paramters
+  require "page.inc";
+  $connection = dbsetup();
 
-	// indicates "long form with all match listing on teams
-	if (isset($_GET["long"])) $long=$_GET["long"]; else $long=NULL;
+  // load paramters
 
-	// determine which version - public is sharable to other teams in alliance
-	if (isset($_GET["public"]) && $_GET["public"] == "0") $public=0; else $public=1;
+  // indicates "long form with all match listing on teams
+  if (isset($_GET["long"])) $long=$_GET["long"]; else $long=NULL;
 
-    // load variables
-	$matchidentifiers = fields_load("GET", array("type", "matchnum"));
-	$match_sql_identifier = "type = '{$matchidentifiers["type"]}'
+  // determine which version - public is sharable to other teams in alliance
+  if (isset($_GET["public"]) && $_GET["public"] == "0") $public=0; else $public=1;
+
+  // load variables
+  $matchidentifiers = fields_load("GET", array("type", "matchnum"));
+  $match_sql_identifier = "type = '{$matchidentifiers["type"]}'
 		and matchnum = {$matchidentifiers["matchnum"]}";
 
-	// set final flag
-	if ($matchidentifiers["type"] == "F") $final=1; else $final="";
+  // set final flag
+  if ($matchidentifiers["type"] == "F") $final=1; else $final="";
 
-	// determine header
-	$header = "{$matchidentifiers["type"]}-{$matchidentifiers["matchnum"]} - Match Rap Sheet";
-	if (! ($public)) $header = $header . " (Private)";
-	$header = $header . " - {$host_team_name}";
-	pheader($header);
+  // determine header
+  $header = "{$matchidentifiers["type"]}-{$matchidentifiers["matchnum"]} - Match Rap Sheet";
+  if (! ($public)) $header = $header . " (Private)";
+  $header = $header . " - {$host_team_name}";
+  pheader($header);
 
 
   // table data
   //
 
   // determine FIRST data columns
-  // add game-specific fields and stats columns
-  foreach($RankFields as $rankfield)
-    if ($rankfield['display'] != NULL ) $firstcols[] = $rankfield['column'];
-
   // add stats columns to rankcolumns
   foreach($stats_columns as $statcolumn=>$statarray)
     $firstcols[] = $statcolumn;
+
+  // add game-specific fields and stats columns
+  foreach($dispfields["tBA_Bot"] as $rankfield)
+    if ($rankfield['tag'] != NULL && $rankfield['used'] === TRUE)
+      $firstcols[] = $rankfield['tag'];
+
 
   //  define columns for query
   $table_teambot = array_merge ( array("rank_overall","rating_overall","rating_overall_off","rating_overall_def",
@@ -104,7 +115,7 @@
 
 	// get our team
 	$query = "select teamnum, color from match_team where event_id = '{$sys_event_id}' and {$match_sql_identifier} and teamnum = {$host_teamnum}";
-	if (debug()) print "<br>matchrapsheet: " . $query . $where . "<br>\n";
+	if (debug()) print "<br>matchrapsheet: " . $query . "<br>\n";
 	if (! ($result = @ mysqli_query ($connection, $query)))
 		dbshowerror($connection, "die");
 
@@ -137,7 +148,7 @@
       . " and match_team.teamnum=teambot.teamnum and match_team.teamnum=team.teamnum"
       . " and match_team.teamnum != {$host_teamnum} and {$match_sql_identifier} order by match_team.color {$order}, match_team.teamnum";
 
-	if (debug()) print "<br>DEBUG-matchrapsheet: " . $query . $where . "<br>\n";
+	if (debug()) print "<br>DEBUG-matchrapsheet: " . $query . "<br>\n";
 	if (! ($result = @ mysqli_query ($connection, $query)))
   		dbshowerror($connection, "die");
 
@@ -220,16 +231,25 @@
 	// end of first row of data tables
     print "</tr><tr valign=\"top\"><td>\n";
 
-	// loop through Play Field data
+	// loop through field and custom data
 
-    // call custom function before field data
-    rap_custom_field_data($team, $teamcnt);
+    // call custom function before field data (show place if $showcustom =1)
+    if ($showcustom) print "\n--- Custom area after summary block ---<br>\n";
+    rap_custom_post_summary($team, $teamcnt);
+
 
     // format overall sheet and first table
     print "
 
     <!--- format over table - field data --->
-    <b>Field Data</b>
+    <b>Field Data</b><br>
+    ";
+
+    // (show place if $showcustom =1)
+    if ($showcustom) print "\n--- Custom area before field data ---<br>\n";
+    rap_custom_pre_field_data($team, $teamcnt);
+
+    print "
     <table valign=\"top\"><tr><td>\n
 
     <!--- format results table --->
@@ -250,16 +270,8 @@
     // set number of columns
     if ($public) $colcnt=3; else $colcnt = $teamcnt;
 
-    foreach($RankFields as $rankfield)
-      if ($rankfield['display'] != NULL)
-      {
-        print "<tr><td>{$rankfield['display']}</td>\n";
-        // data in each
-        for($i=0; $i<$colcnt; $i++)
-          print "<td>{$team[$i][$rankfield['column']]}</td>";
-        print "</tr>\n";
-      }
-
+    // add stats columns and game-specific fields
+    //
     // stats
     foreach($stats_columns as $column=>$col_def)
     {
@@ -277,6 +289,27 @@
       print "</tr>\n";
     }
 
+
+    $rankcolumns = "";   // initialize
+    foreach($dispfields["tBA_Bot"] as $rankfield)
+      if ($rankfield['tag'] != NULL && $rankfield['used'] === TRUE)
+      {
+        print "<tr><td>{$rankfield['display']}</td>\n";
+
+        // data in each
+        for($i=0; $i<$colcnt; $i++)
+        {
+          if (isset($rankfield['format']) && ($rankfield['format'] != ""))
+            $value = sprintf($rankfield['format'], $team[$i][$rankfield['tag']]);
+          else
+            $value = $team[$i][$rankfield['tag']];
+          print "<td>{$value}</td>";
+        }
+        print "</tr>\n";
+      }
+
+
+
     // end of display table
 	print "</table>\n";
 
@@ -286,6 +319,9 @@
 	// end of another format table
     print "</tr></table>\n";
 
+    // (show place if $showcustom =1)
+    if ($showcustom) print "\n--- Custom area after field data ---<br>\n";
+    rap_custom_post_field_data($team, $teamcnt);
 
     //
     // print narrative comparatives
@@ -295,8 +331,9 @@
 	print "<hr>\n";
 	print "<h2>Competition Briefs</h2>\n";
 
-    // call custom function before competition briefs
-    rap_custom_competition($team, $teamcnt);
+    // call custom function before competition briefs (show place if $showcustom =1)
+    if ($showcustom) print "\n--- Custom area before competition data ---<br>\n";
+    rap_custom_pre_competition($team, $teamcnt);
 
     // loop through teams
     for($i=0; $i<3; $i++)
@@ -316,6 +353,9 @@
 		print "</table>\n";
 	}
 
+    // call custom function before competition briefs (show place if $showcustom =1)
+    if ($showcustom) print "\n--- Custom area after competition data ---<br>\n";
+    rap_custom_post_competition($team, $teamcnt);
 
 	// partner alliance next -- only if not public
 	if (! ($public))
@@ -323,8 +363,9 @@
 		print "<hr>\n";
 		print "<h2>Cooperation Briefs</h2>\n";
 
-        // call custom function before cooperation briefs
-        rap_custom_cooperation($team, $teamcnt);
+        // call custom function before cooperation briefs (show place if $showcustom =1)
+        if ($showcustom) print "\n--- Custom area before cooperation brief ---<br>\n";
+        rap_custom_pre_cooperation($team, $teamcnt);
 
 
         // loop through other teams  (3 or teamcnt)
@@ -344,6 +385,11 @@
 			// finish table
 			print "</table>\n";
 		}
+
+        // call custom function before cooperation briefs (show place if $showcustom =1)
+        if ($showcustom) print "\n--- Custom area before cooperation brief ---<br>\n";
+        rap_custom_post_cooperation($team, $teamcnt);
+
 	}
 
 ?>

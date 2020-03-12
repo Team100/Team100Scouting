@@ -1,67 +1,68 @@
 #
 # Competition System - Custom Parameters Table Additions
 #
-# Generated: 2020-03-06 11:23:22
+# Generated: 2020-03-12 08:51:36
 #
 # Should be run after freshdb creation.  Can also be run as new params are
-#  generated.  The script may error is column alterations already exist,
-#  but it should make the new ones.
+#  generated.  The script should not try to recreate columns if they already
+#  exist, but will also not drop columns that are not used any more.  (future feature?)
 #
-alter table teambot add column if not exists (opstatus varchar (4));
-alter table teambot add column if not exists (drivetrain varchar (20));
-alter table teambot add column if not exists (shooter varchar (1));
-alter table teambot add column if not exists (highshooter varchar (1));
-alter table teambot add column if not exists (pickup varchar (1));
-alter table teambot add column if not exists (scaling varchar (1));
-alter table teambot add column if not exists (specialmech varchar (1));
-alter table teambot add column if not exists (portcullis varchar (2));
-alter table teambot add column if not exists (cheval varchar (2));
-alter table teambot add column if not exists (moat varchar (2));
-alter table teambot add column if not exists (ramparts varchar (2));
-alter table teambot add column if not exists (drawbridge varchar (2));
-alter table teambot add column if not exists (sallyPort varchar (2));
-alter table teambot add column if not exists (rockwall varchar (2));
-alter table teambot add column if not exists (roughterrain varchar (2));
-alter table teambot add column if not exists (lowbar varchar (2));
-alter table teambot add column if not exists (speedrt varchar (1));
-alter table teambot add column if not exists (pickuprt varchar (1));
-alter table teambot add column if not exists (lowrt varchar (1));
-alter table teambot add column if not exists (highrt varchar (1));
-alter table teambot add column if not exists (breachrt varchar (1));
-alter table match_team add column if not exists (autoscorebot varchar (3));
-alter table match_team add column if not exists (autoscoretop varchar (3));
-alter table match_team add column if not exists (AutoRockWall varchar (3));
-alter table match_team add column if not exists (AutoMoat varchar (3));
-alter table match_team add column if not exists (AutoDrawbridge varchar (3));
-alter table match_team add column if not exists (AutoCheval varchar (3));
-alter table match_team add column if not exists (AutoLowBar varchar (3));
-alter table match_team add column if not exists (startposition varchar (3));
-alter table match_team add column if not exists (MissesHigh varchar (3));
-alter table match_team add column if not exists (MissesLow varchar (3));
-alter table match_team add column if not exists (PercentAccuracy varchar (3));
-alter table match_team add column if not exists (driverrating varchar (3));
-alter table match_team add column if not exists (pickuprating varchar (3));
-alter table match_team add column if not exists (BreacherRating varchar (3));
-alter table match_team add column if not exists (RockWallMatch varchar (3));
-alter table match_team add column if not exists (RockWallDiff varchar (3));
-alter table match_team add column if not exists (MoatMatch varchar (3));
-alter table match_team add column if not exists (MoatDiff varchar (3));
-alter table match_team add column if not exists (DrawbridgeMatch varchar (3));
-alter table match_team add column if not exists (DrawbridgeDiff varchar (3));
-alter table match_team add column if not exists (ChevalMatch varchar (3));
-alter table match_team add column if not exists (ChevalDiff varchar (3));
-alter table match_team add column if not exists (LowBarMatch varchar (3));
-alter table match_team add column if not exists (LowBarDiff varchar (3));
-alter table match_team add column if not exists (robottype varchar (3));
-alter table match_team add column if not exists (PickupSpeed varchar (3));
-alter table match_team add column if not exists (PickupStable varchar (3));
-alter table match_team add column if not exists (telescorebot varchar (3));
-alter table match_team add column if not exists (telescoretop varchar (3));
-alter table match_team add column if not exists (TechFoul varchar (3));
-alter table match_team add column if not exists (FinalPosit varchar (3));
-alter table match_team add column if not exists (redcard varchar (3));
-alter table match_team add column if not exists (Disabled varchar (3));
-alter table match_team add column if not exists (Broken varchar (3));
+
+
+#
+# Database mods for vargroup Bot
+alter table teambot add column if not exists (Weight int );
+alter table teambot add column if not exists (EndGameCapable boolean );
+
+
+#
+# Database mods for vargroup Match
+alter table match_team add column if not exists (OutsideBalls int );
+alter table match_team add column if not exists (LowBalls int );
+
+
+#
+# Database mods for vargroup tBA_Bot
+alter table teambot add column if not exists (f_power_cells_scored real );
+alter table teambot add column if not exists (f_endgame_points real );
+
+
+#
+# Database mods for vargroup tBA_Match
+alter table match_instance_alliance add column if not exists (f_initLineRobot1 varchar (20));
+alter table match_instance_alliance add column if not exists (f_endgameRobot1 varchar (20));
+alter table match_instance_alliance add column if not exists (f_initLineRobot2 varchar (20));
+alter table match_instance_alliance add column if not exists (f_endgameRobot2 varchar (20));
+alter table match_instance_alliance add column if not exists (f_initLineRobot3 varchar (20));
+alter table match_instance_alliance add column if not exists (f_endgameRobot3 varchar (20));
+alter table match_instance_alliance add column if not exists (f_autoCellsBottom int );
+alter table match_instance_alliance add column if not exists (f_autoCellsOuter int );
+alter table match_instance_alliance add column if not exists (f_autoCellsInner int );
+alter table match_instance_alliance add column if not exists (f_teleopCellsBottom int );
+alter table match_instance_alliance add column if not exists (f_teleopCellsOuter int );
+alter table match_instance_alliance add column if not exists (f_teleopCellsInner int );
+alter table match_instance_alliance add column if not exists (f_stage1Activated boolean );
+alter table match_instance_alliance add column if not exists (f_stage2Activated boolean );
+alter table match_instance_alliance add column if not exists (f_stage3Activated boolean );
+alter table match_instance_alliance add column if not exists (f_stage3TargetColor varchar (20));
+alter table match_instance_alliance add column if not exists (f_endgameRungIsLevel varchar (20));
+alter table match_instance_alliance add column if not exists (f_autoInitLinePoints int );
+alter table match_instance_alliance add column if not exists (f_autoCellPoints int );
+alter table match_instance_alliance add column if not exists (f_autoPoints int );
+alter table match_instance_alliance add column if not exists (f_teleopCellPoints int );
+alter table match_instance_alliance add column if not exists (f_controlPanelPoints int );
+alter table match_instance_alliance add column if not exists (f_endgamePoints int );
+alter table match_instance_alliance add column if not exists (f_teleopPoints int );
+alter table match_instance_alliance add column if not exists (f_shieldOperationalR boolean );
+alter table match_instance_alliance add column if not exists (f_shieldEnergizedRan boolean );
+alter table match_instance_alliance add column if not exists (f_tba_shieldEnergize boolean );
+alter table match_instance_alliance add column if not exists (f_tba_numRobotsHangi int );
+alter table match_instance_alliance add column if not exists (f_foulCount int );
+alter table match_instance_alliance add column if not exists (f_techFoulCount int );
+alter table match_instance_alliance add column if not exists (f_adjustPoints int );
+alter table match_instance_alliance add column if not exists (f_foulPoints int );
+alter table match_instance_alliance add column if not exists (f_rp int );
+alter table match_instance_alliance add column if not exists (f_totalPoints int );
 #
 # End of custom generated columns
 #

@@ -28,7 +28,7 @@ $sys_time_zone='America/Los_Angeles';
 
 //
 // Host team - Team that uses this db
-$host_teamnum=100;
+$host_teamnum=987;
 //$host_teamnum=4;
 $host_team_name="Wildhats";
 // don't change next line
@@ -37,7 +37,8 @@ $frcteam=sprintf("frc%'04d",$host_teamnum);
 //
 // The Blue Alliance API id
 //   Format is FRC team number:user:version.  Change as needed.
-$tba_AppId= $frcteam . ':compsystem:v02';
+//$tba_AuthKey= $frcteam . ':compsystem:v02';
+$tba_AuthKey = "DYUrT56p95B3fRnwCn21l0DPirqWz9auOs6zTsULgMrk0A8Yh5XtZs7U3Y6g4rMc";
 
 
 // Site parameters
@@ -51,7 +52,6 @@ $base = "/";
 //
 // Custom params limit per type
 $custom_params_limit = 40;
-
 
 // 
 // Field positions
@@ -77,8 +77,8 @@ $field_positions = FALSE;
 //   Should we create a "alliance position" switch too?  (for later)
 //
 // All definted from included db-generated file
-require "params-custom.inc";
-
+//require "params-custom.inc";
+include "params-custom.inc";
 
 //
 // set max length of Match fields to match the database.  Tablet data longer than this is truncated.
@@ -90,74 +90,8 @@ $map_match_tags = array ("offensiverating"=>"rating_offense", "defensiverating"=
 
 
 //
-// score breakout
 //
-// Format is different than the above arrays, as it combines tBA tags for import with 
-//  display
-// 
-// Key:
-//  - tBAtag: tag used by tBA.  Used by our system in Blue Alliance Loader
-//  - display: Text used to display field in application
-//  - column: if needed, column used for database mapping.  For custom fields
-//     column is derived from position in ScoreField array.
-//
-// Note:
-//   - To determine which fields are used in a given year, run admin/utils/blue-score.php
-
-
-
-$ScoreFields[0] = array("tBAtag"=>"totalPoints", "display"=>"Total Points");
-$ScoreFields[1] = array("tBAtag"=>"techFoulCount", "display"=>"Foul Count");
-$ScoreFields[2] = array("tBAtag"=>"adjustPoints", "display"=>"Adjust Points");
-$ScoreFields[3] = array("tBAtag"=>"capturePoints", "display"=>"Capture Points");
-$ScoreFields[4] = array("tBAtag"=>"teleopPoints", "display"=>"TeleOp Points");
-$ScoreFields[5] = array("tBAtag"=>"autoPoints", "display"=>"Auto Points");
-$ScoreFields[6] = array("tBAtag"=>"breachPoints", "display"=>"Breach Points");
-$ScoreFields[7] = array("tBAtag"=>"foulCount", "display"=>"Fouls");
-$ScoreFields[8] = array("tBAtag"=>"foulPoints", "display"=>"Fouls Points");
-$ScoreFields[9] = array("tBAtag"=>"towerFaceA", "display"=>"Tower Face A");
-$ScoreFields[10] = array("tBAtag"=>"towerFaceB", "display"=>"Tower Face B");
-$ScoreFields[11] = array("tBAtag"=>"towerFaceC", "display"=>"Tower Face C");
-$ScoreFields[12] = array("tBAtag"=>"autoCrossingPoints", "display"=>"Auto Crossing Points");
-$ScoreFields[13] = array("tBAtag"=>"autoBoulderPoints", "display"=>"Boulder Points");
-$ScoreFields[14] = array("tBAtag"=>"autoBouldersLow", "display"=>"Boulders Low");
-$ScoreFields[15] = array("tBAtag"=>"autoBouldersHigh", "display"=>"Bloulders High");
-$ScoreFields[16] = array("tBAtag"=>"autoReachPoints", "display"=>"Reach Points");
-$ScoreFields[17] = array("tBAtag"=>"teleopCrossingPoints", "display"=>"Crossing Points");
-$ScoreFields[18] = array("tBAtag"=>"teleopBoulderPoints", "display"=>"Boulder Points");
-$ScoreFields[19] = array("tBAtag"=>"teleopBouldersHigh", "display"=>"Tele Boulders High");
-$ScoreFields[20] = array("tBAtag"=>"teleopBouldersLow", "display"=>"Tele Boulder Low");
-$ScoreFields[21] = array("tBAtag"=>"teleopDefensesBreached", "display"=>"Tele Denfenses Breached");
-$ScoreFields[22] = array("tBAtag"=>"teleopScalePoints", "display"=>"Tele Scale Points");
-$ScoreFields[23] = array("tBAtag"=>"teleopTowerCaptured", "display"=>"Tele Tower Captured");
-$ScoreFields[24] = array("tBAtag"=>"teleopChallengePoints", "display"=>"Tele Challenge Points");
-$ScoreFields[25] = array("tBAtag"=>"towerEndStrength", "display"=>"Tele End Strength");
-$ScoreFields[26] = array("tBAtag"=>"robot1Auto", "display"=>"Robot 1 Auto");
-$ScoreFields[27] = array("tBAtag"=>"robot2Auto", "display"=>"Robot 2 Auto");
-$ScoreFields[28] = array("tBAtag"=>"robot3Auto", "display"=>"Robot 3 Auto");
-$ScoreFields[29] = array("tBAtag"=>"position1", "display"=>"Position 1");
-$ScoreFields[30] = array("tBAtag"=>"position2", "display"=>"Position 2");
-$ScoreFields[31] = array("tBAtag"=>"position3", "display"=>"Position 3");
-$ScoreFields[32] = array("tBAtag"=>"position4", "display"=>"Position 4");
-$ScoreFields[33] = array("tBAtag"=>"position5", "display"=>"Position 5");
-$ScoreFields[34] = array("tBAtag"=>"position1crossings", "display"=>"Position 1 Crossings");
-$ScoreFields[35] = array("tBAtag"=>"position2crossings", "display"=>"Position 2 Crossings");
-$ScoreFields[36] = array("tBAtag"=>"position3crossings", "display"=>"Position 3 Crossings");
-$ScoreFields[37] = array("tBAtag"=>"position4crossings", "display"=>"Position 4 Crossings");
-$ScoreFields[38] = array("tBAtag"=>"position5crossings", "display"=>"Position 5 Crossings");
-//$ScoreFields[39] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[40] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[41] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[42] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[43] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[44] = array("tBAtag"=>"", "display"=>"");
-//$ScoreFields[] = array("tBAtag"=>"", "display"=>"");
-
-
-//
-// Ranking Fields (per-team)
-//
-// Per team ranking fields from FIRST / Blue Alliance, sorted on a per-team basis
+// Stats columns display definitions
 //
 // Format is different than the above arrays, as it combines tBA tags for import with 
 //  display
@@ -170,31 +104,6 @@ $ScoreFields[38] = array("tBAtag"=>"position5crossings", "display"=>"Position 5 
 //
 // Order in the array is the order the fields will be displayed on teaminfo
 //
-// NOTES: 
-//   - To determine which fields are used in a given year, run admin/utils/blue-ranking.php
-//   - to display any of these fields in the rank.php page, go to parameter $rank_column_custom below.
-//   - blue alliance loader expects one of the fields to be labeled with column=>teamnum
-
-$RankFields[0] = array("tBApos"=>"1", "column"=>"teamnum", "display"=>"");  // leave display blank for no display
-$RankFields[1] = array("tBApos"=>"0", "column"=>"f_ranking", "display"=>"FIRST Rank");
-$RankFields[2] = array("tBApos"=>"2", "column"=>"f_rank_score", "display"=>"Ranking Score");
-$RankFields[3] = array("tBApos"=>"7", "column"=>"f_record", "display"=>"Record (W-L-T)");
-$RankFields[4] = array("tBApos"=>"8", "column"=>"f_games_played", "display"=>"Played");
-
-$RankFields[5] = array("tBApos"=>"3", "column"=>"f_rankparam0", "display"=>"Auto");
-$RankFields[6] = array("tBApos"=>"4", "column"=>"f_rankparam1", "display"=>"Scale/Challenge");
-$RankFields[7] = array("tBApos"=>"5", "column"=>"f_rankparam2", "display"=>"Goals");
-$RankFields[8] = array("tBApos"=>"6", "column"=>"f_rankparam3", "display"=>"Defense");
-//$RankFields[9] = array("tBApos"=>"", "column"=>"f_rankparam4", "display"=>"");
-//$RankFields[10] = array("tBApos"=>"", "column"=>"f_rankparam5", "display"=>"");
-//$RankFields[11] = array("tBApos"=>"", "column"=>"f_rankparam6", "display"=>"");
-//$RankFields[12] = array("tBApos"=>"", "column"=>"f_rankparam7", "display"=>"");
-//$RankFields[13] = array("tBApos"=>"", "column"=>"f_rankparam8", "display"=>"");
-
-
-//
-// Stats columns display definitions (similar to Ranking below
-//
 //  Format:
 //   key=>array, array of arrays that include:
 //     - key: db column name
@@ -204,10 +113,14 @@ $RankFields[8] = array("tBApos"=>"6", "column"=>"f_rankparam3", "display"=>"Defe
 //       - format mask to be used in printf
 //       - order: a for ascending sort, d for descending
 //
+// 
 $stats_columns  = array (
   "opr"=>array("display"=>"Offensive Power Rating", "heading"=>"Off Power", "format"=>"%.2f", "order"=>"a"),
   "dpr"=>array("display"=>"Defense Power Rating", "heading"=>"Def Power", "format"=>"%.2f", "order"=>"a"),
-  "ccwm"=>array("display"=>"Cont to Winning Margin", "heading"=>"CCW Marg", "format"=>"%.2f", "order"=>"a")
+  "ccwm"=>array("display"=>"Cont to Winning Margin", "heading"=>"CCW Marg", "format"=>"%.2f", "order"=>"a"),
+  "f_wins"=>array("display"=>"Wins", "heading"=>"Wins", "format"=>"", "order"=>"a"),
+  "f_losses"=>array("display"=>"Losses", "heading"=>"Losses", "format"=>"", "order"=>"a"),
+  "f_ties"=>array("display"=>"Ties", "heading"=>"Ties", "format"=>"", "order"=>"a")
   );
 
 //
@@ -349,8 +262,8 @@ $dbhost = "localhost";
 //   This parameter can be set to perform comparison.  Note that not all char sets
 //   can be converted.  utf8mb4 will not convert to latin1_general_cs, as an example.
 //
-$db_case_sensitive = " collate utf8mb4_bin ";
-
+//$db_case_sensitive = " collate utf8mb4_bin ";
+$db_case_sensitive = "";
 
 // ***************************
 //
@@ -387,20 +300,24 @@ $schedule_match_window = 1800;  // no more than an hour
 
 // ***************************
 //
-// The Blue Alliance API mapping fields
+// Notes: The Blue Alliance API mapping fields
+//   Field mappings to the API are defined in bluealliance.inc for performance reasons
+//     (not to be carried when not needed).  Include bluealliance.inc if you need them.
 //
-// Field mappings to the API are defined in bluealliance.inc for performance reasons
-//
+// ***************************
 
 
-// *****************************************************************
+// ***********************************************************************************
+// ***********************************************************************************
 //
 // Parameterized / Custom Functions
 //
 // Functions below are generally game-specific and must be written 
-//  for each year
+//  for each year.  They are called at various points in the rapsheet, given the
+//  the customizer options for pulling together the sheet that involves calculations
+//  including the offense and/or defense teams.
 //
-
+// See Templates/CustomExamples for previous year example code
 //
 // Custom Rap Sheet Functions
 //   $team array used in matchrapsheet
@@ -415,12 +332,29 @@ $schedule_match_window = 1800;  // no more than an hour
 // Examples include data analysis that helps in competition, field configuration
 //
 // Functions should simply print to the web page.
+// ***********************************************************************************
 
-// Inserted before Field Data
-function rap_custom_field_data ($team, $teamcnt)
+
+// Inserted after Summary block
+function rap_custom_post_summary ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
+  
+  print "\n<!--- Custom Insert after Summary block --->\n\n";
+
+  return;
+}
+
+
+// Inserted before Field Data
+function rap_custom_pre_field_data ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  // nothing to do, return
+  return;
   
   print "\n<!--- Custom Insert before Field Data --->\n\n";
   
@@ -438,8 +372,8 @@ function rap_custom_field_data ($team, $teamcnt)
   
   // define and execute averages query
   
-  $query = "select {$fields} from teambot where teamnum = {$team[0]['teamnum']}
-             or teamnum = {$team[1]['teamnum']} or teamnum = {$team[2]['teamnum']}";
+  $query = "select {$fields} from teambot where teamnum = {$teams[0]['teamnum']}
+             or teamnum = {$teams[1]['teamnum']} or teamnum = {$teams[2]['teamnum']}";
     
   if (debug()) print "<br>DEBUG-teamfinfosidebyside: " . $query . "<br>\n";
   if (! ($result = @ mysqli_query ($connection, $query)))
@@ -474,8 +408,20 @@ function rap_custom_field_data ($team, $teamcnt)
 }
 
 
+// Inserted after Field Data
+function rap_custom_post_field_data ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  print "\n<!--- Custom Insert after Competition Briefs --->\n\n";
+
+  return;
+}
+
+
 // Inserted before Competition Briefs
-function rap_custom_competition ($team, $teamcnt)
+function rap_custom_pre_competition ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
@@ -486,8 +432,20 @@ function rap_custom_competition ($team, $teamcnt)
 }
 
 
+// Inserted before Competition Briefs
+function rap_custom_post_competition ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  print "\n<!--- Custom Insert after Competition Briefs --->\n\n";
+
+  return;
+}
+
+
 // Inserted before Cooperation Briefs
-function rap_custom_cooperation ($team, $teamcnt)
+function rap_custom_pre_cooperation ($teams, $teamcnt)
 {
   global $connection;
   global $dispfields;
@@ -497,6 +455,17 @@ function rap_custom_cooperation ($team, $teamcnt)
   return;
 }
 
+
+// Inserted before Cooperation Briefs
+function rap_custom_post_cooperation ($teams, $teamcnt)
+{
+  global $connection;
+  global $dispfields;
+  
+  print "\n<!--- Custom Insert after Cooperation Briefs --->\n\n";
+
+  return;
+}
 
 //
 // function that returns the seed score for a match

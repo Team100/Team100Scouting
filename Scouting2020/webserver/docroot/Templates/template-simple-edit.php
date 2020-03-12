@@ -33,7 +33,7 @@
 
 		// load form fields
 		$formfields = fields_load("post", $custom_param);
-		$query = "update custom_param set " . fields_insert("update",$formfields) . " where tag is not null";
+		$query = "update custom_param set " . fields_insert("update",$formfields) . " where tag = {$tag}";
 
 		// process query
 		if (debug()) print "<br>DEBUG-mtemplate: " . $query . "<br>\n";

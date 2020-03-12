@@ -118,13 +118,14 @@
   <table valign=\"top\">"
   . tabtextfield($edit,$options,$row, "name","Team name:",15,30)
   . tabtextfield($edit,$options,$row, "nickname","Team nickname (from us):",15,30)
-  . tabtextfield($edit,$options,$row, "org","Team Organization",20,60)
+  . tabtextfield($edit,$options,$row, "org","Team Org / School:",20,60)
   . tabtextfield($edit,$options,$row, "location","Location: ",20,40);
   print "</table>
   </td>
   <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
   <td>
   <table valign=\"top\">"
+  . tabtextfield($edit,$options,$row, "bot_name","Current Robot Name: ",15,15)
   . tabtextfield($edit,$options,$row, "rookie_year","Rookie Year: ",5,5)
   . tabtextfield($edit,$options,$row, "students","Students (#): ",2);
 
@@ -142,6 +143,10 @@
   <table valign=\"top\">"
   . tabtextfield($edit,$options,$row, "sponsors","Sponsors: ",40,300);
 
+  // notes field / box
+  $options["notagabove"] = TRUE;
+  print tabtextarea($edit,$options,$row, "notes","Notes on Team:",6,100);
+  $options["notagabove"] = FALSE;
 
   // display history
   print "\n<tr valign=\"top\"><td>History: </td>\n";
@@ -182,9 +187,6 @@
 
   // close row/table
   print "</tr>\n</table>\n";
-
-  // notes field / box
-  print tabtextarea($edit,$options,$row, "notes","Notes on Team:",6,100);
 
   // close the form if in edit mode
   if ($edit) print "\n</form>\n";

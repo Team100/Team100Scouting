@@ -71,16 +71,6 @@
     // stats and rankings
     case "stats":
 
-      // stats first
-
-      // inform user
-      print "Retrieving event stats...<br>\n";
-      if (tba_get_event_stats())
-        print "Blue Alliance operation successful.<br>\n";
-      else
-        print "Blue Alliance operation failed.  Please check errors.<br>\n";
-      print "<br>\n";
-
       // rankings
       // inform user
       print "Retrieving rankings...<br>\n";
@@ -89,6 +79,26 @@
       else
         print "Blue Alliance operation failed.  Please check errors.<br>\n";
       print "<br>";
+
+      // standard tBA stats
+      // inform user
+      print "Retrieving event 'oprs' stats...<br>\n";
+      if (tba_get_event_oprs())
+        print "Blue Alliance operation successful.<br>\n";
+      else
+        print "Blue Alliance operation failed.  Please check errors.<br>\n";
+      print "<br>\n";
+
+
+      // stats / "predictions"
+      // inform user
+      print "Retrieving event stats...<br>\n";
+      if (tba_get_event_predictions())
+        print "Blue Alliance operation successful.<br>\n";
+      else
+        print "Blue Alliance operation failed.  Please check errors.<br>\n";
+      print "<br>\n";
+
 
       break;
 
@@ -158,7 +168,8 @@
 
   <h4><u>Load and update during Regional</u></h4>
   <ul>
-  <li><a href=\"/bluealliance.php?op=eventteams\">Update team information for current event</a></li>
+  <li><a href=\"/bluealliance.php?op=eventteams\">Update team information for current event</a><br>
+      (will take a while to return)</li>
   <br>
   <li><a href=\"/bluealliance.php?op=matchdata\">Update match data for current event</a></li>
   <br>
@@ -168,9 +179,17 @@
   <h4><u>Large Loads (one time)</u></h4>
 
   <ul>
-  <li><a href=\"/bluealliance.php?op=history\">Update history and award info for teams in our database</a><br>(will take a while to return)</li>
+  <li><a href=\"/bluealliance.php?op=history\">Update history and award info for teams in our database</a><br>
+    (will take a long while to return)</li>
   <br>
   <li><a href=\"/bluealliance.php?op=allteams\">Update all FIRST teams</a><br>(!! be very careful - lots of data)</li>
+  </ul>
+
+
+  <h4><u>Custom Parameters</u></h4>
+
+  <ul>
+  <li><a href=\"/customparam.php?vargroup=tBA\">Define The Blue Alliance custom parameters</li>
   </ul>
 
   "; // end of print

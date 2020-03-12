@@ -48,14 +48,17 @@
 #
 create table event
  (
-  event_id varchar(10),		# tBA key (event key), format yyyy[Event_Code]
+  event_id varchar(15),		# tBA key (event key), format yyyy[Event_Code]
   name varchar(20),             # tBA short_name
   long_name varchar(100),       # tBA name, official name
   event_code varchar(4),        # tBA event_code
   event_type varchar(20),       # tBA event_type_string, human-readable event, i.e. 'Regional'
   event_type_id int,            # tBA event_type, with a number code
   year int,                     # tBA year
-  location varchar(40),         # tBA location
+  city varchar(35),		# tBA city of team
+  state_prov varchar(20),	# tBA state_prov of team
+  country varchar(25),		# tBA country of team
+  location varchar(80),		# tBA location, location of team compiled from c,s,c
   website varchar(100),         # tBA website, event webssite	
   primary key (event_id)
  );
@@ -72,16 +75,20 @@ create table team
  (
   teamnum  int, 		# FIRST team number - primary key.  We do not use frcNNNN, just the NNNN
                                 #   Note: the mapping from tBA is done by mapping function
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   name varchar(50),		# tBA, FIRST nickname
   nickname varchar(30),		# our nickname for team
   rating int,                   # our 0-9 rating of team capabilities and competencies
   org varchar(80),		# high school or other organization
-  location varchar(80),		# tBA location, location of team
+  city varchar(35),		# tBA city of team
+  state_prov varchar(20),	# tBA state_prov of team
+  country varchar(25),		# tBA country of team
+  location varchar(80),		# tBA location, location of team compiled from c,s,c
   students int,			# number of students on team
   website varchar(80),		# tBA website, team web site
   sponsors varchar(1000),	# tBA name, team sponsors
   rookie_year int, 		# tBA rookie_year
+  bot_name varchar(30),         # tBA robot name for current year
   notes text(5000),		# notes on our interaction with the team
   primary key (teamnum)
  );
@@ -97,7 +104,7 @@ create table team
 create table team_history
  (
   teamnum  int, 		# FIRST team number - foreign key from team table
-  event_id varchar(10),         # tBA event_key ("key") in the history object.  Note: not a foreign key to event table
+  event_id varchar(15),         # tBA event_key ("key") in the history object.  Note: not a foreign key to event table
   year int,                     # tBA year
   reg_name varchar(60),         # tBA name of regional
   primary key (teamnum,event_id)
@@ -115,9 +122,9 @@ create table team_history
 create table team_history_award
  (
   teamnum  int, 		# FIRST team number - foreign key from team table
-  event_id varchar(10),         # tBA event_key ("key") in the team history award object Note: not a foreign key to event table
-  award_type varchar(3),        # tBA award_type (integer)
-  award_name varchar(100),       # tBA name in team history object
+  event_id varchar(15),         # tBA event_key ("key") in the team history award object Note: not a foreign key to event table
+  award_type int,               # tBA award_type (integer)
+  award_name varchar(100),      # tBA name in team history object
   primary key (teamnum,event_id,award_type)
  );
 
@@ -135,11 +142,14 @@ create table teambot
  (
   event_id varchar(8),          # FK to event table 
   teamnum  int, 		# FIRST team number - foreign key from team table
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
-  bot_name varchar(30),         # tBA robot name
   f_ranking int,                # tBA ranking from FIRST
   f_rank_score real,            # tBA seed points from FIRST
+  f_wins int,                   # tBA FIRST wins (part of W-L-T)
+  f_losses int,                 # tBA FIRST losses (part of W-L-T)
+  f_ties int,                   # tBA FIRST ties (part of W-L-T)
+
   f_record varchar(8),          # tBA FIRST record, W-L-T
   f_games_played int,            # tBA FIRST games played
   f_rankparam0 real,            # tBA FIRST parameter 0 in game-specific rankings
@@ -151,6 +161,7 @@ create table teambot
   f_rankparam6 real,            # tBA FIRST parameter 6 in game-specific rankings
   f_rankparam7 real,            # tBA FIRST parameter 7 in game-specific rankings
   f_rankparam8 real,            # tBA FIRST parameter 8 in game-specific rankings
+
   opr real,                     # tBA oprs, Offensive power rating
   dpr real,                     # tBA dprs, defensive power rating
   ccwm real,                    # tBA ccwm, calculated contribution to winning margin
@@ -191,7 +202,7 @@ create table alliance
  (
   event_id varchar(8),                  # FK to event table (PK)
   alliancenum int,			# Alliance - #1 through #8 (PK)
-  locked varchar(12), 			# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 			# row locked for editing by user.  Can clear in application.
   offense_analysis text(1000),		# offense analysis (text)
   defense_analysis text(1000), 		# defense analysis (text)
   pos1_analysis text(1000),		# position 1 analysis (text)
@@ -213,7 +224,7 @@ create table alliance_team
   event_id varchar(8),                  # FK to event table  (PK)
   alliancenum int,			# Alliance - #1 through #8  (PK)
   teamnum  int, 			# FIRST team number - foreign key from team table  (PK)
-  locked varchar(12), 			# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 			# row locked for editing by user.  Can clear in application.
   position int,				# position in the alliance (1,2,3)
   primary key (event_id, alliancenum, teamnum)
  );
@@ -253,7 +264,7 @@ create table match_instance
                                 #   from tBA match_number
   matchnum int,			# match number, part of primary key (PK).  If taken from tBA, decoded (
                                 #   from tBA match_number, which looks lik 2010sc_qm20
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   match_key varchar(5),         # tBA part after _ in match key, e.g. qm20
   final_type varchar(1),	# used in finals: Q=qarter, S=Semi, F=Final
@@ -283,58 +294,13 @@ create table match_instance_alliance
   type varchar(1), 		# Q=qualifying, P=practice, F=Final  part of primary key (PK)
   matchnum int,			# match number, part of primary key (PK)
   color varchar(1),		# R=Red, B=Blue (PK)
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   score int,			# tBA score, final score
   raw_points int, 		# raw points (prior to penalties)  -- depricate in 2017 if not used and not found in code
   penalty_points int,		# penalty points -- depricate in 2017 if not used and not found in code
   other_points int,		# other points, might need in the future -- depricate in 2017 if not used and not found in code
   seed_points int,		# seed points - seed points in system -- depricate in 2017 if not used and not found in code
-  f_score0 varchar(25),          # tBA custom score field
-  f_score1 varchar(25),          # tBA custom score field
-  f_score2 varchar(25),          # tBA custom score field
-  f_score3 varchar(25),          # tBA custom score field
-  f_score4 varchar(25),          # tBA custom score field
-  f_score5 varchar(25),          # tBA custom score field
-  f_score6 varchar(25),          # tBA custom score field
-  f_score7 varchar(25),          # tBA custom score field
-  f_score8 varchar(25),          # tBA custom score field
-  f_score9 varchar(25),          # tBA custom score field
-  f_score10 varchar(25),          # tBA custom score field
-  f_score11 varchar(25),          # tBA custom score field
-  f_score12 varchar(25),          # tBA custom score field
-  f_score13 varchar(25),          # tBA custom score field
-  f_score14 varchar(25),          # tBA custom score field
-  f_score15 varchar(25),          # tBA custom score field
-  f_score16 varchar(25),          # tBA custom score field
-  f_score17 varchar(25),          # tBA custom score field
-  f_score18 varchar(25),          # tBA custom score field
-  f_score19 varchar(25),          # tBA custom score field
-  f_score20 varchar(25),          # tBA custom score field
-  f_score21 varchar(25),          # tBA custom score field
-  f_score22 varchar(25),          # tBA custom score field
-  f_score23 varchar(25),          # tBA custom score field
-  f_score24 varchar(25),          # tBA custom score field
-  f_score25 varchar(25),          # tBA custom score field
-  f_score26 varchar(25),          # tBA custom score field
-  f_score27 varchar(25),          # tBA custom score field
-  f_score28 varchar(25),          # tBA custom score field
-  f_score29 varchar(25),          # tBA custom score field
-  f_score30 varchar(25),          # tBA custom score field
-  f_score31 varchar(25),          # tBA custom score field
-  f_score32 varchar(25),          # tBA custom score field
-  f_score33 varchar(25),          # tBA custom score field
-  f_score34 varchar(25),          # tBA custom score field
-  f_score35 varchar(25),          # tBA custom score field
-  f_score36 varchar(25),          # tBA custom score field
-  f_score37 varchar(25),          # tBA custom score field
-  f_score38 varchar(25),          # tBA custom score field
-  f_score39 varchar(25),          # tBA custom score field
-  f_score40 varchar(25),          # tBA custom score field
-  f_score41 varchar(25),          # tBA custom score field
-  f_score42 varchar(25),          # tBA custom score field
-  f_score43 varchar(25),          # tBA custom score field
-  f_score44 varchar(25),          # tBA custom score field 
   primary key (event_id, type, matchnum, color)
  );
 
@@ -351,7 +317,7 @@ create table match_team
   type varchar(1), 		# foreign key to match_instance table (PK)
   matchnum int,			# match number, foreign key to match_instance table (PK)
   teamnum int,			# team number, foreign key to team table (PK)
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
   updatedby varchar(200), 	# last updated by users
   color varchar(1),		# R=Red, B=Blue
   position varchar(3),		# position played on field
@@ -383,7 +349,7 @@ create table match_team
 #  type varchar(1), 		# foreign key to match_instance table (PK)
 #  matchnum int,		# match number, foreign key to match_instance table (PK)
 #  alliancenum int,		# Alliance - #1 through #8, foreign key to alliance table (PK)
-#  locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+#  locked varchar(13), 		# row locked for editing by user.  Can clear in application.
 #  updatedby varchar(200), 	# last updated by users
 #  color varchar(1),		# R=Red, B=Blue
 #  position varchar(3),		# position played on field
@@ -442,7 +408,7 @@ create table schedule
 create table process_lock
  (
    lock_id varchar(20), 	# id of lock in table
-   locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+   locked varchar(13), 		# row locked for editing by user.  Can clear in application.
    primary key (lock_id)
  );
 #
@@ -468,7 +434,7 @@ create table message
  (
    facility varchar(20), 	# unique facility using the message table.
    message varchar(200),	# message
-   locked varchar(12), 		# row locked for editing by user.  Can clear in application.
+   locked varchar(13), 		# row locked for editing by user.  Can clear in application.
    primary key (facility)
  );
 #
@@ -504,24 +470,30 @@ create table user_profile
 create table custom_param
  (
   tag varchar(20) not null,	# also serves as column name in database, or reported column name on calcs 
-#  tag_lower varchar(20) not null unique,  # lowercase unique tag so because column names are case-insensitive
-  locked varchar(12), 		# row locked for editing by user.  Can clear in application.  May not use.
+  locked varchar(13), 		# row locked for editing by user.  Can clear in application.  May not use.
   updatedby varchar(200), 	# last updated by users
   position int not null,	# order displayed (0 through end)
   used boolean not null,	# used in UI -- may exist in database
-  vargroup varchar(10),		# var function (Bot, Match, or other)
+  vargroup varchar(10),		# var function (Bot, Match, tBA, or other)
   entrytype varchar(1),		# entry type: D=Direct, C=Calc'd
   dbtype varchar(10),		# database column type
   display varchar(20) not null, # display text in app
+  heading varchar(14),		# display heading in column/tabular form  
   inputlen int,			# input length for field in form
   maxlen int,			# max len of input. Will also set field size in database
   default_value varchar(20),	# default value
   list_of_values varchar(100),	# future feature: list of values in value1,tag1;value2,tag2 format
+  format varchar(10),           # print format (through printf.  
+  sortorder varchar(1),         # sort order: A - Ascending, D - Descending
   db_calc varchar (50),		# SQL format group calculation from match data
   formula_calc varchar (200),	# php formula calclation
+  avg_calc varchar (200),	# SQL format average calculation (format Min-Avg-Max, column name Avg__XXXX)
   test_avg int,			# test average value - used for test generation
   test_range int,		# test range + or - from average value - used for test generation
   test_values varchar (200),	# comma-separated values to be used in testing varchars and text
+  description text(500),	# text description of parameter
+  tBA_tag varchar(60),		# tBA_tag from v3 interface
+  tBA_type varchar(10),		# tBA_type from v3 interface
   primary key (tag)
  );
 
@@ -534,7 +506,7 @@ create table documentation
    documentation varchar(20),	# title of this page, what the world will see
    topic varchar(20),		# what topic this page falls under, listed under the 'topic' table
    priority int,		# determines the order of the different doc pages under a topic
-   locked varchar(12), 		# current editor of this row
+   locked varchar(13), 		# current editor of this row
    data varchar(5000),		# stores the actual information for this page
    primary key (documentation)
  );

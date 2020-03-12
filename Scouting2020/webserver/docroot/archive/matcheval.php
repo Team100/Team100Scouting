@@ -26,6 +26,7 @@
     // initialize
     $editor = NULL;
     $teams_need_eval = array();
+    $upcoming = array();
 
 	$matchidentifiers = fields_load("GET", array("type", "matchnum"));
 
@@ -304,8 +305,9 @@
     $fields = array("score"=>"Score");
 
     // loop through array
-    foreach($ScoreFields as $element=>$scorefield)
-      $fields = array_merge($fields, array("f_score{$element}" => $scorefield['display']));
+    foreach($dispfields["tBA_Match"] as $element=>$scorefield)
+//DBCOL      $fields = array_merge($fields, array("f_score{$element}" => $scorefield['display']));
+      $fields = array_merge($fields, array($scorefield['tag'] => $scorefield['display']));
 
     // form query
     $query = "select " . fields_insert("nameonly", $fields, "") . " from match_instance_alliance where "

@@ -21,6 +21,7 @@
 
     // initialize
     $editor = NULL;
+    $upcoming = array();  // teams we are playing against
 
 	$alliance_data = array("color", "score", "raw_points", "penalty_points");
 
@@ -76,7 +77,7 @@
 				$query = $query." seed_points={$s_points} where {$match_sql_identifier} and color='{$color_initial}'";
 
 				// process query on seed points
-				if (debug()) print "<br>DEBUG-matcheval: " . $query . "<br>\n";
+				if (debug()) print "<br>DEBUG-matchdetails: " . $query . "<br>\n";
 				if (! (@mysqli_query ($connection, $query) ))
 					dbshowerror($connection, "die");
 			  } // end of foreach
@@ -200,7 +201,7 @@
 	$detail_query = "select type, matchnum, teamnum, color from match_team"
 	    . " where $match_sql_identifier "
 	    . " order by color DESC, matchnum";
-	if (debug()) print "<br>DEBUG-matcheval: " . $detail_query . "<br>\n";
+	if (debug()) print "<br>DEBUG-matchdetails: " . $detail_query . "<br>\n";
 
 	if (!($detail = @ mysqli_query ($connection, $detail_query )))
 		dbshowerror($connection);
@@ -209,7 +210,7 @@
 	$query = "select  a.type, a.matchnum, b.teamnum from match_team a, match_team b
 		where a.event_id = '{$sys_event_id}' and a.type=b.type and a.matchnum=b.matchnum and a.color=b.color and
 		a.teamnum='{$host_teamnum}' group by teamnum order by teamnum,  matchnum";
-	   if (debug()) print "<br>DEBUG-matcheval: " . $query . "<br>\n";
+	   if (debug()) print "<br>DEBUG-matchdetails: " . $query . "<br>\n";
 
 	if (!($result = @ mysqli_query ($connection, $query)))
 		dbshowerror($connection);
@@ -223,7 +224,7 @@
 	$query = "select  a.type, a.matchnum, b.teamnum from match_team a, match_team b
 		where a.event_id = '{$sys_event_id}' and a.type=b.type and a.matchnum=b.matchnum and a.color!=b.color and
 		a.teamnum='{$host_teamnum}' group by teamnum order by teamnum,  matchnum";
-	if (debug()) print "<br>DEBUG-matcheval: " . $query . "<br>\n";
+	if (debug()) print "<br>DEBUG-matchdetails: " . $query . "<br>\n";
 
 	if (!($result = @ mysqli_query ($connection, $query)))
 		dbshowerror($connection);
@@ -300,8 +301,9 @@
     $fields = array("score"=>"Score");
 
     // loop through array
-    foreach($ScoreFields as $element=>$scorefield)
-      $fields = array_merge($fields, array("f_score{$element}" => $scorefield['display']));
+    foreach($dispfields["tBA_Match"] as $element=>$scorefield)
+//DBCOL      $fields = array_merge($fields, array("f_score{$element}" => $scorefield['display']));
+      $fields = array_merge($fields, array($scorefield['tag'] => $scorefield['display']));
 
     // form query
     $query = "select " . fields_insert("nameonly", $fields, "") . " from match_instance_alliance where "
@@ -310,7 +312,7 @@
     // get each row from db
 	foreach(array('R', 'B') as $color_d)
 	{
-	  if (debug()) print "<br>DEBUG-matcheval: " . $query . "<br>\n";
+	  if (debug()) print "<br>DEBUG-matchdetails: " . $query . "<br>\n";
       if (!($result = @ mysqli_query ($connection, $query . "'{$color_d}'")))
 			dbshowerror($connection);
 
@@ -338,7 +340,7 @@
 			"select color, score, raw_points, penalty_points, seed_points from match_instance_alliance where ".
 				$match_sql_identifier . " and color='{$color_initial}'")))
 			dbshowerror($connection);
-		if (debug()) print "<br>DEBUG-matcheval: " . $query . "<br>\n";
+		if (debug()) print "<br>DEBUG-matchdetails: " . $query . "<br>\n";
 
 		while($row = mysqli_fetch_array($result))
 		{
