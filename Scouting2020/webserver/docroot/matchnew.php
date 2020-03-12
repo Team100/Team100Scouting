@@ -106,6 +106,20 @@
     $edit = 0;
   }
 
+//
+// load List of Value arrays
+$match_types = array("P","Q","F");
+$final_types = array("Q","S","F");
+
+$teamnums = array();
+$query = "select teamnum from teambot where event_id = '{$sys_event_id}'";
+if (debug()) print "<br>DEBUG-matchnew: " . $query . "<br>\n";
+if (!($result = @ mysqli_query ($connection, $query)))
+  dbshowerror($connection);
+
+// get rows and layout form
+while($row = mysqli_fetch_array($result))
+  $teamnums[] = $row['teamnum'];
 
 // if edit, start edit
 if ($edit) print "<form method=\"POST\" action=\"/matchnew.php?edit=2\">\n\n";
@@ -128,20 +142,21 @@ print "<a href=\"{$base}\">Return to Home</a><br><br>";
   $today = date('Y-m-d');
   $row = array("date"=>$today);
 
-  print tabtextfield($edit,$options,$row,"type","Type (P=Practice, Q=Qualifying, F=Final):",2,2)
+  // tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $format, $list_of_vals, $editprefix)
+  print tabtextfield($edit,$options,$row,"type","Type (P=Practice, Q=Qualifying, F=Final):",2,2,NULL,NULL,$match_types)
   . tabtextfield($edit,$options,$row,"matchnum","Match Number:",4,4)
-  . tabtextfield($edit,$options,$row,"final_type","Final Type (Q=Quarter,S=Semi,F=Final):",1,1)
+  . tabtextfield($edit,$options,$row,"final_type","Final Type (Q=Quarter,S=Semi,F=Final):",1,1,NULL,NULL,$final_types)
   . tabtextfield($edit,$options,$row,"date","Scheduled Date:",10,10)
   . tabtextfield($edit,$options,$row,"scheduled_utime","Scheduled Time (24HH:MM):",5,5)
   ; // end of print
 
   print "<tr>&nbsp;</tr><tr>&nbsp;</tr>";
   print "<tr><td>Red Alliance:</td><td>";
-  alliancefield ("Red");
+  alliancefield ($edit, "Red", $teamnums);
   print "</td></tr>";
 
   print "<tr><td>Blue Alliance:</td><td>";
-  alliancefield ("Blue");
+  alliancefield ($edit, "Blue", $teamnums);
   print "</td></tr></table><br>";
 
 

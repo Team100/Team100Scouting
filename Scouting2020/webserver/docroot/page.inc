@@ -964,19 +964,36 @@ function hiddenfield( $fieldname, $value )
 
 
 //
-// alliancefield ($color)
+// alliancefield ($edit, $color, $list_of_values)
+//   $edit - edit mode
 //   $color - (Red / Blue) designating color of alliance
+//   $list_of_values - possible values for field
 //
 //  paints 3 text boxes for fields
 //  
 //
 
-function alliancefield ( $color )
+function alliancefield ( $edit, $color, $list_of_vals = NULL )
 {
   $teamcnt = 0; // initialize 
   
   while ( $teamcnt++ < 3 )
-    print "\n<input type=\"text\" name=\"team_{$color}_{$teamcnt}\" size=4 maxlength=4>\n";
+  if ($edit)
+    // print edit mode  
+    if (isset($list_of_vals) && is_array($list_of_vals))
+    {
+      print "\n<select name=\"team_{$color}_{$teamcnt}\" size=1 maxlength=4>\n";
+      foreach($list_of_vals as $val)
+        print "<option value=\"{$val}\">{$val}</option>\n";
+      print "</select>\n";
+    }
+    else
+      //print "\n<input type=\"text\" name=\"team_{$color}_{$teamcnt}\" size=4 maxlength=4>\n";
+      print "foo";
+      
+  else // not in edit mode
+    print "\n";
+      
 }
 
 
@@ -1542,6 +1559,7 @@ function teams_validate ( $teams )
    // get database connection
    global $connection;
    global $sys_event_id;
+   $error=0;
    
    // iterate through each team and check db for existance
    foreach ( $teams as $color =>$alliance )
