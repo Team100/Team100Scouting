@@ -203,7 +203,7 @@ function dblock($dblock, $op)
     	{
     	   case "lock":
 	    	// if row locked and not stealing, abort
-	    	if ($rowlocked != "" && $rowlocked != $user)
+	    	if ($rowlocked != "" && $rowlocked != $user && substr($rowlocked,0,1) != "_")
 	    	   if (! isset($_GET["dblocksteal"]) || $_GET["dblocksteal"]!= "1")
 			  die(showerror("Database row in {$wlock["table"]} is being edited by {$rowlocked}. You may steal the edit or wait (hit BACK on browswer and refresh)."));
 
@@ -214,17 +214,19 @@ function dblock($dblock, $op)
 	 	break;
 	 	
 	    case "check":
-	    	// if row has returned, then check/abort. if row locked by another user, abort transaction
+	    	// if row has returned, then check/abort. if row locked by another user, abort transaction. If not, replace
+	    	//   user with semi-locked _user
 	    	if ($rowret === TRUE)
 	    	{
-	    	  if ($rowlocked != $user)
-	    	     if ($rowlocked == "")
-		 	die(showerror("Database row in {$wlock["table"]} as edited by someone else.  Please abort and return to Home Page!"));
+	    	  if ($rowlocked != $user && $rowlocked != "_" . $user)
+	    	     if ($rowlocked == "" || $rowlocked == "_" . $user)
+		 	die(showerror("Database row in {$wlock["table"]} was edited by someone else.  Please abort and return to Home Page!"));
 	    	     else 
 			die(showerror("Database row in {$wlock["table"]} has been locked by a different user - {$rowlocked}. Edit aborted.  Hit back on browser to continue."));
 
 	    	  // add userid as locked user  
-	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
+//JLV clean	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
+	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = '_{$user}' where {$wlock["where"]}") ))
 			dbshowerror($connection, "die");	    
 		}
 		
@@ -232,7 +234,7 @@ function dblock($dblock, $op)
 
 	    case "abandon":
 	    	// if row locked by this user, free row
-	    	if ($rowlocked == $user)
+	    	if ($rowlocked == $user || $rowlocked == "_" . $user)
 		    	if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
 				dbshowerror($connection, "die");	
 		break;
@@ -329,8 +331,8 @@ function dblockshowedit( $edit, $dblock, $urlroot )
 		  $rowlocked = $row["locked"];
 		else $rowlocked = NULL;
 		
-		// if not null and not from the current user, add to list
-		if ($rowlocked != "" && $user != $row["locked"]) 
+		// if not null, not from the current user, and not semi-locked with '_' add to list
+		if ($rowlocked != "" && $user != $row["locked"] && substr($rowlocked,0,1) != '_') 
 		  $showlocked[] = array("table"=>$wlock["table"], "user"=>$row["locked"]);
 	}
 
