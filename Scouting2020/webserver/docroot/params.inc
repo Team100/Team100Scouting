@@ -284,8 +284,10 @@ $lyellow = '#ffff66';
 $lgreen = '#ccffcc';
 $lblue = '#ccccff';
 $lred = '#ffcccc';
+$color_edit = '#ffe6cc';
+//$color_edit = '#fff3e6';  // lighter
 
-//length of the updated-by field.  Should not exceed db schema.  
+//length of the updated-by field.  Should not exceed db schema length.  
 //  Data will be truncated to this value
 $maxlengthchangeby=200;
 

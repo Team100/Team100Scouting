@@ -224,7 +224,7 @@ function dblock($dblock, $op)
 	    	     else 
 			die(showerror("Database row in {$wlock["table"]} has been locked by a different user - {$rowlocked}. Edit aborted.  Hit back on browser to continue."));
                   else
-	    	  // add userid as locked user  
+	    	  // add userid as semi-locked user  
 //JLV clean	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
 	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = '_{$user}' where {$wlock["where"]}") ))
 			dbshowerror($connection, "die");	    
