@@ -58,8 +58,12 @@ include ('lib/httpful.phar');
 //    Variable name is $tba_[BlueAllianceEntity]_to_[CompSystemTableName]
 // 
 
-// tBA fields to bypass - do not report a "null" in for these fields
-$tba_bypass_fields = array ("website");
+// tBA fields extras: fieldlen = length is truncated to this length, 
+$tba_field_extras["website"]         = array ("fieldlen"=>80, "canskip"=>TRUE);
+$tba_field_extras["city"]            = array ("fieldlen"=>35, "canskip"=>TRUE);
+$tba_field_extras["state_prov"]      = array ("fieldlen"=>25, "canskip"=>TRUE);
+$tba_field_extras["country"]         = array ("fieldlen"=>25, "canskip"=>TRUE);
+$tba_field_extras["org"]             = array ("fieldlen"=>40, "canskip"=>TRUE);
 
 // tBA event to event table
 $tba_event_to_event = array ("key"=>"event_id","short_name"=>"name","name"=>"long_name","event_code"=>"event_code",
@@ -1026,22 +1030,39 @@ function tba_setlastmod($tba_url, $lastmod)
 
 function tba_mapfields ($tba_fieldmap, $tba_responsearray, $tba_dbarray)
 {
-   global $tba_bypass_fields;
+   global $tba_field_extras;
    
    // initialize if not already an array
    if (! is_array($tba_dbarray)) $tba_dbarray = array();
 
    // loop through fieldmap picking up any named fields from object
    // and storing them in dbarray
-   foreach($tba_fieldmap as $field =>$value)
+   foreach($tba_fieldmap as $field =>$column)
+   {
+     // load field length and bypass, after initializing
+     $bypass = FALSE;
+     $fieldlen = 0;
+     if (isset($tba_field_extras[$column]))
+     {
+       if (isset($tba_field_extras[$column]['canskip']))
+         $bypass = $tba_field_extras[$column]['canskip'];
+
+       if (isset($tba_field_extras[$column]['fieldlen']))
+         $fieldlen = $tba_field_extras[$column]['fieldlen'];
+     }
      if (isset($tba_responsearray->$field))
-//JLV - commenting out but may cause problems
+//JLV clean - commenting out but may cause problems
 //       if ($tba_responsearray->$field != NULL)
-         $tba_dbarray[$value] = $tba_responsearray->$field;
+     {
+       if ($fieldlen)        
+         $tba_dbarray[$column] = substr($tba_responsearray->$field,0,$fieldlen);
+       else
+         $tba_dbarray[$column] = $tba_responsearray->$field;
+     }
      else
      {
        // if field is not on the "skip list", report
-       if (array_search($field, $tba_bypass_fields) === FALSE)
+       if ($bypass === FALSE)
        {
          // message user.  Not sure if this message should be here or in debug mode.  Putting in both.
          print "\n<br><br><b>WARNING:</b> tba_mapfields: no tBA response found for field {$field}.<br>\n";
@@ -1056,8 +1077,9 @@ function tba_mapfields ($tba_fieldmap, $tba_responsearray, $tba_dbarray)
            print "\ntBA dbarray:\n";
            print_r($tba_dbarray);
          }
-       }
-     } // foreach
+       }  //end if
+     }  // else  
+   } // foreach
      
    return($tba_dbarray);
 }
@@ -1188,10 +1210,37 @@ function tba_updatedbifnew($tablename, $table_identifiers, $tba_dbarray)
 //   $state - 0 for off, 1 for on
 //   returns true if successful, false if failed
 //
-// Sets file defined by $auto_update_file with $state
+// Sets system value in db auto_update_state to $state
 //
 
 function tba_set_autoupdate ( $state )
+{
+  global $auto_update_file;
+  global $auto_update_stop;
+  global $connection;
+  
+  // set up array
+  $db_array = array ("skey"=>"auto_update_state", "value"=>$state);
+  $table_identifiers = array ("skey"=>"auto_update_state");  
+  
+  db_update_or_create("system_value", $table_identifiers, $db_array);
+
+  // commit
+  if (! (@mysqli_commit($connection) ))
+    dbshowerror($connection, "die");
+		    
+  return(TRUE);
+}
+
+//
+// function: tba_set_autoupdate($state) - sets autoupdate
+//   $state - 0 for off, 1 for on
+//   returns true if successful, false if failed
+//
+// Sets file defined by $auto_update_file with $state
+//
+
+function tba_set_autoupdate_file ( $state )
 {
   global $auto_update_file;
   global $auto_update_stop;
@@ -1207,6 +1256,7 @@ function tba_set_autoupdate ( $state )
 }
 
 
+ 
 //
 // function: tba_get_autoupdate() - sets autoupdate
 //   returns $state - 0 for off, 1 for on
@@ -1216,6 +1266,59 @@ function tba_set_autoupdate ( $state )
 //
 
 function tba_get_autoupdate ()
+{
+  global $auto_update_file;
+  global $auto_update_stop;
+  global $connection;
+
+  // default state
+  $state=0;
+  
+  // find state
+  $query = "select value from system_value where skey = 'auto_update_state'";
+  if (debug()) print "<br>DEBUG-tba_get_autoupdate: " . $query . "<br>\n";
+  if (!($result = @ mysqli_query ($connection, $query)))
+    dbshowerror($connection);
+
+
+  $row = mysqli_fetch_array($result);
+  $state = $row['value'];
+       
+  // if still set, check on time
+    
+  if ($state != 0 )
+  {
+    // set for time today.  Based on day and $auto_update_end_time
+    $today_str = date('Y-m-d');
+     
+    // set stop in unix time
+    $stop = strtotime( $today_str . " " . $auto_update_stop);
+    
+    // get current time
+    $time = time();
+    
+    // if we are later, change state
+    if ($time > $stop)
+    {
+      tba_set_autoupdate(0);
+      $state = 0;
+    }
+  }
+  
+  return($state);
+
+}
+
+
+//
+// function: tba_get_autoupdate_file() - sets autoupdate
+//   returns $state - 0 for off, 1 for on
+//
+// Gets state of setting for $auto_update_file 
+//  If time is past $auto_update_stop (set in params.inc), set state to zero
+//
+
+function tba_get_autoupdate_file ()
 {
   global $auto_update_file;
   global $auto_update_stop;
@@ -1254,6 +1357,8 @@ function tba_get_autoupdate ()
   return($state);
 
 }
+
+
 
 
 //

@@ -15,6 +15,10 @@ mysql -D %dbname% -u %dbuser% --password=%dbpass% < ..\schema\compsys-tables.sql
 
 mysql -D %dbname% -u %dbuser% --password=%dbpass% < ..\schema\compsys-customparams.sql
 
+rem load customization
+
+mysql -D %dbname% -u %dbuser% --password=%dbpass% < ..\schema\dump-customizations-*.dmp
+
 rem insert documentation
 
 rem fresh database complete

@@ -55,10 +55,14 @@ Brief instructions on setting up a MySQL, PHP, apache web server for the competi
 5.  Create or load the database.  A fresh database with no values can be created or a 
     previous system can be restored.
         - Fresh database: run database/utils/fresh-db.bash
+           Drops all tables, creates new tables, runs customization script to alter
+             tables for customization, and if present, loads the customization data
+             assuming an export has been done.
+        
         - import from existing dataset:  
              mysql -Ddbname -u Username -p < dataset.dmp
           Note: the import may be an entire dataset or just the customization parameters
-                for the year
+                or "starting columns" for the year
         
 6.  Configure apache
     - set up web site in apache config file.  /etc/apache2/apache2.conf in linux or 
@@ -104,6 +108,7 @@ Linux Packages:
 Debian 10:
 php7.3-mysql
 php7.3
+php7.3-curl
 mariadb-server-10.3 - MariaDB database server binaries
 mariadb-server-core-10.3 - MariaDB database core server files (pulled automatically)
 

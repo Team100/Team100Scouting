@@ -223,7 +223,7 @@ function dblock($dblock, $op)
 		 	die(showerror("Database row in {$wlock["table"]} was edited by someone else.  Please abort and return to Home Page!"));
 	    	     else 
 			die(showerror("Database row in {$wlock["table"]} has been locked by a different user - {$rowlocked}. Edit aborted.  Hit back on browser to continue."));
-
+                  else
 	    	  // add userid as locked user  
 //JLV clean	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = NULL where {$wlock["where"]}") ))
 	    	  if (! (@mysqli_query ($connection, "update {$wlock["table"]} set locked = '_{$user}' where {$wlock["where"]}") ))
@@ -260,9 +260,9 @@ function dblock($dblock, $op)
 	 } // end of switch   
       } // end of foreach
 
-	// commit
-	if (! (@mysqli_commit($connection) ))
-		dbshowerror($connection, "die");
+      // commit
+      if (! (@mysqli_commit($connection) ))
+	dbshowerror($connection, "die");
 	
 }
 
@@ -514,6 +514,7 @@ function db_update_or_create($tablename, $table_identifiers, $db_array)
 //   $tba_data_array - tBA data, formatted as an array of key/value 
 //        pairs where the key is the db column name and the value
 //        is the data.
+//
 // Updates database with data
 //   Queries for row with data.  If found, updates only the columns which are 
 //     currently NULL.  If not found, inserts.

@@ -1,0 +1,52 @@
+Competition System - Future Features
+
+
+Note: not in priority sequence but kept here to capture potential features.
+
+- customize 2020 game
+   - work out hanging report: how to easily visualize?
+
+- work out general y-to-y attributes, such as reliability.  Do they start as custom 
+   params in db?  could help drive multi-value calcs
+
+- Implement configurable calculations and averages
+   - implement averages in match rapsheet
+
+- work through ranking points formula vs. points and how to best capture.  A function?
+
+- show numerical context for each measure (and configure in customization?)
+
+- turn off practice data at somepoint?  Should we work on weighted average?
+   better to turn off practice data entirely (at least for finals)?
+
+- possibly rationalize all data-driven fields so that non-custom fields are represented 
+   by same formatting methods?
+
+- compare our match scoring with the match scores and report insconsistencies
+
+- document customization model
+
+- implement work pipeline so that new data can signal recompilation of summary fields.
+    What is formula implementation model for these kinds of rollups.
+
+- Use Entry Type to determine whether fields can be edited
+
+- link up event entry app into customization model, complete with generators
+
+- edit status indicator on matchteam screen, possibly using tooltips/javascript overlay.
+
+- work through match compiled events vs. team information.  similar data on both. 
+    which should be the default team screen?
+
+- test data generator for system development and testing
+
+- more examples of "compete as team" functions, how to build and use in model
+
+- build out documentation system
+
+
+
+
+
+
+

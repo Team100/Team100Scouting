@@ -1,24 +1,26 @@
 <?php
-  // $Revision: 3.0 $
-  // $Date: 2016/03/14 22:56:41 $
-  //
-  // Competition System
-  // Blue Alliance Data Loader
-  //
-  // Download and update various forms of Blue Alliance data
-  //
+ // $Revision: 3.0 $
+ // $Date: 2016/03/14 22:56:41 $
+ //
+ // Competition System
+ // Blue Alliance Data Loader
+ //
+ // Download and update various forms of Blue Alliance data
+ //
 
-  require "page.inc";
-  require "bluealliance.inc";
+ require "page.inc";
+ require "bluealliance.inc";
 
-  // header and setup
-  pheader("Blue Alliance Update and Control");
-  $connection = dbsetup();
+ // header and setup
+ pheader("Blue Alliance Update and Control");
+ $connection = dbsetup();
 
-  // if not administrator, display error.  Otherwise show admin section.
-  if (! $admin)
-    print "<h3>You must be an administrator to use this page.</h3>\n";
-  else
+ // if not administrator, or sysevent it, display error.  Otherwise show admin section.
+ if (! $admin)
+   print "<h3>You must be an administrator to use this page.</h3>\n";
+ elseif ( $sys_event_id == "" )    // check for sys event id
+   print "<h3>System Event must be set for this script to run.</h3>\n";
+ else
   {
 
   // get variables if they exist

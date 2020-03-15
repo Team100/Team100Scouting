@@ -21,6 +21,7 @@ if (! $admin)
 else
 {
   // initialize variables and arrays
+  $delete = 0;  // needed if delete is supported
   $dbtypes = array("varchar","int","real","boolean");
 
   // define lock array, fields arrays
@@ -46,15 +47,47 @@ else
         // add vargroup
         $formfields["vargroup"] = $vargroup;
 
-		$query = "update custom_param set " . fields_insert("update",$formfields) . " where tag = '{$tag}'";
-		// process query
-		if (debug()) print "<br>DEBUG-customparam-single: " . $query . "<br>\n";
-		if (! (@mysqli_query ($connection, $query) ))
-			dbshowerror($connection, "die");
+	    // process query
+	    if (debug()) print "<br>DEBUG-customparam-single: " . $query . "<br>\n";
+	    if (! (@mysqli_query ($connection, $query) ))
+		    dbshowerror($connection, "die");
 
-		// commit
-		if (! (@mysqli_commit($connection) ))
-			dbshowerror($connection, "die");
+        // commit
+	    if (! (@mysqli_commit($connection) ))
+		    dbshowerror($connection, "die");
+
+	}
+
+ 	// delete operation
+  	if (isset($_POST["op"]) && ($_POST["op"] == "Delete"))
+	{
+  		// check row
+ 		dblock($dblock,"check");
+
+        // add vargroup
+        $formfields["vargroup"] = $vargroup;
+
+	    $query = "delete from custom_param where tag = '{$tag}'";
+
+	    // process query
+	    if (debug()) print "<br>DEBUG-customparam-single: " . $query . "<br>\n";
+	    if (! (@mysqli_query ($connection, $query) ))
+		    dbshowerror($connection, "die");
+
+        // commit
+	    if (! (@mysqli_commit($connection) ))
+		    dbshowerror($connection, "die");
+
+        // set delete flag
+        $delete = 1;
+
+        // inform user and provide return.
+
+        print "<br>Deleted tag '{$tag}'.\n";
+        print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n";
+        print "<a href=\"/customparam.php?vargroup={$vargroup}\">Return to Custom Parameters</a> \n";
+        print "<br><br>\n";
+
 	}
 
 	// abondon lock
@@ -68,9 +101,36 @@ else
    if ($edit) dblock($dblock,"lock");  // lock row with current user id
 
 
-//
-// top of form rendering
-//
+// if delete is set, skip rendering
+if (! ($delete))
+{
+
+  //
+  // top of form rendering
+  //
+
+  //
+  // create page
+  //
+
+  // if in edit mode, signal save with edit=2
+  if ($edit)
+  	print "<form method=\"POST\" action=\"/customparam-single.php?vargroup={$vargroup}&tag={$tag}&edit=2\">\n";
+
+
+  // add edit link or submit button
+  print dblockshowedit($edit, $dblock, "/customparam-single.php?vargroup={$vargroup}&tag={$tag}") . "\n";
+
+  // add delete button
+  if ($edit) print "&nbsp;&nbsp;<input type=\"submit\" name=\"op\" VALUE=\"Delete\" ALIGN=middle BORDER=0>\n";
+
+
+  // return and home buttons
+  print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/customparam.php?vargroup={$vargroup}\">Return to Custom Parms</a>\n";
+  print "&nbsp;&nbsp;&nbsp;<a href=\"/admin.php\">Return to Admin</a>\n";
+  print "&nbsp;&nbsp;&nbsp; <a href=\"/\">Return to Home</a><br><br>\n";
+
+
 
 
   // if tBA, special instructions
@@ -88,9 +148,6 @@ print "
 <td>
 "; // end of print
 
-  //
-  // create page
-  //
 
   // get custom_param details define result set
   $query = "select ". fields_insert("nameonly",NULL,$custom_param) . " from custom_param";
@@ -108,9 +165,6 @@ print "
   $desc_options = $options;
   $desc_options["notagabove"] = TRUE;
 
-  // if in edit mode, signal save with edit=2
-  if ($edit)
-  	print "<form method=\"POST\" action=\"/customparam-single.php?vargroup={$vargroup}&tag={$tag}&edit=2\">\n";
 
   // Use tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue, $lov, $editprefix)
   // for each field
@@ -158,22 +212,31 @@ print "
         . tabtextarea($edit,$desc_options,$row, "description","Description",6,50,NULL,NULL,NULL,NULL)
       . "\n\n";
 
-  // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/customparam-single.php?vargroup={$vargroup}&tag={$tag}") . "\n";
 
-  // return and home buttons
-  print "<br><br><a href=\"/customparam.php?vargroup={$vargroup}\">Return to Custom Parms</a>\n";
-  print "&nbsp;&nbsp;&nbsp;<a href=\"/admin.php\">Return to Admin</a><br>\n";
-  print "<a href=\"/\">Return to Home</a><br><br>\n";
+
 
   // finish table and continue
   print "</td></tr></table>\n";
 
+  print "</tr>\n</table>\n";
+
+  print "<br><br>\n";
+
+  // add edit link or submit button
+  print dblockshowedit($edit, $dblock, "/customparam-single.php?vargroup={$vargroup}&tag={$tag}") . "\n";
+
+  // add delete button
+  if ($edit) print "&nbsp;&nbsp;<input type=\"submit\" name=\"op\" VALUE=\"Delete\" ALIGN=middle BORDER=0>\n";
+
+  // return and home buttons
+  print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/customparam.php?vargroup={$vargroup}\">Return to Custom Parms</a>\n";
+  print "&nbsp;&nbsp;&nbsp;<a href=\"/admin.php\">Return to Admin</a>\n";
+  print "&nbsp;&nbsp;&nbsp; <a href=\"/\">Return to Home</a><br><br>\n";
 
   // close the form if in edit mode
   if ($edit) print "\n</form>\n";
 
-  print "</tr>\n</table>\n";
+} // end of if delete
 } // end of if admin
 
    pfooter();

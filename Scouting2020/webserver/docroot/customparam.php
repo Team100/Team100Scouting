@@ -88,7 +88,7 @@ else
 		      db_update_or_create("custom_param", $where, $formfields);
 		    }
 		    else
-		      showerror("Tag '{$formfields["tag"]}' may not contain spaces or special characters. Please re-enter.");
+		      die( showerror("Tag '{$formfields["tag"]}' may not contain spaces or special characters. Please re-enter."));
 		  }
 
 		} // end of for
@@ -138,13 +138,17 @@ print "
   // if tBA, special instructions
   if (substr($vargroup,0,3) == "tBA")
   {
-     print "\nNOTE: The Blue Alliance or \"FIRST\" custom parameter tags are preceeded by \"f_\" to help";
-     print "distinguish them from other system tags and columns. ";
-     print "A typical format for a real number is %.2f<br><br>\n";
+     print "\n<b>NOTE</b>: The Blue Alliance or \"FIRST\" custom parameter tags are preceeded by \"f_\" to help";
+     print "distinguish them from other system tags and columns.<br>\n";
+     print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A typical format for a real number is %.2f<br><br>\n";
   }
 
-  // if in edit mode, provide note on position
-  if ($edit) print "\n<b>NOTE:</b> decimal values can be used in position to reorder.<br><br>\n";
+  // if in edit mode, provide note on position and delete
+  if ($edit)
+  {
+    print "\n<b>NOTE:</b> decimal values can be used in position to reorder.\n";
+    print "To delete a tag, click on link when not in edit and delete from the single-edit page.<br><br>\n";
+  }
 
   // inline function to render page rows
   function custom_render_row ($edit, $options, $row, $editprefix=NULL)

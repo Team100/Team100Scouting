@@ -9,15 +9,8 @@ an additional statement confirming the test passed...
 
 <?php
 
-// Database parameters
-
-$dbname = "competition";
-
-$dbuser = "compuser";
-
-$dbpass = "100hats";
-
-$dbhost = "localhost";
+// find database params
+require "../params.inc";
 
 // get connection
 if(!($connection = @ mysqli_connect($dbhost,$dbuser,$dbpass, $dbname)))

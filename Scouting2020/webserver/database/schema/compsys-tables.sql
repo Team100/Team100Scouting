@@ -56,9 +56,9 @@ create table event
   event_type_id int,            # tBA event_type, with a number code
   year int,                     # tBA year
   city varchar(35),		# tBA city of team
-  state_prov varchar(20),	# tBA state_prov of team
+  state_prov varchar(25),	# tBA state_prov of team
   country varchar(25),		# tBA country of team
-  location varchar(80),		# tBA location, location of team compiled from c,s,c
+  location varchar(90),		# tBA location, location of team compiled from c,s,c
   website varchar(100),         # tBA website, event webssite	
   primary key (event_id)
  );
@@ -79,11 +79,11 @@ create table team
   name varchar(50),		# tBA, FIRST nickname
   nickname varchar(30),		# our nickname for team
   rating int,                   # our 0-9 rating of team capabilities and competencies
-  org varchar(80),		# high school or other organization
+  org varchar(40),		# high school or other organization
   city varchar(35),		# tBA city of team
-  state_prov varchar(20),	# tBA state_prov of team
+  state_prov varchar(25),	# tBA state_prov of team
   country varchar(25),		# tBA country of team
-  location varchar(80),		# tBA location, location of team compiled from c,s,c
+  location varchar(90),		# tBA location, location of team compiled from c,s,c
   students int,			# number of students on team
   website varchar(80),		# tBA website, team web site
   sponsors varchar(1000),	# tBA name, team sponsors
@@ -533,18 +533,6 @@ create table pagetodoc
    primary key (documentation, page)
 );
 
-#
-# generic system key/value table
-#
-# Note: use this table to store system values in the database
-#
-create table system_value
- (
-   skey varchar(20),		# key index into values
-   value varchar(40),		# value for the key
-   primary key (skey)
- );
-
 
 #
 # Blue Alliance API last modified
@@ -558,6 +546,20 @@ create table tba_last_modified
   last_mod varchar(31),         # tBA last modified returned from tBA
   primary key (api_call)
  );
+ 
+
+#
+# generic system key/value table
+#
+# Note: use this table to store system values in the database
+#
+create table system_value
+ (
+   skey varchar(20),		# key index into values
+   value varchar(40),		# value for the key
+   primary key (skey)
+ );
+
 
 #
 # insert keys needed to start in the system
