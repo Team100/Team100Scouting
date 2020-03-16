@@ -70,9 +70,12 @@
 
    &nbsp;&nbsp;&nbsp;&nbsp;<b>Documentation System:</b>
    <ul>
-   <li><a href=\"/admin.php\">Create document</a></li>
+   <li><a href=\"/docnodeadmin.php\">Node admin</a></li>
    <br>
-   <li><a href=\"/admin.php\">Report on document</a></li>
+   <li><a href=\"/docadmin-single.php\">Doc Page admin</a></li>
+   <br>
+   <li><a href=\"/docadmin-single.php\">Menu Browser</a></li>
+
    </ul>
 
    "; // end of print

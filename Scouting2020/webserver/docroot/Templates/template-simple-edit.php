@@ -5,6 +5,7 @@
   // Competition System - Sample page with edits
   //
   require "page.inc";
+  $pagename = "template-simpe-edit";
 
   // get variables, checking for existance
   if(isset($_GET["vargroup"])) $vargroup=$_GET["vargroup"]; else $vargroup="Bot";
@@ -36,7 +37,7 @@
 		$query = "update custom_param set " . fields_insert("update",$formfields) . " where tag = {$tag}";
 
 		// process query
-		if (debug()) print "<br>DEBUG-mtemplate: " . $query . "<br>\n";
+		if (debug()) print "<br>DEBUG-{$pagename}: " . $query . "<br>\n";
 		if (! (@mysqli_query ($connection, $query) ))
 			dbshowerror($connection, "die");
 
@@ -85,7 +86,7 @@ print "
 
   // if in edit mode, signal save with edit=2
   if ($edit)
-  	print "<form method=\"POST\" action=\"/template-simple-edit.php?edit=2\">\n";
+  	print "<form method=\"POST\" action=\"/{$pagename}.php?edit=2\">\n";
 
   // Use tabtextfield($edit, $options, $data, $fieldname, $fieldtag, $size, $maxlenth, $defvalue)
   // for each field
@@ -111,7 +112,7 @@ print "
   . "\n<tr><td><br><br></td></tr>\n<tr><td>\n";
 
   // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/template-simple-edit.php?vargroup={$vargroup}") . "\n";
+  print dblockshowedit($edit, $dblock, "/{$pagename}.php?vargroup={$vargroup}") . "\n";
 
   // return and home buttons
   print "<br><br><a href=\"/admin.php\">Return to Admin</a><br>\n";

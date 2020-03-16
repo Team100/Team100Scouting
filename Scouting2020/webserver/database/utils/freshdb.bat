@@ -5,9 +5,11 @@ rem
 rem clears database and loads a fresh schema, upload tables, etc.
 rem
 
+set custfile=..\schema\dump-customizations-2020.dmp
 set dbname=competition
 set dbuser=compuser
 set dbpass=100hats
+set custfile=..\schema\dump-customizations-2020.dmp
 
 mysql -D competition -u compuser --password=%dbpass% < ..\schema\compsys-tables-drop.sql
 
@@ -17,7 +19,7 @@ mysql -D %dbname% -u %dbuser% --password=%dbpass% < ..\schema\compsys-custompara
 
 rem load customization
 
-mysql -D %dbname% -u %dbuser% --password=%dbpass% < ..\schema\dump-customizations-*.dmp
+mysql -D %dbname% -u %dbuser% --password=%dbpass% < %custfile%
 
 rem insert documentation
 

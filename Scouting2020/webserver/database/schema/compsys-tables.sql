@@ -419,6 +419,7 @@ create table process_lock
 insert into process_lock (lock_id) values ('ranking');		# ranking process
 insert into process_lock (lock_id) values ('finals_selection');	# ranking process
 insert into process_lock (lock_id) values ('custom_param');	# custom_parameter process
+insert into process_lock (lock_id) values ('docnode');		# topics for docprocess
 insert into process_lock (lock_id) values ('doc_topics');	# topics for docprocess
 
 
@@ -498,29 +499,47 @@ create table custom_param
  );
 
 
+##
+##
+## documentation system
+##
+##
+#
+#  Documentation is kept in the doc table.  Docnodes contain various node 
+#   trees to navigate and present the doc.
 #
 # stores all documentation
 #
 create table documentation
  (
-   documentation varchar(20),	# title of this page, what the world will see
-   topic varchar(20),		# what topic this page falls under, listed under the 'topic' table
-   priority int,		# determines the order of the different doc pages under a topic
+   doctag varchar(20),          # internal tag (no space or special chars) and primary key
    locked varchar(13), 		# current editor of this row
-   data varchar(5000),		# stores the actual information for this page
-   primary key (documentation)
+   updatedby varchar(200), 	# last updated by users
+   title varchar(70),		# title of this page, what the world will see
+   default_docnode varchar(15),	# default doc_node to which this document is connected
+   admin boolean,		# admin-only designation.  will not display without admin privileges
+   topic varchar(70),		# what topic this page falls under, listed under the 'topic' table (first parent)
+   doctext text(10000),		# stores the actual information for this page
+   primary key (doctag)
  );
 
 #
-# different topics the documentation fits under
-# also, add process lock for this table in the process_lock table
+# toc node table contains the organanizational heirarchy of the documentation.
+# various trees can be created and displayed. The leaf nodes should link to documentation
+#  via a doctag
 #
-create table topic
+create table docnode
  (
-   topic varchar(20),		# title of this category of documentation, the world will see this
-   priority int,		# priority of this topic in relation to other topics
-   description varchar(200),	# description of the topic, not needed
-   primary key (topic)
+   docnode varchar(20),		# internal node in heirarcy (no space or special chars) and primary key
+   locked varchar(13), 		# current editor of this row
+   updatedby varchar(200), 	# last updated by users
+   parent varchar(20), 		# parent docnode for nested topics
+   position int,		# order of nodes under topic
+   doctag varchar(20),		# doctag for documentation connected to this node
+   admin boolean,		# admin-only designation.  will not display without admin privileges
+   topic varchar(70),		# title of this node - the world will see this
+   description varchar(200),	# text description/summary of this node
+   primary key (docnode)
  );
 
 #
@@ -528,9 +547,9 @@ create table topic
 #
 create table pagetodoc
 (
-   documentation varchar(20),	# title of the documentation
-   page varchar(20),		# page the documentation can be accessed by
-   primary key (documentation, page)
+   page varchar(30),		# page the documentation can be accessed by, primary key
+   docnode varchar(15),		# internal node in heirarcy 
+   primary key (page, docnode)
 );
 
 

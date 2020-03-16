@@ -1047,7 +1047,7 @@ function fields_load ( $post, $fieldnames, $editprefix = NULL )
 
 
 //
-// function: fields_insert ( $operation, $formfields, $fieldnames )
+// function: fields_insert ( $operation, $formfields, $fieldnames, $prefix )
 //  fields_insert: create insert string
 //  $operation - name, value, where
 //        nameonly or fieldname - name of fields, comma separated
@@ -1057,7 +1057,11 @@ function fields_load ( $post, $fieldnames, $editprefix = NULL )
 //  $formfields - array created in fields_load of each field 
 //      (an ordered associative array of name=>value for each field)
 //  $fieldnames - optional array of field names to be inserted 
-//      (an ordered array of db column fieldnames)
+//      (an ordered array of db column fieldnames).  This option is used
+//      if the field=>value formfields is not wanted
+//  $prefix - option prefix to append to each fieldname.  Used for columns 
+//      in multitable joins, etc.
+//      Note: we may need to add column names after the use of a prefix
 //
 //   Returns string for insertion into SQL statement.
 //
@@ -1067,29 +1071,29 @@ function fields_load ( $post, $fieldnames, $editprefix = NULL )
 //
 //
 
-function fields_insert ( $operation, $formfields, $fieldnames = NULL )
+function fields_insert ( $operation, $formfields, $fieldnames = NULL, $prefix = NULL )
 {
    $insert="";
 
    // if field names, use the array that is passed, otherwise iterate over formfields
    if ($fieldnames)
      foreach($fieldnames as $fieldname)
-	$insert = fields_insert_add ( $operation, $formfields, $fieldname, $insert);
+	$insert = fields_insert_add ( $operation, $formfields, $fieldname, $insert, $prefix);
    else
      // iterate through fields and create insert string
      foreach ($formfields as $fieldname => $value)
-	$insert = fields_insert_add ( $operation, $formfields, $fieldname, $insert);
+	$insert = fields_insert_add ( $operation, $formfields, $fieldname, $insert, $prefix);
    
    return ($insert);
 }
 
  // function used in fields_value
-function fields_insert_add ( $operation, $formfields, $fieldname, $insert)
+function fields_insert_add ( $operation, $formfields, $fieldname, $insert, $prefix = NULL)
   {
   	// get db connection
   	global $connection;
   	global $db_case_sensitive;
-  	      	
+  	 	
       	switch ($operation)
       	{
       	  case "nameonly":
@@ -1097,7 +1101,7 @@ function fields_insert_add ( $operation, $formfields, $fieldname, $insert)
       	    	// add comma
       	        if ( $insert ) $insert = $insert . ", ";
       
-      	  	$insert = $insert . $fieldname;
+      	  	$insert = $insert . $prefix . $fieldname;
       	  	break;
       	  	
       	  case "insert":
@@ -1130,9 +1134,9 @@ function fields_insert_add ( $operation, $formfields, $fieldname, $insert)
       	        
       	  	// add insert value
       		if ( $formfields[$fieldname] === "" ) 
-        		$insert .= "$fieldname = NULL";
+        		$insert .= "{$prefix}$fieldname = NULL";
       		else
-        		$insert .= "$fieldname = '$formfields[$fieldname]'"; 
+        		$insert .= "{$prefix}$fieldname = '$formfields[$fieldname]'"; 
         	break;
         	
           case "where":
@@ -1144,9 +1148,9 @@ function fields_insert_add ( $operation, $formfields, $fieldname, $insert)
       	        
       	  	// add where value
       		if ( $formfields[$fieldname] === "" ) 
-        		$insert .= "$fieldname = NULL";
+        		$insert .= "{$prefix}$fieldname = NULL";
       		else
-        		$insert .= "$fieldname {$db_case_sensitive} = '$formfields[$fieldname]'"; 
+        		$insert .= "{$prefix}$fieldname {$db_case_sensitive} = '$formfields[$fieldname]'"; 
         	break;
       	  	
           default:
@@ -1920,6 +1924,48 @@ function match_get_recent_actual ($type)
     return (0);
 }
 
+//
+//
+// ****************************************************************************
+//
+// Documentation System Functions
+//
+//
+
+//
+// function: doc_show_toc ( $parent )
+//  $parent docnode - parent docnode from which to descend to paint TOC
+//
+//  Returns HTML text of TOC from parent node down.  Links are show 
+//    if a doctag node is associated with the docnode.  Otherwise
+//    just paints titles in ordered lists.
+//
+//  Returns: ??
+
+function doc_show_toc ( $parent )
+{
+
+}
+
+//
+// function: doc_show_doc ( $docnode )
+//  $docnode -   
+//
+//  Show document connected with this node.  Show nothing (possibly navigation)
+//   if no document associated.
+//
+//  Returns: HTML text for print/painting
+
+function doc_show_doc ( $docnode )
+{
+
+}
+
+//
+// End of documentation functions
+//
+// ****************************************************************************
+//
 
 
 //
