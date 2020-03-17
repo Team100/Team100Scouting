@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # performs dump of mysql DB tables -- specific to customizations
-#  usage: dump-db.bash [-q]
+#  usage: dump-documentation.bash [-q]
 #   -q: run in quiet mode without user output
 #
 
@@ -14,9 +14,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ##   DB: dbname dbuser dbpass dbhost
 
 # vars to drive export
-tables="match_instance match_instance_alliance match_team user_profile"
+tables="docnode documentation pagetodoc"
 dumpsdir=$WEBSRVROOT/database/dumps
-#date=`date '+%y%m%d%H%M'`
 date=`date '+%Y-%m-%d'`
 
 # dump options
@@ -33,12 +32,12 @@ options=" --complete-insert --no-create-db --extended-insert --no-create-info"
 if [ "$1" != "-q" ]
 then
   echo " " 
-  echo "Robotics Competition System - Customization Tables Export"
+  echo "Robotics Competition System - Documentation Tables Export"
   echo "  Database:   $dbname"
 fi
 
 mysqldump $options --user=$dbuser --password=$dbpass $dbname $tables \
-   > $dumpsdir/dump-customizations-${date}.dmp
+   > $dumpsdir/dump-doc-${date}.dmp
 
 if [ "$1" != "-q" ]
 then

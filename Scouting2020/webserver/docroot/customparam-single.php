@@ -5,6 +5,7 @@
   // Competition System - Custom Parameter Single Tag Entry
   //
   require "page.inc";
+  $pagename = "customparam-single";
 
   // get variables, checking for existance
   if(isset($_GET["vargroup"])) $vargroup=$_GET["vargroup"]; else $vargroup="Bot";
@@ -48,7 +49,7 @@ else
         $formfields["vargroup"] = $vargroup;
 
 	    // process query
-	    if (debug()) print "<br>DEBUG-customparam-single: " . $query . "<br>\n";
+	    if (debug()) print "<br>DEBUG-{$pagename}: " . $query . "<br>\n";
 	    if (! (@mysqli_query ($connection, $query) ))
 		    dbshowerror($connection, "die");
 
@@ -70,7 +71,7 @@ else
 	    $query = "delete from custom_param where tag = '{$tag}'";
 
 	    // process query
-	    if (debug()) print "<br>DEBUG-customparam-single: " . $query . "<br>\n";
+	    if (debug()) print "<br>DEBUG-{$pagename}: " . $query . "<br>\n";
 	    if (! (@mysqli_query ($connection, $query) ))
 		    dbshowerror($connection, "die");
 
@@ -115,11 +116,11 @@ if (! ($delete))
 
   // if in edit mode, signal save with edit=2
   if ($edit)
-  	print "<form method=\"POST\" action=\"/customparam-single.php?vargroup={$vargroup}&tag={$tag}&edit=2\">\n";
+  	print "<form method=\"POST\" action=\"/{$pagename}.php?vargroup={$vargroup}&tag={$tag}&edit=2\">\n";
 
 
   // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/customparam-single.php?vargroup={$vargroup}&tag={$tag}") . "\n";
+  print dblockshowedit($edit, $dblock, "/{$pagename}.php?vargroup={$vargroup}&tag={$tag}") . "\n";
 
   // add delete button
   if ($edit) print "&nbsp;&nbsp;<input type=\"submit\" name=\"op\" VALUE=\"Delete\" ALIGN=middle BORDER=0>\n";
@@ -223,7 +224,7 @@ print "
   print "<br><br>\n";
 
   // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/customparam-single.php?vargroup={$vargroup}&tag={$tag}") . "\n";
+  print dblockshowedit($edit, $dblock, "/{$pagename}.php?vargroup={$vargroup}&tag={$tag}") . "\n";
 
   // add delete button
   if ($edit) print "&nbsp;&nbsp;<input type=\"submit\" name=\"op\" VALUE=\"Delete\" ALIGN=middle BORDER=0>\n";

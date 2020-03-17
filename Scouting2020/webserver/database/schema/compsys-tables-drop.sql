@@ -33,7 +33,7 @@ drop table if exists schedule;
 drop table if exists process_lock;
 drop table if exists message;
 drop table if exists user_profile;
-drop table if exists topic;
+drop table if exists docnode;
 drop table if exists documentation;
 drop table if exists pagetodoc;
 drop table if exists system_value;

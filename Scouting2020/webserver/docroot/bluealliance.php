@@ -145,7 +145,7 @@
       if ($toggle == "on") $state=1; else $state=0;
 
       if (! (tba_set_autoupdate($state)))
-        showerror("Cannot set autoupdate in {$auto_update_file}.");
+        showerror("Cannot set autoupdate.");
 
     default:
 
@@ -165,7 +165,9 @@
   print "
   <h4><u>Auto Update</u></h4>
   <ul>
-  <li><a href=\"/bluealliance.php?op=autoupdate&toggle={$auto_state}\">Turn <b>{$auto_state}</b> automatic updates until {$auto_update_stop}.</a></li>
+  <li><a href=\"/bluealliance.php?op=autoupdate&toggle={$auto_state}\">Turn <b>{$auto_state}</b> automatic updates until {$auto_update_stop}.</a>
+  <br>(must be started before {$auto_update_stop}.)
+  </li>
   </ul>
 
   <h4><u>Load and update during Regional</u></h4>
@@ -191,7 +193,9 @@
   <h4><u>Custom Parameters</u></h4>
 
   <ul>
-  <li><a href=\"/customparam.php?vargroup=tBA\">Define The Blue Alliance custom parameters</li>
+   <li><a href=\"/customparam.php?vargroup=tBA_Bot\">Define The Blue Alliance custom Bot stat parameters</li>
+   <br>
+   <li><a href=\"/customparam.php?vargroup=tBA_Match\">Define The Blue Alliance custom match parameters</li>
   </ul>
 
   "; // end of print

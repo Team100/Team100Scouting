@@ -5,6 +5,7 @@
   // Competition System - Sample page with edits
   //
   require "page.inc";
+  $pagename = "template-tabular-edit";
 
   // get variables, checking for existance
   if(isset($_GET["vargroup"])) $vargroup=$_GET["vargroup"]; else $vargroup="Bot";
@@ -137,7 +138,7 @@ print "
   // get custom_param details define result set
   $query = "select ". fields_insert("nameonly",NULL,$custom_param) . " from custom_param where vargroup = '{$vargroup}'";
   $query = $query . " order by position";
-  if (debug()) print "<br>DEBUG-template: " . $query . "<br>\n";
+  if (debug()) print "<br>DEBUG-{$pagename}: " . $query . "<br>\n";
   if (!($result = @ mysqli_query ($connection, $query)))
     dbshowerror($connection);
 

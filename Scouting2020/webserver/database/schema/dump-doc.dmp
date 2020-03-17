@@ -1,0 +1,54 @@
+-- MariaDB dump 10.17  Distrib 10.4.11-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: competition
+-- ------------------------------------------------------
+-- Server version	10.4.11-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Dumping data for table `docnode`
+--
+
+LOCK TABLES `docnode` WRITE;
+/*!40000 ALTER TABLE `docnode` DISABLE KEYS */;
+INSERT INTO `docnode` (`docnode`, `locked`, `updatedby`, `parent`, `position`, `doctag`, `admin`, `topic`, `description`) VALUES ('TestNode',NULL,NULL,'Root',1,'FirstTest',0,'Test Node',NULL),('TestNode01',NULL,NULL,'TestNode4',3,NULL,0,'A Lots to say about test nodes',NULL),('TestNode02',NULL,NULL,'TestNode4',4,NULL,0,'B Lots to say about test nodes',NULL),('TestNode03',NULL,NULL,'TestNode2',1,NULL,0,'C Lots to say about test nodes',NULL),('TestNode04',NULL,NULL,'TestNode01',1,'SecondTag',0,'D Further nested',NULL),('TestNode2',NULL,NULL,'Root',2,'SecondTag',0,'2 Lots to say about test nodes',NULL),('TestNode3',NULL,NULL,'Root',3,NULL,1,'1 Test ',NULL),('TestNode4',NULL,NULL,'TestNode',3,NULL,0,'6 Lots to say about test nodes',NULL),('TestNode5',NULL,NULL,'TestNode',2,'SecondTag',0,'4 Lots to say about test nodes',NULL),('TestNode6',NULL,NULL,'TestNode',1,NULL,0,'3 Lots to say about test nodes',NULL),('TestNode7',NULL,NULL,'TestNode',4,NULL,0,'7  Lots to say about test nodes',NULL),('TestNode8',NULL,NULL,'TestNode4',1,NULL,0,'8 Lots to say about test nodes',NULL),('TestNode9',NULL,NULL,'TestNode4',2,'FirstTest',1,'9 Lots to say about test nodes',NULL);
+/*!40000 ALTER TABLE `docnode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `documentation`
+--
+
+LOCK TABLES `documentation` WRITE;
+/*!40000 ALTER TABLE `documentation` DISABLE KEYS */;
+INSERT INTO `documentation` (`doctag`, `locked`, `updatedby`, `title`, `default_docnode`, `admin`, `topic`, `doctext`) VALUES ('FirstTest',NULL,NULL,'bar',NULL,1,'bar','alkjsdfljasdlfjlaskjdlkfjasdf '),('SecondTag',NULL,NULL,'second tag','',0,'more on topic','Lots more to say\r\n\r\n');
+/*!40000 ALTER TABLE `documentation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `pagetodoc`
+--
+
+LOCK TABLES `pagetodoc` WRITE;
+/*!40000 ALTER TABLE `pagetodoc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pagetodoc` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-03-16 17:25:45

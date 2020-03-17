@@ -1220,7 +1220,7 @@ function tba_set_autoupdate ( $state )
   global $connection;
   
   // set up array
-  $db_array = array ("skey"=>"auto_update_state", "value"=>$state);
+  $db_array = array ("value"=>$state);
   $table_identifiers = array ("skey"=>"auto_update_state");  
   
   db_update_or_create("system_value", $table_identifiers, $db_array);
@@ -1280,10 +1280,11 @@ function tba_get_autoupdate ()
   if (!($result = @ mysqli_query ($connection, $query)))
     dbshowerror($connection);
 
-
-  $row = mysqli_fetch_array($result);
-  $state = $row['value'];
-       
+  if ($row = mysqli_fetch_array($result))
+    $state = $row['value'];
+  else
+    $state = 0;
+    
   // if still set, check on time
     
   if ($state != 0 )

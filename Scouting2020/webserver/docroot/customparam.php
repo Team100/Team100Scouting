@@ -8,6 +8,7 @@
 //        handling.  vargroup=tBA
 //
 require "page.inc";
+$pagename = "customparam";
 
 // get variables, checking for existance
 if(isset($_GET["vargroup"])) $vargroup=$_GET["vargroup"]; else $vargroup="Bot";
@@ -116,11 +117,11 @@ else
   print "\n\n";
   // if in edit mode, signal save with edit=2
   if ($edit)
-  	print "<form method=\"POST\" action=\"/customparam.php?edit=2&vargroup={$vargroup}\">\n";
+  	print "<form method=\"POST\" action=\"/{$pagename}.php?edit=2&vargroup={$vargroup}\">\n";
 
 
   // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/customparam.php?vargroup={$vargroup}") . "\n";
+  print dblockshowedit($edit, $dblock, "/{$pagename}.php?vargroup={$vargroup}") . "\n";
 
   // return and home buttons
   print "&nbsp;&nbsp;&nbsp;<a href=\"/admin.php\">Return to Admin</a>\n";
@@ -162,7 +163,7 @@ print "
     // set special URL tag options
     $tagoptions = $options;
     if (!($edit) && isset($row["tag"]))
-      $tagoptions["href"] = "/customparam-single.php?vargroup={$vargroup}&tag={$row["tag"]}";
+      $tagoptions["href"] = "/{$pagename}-single.php?vargroup={$vargroup}&tag={$row["tag"]}";
 
     // special formating for tBA field mapping
     if (substr($vargroup,0,3) == "tBA")
@@ -252,7 +253,7 @@ print "
 
 
   // add edit link or submit button
-  print dblockshowedit($edit, $dblock, "/customparam.php?vargroup={$vargroup}") . "\n";
+  print dblockshowedit($edit, $dblock, "/{$pagename}.php?vargroup={$vargroup}") . "\n";
 
   // return and home buttons
   print "<br><br><a href=\"/admin.php\">Return to Admin</a><br>\n";

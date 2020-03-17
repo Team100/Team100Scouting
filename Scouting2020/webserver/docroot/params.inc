@@ -53,6 +53,10 @@ $base = "/";
 // Custom params limit per type
 $custom_params_limit = 40;
 
+//
+// Dodnodes limit per page (for blank pages)
+$docnodes_limit = 4;
+
 // 
 // Field positions
 //
