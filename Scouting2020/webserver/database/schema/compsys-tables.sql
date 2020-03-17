@@ -69,7 +69,6 @@ create table event
 # Team
 #
 # General team information, intended to be carried forward year after year
-#
 # 
 create table team
  (
@@ -516,13 +515,15 @@ create table documentation
    locked varchar(13), 		# current editor of this row
    updatedby varchar(200), 	# last updated by users
    title varchar(70),		# title of this page, what the world will see
-   default_docnode varchar(15),	# default doc_node to which this document is connected
+   default_docnode varchar(20),	# default doc_node to which this document is connected
    admin boolean,		# admin-only designation.  will not display without admin privileges
    topic varchar(70),		# what topic this page falls under, listed under the 'topic' table (first parent)
    doctext text(10000),		# stores the actual information for this page
    primary key (doctag)
  );
 
+#
+# docnode
 #
 # toc node table contains the organanizational heirarchy of the documentation.
 # various trees can be created and displayed. The leaf nodes should link to documentation
@@ -535,7 +536,7 @@ create table docnode
    updatedby varchar(200), 	# last updated by users
    parent varchar(20), 		# parent docnode for nested topics
    position int,		# order of nodes under topic
-   doctag varchar(20),		# doctag for documentation connected to this node
+   doctag varchar(20),		# doctag for documentation connected to this node (FK to documentation)
    admin boolean,		# admin-only designation.  will not display without admin privileges
    topic varchar(70),		# title of this node - the world will see this
    description varchar(200),	# text description/summary of this node
@@ -543,12 +544,14 @@ create table docnode
  );
 
 #
+# pagetodoc
+#
 # stores a relationship between a documentation and a page
 #
 create table pagetodoc
 (
    page varchar(30),		# page the documentation can be accessed by, primary key
-   docnode varchar(15),		# internal node in heirarcy 
+   docnode varchar(20),		# internal node in heirarcy 
    primary key (page, docnode)
 );
 
@@ -583,8 +586,8 @@ create table system_value
 #
 # insert keys needed to start in the system
 #
-insert into system_value (skey) values ('sys_event_id');		# current event_id used to load Blue Alliance data
-insert into system_value (skey) values ('a');		# 
+insert into system_value (skey) values ('sys_event_id');	# current event_id used to load Blue Alliance data
+insert into system_value (skey) values ('a');			# 
 
 ##
 ## add any other data needed as part of setup

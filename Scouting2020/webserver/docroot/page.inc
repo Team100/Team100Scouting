@@ -1931,35 +1931,255 @@ function match_get_recent_actual ($type)
 // Documentation System Functions
 //
 //
+// Note: both functions use a URL to drive layout behavior.  The URL assumes
+//
 
 //
-// function: doc_show_toc ( $parent )
+// function: doc_show_toc ( $parent, $url, $options)
 //  $parent docnode - parent docnode from which to descend to paint TOC
+//  $url - key/value array of URL's that direct function. URL is assumed to proceed
+//           &params used by the function.  Generally docnode=X is appended.
+//           NOTE: the URL must terminate in the proper char for a parameter (? or &)
+//     "ret"       - the URL to return to the calling function
+//     "doctag"    - URL for display on nodes with doctags
+//     "toc"       - URL for page to display toc info.  &toc=1 is included in URL.
+//  $options - key/value array of option and setting
+//     "levels"   - int specifying levels to include below this node. 1 means just this level.
+//                   Default is 0 which means all.
+//     "uplevels" - int specifying levels to include below this node. 1 means just this level.
+//                   Default is 1 which means just this level, none above.
+//     "below"    - do not display docnode but only its children (or parents)
 //
 //  Returns HTML text of TOC from parent node down.  Links are show 
 //    if a doctag node is associated with the docnode.  Otherwise
 //    just paints titles in ordered lists.
 //
-//  Returns: ??
+//  Returns: $rs - string of display text, or FALSE or empty string if no node
 
-function doc_show_toc ( $parent )
+function doc_show_toc ( $parent, $url = NULL, $options = NULL )
 {
+  // initialize
+  global $connection, $admin;
+  $rs = ""; // return string
 
+  // unpack URL
+  if (isset($url) && (! is_array($url))) return(FALSE);  // test URL
+  if (isset($url['doctag'])) $url_doctag = $url['doctag']; else $url_doctag="";
+  if (isset($url['toc'])) $url_toc = $url['toc']; else $url_toc="";
+ 
+  // doc table definition
+  $docnodes = array("docnode", "parent", "position", "doctag", "admin", "topic");
+  
+  if ($parent == "") return (FALSE);
+  
+  // hairy recursive query
+  //  Uses Common Table Entry to perform recursive sort by parent docnode.  See online doc for more
+  //  on CTE.  It is important that the second query use the columns set up in the "with recursive"
+  //  string.
+  //
+  //  sort is also problem.  We construct a sortord column that keep a sort key using the formula
+  //   position*10^(12-level)+sortord.  The sortord comes from the inhereting parent.
+  //
+  //  It limit is 6 levels of 99 nodes across.
+
+  // set up field strings
+  $fieldstr = fields_insert("nameonly",NULL,$docnodes);
+  $fieldstr_d1 = fields_insert("nameonly",NULL,$docnodes, "d1.");
+  $fieldstr_d2 = fields_insert("nameonly",NULL,$docnodes, "d2.");
+
+  $query = "with recursive node({$fieldstr}, level, sortord) as ( ";
+  $query .= "select {$fieldstr_d1}, 1 level, d1.position * pow(10,14) from docnode d1 left join docnode d2 on d2.docnode = d1.parent ";
+  $query .= "  where d1.docnode = '{$parent}'  UNION all ";
+  $query .= "select {$fieldstr_d1}, level+1 level, d1.position * pow(10,14-(level*2))+sortord sortord ";
+  $query .= "  from docnode d1 join node d2 on d2.docnode = d1.parent) ";
+  $query .= "select {$fieldstr}, level, sortord from node order by sortord ";
+
+  if (debug()) print "<br>DEBUG-doc_show_toc:: " . $query . "<br>\n";
+  if (!($result = @ mysqli_query ($connection, $query)))
+    dbshowerror($connection);
+
+  // get rows and lay out in menu form
+  $prev_level = 0;
+  $cnt=0;
+  while($row = mysqli_fetch_array($result))
+  {
+    // admin-only check
+    if ($row['admin'] != 1 || ($admin))
+    {
+      //
+      $level = $row['level'];
+      // open or close <ol>
+      if ($level > $prev_level) $rs .="<ol>\n";
+      else if ($level < $prev_level) $rs .="</ol>\n";
+
+      // start item
+      $rs .="<li>";
+
+      // add html
+      if ($url_doctag != NULL && $row['doctag'] != NULL) 
+        $rs .="<a href=\"{$url_doctag}docnode={$row['docnode']}\">\n";
+
+      // topic
+      $rs .="{$row['topic']}";
+
+      // close html
+      if ($url_doctag != NULL  && $row['doctag'] != NULL) $rs .="</a>\n";
+
+      // if options don't disallow, show up menu
+      if ($cnt == 0 && $url_toc != NULL  && $row['parent'] != NULL) 
+        $rs .="&nbsp;<a href=\"{$url_toc}docnode={$row['parent']}&doc_op=menu\">^</a>\n";
+
+      // end item
+      $rs .="</li>\n";
+
+      // set values for next row
+      $prev_level = $level;
+      $cnt++;
+      
+    } // end of admin check
+  }
+
+  // close rest of levels
+  for ($cnt = $prev_level; $cnt > 0; $cnt-- )
+    $rs .="</ol>\n";
+  
+  if (debug()) print "<br>DEBUG-doc_show_toc return string: " . $rs . "<br>\n";
+  
+  return ($rs);
+  
 }
 
 //
-// function: doc_show_doc ( $docnode )
-//  $docnode -   
+// function: doc_show_doc ( $docnode, $url $options)
+//  $docnode - doc node from which to reference documentation
+//  $url - key/value array of URL's that direct function. URL is assumed to proceed
+//           &params used by the function.  Generally docnode=X is appended.
+//           NOTE: the URL must terminate in the proper char for a parameter (? or &)
+//     "ret"       - the URL to return to the calling function
+//     "doctag"    - URL for display on nodes with doctags
+//     "toc"       - URL for page to display toc info.  &toc=1 is included in URL.
+//  $options - key/value array of option and setting
+//     "control"   - show left/right up/down contol. Down opens menu
+//     "notitle"   - do not show normal topic and title
+//                   
 //
 //  Show document connected with this node.  Show nothing (possibly navigation)
 //   if no document associated.
 //
-//  Returns: HTML text for print/painting
+//  Returns: $rs - string of display text, or FALSE or empty string if no node
 
-function doc_show_doc ( $docnode )
+function doc_show_doc ( $docnode, $url = NULL, $options = NULL )
 {
+  // initialize
+  global $connection, $admin;
+  $rs = ""; // return string
+ 
+  // unpack URL
+  if (isset($url) && (! is_array($url))) return(FALSE);  // test URL
+  if (isset($url['toc'])) $url_toc = $url['toc']; else $url_toc="";
 
+  if ($docnode == "") return ($rs); 
+ 
+  // doc table definition
+  $docnodes = array("docnode", "parent", "position", "doctag", "admin", "topic");
+  
+
+  // get doc
+  $query = "select docnode, n.topic topic, n.parent parent, title, n.admin nadmin, d.admin admin, doctext ";
+  $query .= " from docnode n, documentation d where n.doctag = d.doctag and n.docnode = '{$docnode}'";
+  
+  if (debug()) print "<br>DEBUG-doc_show_toc:: " . $query . "<br>\n";
+  if (!($result = @ mysqli_query ($connection, $query)))
+    dbshowerror($connection);
+
+  // get rows and lay out in menu form
+  if ($row = mysqli_fetch_array($result))
+  {
+    // admin-only check
+    if ($row['admin'] != 1 || ($admin))
+    {    
+      // add html
+      if ($url_toc != NULL)
+      {
+        if ($row['parent'] != "") $docsend = $row['parent']; else $docsend = $docnode;
+        $rs .="<a href=\"{$url_toc}docnode={$docsend}\">\n";
+      }
+
+      // node topic/title
+      $rs .= "<u>{$row['topic']}</u>\n";
+    
+      // close html
+      if ($url_toc != NULL) $rs .="</a>\n";  
+
+      // show text
+      $rs .= "<br><p>\n{$row['doctext']}<br>\n";
+    } 
+    else
+      $rs .= "<b>You mush have admin privileges to view this document.</b><br>\n";
+  }
+  else return($rs);
+
+  return ($rs);
 }
+
+//
+// function: doc_show_node ( $docnode, $url, $options, $doc_op)
+//  $docnode - doc node from which to reference documentation
+//  $url - key/value array of URL's that direct function. URL is assumed to proceed
+//           &params used by the function.  Generally docnode=X is appended.
+//           NOTE: the URL must terminate in the proper char for a parameter (? or &)
+//     "ret"       - the URL to return to the calling function
+//     "doctag"    - URL for display on nodes with doctags
+//     "toc"       - URL for page to display toc info.  &toc=1 is included in URL.
+//  $options - key/value array of option and setting
+//     "control"   - show left/right up/down contol. Down opens menu
+//     "notitle"   - do not show normal topic and title
+//  $doc_op = "doc operation", intended to be passed on the URL line as an option
+//     "menu"      - force menu mode
+//
+//  Shows toc menu or document connected with this node.  Determines if this node
+//   is attached to a doctag, then show that text.  Otherwise, display toc from 
+//   this node down, including the node.  Note that if the doctag doesn't 
+//   exist in the documentation table, it will not be displayed
+//
+//  Returns: $rs - string of display text, or FALSE or empty string if no node
+
+function doc_show_node ( $docnode, $url = NULL, $options = NULL, $doc_op = NULL )
+{
+  // initialize
+  global $connection;
+  $rs = ""; // return string
+ 
+  // unpack URL
+  if (isset($url) && (! is_array($url))) return(FALSE);  // test URL
+  if (isset($url['toc'])) $url_toc = $url['toc']; else $url_toc="";
+
+  // check for null docnode
+  if ($docnode == "") return ($rs); 
+  
+  // determine if doc node has a doctag, then call show documentation page
+
+  // get docnode
+  $query = "select docnode, d.doctag from docnode n, documentation d ";
+  $query .= "where n.doctag = d.doctag and n.docnode = '{$docnode}'";
+  
+  if (debug()) print "<br>DEBUG-doc_show_node:: " . $query . "<br>\n";
+  if (!($result = @ mysqli_query ($connection, $query)))
+    dbshowerror($connection);
+    
+  // get row means show doc
+  if ($doc_op == "menu" || (! $row = mysqli_fetch_array($result)))
+    $rs = doc_show_toc ($docnode, $url, $options);
+  else     
+  {
+    // add menu option to show_doc
+    $url['toc'] = $url['toc'] . "doc_op=menu&";
+    $rs = doc_show_doc ($docnode, $url, $options);
+  }
+
+  return($rs);
+}
+
 
 //
 // End of documentation functions

@@ -36,9 +36,9 @@ fi
 
 # check for customizations data (as well as .sql definition above)
 cnt=0
-for custfile in $WEBSRVROOT/database/schema/dump-customizations-*.dmp
+for custfile in $WEBSRVROOT/database/schema/dump-customizations*.dmp
 do
-  if [ "$custfile" = "$WEBSRVROOT/database/schema/dump-customizations-*.dmp" ]
+  if [ "$custfile" = "$WEBSRVROOT/database/schema/dump-customizations*.dmp" ]
   then continue; fi
   (( cnt++ ))
 done
@@ -56,6 +56,34 @@ then
 else
   echo " No customization data loaded."
 fi
+
+#
+# documentation - same drill
+#
+# check for customizations data (as well as .sql definition above)
+cnt=0
+for docfile in $WEBSRVROOT/database/schema/dump-doc*.dmp
+do
+  if [ "$docfile" = "$WEBSRVROOT/database/schema/dump-doc*.dmp" ]
+  then continue; fi
+  (( cnt++ ))
+done
+
+# test for custommization
+if [ $cnt -gt 1 ]
+then
+  echo " More than one documentation file was found.  None loaded.  Please load manually."
+elif [ $cnt -eq 1 ]
+then
+  echo " Loading documentation file $docfile... "
+  mysql -D ${dbname} -u ${dbuser} --password=${dbpass} \
+      < $WEBSRVROOT/database/schema/dump-doc*.dmp
+  echo "   done."
+else
+  echo " No documentation data loaded."
+fi
+
+
 
 echo " "
 echo "Competition System Tables Built"

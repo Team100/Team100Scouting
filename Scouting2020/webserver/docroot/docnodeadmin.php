@@ -10,7 +10,6 @@ require "page.inc";
 $pagename = "docnodeadmin";
 
 // get variables, checking for existance
-if(isset($_GET["vargroup"])) $vargroup=$_GET["vargroup"]; else $vargroup="Bot";
 if(isset($_GET["edit"])) $edit=$_GET["edit"]; else $edit=NULL;
 
 // check post then get for parent:
@@ -19,7 +18,7 @@ else if(isset($_GET["parent"])) $parent=$_GET["parent"];
 else $parent="";
 
 // header and setup
-pheader("Documentation Admin: {$vargroup}");
+pheader("Documentation Admin: Nodes");
 $connection = dbsetup();
 
 // if not administrator, display error.  Otherwise show admin section.
@@ -141,8 +140,6 @@ else
         // inform user and provide return.
 
         print "<br>Deleted Doc Node '{$deletenode}'.\n";
-        print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n";
-        //print "<a href=\"/{$pagename}.php\">Return to Custom Parameters</a> \n";
         print "<br><br>\n";
       } // issent
 	} // delete
@@ -231,13 +228,12 @@ print "
   if ($edit)
   {
     print "\n<b>NOTE:</b> decimal values can be used in position to reorder.\n";
-    print "To delete a tag, click on link when not in edit and delete from the single-edit page.<br><br>\n";
+    print "<br><br>\n";
   }
 
   // inline function to render page rows
   function docnode_render_row ($edit, $options, $row, $editprefix=NULL)
   {
-    global $vargroup;
     global $doctags, $doctitles;
     global $pagename;
 

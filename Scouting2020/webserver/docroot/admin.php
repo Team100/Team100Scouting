@@ -74,7 +74,9 @@
    <br>
    <li><a href=\"/docadmin-single.php\">Doc Page admin</a></li>
    <br>
-   <li><a href=\"/docadmin-single.php\">Menu Browser</a></li>
+   <li><a href=\"/docadmin-showmenu.php\">Menu Browser</a></li>
+   <br>
+   <li><a href=\"/docadmin-showdoc.php\">Document Browser</a></li>
 
    </ul>
 
