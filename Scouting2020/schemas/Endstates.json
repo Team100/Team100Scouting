@@ -1,0 +1,16 @@
+{
+    "endStates":[
+        {
+            "name": "No Climb",
+            "val": "NC"
+        },
+        {
+            "name": "Unbalanced Climb",
+            "val": "UNBAL"
+        },
+        {
+            "name": "Balanced Climb",
+            "val": "BAL"
+        }
+    ]
+} 
