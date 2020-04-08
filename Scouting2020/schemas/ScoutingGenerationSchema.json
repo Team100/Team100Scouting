@@ -1,0 +1,115 @@
+{
+    "config":{
+        "teamNum":254,
+        "matchType":"QUAL",
+        "matchNum":1
+
+    },
+    "ui":{
+        "pages":[ 
+            {
+                "name":"Fuel Cell",
+                "btn":1,
+                "layout":[
+                    [
+                        {
+                            "btn":"f"
+                        },
+                        {
+                            "btn":"d"
+                        }
+                    ],
+                    [
+                        {
+                            "btn":"j"
+                        },
+                        {
+                            "btn":"k"
+                        },
+                        {
+                            "btn":"l"
+                        }
+                    ]
+
+                ],
+                "actions":{
+                    "f":{
+                        "name":"HP Intake High",
+                        "id":"hp-in-hi"
+                    },
+                    "d":{
+                        "name":"HP Intake Low",
+                        "id":"hp-in-lo"
+                    },
+                    "j":{
+                        "name":"Score Low",
+                        "id":"sc-lo"
+                    },
+                    "k":{
+                        "name":"Score Out",
+                        "id":"sc-out"
+                    },
+                    "l":{
+                        "name":"Score High",
+                        "id":"sc-hi"
+                    }
+                }
+
+            },
+
+
+            {
+                "name":"Test",
+                "btn":2,
+                "layout":[
+                    [
+                        {
+                            "btn":"f"
+                        },
+                        {
+                            "btn":"d"
+                        },
+                        {
+                            "btn":"h"
+                        }
+                    ],
+                    [
+                        
+                        {
+                            "btn":"j"
+                        },
+                        {
+                            "btn":"k"
+                        }
+                    ]
+
+                ],
+                "actions":{
+                    "f":{
+                        "name":"Test 1",
+                        "id":"t1"
+                    },
+                    "d":{
+                        "name":"Test 2",
+                        "id":"t2"
+                    },
+                    "h":{
+                        "name":"Test 3",
+                        "id":"t3"
+                    },
+                    "j":{
+                        "name":"Test 4",
+                        "id":"t4"
+                    },
+                    "k":{
+                        "name":"Test 5",
+                        "id":"t5"
+                    }
+                
+                }
+            
+
+            }
+        ]
+    }
+} 
