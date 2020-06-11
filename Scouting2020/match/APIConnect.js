@@ -5,4 +5,6 @@ export default class APIConnect {
     static SCOUTING_GENERATION_SCHEMA = APIConnect.BASE_URL + "ScoutingGenerationSchema.json";
 
     static SCOUTING_ENDSTATES = APIConnect.BASE_URL + "endstates.json";
+
+    static MATCH_CONFIG = APIConnect.BASE_URL + "matchConfig.json";
 }

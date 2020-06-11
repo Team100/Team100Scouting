@@ -3,9 +3,8 @@ import React, {Component} from "react";
 
 import "../../assets/css/materialIcons.css";
 import "../../assets/css/matchScoutGlobal.css";
-import {Form, Icon, Input, Button, Select, Row, Col, AutoComplete, message, Card} from 'antd';
+import {Card, Input, Select} from 'antd';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-
 import Lottie from 'react-lottie';
 import success from '../../assets/lottie/2615-success.json';
 import failure from '../../assets/lottie/5707-error.json';
