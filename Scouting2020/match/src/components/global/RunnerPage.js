@@ -10,7 +10,7 @@ import EventListener, {withOptions} from 'react-event-listener';
 import {message} from "antd";
 
 export default class RunnerPage extends Component{
-    configURL = "https://cors-anywhere.herokuapp.com/storage.googleapis.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
+    configURL = "https://cors-anywhere.herokuapp.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
     state={actions:[], timer:150}; //TODO set to 150
     interval;
     tick(){

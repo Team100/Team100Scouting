@@ -14,7 +14,7 @@ const { Meta } = Card;
 const InputGroup = Input.Group;
 
 export default class CommentPage extends Component {
-    configURL = "https://cors-anywhere.herokuapp.com/storage.googleapis.com/alpha.cdn.atco.mp/endstates.json";
+    configURL = "https://cors-anywhere.herokuapp.com/alpha.cdn.atco.mp/endstates.json";
     onChange = (param) => {
         this.setState({ comment:param.target.value });
     };
