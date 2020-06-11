@@ -1,0 +1,9 @@
+AuthUserFile "$htmasterpath"
+# name for authentication
+AuthName "Team 100 Competition"
+AuthType Basic
+
+#order deny,allow
+#allow from all
+
+require valid-user

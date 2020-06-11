@@ -1,0 +1,41 @@
+Robotics Competition System
+Install Customization Model
+----------------------------
+
+The install processes must accomodate the following requirements:
+ - work on windows for single instance and linux for single and multi-instance
+ - allow local htpasswd files
+ - allow customized settings in paramaters file, but keep 
+ - create fresh database or load from previous dataset
+ 
+ 
+ Windows to Unix Conversion
+ 
+ The BASH scripts written on windows have an additional ^M at the end of each
+ line.  They won't run as such on unix. A converter converts all *.bash files
+ and is driven by a directory of files relative to admin/utils.
+ 
+ 
+ 
+
+Customization Methods
+
+Two basic methods:
+1. replace strings in general files.  This approach is used for params.inc, 
+   as an example
+2. direct the installation to an instance-specific file.  This approach is used
+   in various places, including htpasswd.  It is also used to collect the 
+
+Location of Customized Files
+- Instance-specific files are kept in admin/instance-specific or database/instance-specific
+- General forms of the same files may be kepts in various places, then customized to 
+   instance-specific directories. */instance-general is a default location.
+   
+   Priority order of override is:
+     - [multisite root]/sitedefs
+     - instance-specific directory
+     - instance-general directory
+   
+The linux scripts are designed to check if there is multi-instance info first, use that 
+information, then use instance-specific files, and finally use the general files.
+

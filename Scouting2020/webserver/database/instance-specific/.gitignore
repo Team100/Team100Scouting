@@ -1,0 +1,14 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+
+# instance-specific code, not to be put in git-hub but used by individual servers
+#    not README
+
+# all files and directories from this point down
+*
+
+# keep these files in github (exceptions)
+!\.gitignore
+!README\.txt
+
+# end of .gitignore
