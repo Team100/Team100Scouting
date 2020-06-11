@@ -4,7 +4,8 @@ import React, {Component} from "react";
 import "../../assets/css/materialIcons.css";
 import "../../assets/css/matchScoutGlobal.css";
 import {Form, Icon, Input, Button, Select, Row, Col, AutoComplete, message, Card} from 'antd';
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'antd/dist/antd.css';
+import APIConnect from "../../../APIConnect"; // or 'antd/dist/antd.less'
 const { TextArea } = Input;
 
 
@@ -14,7 +15,7 @@ const { Meta } = Card;
 const InputGroup = Input.Group;
 
 export default class CommentPage extends Component {
-    configURL = "https://cors-anywhere.herokuapp.com/alpha.cdn.atco.mp/endstates.json";
+    configURL = APIConnect.SCOUTING_ENDSTATES;
     onChange = (param) => {
         this.setState({ comment:param.target.value });
     };

@@ -8,9 +8,10 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import EventListener, {withOptions} from 'react-event-listener';
 import {message} from "antd";
+import APIConnect from "../../../APIConnect";
 
 export default class RunnerPage extends Component{
-    configURL = "https://cors-anywhere.herokuapp.com/alpha.cdn.atco.mp/ScoutingGenerationSchema.json";
+    configURL = APIConnect.SCOUTING_GENERATION_SCHEMA;
     state={actions:[], timer:150}; //TODO set to 150
     interval;
     tick(){
